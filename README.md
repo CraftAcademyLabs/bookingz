@@ -1,5 +1,8 @@
 ## Bookingz
 
+develop [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=develop)](https://coveralls.io/github/CraftAcademy/bookingz?branch=develop)
+master [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=develop)](https://coveralls.io/github/CraftAcademy/bookingz?branch=master)
+
 Admin interface  and API for Conferance Booking System
 
 ## Copyright and license
