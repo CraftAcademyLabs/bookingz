@@ -16,3 +16,4 @@ vendor/*
 vendor/bundle/*
 vendor/cache/*
 vendor/plugins/*
+coverage/*
