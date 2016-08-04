@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :resource do
-    designation "MyString"
-    description "MyText"
+    designation 'Room'
+    description 'Lorem ipsum...'
   end
 end
