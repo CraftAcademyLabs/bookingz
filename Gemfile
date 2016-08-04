@@ -19,6 +19,7 @@ gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develo
 
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'

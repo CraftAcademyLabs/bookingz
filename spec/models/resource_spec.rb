@@ -17,13 +17,26 @@ RSpec.describe Resource, type: :model do
     subject { FactoryGirl.create(:resource) }
     let(:user) { FactoryGirl.create(:user) }
 
-    xit { is_expected.to be_bookable }
+    #xit { is_expected.to be_bookable }
     it { is_expected.to respond_to :be_booked! }
     it { is_expected.to respond_to :bookings }
-    xit { is_expected.to respond_to :schedule }
+    it { is_expected.to respond_to :schedule }
+    it { is_expected.to respond_to :capacity }
 
-    it 'allow to book a bookable resource' do
-      expect(subject.be_booked! user).to be_truthy
+    context 'valid booking' do
+      before do
+        from = Date.today.next_week + 9.hours
+        to = from + 2.hours
+        subject.be_booked! user, time_start: from, time_end: to, amount: 4
+      end
+
+      it 'adds booking' do
+        expect(subject.bookings.count).to eq 1
+      end
+
+      it 'is of ActsAsBookable::Booking class' do
+        expect(subject.bookings.last.class).to eq ActsAsBookable::Booking
+      end
     end
   end
 end

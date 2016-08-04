@@ -14,16 +14,29 @@ RSpec.describe User, type: :model do
   end
 
   describe 'bookable methods' do
+    subject { FactoryGirl.create(:user) }
+    let(:resource) { FactoryGirl.create(:resource) }
+
     it { is_expected.to be_booker }
     it { is_expected.to respond_to :book! }
     it { is_expected.to respond_to :bookings }
 
-    let(:booker) { FactoryGirl.create(:user) }
-    let(:resource) { FactoryGirl.create(:resource) }
+    context 'valid booking' do
+      before do
+        from = Date.today.next_week + 9.hours
+        to = from + 2.hours
+        subject.book! resource, time_start: from, time_end: to, amount: 4
+      end
 
-    it 'allow to book a bookable resource' do
-      expect(booker.book! resource).to be_truthy
+      it 'adds booking' do
+        expect(subject.bookings.count).to eq 1
+      end
+
+      it 'is of ActsAsBookable::Booking class' do
+        expect(subject.bookings.last.class).to eq ActsAsBookable::Booking
+      end
     end
+
   end
 
 end
