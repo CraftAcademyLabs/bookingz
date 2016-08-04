@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/CraftAcademy/acts_as_bookable.git
+  revision: fc210d58e843bdaf9ff154d6f17bc59ff91fdd39
+  branch: develop
+  specs:
+    acts_as_bookable (0.1.2)
+      activerecord (= 5.0.0)
+      ice_cube_chosko (~> 0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -100,6 +109,7 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    ice_cube_chosko (0.2.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -230,6 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_bookable!
   cucumber-rails
   database_cleaner
   devise

@@ -10,8 +10,12 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
-gem 'devise'
 gem 'haml-rails'
+
+# Functionality libraries
+
+gem 'devise'
+gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develop'
 
 
 group :development, :test do
