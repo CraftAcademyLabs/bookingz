@@ -11,6 +11,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
 gem 'devise'
+gem 'haml-rails'
 
 
 group :development, :test do
