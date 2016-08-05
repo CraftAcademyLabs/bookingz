@@ -1,8 +1,7 @@
 Given(/^the following admin account is configured$/) do |table|
   # table is a table.hashes.keys # => [:email, :password]
   table.hashes.each do |user|
-    FactoryGirl.create(:user, email: user[:email],
-                       password: user[:password])
+    FactoryGirl.create(:user, user)
     end
 end
 
@@ -10,6 +9,16 @@ Given(/^I am logged in as "([^"]*)"$/) do |value|
   user = User.find_by(email: value)
   login_as(user, scope: :user)
 end
+
+
+
+Given(/^the following resources exist$/) do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  table.hashes.each do |resource|
+    FactoryGirl.create(:resource, resource)
+  end
+end
+
 
 And(/^I navigate to the "([^"]*)" page$/) do |page|
   case page
