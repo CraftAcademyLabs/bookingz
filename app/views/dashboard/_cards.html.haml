@@ -1,0 +1,15 @@
+.cards
+  - @resources.each do |resource|
+    .card
+      %ul.accordion
+        %li.card-header.js-accordion-trigger
+          = resource.designation
+          %ul.submenu
+            %li.card-copy
+              %strong Details:
+              = resource.description
+              %br/
+              %strong Capacity:
+              = resource.capacity
+      .card-calendar
+

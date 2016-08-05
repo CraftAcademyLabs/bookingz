@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.'
+
+Resource.all.each { |r| r.destroy }
+Resource.create(designation: 'Lilla konferanssalen 1', description: description, capacity: 8, schedule: IceCube::Schedule.new(Time.now, duration: 10.hours))
+Resource.create(designation: 'Lilla konferanssalen 2', description: description, capacity: 8, schedule: IceCube::Schedule.new(Time.now, duration: 10.hours))
+Resource.create(designation: 'Stora konferanssalen 1', description: description, capacity: 20, schedule: IceCube::Schedule.new(Time.now, duration: 10.hours))
+Resource.create(designation: 'Stora konferanssalen 2', description: description, capacity: 20, schedule: IceCube::Schedule.new(Time.now, duration: 10.hours))
+Resource.create(designation: 'Stora kongresshallen', description: description, capacity: 200, schedule: IceCube::Schedule.new(Time.now, duration: 10.hours))
+Resource.create(designation: 'Lilla kongresshallen', description: description, capacity: 100, schedule: IceCube::Schedule.new(Time.now, duration: 10.hours))
+

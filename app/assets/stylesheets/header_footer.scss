@@ -1,6 +1,8 @@
 //
 .content-wrapper {
+  @include outer-container;
   margin: 10px 10px -4em;
+
 }
 
 html, body {
