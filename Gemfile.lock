@@ -61,6 +61,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.13)
+      capybara (>= 1.0, < 3)
+      launchy
+    cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     coveralls (0.8.15)
@@ -189,7 +193,12 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    phantomjs (2.1.1.0)
     pkg-config (1.1.7)
+    poltergeist (1.10.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -316,6 +325,8 @@ PLATFORMS
 DEPENDENCIES
   acts_as_bookable!
   bourbon (~> 5.0.0.beta.6)
+  capybara
+  capybara-screenshot
   coveralls
   cucumber-rails
   database_cleaner
@@ -331,6 +342,8 @@ DEPENDENCIES
   listen (~> 3.0.5)
   neat
   pg (~> 0.18)
+  phantomjs
+  poltergeist
   pry
   puma (~> 3.0)
   rails (~> 5.0.0)

@@ -19,6 +19,7 @@ Feature: As an Administrator
     Then I should be on the "login" page
     And I should see "You need to sign in or sign up before continuing."
 
+  @javascript
   Scenario: Visit landing page as admin
     Given I am logged in as "admin@random.com"
     And I navigate to the "landing" page

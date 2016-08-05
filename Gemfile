@@ -32,6 +32,10 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-livereload'
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
 
 end
 
