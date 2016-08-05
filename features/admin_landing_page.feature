@@ -25,7 +25,6 @@ Feature: As an Administrator
     Then I should see "Bookingz Dashboard"
     And I should see "Galaxy"
     And I should see "Atlantis"
-    Then show me the page
 
 
 
