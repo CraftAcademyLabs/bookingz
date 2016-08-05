@@ -50,6 +50,9 @@ GEM
     addressable (2.4.0)
     arel (7.1.1)
     bcrypt (3.1.11)
+    bourbon (5.0.0.beta.6)
+      sass (~> 3.4.22)
+      thor (~> 0.19.1)
     builder (3.2.2)
     capybara (2.7.1)
       addressable
@@ -173,6 +176,9 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
+    neat (1.8.0)
+      sass (>= 3.3)
+      thor (~> 0.19)
     nenv (0.3.0)
     nio4r (1.2.1)
     nokogiri (1.6.8)
@@ -304,6 +310,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_bookable!
+  bourbon (~> 5.0.0.beta.6)
   coveralls
   cucumber-rails
   database_cleaner
@@ -317,6 +324,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (~> 3.0.5)
+  neat
   pg (~> 0.18)
   pry
   puma (~> 3.0)
