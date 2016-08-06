@@ -25,13 +25,19 @@ RSpec.describe Resource, type: :model do
 
     context 'valid booking' do
       before do
-        from = Date.today.next_week + 9.hours
-        to = from + 2.hours
-        subject.be_booked! user, time_start: from, time_end: to, amount: 4
+        @from = Date.today.next_week + 9.hours
+        @to = @from + 2.hours
+        subject.be_booked! user, time_start: @from, time_end: @to, amount: subject.capacity
       end
 
       it 'adds booking' do
         expect(subject.bookings.count).to eq 1
+      end
+
+      it 'rejects identical booking with ActsAsBookable::AvailabilityError' do
+        expect{
+          subject.be_booked! user, time_start: @from, time_end: @to, amount: 4
+        }.to raise_error(ActsAsBookable::AvailabilityError, 'the Resource is fully booked')
       end
 
       it 'is of ActsAsBookable::Booking class' do

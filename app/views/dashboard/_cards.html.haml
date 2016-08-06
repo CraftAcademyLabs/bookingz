@@ -22,14 +22,16 @@
                   %strong Capacity:
                   = resource.capacity
               .action
-                %ul
+                %ul{style: 'list-style-type: none;'}
                   - resource.current_day_bookings.each do |booking|
-                    %li Grupp:
-                    = booking.client
-                    %li Start:
-                    = booking.time_start.to_time.to_formatted_s(:time)
-                    %li Slut:
-                    = booking.time_end.to_time.to_formatted_s(:time)
+                    %li
+                      %small
+                        Grupp:
+                        = booking.client
+                        %span Start:
+                        = booking.time_start.to_time.to_formatted_s(:time)
+                        %span Slut:
+                        = booking.time_end.to_time.to_formatted_s(:time)
 
 
 
