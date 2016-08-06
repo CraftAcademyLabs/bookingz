@@ -46,13 +46,13 @@ RSpec.describe Resource, type: :model do
 
     before do
       Timecop.freeze('2016-01-01')
-      from = Time.zone.now + 9.hours
-      to = from + 10.hours
+      from = Date.today + 15.hour + 30.minutes
+      to = from + 1.hour
       @booking = subject.be_booked! user, time_start: from, time_end: to, amount: 4
     end
 
     it 'returns a list of today´s bookings' do
-      expect(subject.current_bookings).to include subject.bookings.last
+      expect(subject.current_day_bookings).to include subject.bookings.last
     end
 
     it 'returns empty list if no bookings exists' do
