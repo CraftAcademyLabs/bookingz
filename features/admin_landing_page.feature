@@ -10,9 +10,9 @@ Feature: As an Administrator
       | admin@random.com | admin_password |
 
     Given the following resources exist
-      | designation |
-      | Galaxy      |
-      | Atlantis    |
+      | designation | description       |
+      | Galaxy      | The Galaxy room   |
+      | Atlantis    | The Atlantis room |
 
 
   Scenario: Visit landing page without logging in
@@ -26,7 +26,22 @@ Feature: As an Administrator
     Then I should see "Klicka på rummen ni vill boka eller göra en ändring i"
     And I should see "Galaxy"
     And I should see "Atlantis"
-    Then show me an image of the page
+
+  Scenario: Toggle details visibility
+    Given I am using the dashboard
+    And I click on "Galaxy"
+    Then I should see "The Galaxy room"
+    And I should not see "The Atlantis room"
+    When I click on "Galaxy"
+    Then I should not see "The Galaxy room"
+    And I should not see "The Atlantis room"
+    When I click on "Atlantis"
+    Then I should see "The Atlantis room"
+    And I should not see "The Galaxy room"
+    When I click on "Atlantis"
+    Then I should not see "The Atlantis room"
+    And I should not see "The Galaxy room"
+
 
 
 

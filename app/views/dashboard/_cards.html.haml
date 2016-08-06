@@ -2,7 +2,7 @@
   .row
     - collection.each do |resource|
       .medium-4.columns
-        .card
+        .card{id: "card-#{resource.id}"}
           .content
             %ul.accordion{data: {accordion: '', allow: {all:{closed: 'true'}}}, role: 'tablist'}
               %li.accordion-item

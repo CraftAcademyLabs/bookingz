@@ -40,6 +40,11 @@ And(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
 end
 
+Then(/^I should not see "([^"]*)"$/) do |content|
+  expect(page).not_to have_content content
+
+end
+
 Then(/^show me the page$/) do
   save_and_open_page
 end
@@ -47,3 +52,15 @@ end
 Then(/^show me an image of the page$/) do
   screenshot_and_open_image
 end
+
+Given(/^I am using the dashboard$/) do
+  steps %q{
+      Given I am logged in as "admin@random.com"
+      And I navigate to the "landing" page
+        }
+end
+
+Given(/^I click on "([^"]*)"$/) do |element|
+  click_link_or_button element
+end
+
