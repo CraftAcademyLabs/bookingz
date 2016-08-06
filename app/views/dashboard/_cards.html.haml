@@ -21,24 +21,39 @@
                   %br/
                   %strong Capacity:
                   = resource.capacity
-              - if resource.current_day_bookings.empty?
-                .action{style: "background-color: #{'green'}"}
-                  %strong
-                    %small No bookings
-              - else
-                - resource.current_day_bookings.each do |booking|
-                  .action{style: "background-color: #{'red'}"}
-                    %small
-                      %strong Grupp:
-                      = booking.client
-                      %span
-                        %Strong Start:
-                      = booking.time_start.to_time.to_formatted_s(:time)
-                      %span
-                        %strong Slut:
-                      = booking.time_end.to_time.to_formatted_s(:time)
+            - if resource.current_day_bookings.empty?
+              .action
+                %strong
+                  %small No bookings
+            - else
+              - resource.current_day_bookings.each do |booking|
+                .action{style: "background-color: #{'red'}"}
+                  %small
+                    %strong Grupp:
+                    = booking.client
+                    %span
+                      %Strong Start:
+                    = booking.time_start.to_time.to_formatted_s(:time)
+                    %span
+                      %strong Slut:
+                    = booking.time_end.to_time.to_formatted_s(:time)
 
 
+:javascript
+  $(document).ready(function() {
+    addRows(10);
 
+    $(".action").click(function() {
+      var resource, slot;
+      resource = $(this).parent('.content').find('.accordion-title').text()
+      slot = $(this).text()
+      console.log([resource, slot].join(' - '));
+      alert([resource, slot].join(' - '));
+    });
+  });
 
-    :javascript
+  function addRows(count) {
+    for (i = 0; i < count; i++) {
+      $(".card .content").append('<div class="action" id="action_' + i + '">Slot '  + (i+1) +'</div>');
+    }
+  }
