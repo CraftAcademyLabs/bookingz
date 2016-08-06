@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804225744) do
+ActiveRecord::Schema.define(version: 20160806101545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160804225744) do
     t.datetime "time_end"
     t.datetime "time"
     t.datetime "created_at"
+    t.string   "client"
     t.index ["bookable_type", "bookable_id"], name: "index_acts_as_bookable_bookings_bookable", using: :btree
     t.index ["booker_type", "booker_id"], name: "index_acts_as_bookable_bookings_booker", using: :btree
   end
