@@ -4,7 +4,7 @@
       .medium-4.columns
         .card
           .content
-            %ul.accordion{data: {accordion: ''}, role: 'tablist'}
+            %ul.accordion{data: {accordion: '', allow: {all:{closed: 'true'}}}, role: 'tablist'}
               %li.accordion-item
                 / The tab title needs role="tab", an href, a unique ID, and aria-controls.
                 %a.accordion-title{id: "panel#{resource.id}-heading",
