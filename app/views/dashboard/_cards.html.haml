@@ -21,17 +21,22 @@
                   %br/
                   %strong Capacity:
                   = resource.capacity
-              .action
-                %ul{style: 'list-style-type: none;'}
-                  - resource.current_day_bookings.each do |booking|
-                    %li
-                      %small
-                        Grupp:
-                        = booking.client
-                        %span Start:
-                        = booking.time_start.to_time.to_formatted_s(:time)
-                        %span Slut:
-                        = booking.time_end.to_time.to_formatted_s(:time)
+              - if resource.current_day_bookings.empty?
+                .action{style: "background-color: #{'green'}"}
+                  %strong
+                    %small No bookings
+              - else
+                - resource.current_day_bookings.each do |booking|
+                  .action{style: "background-color: #{'red'}"}
+                    %small
+                      %strong Grupp:
+                      = booking.client
+                      %span
+                        %Strong Start:
+                      = booking.time_start.to_time.to_formatted_s(:time)
+                      %span
+                        %strong Slut:
+                      = booking.time_end.to_time.to_formatted_s(:time)
 
 
 
