@@ -39,4 +39,26 @@ RSpec.describe Resource, type: :model do
       end
     end
   end
+
+  describe 'custom bookable methods' do
+    subject { FactoryGirl.create(:resource) }
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      Timecop.freeze('2016-01-01')
+      from = Time.zone.now + 9.hours
+      to = from + 10.hours
+      @booking = subject.be_booked! user, time_start: from, time_end: to, amount: 4
+    end
+
+    it 'returns a list of today´s bookings' do
+      expect(subject.current_bookings).to include subject.bookings.last
+    end
+
+    it 'returns empty list if no bookings exists' do
+      Timecop.freeze('2016-01-02')
+      expect(subject.current_day_bookings).not_to include subject.bookings.last
+    end
+
+  end
 end

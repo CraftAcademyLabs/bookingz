@@ -10,7 +10,34 @@ And(/^the following bookings exist$/) do |table|
   end
 end
 
-Then(/^there should be "([^"]*)" bookings in the system$/) do |count|
-  expected_count = count.to_i
-  expect(ActsAsBookable::Booking.count).to eq expected_count
+Then(/^there should be "([^"]*)" current bookings for "([^"]*)"$/) do |count, resource|
+  @resource = Resource.find_by(designation: resource)
+  @bookings = @resource.current_day_bookings
+  expect(@bookings.size).to eq count.to_i
+end
+
+And(/^I should see bookings for "([^"]*)"$/) do |resource|
+  resource = Resource.find_by(designation: resource)
+  @bookings.each do |booking|
+    within "#card-#{resource.id}" do
+      expect(page).to have_content booking.client
+    end
+  end
+
+end
+
+Then(/^I should see "([^"]*)" in "([^"]*)" box$/) do |content, resource|
+  resource = Resource.find_by(designation: resource)
+  within "#card-#{resource.id}" do
+    expect(page).to have_content content
+  end
+end
+
+Then(/^I should see the following content in resource box$/) do |table|
+  table.hashes.each do |hash|
+    resource = Resource.find_by(designation: hash[:resource])
+    within "#card-#{resource.id}" do
+      expect(page).to have_content hash[:content]
+    end
+  end
 end

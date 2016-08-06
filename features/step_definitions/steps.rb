@@ -50,7 +50,7 @@ Then(/^show me the page$/) do
 end
 
 Then(/^show me an image of the page$/) do
-  screenshot_and_open_image
+  Capybara::Screenshot.screenshot_and_open_image
 end
 
 Given(/^I am using the dashboard$/) do

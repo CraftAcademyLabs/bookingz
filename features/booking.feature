@@ -18,9 +18,28 @@ Feature: As an admin
     And the following bookings exist
       | resource | client | date       | start_time | end_time |
       | Galaxy   | Thomas | 2016-01-02 | 10:30      | 11:30    |
-      | Atlantis | Raoul  | 2016-01-02 | 10:30      | 11:30    |
+      | Galaxy   | Raoul  | 2016-01-02 | 13:30      | 14:30    |
+      | Atlantis | Raoul  | 2016-01-02 | 14:00      | 14:30    |
+      | Atlantis | Volvo  | 2016-01-02 | 08:00      | 09:30    |
+      | Atlantis | Thomas | 2016-01-02 | 17:00      | 18:30    |
 
 
   Scenario: Displaying bookings
-    Given I am using the dashboard
-    Then there should be "2" bookings in the system
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard
+    Then there should be "2" current bookings for "Galaxy"
+    And I should see bookings for "Galaxy"
+    Then there should be "3" current bookings for "Atlantis"
+    And I should see bookings for "Atlantis"
+
+  Scenario: Displaying booking details
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard
+    Then I should see the following content in resource box
+      | content                                | resource |
+      | Grupp: Thomas Start: 10:30 Slut: 11:30 | Galaxy   |
+      | Grupp: Raoul Start: 13:30 Slut: 14:30  | Galaxy   |
+      | Grupp: Raoul Start: 14:00 Slut: 14:30  | Atlantis |
+      | Grupp: Volvo Start: 08:00 Slut: 09:30  | Atlantis |
+      | Grupp: Thomas Start: 17:00 Slut: 18:30 | Atlantis |
+
