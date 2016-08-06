@@ -1,9 +1,15 @@
-@import "bourbon";
-@import "base/base";
-@import "neat";
+@import "foundation_and_overrides";
+@import "settings";
+@import "header";
+@import "footer";
+@import "card";
 
-@import "header_footer";
-@import "flashes";
+.row {
+  margin-bottom: 20px !important;
+}
 
-
-@import "cards";
+.content-wrapper {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}

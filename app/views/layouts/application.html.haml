@@ -2,6 +2,7 @@
 %html
   %head
     %meta{content: 'text/html; charset=UTF-8', http: {equiv: 'Content-Type'}}/
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     %title Bookingz
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -9,6 +10,23 @@
   %body
     = render 'layouts/header'
     .content-wrapper
-      = render 'layouts/messages'
+      .row
+        = render 'layouts/flash_messages'
       = yield
     = render 'layouts/footer'
+  :javascript
+    $(document).foundation();
+    $(window).resize(function() {
+      fixedFooter(); //at page resize
+    });
+
+    $(document).ready(function() {
+      fixedFooter(); //at page load
+      $( ".accordion-item" ).click(function() {
+        if ($(this).parent().hasClass("active")) {
+          $(this).parent().removeClass("active");
+          return false; // Prevents further propagation of event
+        }
+      });
+    });
+

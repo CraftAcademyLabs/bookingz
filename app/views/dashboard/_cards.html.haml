@@ -1,15 +1,27 @@
-.cards
-  - @resources.each do |resource|
-    .card
-      %ul.accordion
-        %li.card-header.js-accordion-trigger
-          = resource.designation
-          %ul.submenu
-            %li.card-copy
-              %strong Details:
-              = resource.description
-              %br/
-              %strong Capacity:
-              = resource.capacity
-      .card-calendar
+- @resources.each_slice(3) do |collection|
+  .row
+    - collection.each do |resource|
+      .medium-4.columns
+        .card
+          .content
+            %ul.accordion{data: {accordion: ''}, role: 'tablist'}
+              %li.accordion-item
+                / The tab title needs role="tab", an href, a unique ID, and aria-controls.
+                %a.accordion-title{id: "panel#{resource.id}-heading",
+                aria: {controls: "panel#{resource.id}"},
+                href: "#panel#{resource.id}",
+                role: 'tab'}= resource.designation
+                / The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby.
+                .accordion-content{id: "panel#{resource.id}",
+                aria: {labelledby: "panel#{resource.id}-heading"},
+                data: {tab: {content: ''}},
+                role: 'tabpanel'}
+                  %strong Details:
+                  = resource.description
+                  %br/
+                  %strong Capacity:
+                  = resource.capacity
+              .action
 
+
+    :javascript
