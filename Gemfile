@@ -35,6 +35,7 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
+  gem 'timecop'
 
 end
 

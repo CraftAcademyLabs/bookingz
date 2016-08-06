@@ -4,7 +4,9 @@ Feature: As an admin
 
 
   Background:
-    Given the following admin account is configured
+    Given time is frozen at 2016-01-01
+
+    And the following admin account is configured
       | email            | password       |
       | admin@random.com | admin_password |
 
@@ -15,8 +17,8 @@ Feature: As an admin
 
     And the following bookings exist
       | resource | client | date       | start_time | end_time |
-      | Galaxy   | Thomas | 2016-11-01 | 10:30      | 11:30    |
-      | Atlantis | Raoul  | 2016-11-01 | 10:30      | 11:30    |
+      | Galaxy   | Thomas | 2016-01-02 | 10:30      | 11:30    |
+      | Atlantis | Raoul  | 2016-01-02 | 10:30      | 11:30    |
 
 
   Scenario: Displaying bookings
