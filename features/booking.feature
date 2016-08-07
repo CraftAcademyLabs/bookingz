@@ -49,5 +49,12 @@ Feature: As an admin
     And I am using the dashboard
     And I click on "Slot 2" for "Atlantis"
     Then I should see a details modal for "Slot 2" for "Atlantis"
-    Then show me an image of the page
 
+
+  Scenario: Create a booking on slot
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard
+    And I click on "Slot 5" for "Galaxy"
+    And I fill in "Client" with "Jessica"
+    And I click on "Create"
+    #Then show me an image of the page

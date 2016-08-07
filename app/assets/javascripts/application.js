@@ -18,3 +18,22 @@
 
 
 
+function addRows(count) {
+    for (i = 0; i < count; i++) {
+        $(".card .content").append('<div class="action" id="action_' + i + '">Slot '  + (i+1) +'</div>');
+    }
+}
+
+function populateAndShowModal(object){
+    var obj, resource, slot, card;
+    obj = object;
+    card = $(obj).parent().parent();
+    resource = card.find('.accordion-title').text();
+    slot = $(obj).text();
+    var id = card[0].id.split("-").pop();
+    $('#booking_resource_id').val(id);
+    card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
+    var modal = new Foundation.Reveal($('#slot-modal'));
+    $('#model-content #slot').html([resource, slot].join(' - '));
+    modal.open();
+}

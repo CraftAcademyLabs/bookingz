@@ -45,6 +45,12 @@
   #model-content
     %h2 Lägg till bokning
     #slot
+    = form_tag (create_booking_path) do
+      = hidden_field_tag 'booking[resource_id]'
+      = label_tag 'booking[client]', 'Client'
+      = text_field_tag 'booking[client]'
+      = submit_tag 'Create', class: 'button'
+
 
 :javascript
   $(document).ready(function() {
@@ -55,20 +61,3 @@
     });
   });
 
-  function addRows(count) {
-    for (i = 0; i < count; i++) {
-      $(".card .content").append('<div class="action" id="action_' + i + '">Slot '  + (i+1) +'</div>');
-    }
-  }
-
-  function populateAndShowModal(object){
-    var obj, resource, slot, card;
-    obj = object;
-    card = $(obj).parent().parent();
-    resource = card.find('.accordion-title').text();
-    slot = $(obj).text()
-    card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
-    var modal = new Foundation.Reveal($('#slot-modal'));
-    $('#model-content #slot').html([resource, slot].join(' - '));
-    modal.open();
-  }

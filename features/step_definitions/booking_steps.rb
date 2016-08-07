@@ -44,12 +44,12 @@ end
 
 And(/^I click on "([^"]*)" for "([^"]*)"$/) do |slot, resource|
   @resource = Resource.find_by(designation: resource)
-  page.evaluate_script("var element = $( '#card-#{@resource.id} .content .action' ).filter(function () {
-    return this.innerHTML == '#{slot}';}).css('background-color','red'); element.click();")
+  script = "var element = $( '#card-#{@resource.id} .content .action' ).filter(function () { return this.innerHTML == '#{slot}';}); element.click();"
+  page.execute_script(script)
+  sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 
 Then(/^I should see a details modal for "([^"]*)" for "([^"]*)"$/) do |arg1, arg2|
-  sleep(0.1) until page.evaluate_script('$.active') == 0
-  binding.pry
-  expect(page).to have_selector '.reveal-overlay[style="display: block;]"'
+  #TODO: This is passing no matter if visible is set to true or false :-()
+  expect(page).to have_selector '#slot-modal', visible: true
 end
