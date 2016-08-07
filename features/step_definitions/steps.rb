@@ -50,6 +50,7 @@ Then(/^show me the page$/) do
 end
 
 Then(/^show me an image of the page$/) do
+  sleep(0.1) until page.evaluate_script('$.active') == 0
   Capybara::Screenshot.screenshot_and_open_image
 end
 
@@ -67,4 +68,8 @@ end
 
 And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
   fill_in field, with: value
+end
+
+And(/^I click "([^"]*)"$/) do |value|
+  find_button(value).trigger('click')
 end

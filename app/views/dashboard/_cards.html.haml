@@ -29,14 +29,15 @@
               - resource.current_day_bookings.each do |booking|
                 .action{style: "background-color: #{'red'}"}
                   %small
-                    %strong Grupp:
-                    = booking.client
-                    %span
-                      %Strong Start:
-                    = booking.time_start.to_time.to_formatted_s(:time)
-                    %span
-                      %strong Slut:
-                    = booking.time_end.to_time.to_formatted_s(:time)
+                    Grupp:
+                    %strong
+                      = booking.client
+                    %span Start:
+                    %strong
+                      = booking.time_start.to_time.to_formatted_s(:time)
+                    %span Slut:
+                    %strong
+                      = booking.time_end.to_time.to_formatted_s(:time)
 
 .small.reveal#slot-modal
   %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
@@ -47,15 +48,34 @@
     #slot
     = form_tag (create_booking_path) do
       = hidden_field_tag 'booking[resource_id]'
-      = label_tag 'booking[client]', 'Client'
-      = text_field_tag 'booking[client]'
-      = submit_tag 'Create', class: 'button'
+      = hidden_field_tag 'booking[booking_date]', Date.today.to_formatted_s(:iso8601)
+      .row
+        .medium-12.columns
+          = label_tag 'booking[client]', 'Client'
+          = text_field_tag 'booking[client]'
+      .row
+        .medium-6.columns
+          = label_tag 'booking[time_start]', 'Börjar'
+          = text_field_tag 'booking[time_start]', nil, class: 'picker'
+        .medium-6.columns
+          = label_tag 'booking[time_end]', 'Slutar'
+          = text_field_tag 'booking[time_end]', nil, class: 'picker'
+
+      .row
+        .medium-5.columns
+          = submit_tag 'Create', class: 'button'
 
 
 :javascript
   $(document).ready(function() {
     addRows(10);
-
+    $('.picker' ).fdatetimepicker({
+      language: 'en',
+      pickTime: true,
+      closeButton: true,
+      startView: 0,
+      format: 'hh:ii'
+    });
     $(".action").click(function() {
       populateAndShowModal(this);
     });

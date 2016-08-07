@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
 gem 'haml-rails'
 gem 'foundation-rails'
+gem 'foundation-datetimepicker-rails'
 
 # Functionality libraries
 
