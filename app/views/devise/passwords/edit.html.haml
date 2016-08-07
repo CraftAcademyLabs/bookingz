@@ -3,17 +3,17 @@
   = devise_error_messages!
   = f.hidden_field :reset_password_token
   .field
-    = f.label :password, "New password"
+    = f.label :password, 'Nytt lösenord'
     %br/
     - if @minimum_password_length
       %em
         (#{@minimum_password_length} characters minimum)
       %br/
-    = f.password_field :password, autofocus: true, autocomplete: "off"
+    = f.password_field :password, autofocus: true, autocomplete: 'off'
   .field
-    = f.label :password_confirmation, "Confirm new password"
+    = f.label :password_confirmation, 'Bekräfta lösenordet'
     %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation, autocomplete: 'off'
   .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+    = f.submit 'Ändra mitt lösenord', class: 'button'
+= render 'devise/shared/links'

@@ -63,6 +63,8 @@ end
 
 Given(/^I click on "([^"]*)"$/) do |element|
   click_link_or_button element
+  sleep(0.1) until page.evaluate_script('$.active') == 0
+
 end
 
 

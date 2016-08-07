@@ -6,5 +6,5 @@
     %br/
     = f.email_field :email, autofocus: true
   .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+    = f.submit 'Skicka information om återställning av lösenord', class: 'button'
+= render 'devise/shared/links'

@@ -30,6 +30,7 @@ Feature: As an Administrator
   Scenario: Toggle details visibility
     Given I am using the dashboard
     And I click on "Galaxy"
+    Then show me an image of the page
     Then I should see "The Galaxy room"
     And I should not see "The Atlantis room"
     When I click on "Galaxy"

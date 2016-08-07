@@ -9,12 +9,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     :javascript
-      $(document).foundation();
       $(window).resize(function() {
         fixedFooter(); //at page resize
       });
 
       $(document).ready(function() {
+        $(document).foundation();
         fixedFooter(); //at page load
 
       });
