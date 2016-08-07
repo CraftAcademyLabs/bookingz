@@ -51,11 +51,7 @@
     addRows(10);
 
     $(".action").click(function() {
-      var resource, slot;
-      resource = $(this).parent('.content').find('.accordion-title').text()
-      slot = $(this).text()
-      //$('#model-content').html([resource, slot].join(' - '))
-      populateAndShowModal(this, resource, slot);
+      populateAndShowModal(this);
     });
   });
 
@@ -65,7 +61,13 @@
     }
   }
 
-  function populateAndShowModal(obj, resource, slot){
+  function populateAndShowModal(object){
+    var obj, resource, slot, card;
+    obj = object;
+    card = $(obj).parent().parent();
+    resource = card.find('.accordion-title').text();
+    slot = $(obj).text()
+    card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
     var modal = new Foundation.Reveal($('#slot-modal'));
     $('#model-content #slot').html([resource, slot].join(' - '));
     modal.open();

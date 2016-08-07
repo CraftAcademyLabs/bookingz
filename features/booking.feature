@@ -48,5 +48,6 @@ Feature: As an admin
     Given time is frozen at 2016-01-02
     And I am using the dashboard
     And I click on "Slot 2" for "Atlantis"
-    Then show me an image of the page
     Then I should see a details modal for "Slot 2" for "Atlantis"
+    Then show me an image of the page
+
