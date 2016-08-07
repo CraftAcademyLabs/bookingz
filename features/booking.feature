@@ -1,3 +1,4 @@
+@javascript
 Feature: As an admin
   In order be able to book a resource
   I would like to see current bookings on the dashboard
@@ -43,3 +44,9 @@ Feature: As an admin
       | Grupp: Volvo Start: 08:00 Slut: 09:30  | Atlantis |
       | Grupp: Thomas Start: 17:00 Slut: 18:30 | Atlantis |
 
+  Scenario: Display slot details
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard
+    And I click on "Slot 2" for "Atlantis"
+    Then show me an image of the page
+    Then I should see a details modal for "Slot 2" for "Atlantis"
