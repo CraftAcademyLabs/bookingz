@@ -38,6 +38,13 @@
                       %strong Slut:
                     = booking.time_end.to_time.to_formatted_s(:time)
 
+.small.reveal#slot-modal
+  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
+    %span{aria: {hidden: ''}}
+      &times;
+  #model-content
+    %h2 Lägg till bokning
+    #slot
 
 :javascript
   $(document).ready(function() {
@@ -47,8 +54,8 @@
       var resource, slot;
       resource = $(this).parent('.content').find('.accordion-title').text()
       slot = $(this).text()
-      console.log([resource, slot].join(' - '));
-      alert([resource, slot].join(' - '));
+      //$('#model-content').html([resource, slot].join(' - '))
+      populateAndShowModal(this, resource, slot);
     });
   });
 
@@ -56,4 +63,10 @@
     for (i = 0; i < count; i++) {
       $(".card .content").append('<div class="action" id="action_' + i + '">Slot '  + (i+1) +'</div>');
     }
+  }
+
+  function populateAndShowModal(obj, resource, slot){
+    var modal = new Foundation.Reveal($('#slot-modal'));
+    $('#model-content #slot').html([resource, slot].join(' - '));
+    modal.open();
   }

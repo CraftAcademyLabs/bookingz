@@ -8,20 +8,21 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    :javascript
+      $(document).foundation();
+      $(window).resize(function() {
+        fixedFooter(); //at page resize
+      });
+
+      $(document).ready(function() {
+        fixedFooter(); //at page load
+
+      });
     = render 'layouts/header'
     .content-wrapper
       .row
         = render 'layouts/flash_messages'
       = yield
     = render 'layouts/footer'
-  :javascript
-    $(document).foundation();
-    $(window).resize(function() {
-      fixedFooter(); //at page resize
-    });
 
-    $(document).ready(function() {
-      fixedFooter(); //at page load
-
-    });
 
