@@ -10,6 +10,9 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
+gem 'config'
+
+# UI
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'foundation-datetimepicker-rails'

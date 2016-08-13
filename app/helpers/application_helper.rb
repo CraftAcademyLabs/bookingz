@@ -12,4 +12,12 @@ module ApplicationHelper
         'primary'
     end
   end
+
+  def application_name
+    Settings.app_name
+  end
+
+  def copyright_message
+    Settings.copyright_message
+  end
 end
