@@ -1,9 +1,10 @@
 %footer.footer
   .row
     .small-12.columns
-      %p.slogan Bookingz
+      %p.slogan
+        = application_name
       %p.links
-        %a{:href => "#"} Home
-        %a{:href => "#"} Blog
-
-      %p.copywrite Copywrite Craft Academy Labz © 2016
+        = link_to 'Home', '#'
+        = link_to 'Instructions', '#'
+      %p.copywrite
+        = copyright_message

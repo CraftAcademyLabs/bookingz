@@ -68,6 +68,9 @@ GEM
     cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
+    config (1.2.1)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.0, >= 1.0.1)
     coveralls (0.8.15)
       json (>= 1.8, < 3)
       simplecov (~> 0.12.0)
@@ -92,6 +95,7 @@ GEM
     cucumber-wire (0.0.1)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
+    deep_merge (1.1.1)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -334,6 +338,7 @@ DEPENDENCIES
   acts_as_bookable!
   capybara
   capybara-screenshot
+  config
   coveralls
   cucumber-rails
   database_cleaner
