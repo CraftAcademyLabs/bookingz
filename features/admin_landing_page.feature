@@ -10,9 +10,10 @@ Feature: As an Administrator
       | admin@random.com | admin_password |
 
     Given the following resources exist
-      | designation | description       |
-      | Galaxy      | The Galaxy room   |
-      | Atlantis    | The Atlantis room |
+      | designation | description         |
+      | Galaxy      | The Galaxy room     |
+      | Atlantis    | The Atlantis room   |
+      | Enterprise  | The Enterprise room |
 
 
   Scenario: Visit landing page without logging in

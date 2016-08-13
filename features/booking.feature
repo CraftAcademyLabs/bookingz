@@ -12,9 +12,10 @@ Feature: As an admin
       | admin@random.com | admin_password |
 
     And the following resources exist
-      | designation | description       |
-      | Galaxy      | The Galaxy room   |
-      | Atlantis    | The Atlantis room |
+      | designation | description         |
+      | Galaxy      | The Galaxy room     |
+      | Atlantis    | The Atlantis room   |
+      | Enterprise  | The Enterprise room |
 
     And the following bookings exist
       | resource | client | date       | start_time | end_time |
@@ -24,7 +25,7 @@ Feature: As an admin
       | Atlantis | Volvo  | 2016-01-02 | 08:00      | 09:30    |
       | Atlantis | Thomas | 2016-01-02 | 17:00      | 18:30    |
 
-
+    
   Scenario: Displaying bookings
     Given time is frozen at 2016-01-02
     And I am using the dashboard
