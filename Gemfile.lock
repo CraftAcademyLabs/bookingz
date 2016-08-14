@@ -102,6 +102,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.1.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
     em-websocket (0.5.1)
@@ -231,6 +232,9 @@ GEM
       nokogiri (~> 1.6.0)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.0)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -343,6 +347,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  devise-i18n
   factory_girl_rails
   foundation-datetimepicker-rails
   foundation-rails
@@ -360,6 +365,7 @@ DEPENDENCIES
   pry
   puma (~> 3.0)
   rails (~> 5.0.0)
+  rails-i18n (~> 5.0.0)
   rails_12factor
   redis (~> 3.0)
   rspec-rails
