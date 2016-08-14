@@ -4,7 +4,7 @@ sv:
       messages:
         availability:
           # already_booked: "the %{model} is fully booked"
-          already_booked: Rummet är reran bokat
+          already_booked: Rummet är redan bokat
           amount_gt_capacity: Antal kan inte vara större än max kapacitet
           unavailable_interval: "Rummet är inte tillgängligt från %{time_start} till %{time_end}"
           unavailable_time:
