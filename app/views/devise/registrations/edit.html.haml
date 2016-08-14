@@ -1,33 +1,32 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+%h2= t('.title', resource: resource_class.model_name.human)
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   .field
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true
+    = f.email_field :email
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
+    %p
+      = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
   .field
     = f.label :password
-    %i (leave blank if you don't want to change it)
+    %i
+      (#{t('.leave_blank_if_you_don_t_want_to_change_it')})
     %br/
-    = f.password_field :password, autocomplete: 'off'
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
+    = f.password_field :password, autocomplete: "off"
   .field
     = f.label :password_confirmation
     %br/
-    = f.password_field :password_confirmation, autocomplete: 'off'
+    = f.password_field :password_confirmation
   .field
     = f.label :current_password
-    %i (we need your current password to confirm your changes)
+    %i
+      (#{t('.we_need_your_current_password_to_confirm_your_changes')})
     %br/
-    = f.password_field :current_password, autocomplete: 'off'
-  .actions
-    = f.submit 'Uppdatera', class: 'button'
-= link_to 'Tillbaka', :back
+    = f.password_field :current_password
+  %div= f.submit t('.update')
+%h3= t('.cancel_my_account')
+%p
+  = t('.unhappy')
+  ? #{link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete}.
+= link_to t('devise.shared.links.back'), :back

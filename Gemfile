@@ -17,10 +17,12 @@ gem 'config'
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'foundation-datetimepicker-rails'
+gem 'rails-i18n', '~> 5.0.0'
 
 # Functionality libraries
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develop'
 
 

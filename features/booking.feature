@@ -71,4 +71,4 @@ Feature: As an admin
     And I fill in "Slutar" with "11:30"
     And I click "Create"
     Then I should see "The resource is fully booked"
-    Then show me an image of the page
+    #Then show me an image of the page
