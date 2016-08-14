@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
 
 gem 'rails', '~> 5.0.0'
 gem 'pg', '~> 0.18'
@@ -52,7 +53,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :production do
-  gem 'rails_12factor'
-end
+# See: https://devcenter.heroku.com/articles/getting-started-with-rails5
+# group :production do
+#   gem 'rails_12factor'
+# end
 
