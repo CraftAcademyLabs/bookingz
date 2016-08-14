@@ -1,0 +1,13 @@
+sv:
+  acts_as_bookable:
+    errors:
+      messages:
+        availability:
+          # already_booked: "the %{model} is fully booked"
+          already_booked: Rummet är reran bokat
+          amount_gt_capacity: Antal kan inte vara större än max kapacitet
+          unavailable_interval: "Rummet är inte tillgängligt från %{time_start} till %{time_end}"
+          unavailable_time:
+        booking:
+          bookable_must_be_bookable: "%{model} går inte att boka"
+          booker_must_be_booker: "En %{model} kan inte boka ett rum"
