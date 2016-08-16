@@ -24,6 +24,8 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
   case page
     when 'landing' then
       visit root_path
+    when 'Instructions' then
+      visit page_path('instructions')
   end
 end
 
