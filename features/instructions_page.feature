@@ -12,3 +12,9 @@ Feature: As a system owner
     Given I am logged in as "admin@random.com"
     And I navigate to the "Instructions" page
     Then I should see "LOREM IPSUM BACON"
+
+  Scenario: Trying to access instructions page without being logged in
+    Given I navigate to the "Instructions" page
+    Then show me the page
+    Then I should be on the "login" page
+    And I should see "You need to sign in or sign up before continuing."
