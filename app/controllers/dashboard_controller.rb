@@ -8,8 +8,7 @@ class DashboardController < ApplicationController
   def create_booking
     id = params[:booking][:resource_id]
     @resource = Resource.find(id)
-    #booking_date = Date.parse(booking_params[:booking_date])
-    #start_seconds = Time.parse(booking_params[:time_start]).seconds_since_midnight
+
     start_seconds = Time.parse([booking_params[:booking_date],
                                 booking_params[:time_start]].join(' ')).seconds_since_midnight
 
