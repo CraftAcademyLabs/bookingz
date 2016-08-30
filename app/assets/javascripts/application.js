@@ -18,14 +18,22 @@
 //= require_tree .
 
 
-
 function addRows(count) {
     for (i = 0; i < count; i++) {
-        $(".card .content").append('<div class="action" id="action_' + i + '">Slot '  + (i+1) +'</div>');
+        $(".card .content").append('<div class="action" id="action_' + i + '">Slot ' + (i + 1) + '</div>');
     }
 }
 
-function populateAndShowModal(object){
+function currentDate() {
+    var date = setDate().toJSON().slice(0, 10);
+    return date;
+}
+
+function setDate() {
+    return new Date();
+}
+
+function populateAndShowModal(object) {
     var obj, resource, slot, card;
     obj = object;
     card = $(obj).parent().parent();
@@ -38,3 +46,35 @@ function populateAndShowModal(object){
     $('#model-content #slot').html([resource, slot].join(' - '));
     modal.open();
 }
+
+function navigateDate(val) {
+    var displayedDate = $('#date').text();
+    var newDate = new Date(displayedDate);
+    newDate.setDate(newDate.getDate() + val);
+    console.log(newDate);
+    return newDate.toJSON().slice(0, 10);
+
+}
+
+$(document).ready(function () {
+    var date = currentDate();
+    $('#date').html(date);
+    addRows(10);
+    $('.picker').fdatetimepicker({
+        language: 'en',
+        pickTime: true,
+        closeButton: true,
+        startView: 0,
+        format: 'hh:ii'
+    });
+    $(".action").click(function () {
+        populateAndShowModal(this);
+    });
+
+    $('#previous').click(function () {
+        $('#date').html(navigateDate(-1));
+    });
+    $('#next').click(function () {
+        $('#date').html(navigateDate(1));
+    });
+});
