@@ -33,22 +33,29 @@ function setDate() {
     return new Date();
 }
 
+function getDispalyedDate() {
+    var date = $('#date').text();
+    return date;
+}
+
 function populateAndShowModal(object) {
-    var obj, resource, slot, card;
+    var obj, resource, slot, card, date;
     obj = object;
     card = $(obj).parent().parent();
     resource = card.find('.accordion-title').text();
     slot = $(obj).text();
+    date = getDispalyedDate();
     var id = card[0].id.split("-").pop();
     $('#booking_resource_id').val(id);
     card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
     var modal = new Foundation.Reveal($('#slot-modal'));
-    $('#model-content #slot').html([resource, slot].join(' - '));
+    $('#model-content #slot').html([resource, date, slot].join(' - '));
+    $('#booking_booking_date').val(date);
     modal.open();
 }
 
 function navigateDate(val) {
-    var displayedDate = $('#date').text();
+    var displayedDate = getDispalyedDate();
     var newDate = new Date(displayedDate);
     newDate.setDate(newDate.getDate() + val);
     console.log(newDate);
@@ -56,9 +63,17 @@ function navigateDate(val) {
 
 }
 
-$(document).ready(function () {
+function dateOnPageLoad(passed_date) {
+    if (typeof passed_date !== 'undefined') {
+        MockDate.set(passed_date);
+    }
     var date = currentDate();
     $('#date').html(date);
+
+}
+
+$(document).ready(function () {
+    dateOnPageLoad();
     addRows(10);
     $('.picker').fdatetimepicker({
         language: 'en',

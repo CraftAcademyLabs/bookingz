@@ -3,6 +3,7 @@ Given(/^it is currently (.+)$/) do |time|
 end
 
 Given(/^time is frozen at (.+)$/) do |time|
+ # page.execute_script("MockDate.set('#{time}'); var date = currentDate(); $('#date').html(#{time});")
   freeze_time_at time
 end
 

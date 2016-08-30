@@ -59,8 +59,9 @@ Feature: As an admin
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "16:00"
     And I fill in "Slutar" with "16:30"
+    Then show me an image of the page
     And I click "Create"
-    #Then show me an image of the page
+    Then show me an image of the page
 
   Scenario: Rejects a booking on unavailable slot
     Given time is frozen at 2016-01-02
