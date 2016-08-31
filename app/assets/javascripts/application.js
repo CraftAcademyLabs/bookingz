@@ -17,29 +17,47 @@
 //= require turbolinks
 //= require_tree .
 
+(function ($) {
+    $.fn.longClick = function (callback, timeout) {
+        var timer;
+        timeout = timeout || 500;
+        $(this).mousedown(function () {
+            timer = setTimeout(function () {
+                callback();
+            }, timeout);
+            return false;
+        });
+        $(document).mouseup(function () {
+            clearTimeout(timer);
+            return false;
+        });
+    };
+
+})(jQuery);
+
 var res = {
     date: '2016-08-31',
     items: [
         {
             id: 28,
             slots: [
-                {info: {time: '08.00 - 08.30'}, state: 'free'},
-                {info: {time: '08.30 - 09.00'}, state: 'free'},
-                {info: {time: '09.00 - 09.30', client: 'Volvo'}, state: 'booked'}]
+                {info: {id: 1, time: '08.00 - 08.30'}, state: 'free'},
+                {info: {id: 2, time: '08.30 - 09.00'}, state: 'free'},
+                {info: {id: 3, time: '09.00 - 09.30', client: 'Volvo'}, state: 'booked'}]
         },
         {
             id: 29,
             slots: [
-                {info: {time: '08.00 - 08.30'}, state: 'free'},
-                {info: {time: '08.30 - 09.00', client: 'CraftAcademy'}, state: 'booked'},
-                {info: {time: '09.00 - 09.30'}, state: 'free'}]
+                {info: {id: 1, time: '08.00 - 08.30'}, state: 'free'},
+                {info: {id: 2, time: '08.30 - 09.00', client: 'CraftAcademy'}, state: 'booked'},
+                {info: {id: 3, time: '09.00 - 09.30'}, state: 'free'}]
         },
         {
             id: 30,
             slots: [
-                {info: {time: '08.00 - 08.30'}, state: 'free'},
-                {info: {time: '08.30 - 09.00',client: 'CraftAcademy'}, state: 'booked'},
-                {info: {time: '09.00 - 09.30'}, state: 'free'}]
+                {info: {id: 1, time: '08.00 - 08.30'}, state: 'free'},
+                {info: {id: 2, time: '08.30 - 09.00', client: 'CraftAcademy'}, state: 'booked'},
+                {info: {id: 3, time: '09.00 - 09.30'}, state: 'free'}]
         }]
 
 };
@@ -48,17 +66,17 @@ function loadCurrentBookings() {
     res.items.forEach(function (item) {
         item.slots.forEach(function (slot) {
             var card = ['#card', item.id].join('-');
-            $(card + " .content").append('<div class="action" id="action_' + item.id + '" style="background-color: '+ getBackgroundColor(slot) +'">' + getInfo(slot) + '</div>');
+            $(card + " .content").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
     });
 }
 
-function getBackgroundColor (obj) {
+function getBackgroundColor(obj) {
     var color = (obj.state == 'booked') ? 'red' : 'green';
     return color;
 }
 
-function getInfo(obj){
+function getInfo(obj) {
     var client = (obj.info.client != null) ? [obj.info.time, obj.info.client].join(' ') : obj.info.time;
     return client
 }
@@ -86,6 +104,7 @@ function populateAndShowModal(object) {
     date = getDispalyedDate();
     var id = card[0].id.split("-").pop();
     $('#booking_resource_id').val(id);
+    debugger;
     card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
     var modal = new Foundation.Reveal($('#slot-modal'));
     $('#model-content #slot').html([resource, date, slot].join(' - '));
@@ -130,5 +149,10 @@ $(document).ready(function () {
     });
     $('#next').click(function () {
         $('#date').html(navigateDate(1));
+    });
+
+    $('#previous').longClick(function () {
+        //place date time picker code here
+        console.log('Looong press!');
     });
 });
