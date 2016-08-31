@@ -55,11 +55,11 @@ Then(/^show me an image of the page$/) do
 end
 
 Given(/^I am using the dashboard on "([^"]*)"$/) do |time|
-  steps %Q{
+  steps %q{
       Given I am logged in as "admin@random.com"
       And I navigate to the "landing" page
-      And time is frozen at #{time}
         }
+  page.execute_script("MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);")
 end
 
 Given(/^I click on "([^"]*)"$/) do |element|

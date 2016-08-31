@@ -29,7 +29,7 @@ Feature: As an Administrator
     And I should see "ATLANTIS"
 
   Scenario: Toggle details visibility
-    Given I am using the dashboard
+    Given I am using the dashboard on "2016-01-01"
     And I click on "Galaxy"
     Then I should see "The Galaxy room"
     And I should not see "The Atlantis room"
