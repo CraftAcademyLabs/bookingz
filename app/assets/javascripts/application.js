@@ -17,11 +17,50 @@
 //= require turbolinks
 //= require_tree .
 
+var res = {
+    date: '2016-08-31',
+    items: [
+        {
+            id: 28,
+            slots: [
+                {info: {time: '08.00 - 08.30'}, state: 'free'},
+                {info: {time: '08.30 - 09.00'}, state: 'free'},
+                {info: {time: '09.00 - 09.30', client: 'Volvo'}, state: 'booked'}]
+        },
+        {
+            id: 29,
+            slots: [
+                {info: {time: '08.00 - 08.30'}, state: 'free'},
+                {info: {time: '08.30 - 09.00', client: 'CraftAcademy'}, state: 'booked'},
+                {info: {time: '09.00 - 09.30'}, state: 'free'}]
+        },
+        {
+            id: 30,
+            slots: [
+                {info: {time: '08.00 - 08.30'}, state: 'free'},
+                {info: {time: '08.30 - 09.00',client: 'CraftAcademy'}, state: 'booked'},
+                {info: {time: '09.00 - 09.30'}, state: 'free'}]
+        }]
 
-function addRows(count) {
-    for (i = 0; i < count; i++) {
-        $(".card .content").append('<div class="action" id="action_' + i + '">Slot ' + (i + 1) + '</div>');
-    }
+};
+
+function loadCurrentBookings() {
+    res.items.forEach(function (item) {
+        item.slots.forEach(function (slot) {
+            var card = ['#card', item.id].join('-');
+            $(card + " .content").append('<div class="action" id="action_' + item.id + '" style="background-color: '+ getBackgroundColor(slot) +'">' + getInfo(slot) + '</div>');
+        });
+    });
+}
+
+function getBackgroundColor (obj) {
+    var color = (obj.state == 'booked') ? 'red' : 'green';
+    return color;
+}
+
+function getInfo(obj){
+    var client = (obj.info.client != null) ? [obj.info.time, obj.info.client].join(' ') : obj.info.time;
+    return client
 }
 
 function currentDate() {
@@ -74,7 +113,7 @@ function dateOnPageLoad(passed_date) {
 
 $(document).ready(function () {
     dateOnPageLoad();
-    addRows(10);
+    loadCurrentBookings();
     $('.picker').fdatetimepicker({
         language: 'en',
         pickTime: true,

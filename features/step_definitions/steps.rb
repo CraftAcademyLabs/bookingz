@@ -76,3 +76,7 @@ end
 And(/^I click "([^"]*)"$/) do |value|
   find_button(value).trigger('click')
 end
+
+And(/^I click arrow "([^"]*)"$/) do |id|
+  find("##{id}").trigger('click')
+end
