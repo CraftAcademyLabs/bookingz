@@ -54,10 +54,11 @@ Then(/^show me an image of the page$/) do
   Capybara::Screenshot.screenshot_and_open_image
 end
 
-Given(/^I am using the dashboard$/) do
-  steps %q{
+Given(/^I am using the dashboard on "([^"]*)"$/) do |time|
+  steps %Q{
       Given I am logged in as "admin@random.com"
       And I navigate to the "landing" page
+      And time is frozen at #{time}
         }
 end
 
