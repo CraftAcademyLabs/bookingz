@@ -17,6 +17,7 @@ gem 'config'
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'foundation-datetimepicker-rails'
+gem 'foundation-icons-sass-rails'
 gem 'rails-i18n', '~> 5.0.0'
 
 # Functionality libraries
