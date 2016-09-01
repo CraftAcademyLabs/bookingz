@@ -13,3 +13,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.with-scroll  {
+  height: 400px;
+  max-height: 400px;
+  overflow-y: scroll;
+  background: ivory;
+}

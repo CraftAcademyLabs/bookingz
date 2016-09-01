@@ -51,9 +51,11 @@ function queryApi() {
 function loadCurrentBookings(response) {
     var res = response;
     res.items.forEach(function (item) {
+        var card = ['#card', item.id].join('-');
+        $(card + " .content").append('<div class="with-scroll"></div>')
         item.slots.forEach(function (slot) {
-            var card = ['#card', item.id].join('-');
-            $(card + " .content").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
+
+            $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
     });
 }
