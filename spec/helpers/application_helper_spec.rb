@@ -27,4 +27,12 @@ RSpec.describe ApplicationHelper, :type => :helper do
       expect(helper.callout('notice')).to eq 'primary'
     end
   end
+
+  describe '#create_hour_range' do
+    it 'generates an array of time slots' do
+      expected_array = ['08:00 - 08:30', '08:30 - 09:00', '09:00 - 09:30']
+      expect(helper.create_hour_range(start_time: 8.hours, end_time: 9.hours))
+          .to eq expected_array
+    end
+  end
 end
