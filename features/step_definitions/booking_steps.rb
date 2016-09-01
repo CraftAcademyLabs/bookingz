@@ -44,7 +44,7 @@ end
 
 And(/^I click on "([^"]*)" for "([^"]*)"$/) do |slot, resource|
   @resource = Resource.find_by(designation: resource)
-  script = "var element = $( '#card-#{@resource.id} .content .action' ).filter(function () { return this.innerHTML == '#{slot}';}); element.click();"
+  script = "var element = $( '#card-#{@resource.id} .content .with-scroll .action' ).filter(function () { return this.innerHTML == '#{slot}';}); element.click();"
   page.execute_script(script)
   sleep(0.1) until page.evaluate_script('$.active') == 0
 end
@@ -57,4 +57,5 @@ end
 And(/^I scroll down in the "([^"]*)" box$/) do |resource|
   resource = Resource.find_by(designation: resource)
   page.execute_script("$('#card-#{resource.id} .content .with-scroll').scrollTop(1000);")
+  sleep(0.1) until page.evaluate_script('$.active') == 0
 end

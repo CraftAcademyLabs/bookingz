@@ -136,7 +136,7 @@ function addEvents() {
         console.log('Looong press!');
     });
 
-    $('[id^=action_] .with-scroll').click(function () {
+    $('[id^=action_]').click(function () {
         populateAndShowModal(this);
     });
 }
