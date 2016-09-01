@@ -48,8 +48,8 @@ Feature: As an admin
   Scenario: Display slot details
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    And I click on "Slot 2" for "Atlantis"
-    Then I should see a details modal for "Slot 2" for "Atlantis"
+    And I click on "11:00 - 11:30" for "Atlantis"
+    Then I should see a details modal for "11:00 - 11:30" for "Atlantis"
 
 
   Scenario: Create a booking on slot
@@ -67,7 +67,7 @@ Feature: As an admin
   Scenario: Rejects a booking on unavailable slot
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    And I click on "Slot 5" for "Galaxy"
+    And I click on "11:00 - 11:30" for "Galaxy"
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "10:30"
     And I fill in "Slutar" with "11:30"

@@ -64,8 +64,13 @@ function getBackgroundColor(obj) {
 }
 
 function getInfo(obj) {
-    var client = (obj.info.client != null) ? [obj.info.time, obj.info.client].join(' ') : obj.info.time;
-    return client
+    var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
+    return message;
+}
+
+function setSlotMessage(obj){
+    var message = [obj.info.time, 'Grupp: '+ obj.info.client, 'Start: ' + obj.info.booking_time.split(' - ')[0], 'Slut: ' + obj.info.booking_time.split(' - ')[1]].join(' ');
+    return message;
 }
 
 function currentDate() {
@@ -145,9 +150,5 @@ $(document).ready(function () {
         startView: 0,
         format: 'hh:ii'
     });
-    //$(".action").click(function () {
-    //    populateAndShowModal(this);
-    //});
-
 
 });
