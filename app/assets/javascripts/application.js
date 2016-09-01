@@ -62,7 +62,21 @@ var res = {
 
 };
 
-function loadCurrentBookings() {
+
+function queryApi () {
+    $.ajax({
+        dataType: "json",
+        url: '/api_index.json',
+        success: function (response) {
+            loadCurrentBookings(response);
+        }
+    });
+}
+
+
+function loadCurrentBookings(response) {
+    var res = response;
+    debugger;
     res.items.forEach(function (item) {
         item.slots.forEach(function (slot) {
             var card = ['#card', item.id].join('-');
@@ -132,7 +146,7 @@ function dateOnPageLoad(passed_date) {
 
 $(document).ready(function () {
     dateOnPageLoad();
-    loadCurrentBookings();
+    queryApi();
     $('.picker').fdatetimepicker({
         language: 'en',
         pickTime: true,
