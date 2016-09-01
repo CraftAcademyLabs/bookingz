@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, :type => :helper do
+RSpec.describe ApplicationHelper, type: :helper do
   describe '#application_name' do
     it 'returns the default application name' do
       expect(helper.application_name).to eq 'Bookingz'

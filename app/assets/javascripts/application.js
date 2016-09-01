@@ -35,40 +35,14 @@
 
 })(jQuery);
 
-var res = {
-    date: '2016-08-31',
-    items: [
-        {
-            id: 28,
-            slots: [
-                {info: {id: 1, time: '08.00 - 08.30'}, state: 'free'},
-                {info: {id: 2, time: '08.30 - 09.00'}, state: 'free'},
-                {info: {id: 3, time: '09.00 - 09.30', client: 'Volvo'}, state: 'booked'}]
-        },
-        {
-            id: 29,
-            slots: [
-                {info: {id: 1, time: '08.00 - 08.30'}, state: 'free'},
-                {info: {id: 2, time: '08.30 - 09.00', client: 'CraftAcademy'}, state: 'booked'},
-                {info: {id: 3, time: '09.00 - 09.30'}, state: 'free'}]
-        },
-        {
-            id: 30,
-            slots: [
-                {info: {id: 1, time: '08.00 - 08.30'}, state: 'free'},
-                {info: {id: 2, time: '08.30 - 09.00', client: 'CraftAcademy'}, state: 'booked'},
-                {info: {id: 3, time: '09.00 - 09.30'}, state: 'free'}]
-        }]
 
-};
-
-
-function queryApi () {
+function queryApi() {
     $.ajax({
         dataType: "json",
         url: '/api_index.json',
         success: function (response) {
             loadCurrentBookings(response);
+            addEvents();
         }
     });
 }
@@ -76,7 +50,6 @@ function queryApi () {
 
 function loadCurrentBookings(response) {
     var res = response;
-    debugger;
     res.items.forEach(function (item) {
         item.slots.forEach(function (slot) {
             var card = ['#card', item.id].join('-');
@@ -118,7 +91,6 @@ function populateAndShowModal(object) {
     date = getDispalyedDate();
     var id = card[0].id.split("-").pop();
     $('#booking_resource_id').val(id);
-    debugger;
     card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
     var modal = new Foundation.Reveal($('#slot-modal'));
     $('#model-content #slot').html([resource, date, slot].join(' - '));
@@ -144,20 +116,7 @@ function dateOnPageLoad(passed_date) {
 
 }
 
-$(document).ready(function () {
-    dateOnPageLoad();
-    queryApi();
-    $('.picker').fdatetimepicker({
-        language: 'en',
-        pickTime: true,
-        closeButton: true,
-        startView: 0,
-        format: 'hh:ii'
-    });
-    $(".action").click(function () {
-        populateAndShowModal(this);
-    });
-
+function addEvents() {
     $('#previous').click(function () {
         $('#date').html(navigateDate(-1));
     });
@@ -169,4 +128,26 @@ $(document).ready(function () {
         //place date time picker code here
         console.log('Looong press!');
     });
+
+    $('[id^=action_]').click(function () {
+        populateAndShowModal(this);
+    });
+}
+
+$(document).ready(function () {
+    dateOnPageLoad();
+    queryApi();
+
+    $('.picker').fdatetimepicker({
+        language: 'en',
+        pickTime: true,
+        closeButton: true,
+        startView: 0,
+        format: 'hh:ii'
+    });
+    //$(".action").click(function () {
+    //    populateAndShowModal(this);
+    //});
+
+
 });

@@ -43,3 +43,5 @@ Feature: As an Administrator
     Then I should not see "The Atlantis room"
     And I should not see "The Galaxy room"
 
+
+
