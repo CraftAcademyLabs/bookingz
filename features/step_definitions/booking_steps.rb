@@ -53,3 +53,8 @@ Then(/^I should see a details modal for "([^"]*)" for "([^"]*)"$/) do |arg1, arg
   #TODO: This is passing no matter if visible is set to true or false :-()
   expect(page).to have_selector '#slot-modal', visible: true
 end
+
+And(/^I scroll down in the "([^"]*)" box$/) do |resource|
+  resource = Resource.find_by(designation: resource)
+  page.execute_script("$('#card-#{resource.id} .content .with-scroll').scrollTop(1000);")
+end
