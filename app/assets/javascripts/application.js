@@ -92,7 +92,7 @@ function getDispalyedDate() {
 function populateAndShowModal(object) {
     var obj, resource, slot, card, date;
     obj = object;
-    card = $(obj).parent().parent();
+    card = $(obj).parent().parent().parent();
     resource = card.find('.accordion-title').text();
     slot = $(obj).text();
     date = getDispalyedDate();
@@ -102,6 +102,8 @@ function populateAndShowModal(object) {
     var modal = new Foundation.Reveal($('#slot-modal'));
     $('#model-content #slot').html([resource, date, slot].join(' - '));
     $('#booking_booking_date').val(date);
+    $('#booking_time_start').val(object.textContent.split(' - ')[0]);
+    $('#booking_time_end').val(object.textContent.split(' - ')[1]);
     modal.open();
 }
 
