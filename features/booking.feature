@@ -57,7 +57,6 @@ Feature: As an admin
     And I am using the dashboard on "2016-01-02"
     And I scroll down in the "Galaxy" box
     And I click on "16:30 - 17:00" for "Galaxy"
-    Then show me an image of the page
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "16:00"
     And I fill in "Slutar" with "16:30"
