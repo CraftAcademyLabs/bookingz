@@ -14,7 +14,7 @@ Feature: As a system owner
     Then I should see "LOREM IPSUM BACON"
 
   Scenario: Trying to access instructions page without being logged in
-    Given I navigate to the "Instructions" page
-    Then show me the page
+    Given I navigate to the "landing" page
     Then I should be on the "login" page
     And I should see "You need to sign in or sign up before continuing."
+    And I should not see "Instructions"

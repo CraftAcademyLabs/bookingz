@@ -5,6 +5,7 @@
         = application_name
       %p.links
         = link_to 'Home', '#'
-        = link_to 'Instructions', page_path('instructions')
+        - if current_user
+          = link_to 'Instructions', page_path('instructions')
       %p.copywrite
         = copyright_message
