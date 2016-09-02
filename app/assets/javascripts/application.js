@@ -175,6 +175,7 @@ $(document).ready(function () {
     var date;
     if (location.search.substr(1).length > 0) {
         date = location.search.substr(1).split("=")[1];
+        $('#date').html(date);
     } else {
         date = currentDate();
     }
