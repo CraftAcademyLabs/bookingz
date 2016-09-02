@@ -25,10 +25,10 @@ Feature: As an admin
       | Atlantis | Volvo  | 2016-01-02 | 08:00      | 09:30    |
       | Atlantis | Thomas | 2016-01-02 | 17:00      | 18:30    |
 
-    
+
   Scenario: Displaying bookings
     Given time is frozen at 2016-01-02
-    And I am using the dashboard
+    And I am using the dashboard on "2016-01-02"
     Then there should be "2" current bookings for "Galaxy"
     And I should see bookings for "Galaxy"
     Then there should be "3" current bookings for "Atlantis"
@@ -36,7 +36,7 @@ Feature: As an admin
 
   Scenario: Displaying booking details
     Given time is frozen at 2016-01-02
-    And I am using the dashboard
+    And I am using the dashboard on "2016-01-02"
     Then I should see the following content in resource box
       | content                                | resource |
       | Grupp: Thomas Start: 10:30 Slut: 11:30 | Galaxy   |
@@ -47,28 +47,31 @@ Feature: As an admin
 
   Scenario: Display slot details
     Given time is frozen at 2016-01-02
-    And I am using the dashboard
+    And I am using the dashboard on "2016-01-02"
     And I click on "Slot 2" for "Atlantis"
     Then I should see a details modal for "Slot 2" for "Atlantis"
 
 
   Scenario: Create a booking on slot
     Given time is frozen at 2016-01-02
-    And I am using the dashboard
+    And I am using the dashboard on "2016-01-02"
     And I click on "Slot 5" for "Galaxy"
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "16:00"
     And I fill in "Slutar" with "16:30"
     And I click "Create"
-    #Then show me an image of the page
+    Then I should see the following content in resource box
+      | content                                 | resource |
+      | Grupp: Jessica Start: 16:00 Slut: 16:30 | Galaxy   |
 
   Scenario: Rejects a booking on unavailable slot
     Given time is frozen at 2016-01-02
-    And I am using the dashboard
+    And I am using the dashboard on "2016-01-02"
     And I click on "Slot 5" for "Galaxy"
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "10:30"
     And I fill in "Slutar" with "11:30"
     And I click "Create"
     Then I should see "The resource is fully booked"
-    #Then show me an image of the page
+
+

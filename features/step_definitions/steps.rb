@@ -56,11 +56,12 @@ Then(/^show me an image of the page$/) do
   Capybara::Screenshot.screenshot_and_open_image
 end
 
-Given(/^I am using the dashboard$/) do
+Given(/^I am using the dashboard on "([^"]*)"$/) do |time|
   steps %q{
       Given I am logged in as "admin@random.com"
       And I navigate to the "landing" page
         }
+  page.execute_script("MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);")
 end
 
 Given(/^I click on "([^"]*)"$/) do |element|

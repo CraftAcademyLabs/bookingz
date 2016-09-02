@@ -48,7 +48,7 @@
     #slot
     = form_tag (create_booking_path) do
       = hidden_field_tag 'booking[resource_id]'
-      = hidden_field_tag 'booking[booking_date]', Date.today.to_formatted_s(:iso8601)
+      = hidden_field_tag 'booking[booking_date]'
       .row
         .medium-12.columns
           = label_tag 'booking[client]', 'Client'
@@ -67,17 +67,4 @@
 
 
 :javascript
-  $(document).ready(function() {
-    addRows(10);
-    $('.picker' ).fdatetimepicker({
-      language: 'en',
-      pickTime: true,
-      closeButton: true,
-      startView: 0,
-      format: 'hh:ii'
-    });
-    $(".action").click(function() {
-      populateAndShowModal(this);
-    });
-  });
 
