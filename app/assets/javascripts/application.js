@@ -36,13 +36,23 @@
 })(jQuery);
 
 
-function queryApi() {
+function queryApi(date) {
     $.ajax({
         dataType: "json",
-        url: '/api_index.json',
+        url: '/api_index.json?date=' + date,
         success: function (response) {
             loadCurrentBookings(response);
             addEvents();
+        }
+    });
+}
+
+function updateApi(date) {
+    $.ajax({
+        dataType: "json",
+        url: '/api_index.json?date=' + date,
+        success: function (response) {
+            updateCurrentBookings(response);
         }
     });
 }
@@ -54,10 +64,19 @@ function loadCurrentBookings(response) {
         var card = ['#card', item.id].join('-');
         $(card + " .content").append('<div class="with-scroll"></div>')
         item.slots.forEach(function (slot) {
-
             $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
     });
+}
+
+function updateCurrentBookings(response) {
+    var res = response;
+    res.items.forEach(function (item) {
+        item.slots.forEach(function (slot) {
+            $(card + " .content .with-scroll").html('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
+        });
+    });
+
 }
 
 function getBackgroundColor(obj) {
@@ -70,8 +89,8 @@ function getInfo(obj) {
     return message;
 }
 
-function setSlotMessage(obj){
-    var message = [obj.info.time, 'Grupp: '+ obj.info.client, 'Start: ' + obj.info.booking_time.split(' - ')[0], 'Slut: ' + obj.info.booking_time.split(' - ')[1]].join(' ');
+function setSlotMessage(obj) {
+    var message = [obj.info.time, 'Grupp: ' + obj.info.client, 'Start: ' + obj.info.booking_time.split(' - ')[0], 'Slut: ' + obj.info.booking_time.split(' - ')[1]].join(' ');
     return message;
 }
 
@@ -128,9 +147,11 @@ function dateOnPageLoad(passed_date) {
 function addEvents() {
     $('#previous').click(function () {
         $('#date').html(navigateDate(-1));
+        updateApi(currentDate());
     });
     $('#next').click(function () {
         $('#date').html(navigateDate(1));
+        updateApi(currentDate());
     });
 
     $('#previous').longClick(function () {
@@ -145,7 +166,8 @@ function addEvents() {
 
 $(document).ready(function () {
     dateOnPageLoad();
-    queryApi();
+    var date = currentDate();
+    queryApi(date);
 
     $('.picker').fdatetimepicker({
         language: 'en',

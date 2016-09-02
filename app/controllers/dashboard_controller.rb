@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
 
   def api_index
     @resources = Resource.all
+    @date = params[:date]
     render :api_index
   end
 
