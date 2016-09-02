@@ -21,23 +21,6 @@
                   %br/
                   %strong Capacity:
                   = resource.capacity
-            -#- if resource.current_day_bookings.empty?
-            -#  .action
-            -#    %strong
-            -#      %small No bookings
-            -#- else
-            -#  - resource.current_day_bookings.each do |booking|
-            -#    .action{style: "background-color: #{'red'}"}
-            -#      %small
-            -#        Grupp:
-            -#        %strong
-            -#          = booking.client
-            -#        %span Start:
-            -#        %strong
-            -#          = booking.time_start.to_time.to_formatted_s(:time)
-            -#        %span Slut:
-            -#        %strong
-            -#          = booking.time_end.to_time.to_formatted_s(:time)
 
 .small.reveal#slot-modal
   %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
@@ -64,7 +47,4 @@
       .row
         .medium-5.columns
           = submit_tag 'Create', class: 'button'
-
-
-:javascript
 
