@@ -53,6 +53,7 @@ function updateApi(date) {
         url: '/api_index.json?date=' + date,
         success: function (response) {
             updateCurrentBookings(response);
+            addEvents();
         }
     });
 }
@@ -72,8 +73,10 @@ function loadCurrentBookings(response) {
 function updateCurrentBookings(response) {
     var res = response;
     res.items.forEach(function (item) {
+        var card = ['#card', item.id].join('-');
+        $(card + " .content .with-scroll").empty();
         item.slots.forEach(function (slot) {
-            $(card + " .content .with-scroll").html('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
+            $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
     });
 
@@ -136,6 +139,8 @@ function navigateDate(val) {
 }
 
 function dateOnPageLoad(passed_date) {
+    //are we using this for something?
+    debugger;
     if (typeof passed_date !== 'undefined') {
         MockDate.set(passed_date);
     }
@@ -145,28 +150,35 @@ function dateOnPageLoad(passed_date) {
 }
 
 function addEvents() {
-    $('#previous').click(function () {
+    $('#previous').off("click").click(function () {
         $('#date').html(navigateDate(-1));
-        updateApi(currentDate());
+        updateApi(getDispalyedDate());
     });
-    $('#next').click(function () {
+    $('#next').off("click").click(function () {
         $('#date').html(navigateDate(1));
-        updateApi(currentDate());
+        updateApi(getDispalyedDate());
     });
 
-    $('#previous').longClick(function () {
+    $('#previous').off("longClick").longClick(function () {
         //place date time picker code here
         console.log('Looong press!');
     });
 
-    $('[id^=action_]').click(function () {
+    $('[id^=action_]').off("click").click(function () {
         populateAndShowModal(this);
     });
+
 }
 
 $(document).ready(function () {
     dateOnPageLoad();
-    var date = currentDate();
+    var date;
+    if (location.search.substr(1).length > 0) {
+        debugger;
+        date = location.search.substr(1).split("=")[1];
+    } else {
+        date = currentDate();
+    }
     queryApi(date);
 
     $('.picker').fdatetimepicker({
@@ -176,5 +188,6 @@ $(document).ready(function () {
         startView: 0,
         format: 'hh:ii'
     });
+
 
 });

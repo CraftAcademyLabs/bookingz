@@ -1,5 +1,4 @@
 Given(/^the following admin account is configured$/) do |table|
-  # table is a table.hashes.keys # => [:email, :password]
   table.hashes.each do |user|
     FactoryGirl.create(:user, user)
     end
@@ -60,6 +59,12 @@ Given(/^I am using the dashboard on "([^"]*)"$/) do |time|
       And I navigate to the "landing" page
         }
   page.execute_script("MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);")
+  steps %q{
+      And I click arrow "previous"
+      And I click arrow "next"
+        }
+  sleep(0.1) until page.evaluate_script('$.active') == 0
+
 end
 
 Given(/^I click on "([^"]*)"$/) do |element|

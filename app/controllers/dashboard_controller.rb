@@ -6,8 +6,9 @@ class DashboardController < ApplicationController
   end
 
   def api_index
+    @date = params[:date] || Date.today.to_s
     @resources = Resource.all
-    @date = params[:date]
+
     render :api_index
   end
 
@@ -33,7 +34,7 @@ class DashboardController < ApplicationController
     rescue => e
       flash[:error] = e.message.humanize
     end
-    redirect_to root_path
+    redirect_to root_path(date: booking_params[:booking_date])
   end
 
   private

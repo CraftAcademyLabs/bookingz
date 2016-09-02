@@ -12,11 +12,12 @@ end
 
 Then(/^there should be "([^"]*)" current bookings for "([^"]*)"$/) do |count, resource|
   @resource = Resource.find_by(designation: resource)
-  @bookings = @resource.current_day_bookings
+  @bookings = @resource.current_day_bookings(Date.today.to_s)
   expect(@bookings.size).to eq count.to_i
 end
 
 And(/^I should see bookings for "([^"]*)"$/) do |resource|
+  sleep(0.1) until page.evaluate_script('$.active') == 0
   resource = Resource.find_by(designation: resource)
   @bookings.each do |booking|
     within "#card-#{resource.id}" do
@@ -34,6 +35,8 @@ Then(/^I should see "([^"]*)" in "([^"]*)" box$/) do |content, resource|
 end
 
 Then(/^I should see the following content in resource box$/) do |table|
+  sleep(0.1) until page.evaluate_script('$.active') == 0
+
   table.hashes.each do |hash|
     resource = Resource.find_by(designation: hash[:resource])
     within "#card-#{resource.id}" do

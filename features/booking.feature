@@ -57,13 +57,15 @@ Feature: As an admin
     And I am using the dashboard on "2016-01-02"
     And I scroll down in the "Galaxy" box
     And I click on "16:30 - 17:00" for "Galaxy"
-    And I fill in "Client" with "Jessica"
+    And I fill in "Client" with "Craft Academy Labs"
     And I fill in "Börjar" with "16:00"
     And I fill in "Slutar" with "16:30"
     And I click "Create"
+    And I scroll down in the "Galaxy" box
     Then I should see the following content in resource box
-      | content                                 | resource |
-      | Grupp: Jessica Start: 16:00 Slut: 16:30 | Galaxy   |
+      | content                                           | resource |
+      | Grupp: Craft Academy Labs Start: 16:00 Slut: 16:30 | Galaxy   |
+
 
   Scenario: Rejects a booking on unavailable slot
     Given time is frozen at 2016-01-02
