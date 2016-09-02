@@ -93,7 +93,8 @@ function getInfo(obj) {
 }
 
 function setSlotMessage(obj) {
-    var message = [obj.info.time, 'Grupp: ' + obj.info.client, 'Start: ' + obj.info.booking_time.split(' - ')[0], 'Slut: ' + obj.info.booking_time.split(' - ')[1]].join(' ');
+    var booking_times = obj.info.booking_time.split(' - ')
+    var message = [obj.info.time, 'Grupp: ' + obj.info.client, 'Start: ' + booking_times[0], 'Slut: ' + booking_times[1]].join(' ');
     return message;
 }
 
@@ -112,20 +113,21 @@ function getDispalyedDate() {
 }
 
 function populateAndShowModal(object) {
-    var obj, resource, slot, card, date;
+    var obj, resource, slot, card, date, id, modal, booking_times;
     obj = object;
     card = $(obj).parent().parent().parent();
     resource = card.find('.accordion-title').text();
     slot = $(obj).text();
     date = getDispalyedDate();
-    var id = card[0].id.split("-").pop();
+    id = card[0].id.split("-").pop();
     $('#booking_resource_id').val(id);
     card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
-    var modal = new Foundation.Reveal($('#slot-modal'));
+    modal = new Foundation.Reveal($('#slot-modal'));
+    booking_times = object.textContent.split(' - ');
     $('#model-content #slot').html([resource, date, slot].join(' - '));
     $('#booking_booking_date').val(date);
-    $('#booking_time_start').val(object.textContent.split(' - ')[0]);
-    $('#booking_time_end').val(object.textContent.split(' - ')[1]);
+    $('#booking_time_start').val(booking_times[0]);
+    $('#booking_time_end').val(booking_times[1]);
     modal.open();
 }
 
