@@ -139,8 +139,6 @@ function navigateDate(val) {
 }
 
 function dateOnPageLoad(passed_date) {
-    //are we using this for something?
-    debugger;
     if (typeof passed_date !== 'undefined') {
         MockDate.set(passed_date);
     }
@@ -174,7 +172,6 @@ $(document).ready(function () {
     dateOnPageLoad();
     var date;
     if (location.search.substr(1).length > 0) {
-        debugger;
         date = location.search.substr(1).split("=")[1];
     } else {
         date = currentDate();
