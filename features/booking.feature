@@ -55,6 +55,7 @@ Feature: As an admin
   Scenario: Create a booking on slot
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
+    And I click arrow "next"
     And I scroll down in the "Galaxy" box
     And I click on "16:30 - 17:00" for "Galaxy"
     And I fill in "Client" with "Craft Academy Labs"
@@ -63,8 +64,9 @@ Feature: As an admin
     And I click "Create"
     And I scroll down in the "Galaxy" box
     Then I should see the following content in resource box
-      | content                                           | resource |
+      | content                                            | resource |
       | Grupp: Craft Academy Labs Start: 16:00 Slut: 16:30 | Galaxy   |
+    And I should see "2016-01-03"
 
 
   Scenario: Rejects a booking on unavailable slot
