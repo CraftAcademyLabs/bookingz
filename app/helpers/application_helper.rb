@@ -33,7 +33,7 @@ module ApplicationHelper
     end
   end
 
-  def slot_booked?(restaurant, date, slot)
+  def slot_booking(restaurant, date, slot)
     slot_start, slot_end, *tmp = slot.split(' - ')
     @booking = restaurant.current_day_bookings(date).detect do |booking|
       (DateTime.parse([date, slot_start].join(' '))..DateTime.parse([date, slot_end].join(' '))).cover?(booking.time_start.to_datetime)

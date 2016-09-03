@@ -35,4 +35,27 @@ RSpec.describe ApplicationHelper, type: :helper do
           .to eq expected_array
     end
   end
+
+  describe '#slot_booked?' do
+    let!(:resource) {FactoryGirl.create(:resource)}
+    let!(:user) {FactoryGirl.create(:user)}
+
+    before do
+      Timecop.freeze('2016-02-01')
+      from = Date.today + 15.hour + 30.minutes
+      to = from + 1.hour
+      @booking = resource.be_booked! user, time_start: from, time_end: to, amount: 4
+    end
+
+    it 'returns nil if slot is free' do
+      slot = '11:00 - 11:30'
+      expect(helper.slot_booking(resource, Date.today.to_s, slot)).to eq nil
+    end
+
+    it 'returns object if slot is booked' do
+      slot = '15:00 - 15:30'
+      expect(helper.slot_booking(resource, Date.today.to_s, slot)).to eq @booking
+    end
+
+  end
 end

@@ -3,7 +3,7 @@ json.items @resources.each do |restaurant|
   json.slots do
     slots = create_hour_range(start_time: 8.hours, end_time: 20.hours)
     json.array! slots do |slot|
-      if slot_booked?(restaurant, @date, slot)
+      if slot_booking(restaurant, @date, slot)
         json.info {
           json.id (restaurant.current_day_bookings(@date).to_a.index(@booking) + 1)
           json.time slot
