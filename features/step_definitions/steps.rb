@@ -30,9 +30,13 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
 end
 
 Then(/^I should be on the "([^"]*)" page$/) do |path|
-  case path
+  case path.downcase
     when 'login' then
       expected_path = new_user_session_path
+    when 'instructions' then
+      expected_path = page_path(:instructions)
+    when 'ca labs' then
+      expected_path = page_path(:ca_labs)
   end
 
   expect(page.current_path).to eq expected_path
@@ -74,6 +78,7 @@ end
 And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
   fill_in field, with: value
 end
+
 
 And(/^I click "([^"]*)"$/) do |value|
   find_button(value).trigger('click')
