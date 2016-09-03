@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::ApiController do
+describe Api::ApiController, type: :request do
   describe 'Ping endpoint' do
     it 'GET /api/ping' do
       get '/api/ping'

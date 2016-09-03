@@ -48,26 +48,31 @@ Feature: As an admin
   Scenario: Display slot details
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    And I click on "Slot 2" for "Atlantis"
-    Then I should see a details modal for "Slot 2" for "Atlantis"
+    And I click on "11:00 - 11:30" for "Atlantis"
+    Then I should see a details modal for "11:00 - 11:30" for "Atlantis"
 
 
   Scenario: Create a booking on slot
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    And I click on "Slot 5" for "Galaxy"
-    And I fill in "Client" with "Jessica"
+    And I click arrow "next"
+    And I scroll down in the "Galaxy" box
+    And I click on "16:30 - 17:00" for "Galaxy"
+    And I fill in "Client" with "Craft Academy Labs"
     And I fill in "Börjar" with "16:00"
     And I fill in "Slutar" with "16:30"
     And I click "Create"
+    And I scroll down in the "Galaxy" box
     Then I should see the following content in resource box
-      | content                                 | resource |
-      | Grupp: Jessica Start: 16:00 Slut: 16:30 | Galaxy   |
+      | content                                            | resource |
+      | Grupp: Craft Academy Labs Start: 16:00 Slut: 16:30 | Galaxy   |
+    And I should see "2016-01-03"
+
 
   Scenario: Rejects a booking on unavailable slot
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    And I click on "Slot 5" for "Galaxy"
+    And I click on "11:00 - 11:30" for "Galaxy"
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "10:30"
     And I fill in "Slutar" with "11:30"

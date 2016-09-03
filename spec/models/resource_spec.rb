@@ -58,12 +58,12 @@ RSpec.describe Resource, type: :model do
     end
 
     it 'returns a list of today´s bookings' do
-      expect(subject.current_day_bookings).to include subject.bookings.last
+      expect(subject.current_day_bookings('2016-01-01')).to include subject.bookings.last
     end
 
     it 'returns empty list if no bookings exists' do
       Timecop.freeze('2016-01-02')
-      expect(subject.current_day_bookings).not_to include subject.bookings.last
+      expect(subject.current_day_bookings(Date.today.to_s)).not_to include subject.bookings.last
     end
 
   end
