@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
 gem 'config'
+gem 'high_voltage'
 
 # UI
 gem 'haml-rails'
@@ -58,4 +59,3 @@ end
 # group :production do
 #   gem 'rails_12factor'
 # end
-
