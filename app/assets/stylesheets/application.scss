@@ -20,3 +20,7 @@
   overflow-y: scroll;
   background: ivory;
 }
+
+.noselect {
+  -webkit-user-select: none;
+}
