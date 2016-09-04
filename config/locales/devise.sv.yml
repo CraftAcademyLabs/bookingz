@@ -1,0 +1,59 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+sq:
+  devise:
+    confirmations:
+      confirmed: "Llogaria juaj është konfirmuar me sukses"
+      send_instructions: "Do të pranoni për disa minuta një e-mail me udhëzime se si ta konfirmoni llogarinë tuaj"
+      send_paranoid_instructions: "Nëse e-mail adresa juaj ekziston në databazën tonë, për disa minuta do të pranoni një e-mail me udhëzime se si ta konfirmoni llogarinë tuaj."
+    failure:
+      already_authenticated: "Ju tashmë jeni i kyçur"
+      inactive: "Llogaria e juaj ende nuk është aktive."
+      invalid: "Të dhënat e kyçjes janë gabim."
+      locked: "Llogaria juaj është bllokuar."
+      last_attempt: "Ju ka mbetur edhe një mundësi për të provuar para se të bllokohet llogaria juaj."
+      not_found_in_database: "E-mail ose fjalëkalim i pasaktë."
+      timeout: "Sesioni i juaj ka skaduar. Ju lutemi kyçuni përsëri për të vazhduar."
+      unauthenticated: "Ju duhet të kyçeni ose të regjistroheni para se të vazhdoni."
+      unconfirmed: "Duhet ta konfirmoni llogarinë tuaj para se të vazhdoni."
+    mailer:
+      confirmation_instructions:
+        subject: "Udhëzime për konfirmim"
+      reset_password_instructions:
+        subject: "Udhëzime për resetim të fjalëkalimin"
+      unlock_instructions:
+        subject: "Udhëzime për zhbllokim të llogarisë"
+    omniauth_callbacks:
+      failure: "Nuk ishte e mundur t'ju autentikonim nga %{kind} për shkak \"%{reason}\"."
+      success: "Jeni autentikuar me sukses nga llogaria juaj në %{kind}."
+    passwords:
+      no_token: "Nuk mund t'i qaseni kësaj faqe pa ardhur nga një e-mail për resetim të fjalëkalimit. Nëse vini nga e-maili, ju lutemi sigurohuni që ta përdorni URL-në e plotë."
+      send_instructions: "Do të pranoni për disa minuta një e-mail me udhëzime se si ta resetoni fjalëkalimin tuaj"
+      send_paranoid_instructions: "Nëse e-mail adresa juaj ekziston në databazën tonë, të pranoni për disa minuta një e-mail me udhëzime se si ta resetoni fjalëkalimin tuaj."
+      updated: "Fjalëkalimi juaj është ndryshuar me sukses. Ju tani jeni të kyçur."
+      updated_not_active: "Fjalëkalimi juaj është ndryshuar me sukses."
+    registrations:
+      destroyed: "Mirupafshim! Llogaria juaj u anulua me sukses. Shpresojmë të ju shohim përsëri."
+      signed_up: "Mirëseerdhët! Jeni regjistruar me sukses."
+      signed_up_but_inactive: "Jeni regjistruar me sukses. Mirëpo, kyçja juaj nuk mund të realizohet për shkak se llogaria juaj ende nuk është aktive."
+      signed_up_but_locked: "Jeni regjistruar me sukses. Mirëpo, kyçja juaj nuk mund të realizohet për shkak se llogaria juaj është e bllokuar."
+      signed_up_but_unconfirmed: "Një mesazh me një vegëz për konfirmim është dërguar në e-mail adresën tuaj. Ju lutemi hapeni vegëzën për ta konfirmuar llogarinë tuaj."
+      update_needs_confirmation: "Llogaria juaj është azhuruar me sukses, mirëpo ne duhet ta verifikojmë e-mail adresën tuaj. Ju lutemi kontrolloni e-mail adresën tuaj dhe klikoni në vegëzën për konfirmim që ta konfirmoni e-mail adresën tuaj të re. "
+      updated: "Llogaria juaj është azhuruar me sukses."
+    sessions:
+      signed_in: "Jeni kyçur me sukses."
+      signed_out: "Jeni ç'kyçur me sukses"
+    unlocks:
+      send_instructions: "Do të pranoni për disa minuta një email me udhëzime se si ta zhbllokoni llogarinë tuaj."
+      send_paranoid_instructions: "Nëse llogaria juaj ekziston, do të pranoni për disa minuta një email me udhëzime se si ta zhbllokoni llogarinë tuaj."
+      unlocked: "Llogaria juaj është zhbllokuar me sukses. Ju lutemi kyçuni për të vazhduar. "
+  errors:
+    messages:
+      already_confirmed: "është konfirmuar tashmë, ju lutemi provoni të kyçeni."
+      confirmation_period_expired: "duhet të konfirmohet brenda %{period}, ju lutemi kërkoni një të ri"
+      expired: "ka skaduar, ju lutemi kërkoni një të ri"
+      not_found: "nuk është gjetur"
+      not_locked: "nuk ishte e bllokuar"
+      not_saved:
+        one: "1 gabim e pengoi këtë %{resource} për t'u ruajtur:"
+        other: "%{count} gabime e penguan këtë %{resource} për t'u ruajtuar:"
