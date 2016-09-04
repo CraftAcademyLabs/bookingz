@@ -5,12 +5,6 @@ class DashboardController < ApplicationController
     @resources = Resource.all
   end
 
-  def api_index
-    @date = params[:date] || Date.today.to_s
-    @resources = Resource.all
-
-    render :api_index
-  end
 
   def create_booking
     id = params[:booking][:resource_id]
