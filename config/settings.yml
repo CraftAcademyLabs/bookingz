@@ -1,4 +1,4 @@
 app_name: Bookingz
 copyright_message: Copyright Craft Academy Labs © 2016
-available_locales: ['en']
+available_locales: ['en', 'sv']
 default_locale: en
