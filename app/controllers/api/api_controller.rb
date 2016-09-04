@@ -6,4 +6,10 @@ class Api::ApiController < ActionController::Base
   def ping
     render json: {message: 'Pong'}
   end
+
+  def index
+    @date = params[:date] || Date.today.to_s
+    @resources = Resource.all
+    render :index
+  end
 end

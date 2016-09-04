@@ -1,6 +1,6 @@
 class CreateResources < ActiveRecord::Migration[5.0]
   def change
-    create_table :resources do |t|
+    create_table :api do |t|
       t.string :designation
       t.text :description
 
