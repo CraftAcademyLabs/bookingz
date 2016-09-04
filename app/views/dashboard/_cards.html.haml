@@ -27,24 +27,24 @@
     %span{aria: {hidden: ''}}
       &times;
   #model-content
-    %h2 Lägg till bokning
+    %h2
+    = t('dashboard.reservation')
     #slot
     = form_tag (create_booking_path) do
       = hidden_field_tag 'booking[resource_id]'
       = hidden_field_tag 'booking[booking_date]'
       .row
         .medium-12.columns
-          = label_tag 'booking[client]', 'Client'
+          = label_tag 'booking[client]', t('dashboard.client')
           = text_field_tag 'booking[client]'
       .row
         .medium-6.columns
-          = label_tag 'booking[time_start]', 'Börjar'
+          = label_tag 'booking[time_start]', t('dashboard.time_start')
           = text_field_tag 'booking[time_start]', nil, class: 'picker'
         .medium-6.columns
-          = label_tag 'booking[time_end]', 'Slutar'
+          = label_tag 'booking[time_end]', t('dashboard.time_end')
           = text_field_tag 'booking[time_end]', nil, class: 'picker'
 
       .row
         .medium-5.columns
-          = submit_tag 'Create', class: 'button'
-
+          = submit_tag t('dashboard.button'), class: 'button'

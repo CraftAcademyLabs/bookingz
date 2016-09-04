@@ -4,3 +4,6 @@
   %h2
     %small
       = link_to 'by CA Labs', page_path('ca_labs')
+  %p
+    = link_to_unless_current "Swedish", locale: "sv" |
+    = link_to_unless_current "English", locale: "en"
