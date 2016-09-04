@@ -13,7 +13,8 @@ json.items @resources.each do |resource|
         }
         json.state 'booked'
       else
-        json.info id: slots.index(slot), time: slot
+        #json.info id: slots.index(slot), time: slot
+        json.info  time: slot
         json.state 'free'
       end
     end
