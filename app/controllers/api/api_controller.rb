@@ -14,6 +14,7 @@ class Api::ApiController < ActionController::Base
   end
 
   def show
-    # render :show
+    @dates = Date.today.to_s
+    @resource = Resource.find_by(uuid: params[:uuid])
   end
 end

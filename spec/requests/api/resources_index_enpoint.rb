@@ -321,6 +321,6 @@ describe Api::ApiController, type: :request do
     }
     get api_resources_path, headers: {'HTTP_ACCEPT': 'application/json'}
     expect(response_json['items'][0]).to eq expected_response[:items][0].as_json
-    expect(response_json['items'][1]['designation']).to eq restaurant_2.designation
+    expect(response_json['items'][1]['designation']).to eq resource_2.designation
   end
 end

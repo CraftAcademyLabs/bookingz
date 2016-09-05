@@ -166,7 +166,7 @@ describe Api::ApiController, type: :request do
          }
      ]
     }
-    get api_resource_path(resource_1), headers: {'HTTP_ACCEPT': 'application/json'}
+    get show_api_resources_path(uuid: resource_1.uuid), headers: {'HTTP_ACCEPT': 'application/json'}
     expect(response_json).to eq expected_response
   end
 end
