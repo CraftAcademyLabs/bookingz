@@ -12,4 +12,8 @@ class Api::ApiController < ActionController::Base
     @resources = Resource.all
     render :index
   end
+
+  def show
+    # render :show
+  end
 end

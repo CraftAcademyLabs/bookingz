@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'ping', controller: :api, action: :ping
-    resources :resources, controller: :api, only: [:index]
+    resources :resources, controller: :api, only: [:index, :show]
   end
 
   get :api_index, controller: :dashboard, action: :api_index
