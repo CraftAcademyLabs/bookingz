@@ -23,7 +23,7 @@ module Bookingz
       generate.routing_specs false
       generate.controller_specs false
     end
-    config.i18n.available_locales = [:en, :sv]
-    config.i18n.default_locale = :en
+    config.i18n.available_locales = [:en, :se]
+    config.i18n.default_locale = :se
   end
 end
