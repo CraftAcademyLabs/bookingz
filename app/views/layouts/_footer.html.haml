@@ -6,7 +6,7 @@
       %p.links
         = link_to t('footer.home'), '#'
         - if current_user
-          = link_to t('footer.instructions'), page_path('instructions')
-          = link_to 'CA Labs', page_path('ca_labs')
+          = link_to t('footer.instructions'), page_path(id: 'instructions')
+          = link_to 'CA Labs', page_path(id: 'ca_labs')
       %p.copywrite
         = copyright_message
