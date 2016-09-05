@@ -165,8 +165,8 @@ describe Api::ApiController, type: :request do
              'state': 'free'
          }
      ]
-    }
+   }
     get show_api_resources_path(uuid: resource_1.uuid), headers: {'HTTP_ACCEPT': 'application/json'}
-    expect(response_json).to eq expected_response
+    expect(response_json).to eq expected_response.as_json
   end
 end
