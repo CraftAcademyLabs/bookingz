@@ -1,6 +1,4 @@
-class Api::ApiController < ActionController::Base
-  protect_from_forgery with: :null_session
-  respond_to :json
+class Api::ApiController < ActionController::API
 
   def ping
     render json: {message: 'Pong'}
@@ -9,7 +7,6 @@ class Api::ApiController < ActionController::Base
   def index
     @date = set_date
     @resources = Resource.all
-    render :index
   end
 
   def show
