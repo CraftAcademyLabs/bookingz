@@ -5,16 +5,10 @@ class DashboardController < ApplicationController
     @resources = Resource.all
   end
 
-  def api_index
-    @date = params[:date] || Date.today.to_s
-    @resources = Resource.all
-
-    render :api_index
-  end
-
   def create_booking
     id = params[:booking][:resource_id]
     @resource = Resource.find(id)
+    @resource.schedule.add_recurrence_rule IceCube::Rule.daily
 
     start_seconds = Time.parse([booking_params[:booking_date],
                                 booking_params[:time_start]].join(' ')).seconds_since_midnight

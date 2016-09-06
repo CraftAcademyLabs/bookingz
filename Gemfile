@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
 gem 'config'
 gem 'high_voltage'
+gem 'rack-cors', require: 'rack/cors'
 
 # UI
 gem 'haml-rails'
@@ -45,7 +46,6 @@ group :development, :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'timecop'
-
 end
 
 group :development do
@@ -54,8 +54,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# See: https://devcenter.heroku.com/articles/getting-started-with-rails5
-# group :production do
-#   gem 'rails_12factor'
-# end
