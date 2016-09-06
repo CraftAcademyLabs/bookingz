@@ -21,7 +21,7 @@
 function queryApi(date) {
     $.ajax({
         dataType: "json",
-        url: '/api/resources.json?date=' + date,
+        url: '/api/resources?date=' + date,
         success: function (response) {
             loadCurrentBookings(response);
             addEvents();
@@ -32,7 +32,7 @@ function queryApi(date) {
 function updateApi(date) {
     $.ajax({
         dataType: "json",
-        url: '/api/resources.json?date=' + date,
+        url: '/api/resources?date=' + date,
         success: function (response) {
             updateCurrentBookings(response);
             addEvents();
