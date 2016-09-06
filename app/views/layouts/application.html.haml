@@ -6,7 +6,7 @@
     %title Bookingz
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
   %body
     :javascript
       $(window).resize(function() {
@@ -24,5 +24,3 @@
         = render 'layouts/flash_messages'
       = yield
     = render 'layouts/footer'
-
-
