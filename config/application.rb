@@ -26,4 +26,10 @@ module Bookingz
     config.i18n.available_locales = Settings.available_locales
     config.i18n.default_locale = Settings.default_locale
   end
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+      resource 'api/', headers: :any, methods: [:get, :put, :delete, :post]
+    end
+  end
 end
