@@ -1,0 +1,50 @@
+- @resources.each_slice(3) do |collection|
+  .row
+    - collection.each do |resource|
+      .medium-4.columns#cards
+        .card{id: "card-#{resource.id}"}
+          .content
+            %ul.accordion{data: {accordion: '', allow: {all:{closed: 'true'}}}, role: 'tablist'}
+              %li.accordion-item
+                / The tab title needs role="tab", an href, a unique ID, and aria-controls.
+                %a.accordion-title{id: "panel#{resource.id}-heading",
+                aria: {controls: "panel#{resource.id}"},
+                href: "#panel#{resource.id}",
+                role: 'tab'}= resource.designation
+                / The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby.
+                .accordion-content{id: "panel#{resource.id}",
+                aria: {labelledby: "panel#{resource.id}-heading"},
+                data: {tab: {content: ''}},
+                role: 'tabpanel'}
+                  %strong Details:
+                  = resource.description
+                  %br/
+                  %strong Capacity:
+                  = resource.capacity
+
+.small.reveal#slot-modal
+  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
+    %span{aria: {hidden: ''}}
+      &times;
+  #model-content
+    %h2 Lägg till bokning
+    #slot
+    = form_tag (create_booking_path) do
+      = hidden_field_tag 'booking[resource_id]'
+      = hidden_field_tag 'booking[booking_date]'
+      .row
+        .medium-12.columns
+          = label_tag 'booking[client]', 'Client'
+          = text_field_tag 'booking[client]'
+      .row
+        .medium-6.columns
+          = label_tag 'booking[time_start]', 'Börjar'
+          = text_field_tag 'booking[time_start]', nil, class: 'picker'
+        .medium-6.columns
+          = label_tag 'booking[time_end]', 'Slutar'
+          = text_field_tag 'booking[time_end]', nil, class: 'picker'
+
+      .row
+        .medium-5.columns
+          = submit_tag 'Create', class: 'button'
+

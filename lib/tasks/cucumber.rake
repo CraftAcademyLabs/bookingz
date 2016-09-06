@@ -55,6 +55,10 @@ begin
   end
 
   task :stats => 'cucumber:statsetup'
+
+  task :cucumber_rerun do
+    system 'cucumber  -f rerun --out rerun.txt; cucumber @rerun.txt'
+  end
 rescue LoadError
   desc 'cucumber rake task not available (cucumber not installed)'
   task :cucumber do
