@@ -19,6 +19,7 @@ describe Api::ApiController, type: :request do
 
   it 'fetches bookings for a resource' do
     expected_response = {'designation': resource_1.designation,
+                         'uuid': resource_1.uuid,
                          'id': resource_1.id,
                          'slots': [
                              {

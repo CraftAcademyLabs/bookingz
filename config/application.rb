@@ -30,7 +30,7 @@ module Bookingz
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource 'api/', headers: :any, methods: [:get, :put, :delete, :post]
+        resource '/api/*', headers: :any, methods: [:get, :put, :delete, :post]
       end
     end
   end

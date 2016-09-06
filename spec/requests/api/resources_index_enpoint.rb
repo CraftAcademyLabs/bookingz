@@ -16,6 +16,7 @@ describe Api::ApiController, type: :request do
     expected_response = {
         'items': [
             {'designation': resource_1.designation,
+             'uuid': resource_1.uuid,
              'id': resource_1.id,
              'slots': [
                  {
@@ -163,6 +164,7 @@ describe Api::ApiController, type: :request do
              ]
             }, {
                 'designation': resource_2.designation,
+                'uuid': resource_2.uuid,
                 'id': resource_2.id,
                 'slots': [
                     {
