@@ -19,6 +19,8 @@ se:
     time_end: Slutar
     group: Grupp
     button: Skapa
+    capacity: 'Kapacitet:'
+    details: 'Detaljer:'
   pages:
     title: Denna ansökan skapades av CA Labs
     info: För mer information besök

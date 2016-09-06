@@ -95,7 +95,12 @@ function getInfo(obj) {
 
 function setSlotMessage(obj) {
     var booking_times = obj.info.booking_time.split(' - ')
-    var message = [obj.info.time, 'Grupp: ' + obj.info.client, 'Start: ' + booking_times[0], 'Slut: ' + booking_times[1]].join(' ');
+    var message;
+    if (window.location.href.match('en') == 'en') {
+      message = [obj.info.time, 'Group: ' + obj.info.client, 'Start: ' + booking_times[0], 'Finish: ' + booking_times[1]].join(' ');
+    } else {
+      message = [obj.info.time, 'Grupp: ' + obj.info.client, 'Start: ' + booking_times[0], 'Slut: ' + booking_times[1]].join(' ');
+    }
     return message;
 }
 

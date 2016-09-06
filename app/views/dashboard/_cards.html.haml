@@ -16,10 +16,12 @@
                 aria: {labelledby: "panel#{resource.id}-heading"},
                 data: {tab: {content: ''}},
                 role: 'tabpanel'}
-                  %strong Details:
+                  %strong
+                    = t('dashboard.details')
                   = resource.description
                   %br/
-                  %strong Capacity:
+                  %strong
+                    = t('dashboard.capacity')
                   = resource.capacity
 
 .small.reveal#slot-modal

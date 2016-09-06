@@ -1,7 +1,21 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 en:
+  email: Email
+  password: Password
+  remember_me: Remember me
+  password_confirmation: Password Confirmation
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'cannot be blank'
   devise:
+    helpers:
+      label:
+        user_email: Email
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
@@ -34,6 +48,8 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      new:
+        reset_password: 'Reset password'
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -46,6 +62,12 @@ en:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+    shared:
+      links:
+        forgot_your_password: 'Forgot your password'
+        sign_up: 'Sign up'
+        signed_in: 'Sign in'
+        sign_in: Sign in
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

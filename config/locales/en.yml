@@ -19,7 +19,8 @@ en:
     time_end: Finish
     group: Group
     button: Create
-
+    capacity: 'Capacity:'
+    details: 'Details:'
   pages:
     title: This application was created by CA Labs
     info: For more information please visit
