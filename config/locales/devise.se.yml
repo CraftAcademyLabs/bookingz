@@ -22,6 +22,8 @@ se:
       not_locked: "var inte låst"
       not_saved:
         one: "1 fel hindrade denna %{resource} från att sparas:"
+        two: "2 fel hindrade denna %{resource} från att sparas:"
+        three: "3 fel hindrade denna %{resource} från att sparas:"
         other: "%{count} fel hindrade denna %{resource} från att sparas:"
 
   devise:
