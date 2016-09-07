@@ -12,17 +12,18 @@ Feature: As a system user
     And I should see "Remember me"
     And I should see "Sign in"
     And I should see "Sign up"
-    And I should see "Forgot your password?"
+    And I should see "Forgot your password"
     And I should see "Home"
 
     Scenario: Visiting the sign up page as an english visitor
-      Given I navigate to the "sign_up" page
-      Then I should see "Sign up"
+      Given I navigate to the "sign up" page
+      Then show me the page
+      And I should see "Sign up"
       And I should see "Email"
       And I should see "Password"
       And I should see "Password confirmation"
       And I should see "Sign up"
-      And I should see "Forgot your password?"
+      And I should see "Forgot your password"
 
       # Scenario: Visiting the landing page as an swedish visitor
       #   Given I navigate to the "landing" page

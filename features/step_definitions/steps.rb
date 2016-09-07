@@ -25,6 +25,8 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
       visit root_path
     when 'Instructions' then
       visit page_path('instructions')
+    when 'sign up' then
+      visit new_user_registration_path
   end
 end
 
@@ -36,6 +38,8 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = page_path(:instructions)
     when 'ca labs' then
       expected_path = page_path(:ca_labs)
+    when 'sign up' then
+      expected_path = new_user_registration_path
   end
 
   expect(page.current_path).to eq expected_path
