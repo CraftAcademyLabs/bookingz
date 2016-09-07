@@ -12,5 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
+//= require foundation-datetimepicker
 //= require turbolinks
 //= require_tree .
+
+
+
+$(document).ready(function () {
+    dateOnPageLoad();
+    var date;
+    if (location.search.substr(1).length > 0) {
+        date = location.search.substr(1).split("=")[1];
+        $('#date').html(date);
+    } else {
+        date = currentDate();
+    }
+    queryApi(date);
+
+    $('.picker').fdatetimepicker({
+        language: 'en',
+        pickTime: true,
+        closeButton: true,
+        startView: 0,
+        format: 'hh:ii'
+    });
+
+
+});

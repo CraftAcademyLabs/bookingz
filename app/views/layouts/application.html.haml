@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %meta{content: 'text/html; charset=UTF-8', http: {equiv: 'Content-Type'}}/
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title Bookingz
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    :javascript
+      $(window).resize(function() {
+        fixedFooter(); //at page resize
+      });
+
+      $(document).ready(function() {
+        $(document).foundation();
+        fixedFooter(); //at page load
+
+      });
+    = render 'layouts/header'
+    .content-wrapper
+      .row
+        = render 'layouts/flash_messages'
+      = yield
+    = render 'layouts/footer'
+
+
