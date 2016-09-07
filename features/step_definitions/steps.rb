@@ -27,6 +27,8 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
       visit page_path('instructions')
     when 'sign up' then
       visit new_user_registration_path
+    when 'Forgot your password'
+      visit new_user_password_path
   end
 end
 
@@ -40,6 +42,8 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = page_path(:ca_labs)
     when 'sign up' then
       expected_path = new_user_registration_path
+    when 'Forgot your password'
+      expected_path = new_user_password_path
   end
 
   expect(page.current_path).to eq expected_path
@@ -93,4 +97,12 @@ end
 
 And(/^I click arrow "([^"]*)"$/) do |id|
   find("##{id}").trigger('click')
+end
+
+Then(/^I should see "([^"]*)" button$/) do |button|
+  expect(page).to have_button button
+end
+
+Then(/^I should see "([^"]*)" link$/) do |link|
+  expect(page).to have_link link
 end
