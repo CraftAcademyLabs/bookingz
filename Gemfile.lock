@@ -55,6 +55,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.11)
     builder (3.2.2)
+    byebug (9.0.5)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -216,6 +217,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     puma (3.6.0)
     rack (2.0.1)
     rack-cors (0.4.0)
@@ -366,6 +370,7 @@ DEPENDENCIES
   phantomjs
   poltergeist
   pry
+  pry-byebug
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.0)

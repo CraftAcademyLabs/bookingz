@@ -106,3 +106,11 @@ end
 Then(/^I should see "([^"]*)" link$/) do |link|
   expect(page).to have_link link
 end
+
+Then(/^I click "([^"]*)" button$/) do |button|
+  click_link_or_button button
+end
+
+Then(/^the locale is set to "([^"]*)"$/) do |locale|
+  I18n.locale = locale
+end
