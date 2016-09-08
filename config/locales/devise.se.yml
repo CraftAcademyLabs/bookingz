@@ -1,11 +1,11 @@
 se:
-  email: Epos
+  email: Epost
   password: Lösenord
   remember_me: Kom ihåg mig
-  password_confirmation: lösenordsbekräftelse
+  password_confirmation: Lösenordsbekräftelse
   activerecord:
     attributes:
-      user_email: 'Epos'
+      user_email: 'Epost'
       user_password: 'Lösenord'
       remember_me: 'Kom ihåg mig'
     errors:
@@ -13,6 +13,8 @@ se:
         user:
           attributes:
             email:
+              blank: 'kan inte vara tom'
+            password:
               blank: 'kan inte vara tom'
   errors:
     messages:
@@ -40,16 +42,16 @@ se:
       new:
         reset_password: Återställ lösenord
     sessions:
-      signed_in: 'Loggade in.'
-      signed_out: 'Loggade ut.'
+      signed_in: 'Logga in.'
+      signed_out: 'Logga ut.'
       new:
-        sign_in: 'logga in'
+        sign_in: 'Logga in'
     shared:
       links:
         forgot_your_password: 'Glömt ditt lösenord'
         sign_up: 'Registrera dig'
-        signed_in: 'Loggade in.'
-        sign_in: Loggade in
+        signed_in: 'Logga in.'
+        sign_in: Logga in
 
     passwords:
       send_instructions: 'Du kommer få epost med instruktioner om hur du kan återställa ditt lösenord inom några minuter.'
@@ -57,6 +59,7 @@ se:
       send_paranoid_instructions: "Om din email är i vår databas, kommer du att få en lösenordslänk till din mail."
       new:
         reset_password: Återställ lösenord
+        forgot_your_password: Glömt ditt lösenord?
     confirmations:
       send_instructions: 'Du kommer att få epost med instruktioner om hur du kan bekräfta ditt konto inom några minuter.'
       send_paranoid_instructions: 'Om din email är i vår databas, kommer du att få ett mail med instruktioner om hur du ska aktivera ditt konto inom några minuter.'

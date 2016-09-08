@@ -11,7 +11,9 @@ en:
         user:
           attributes:
             email:
-              blank: 'cannot be blank'
+              blank: "can't be blank"
+            password:
+              blank: "can't be blank"
   devise:
     helpers:
       label:
