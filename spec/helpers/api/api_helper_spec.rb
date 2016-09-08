@@ -26,7 +26,7 @@ RSpec.describe Api::ApiHelper, type: :helper do
     end
 
     it 'returns object if slot is booked' do
-      slot = '15:00 - 15:30'
+      slot = '15:30 - 16:00'
       expect(helper.slot_booking(resource, Date.today.to_s, slot)).to eq @booking
     end
 

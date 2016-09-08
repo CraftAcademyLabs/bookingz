@@ -103,8 +103,12 @@ describe Api::ApiController, type: :request do
                      },
                      'state': 'free'
                  },
-                 {'info': {'id': 1, 'time': '15:00 - 15:30', 'client': 'Craft Academy', 'booking_time': '15:30 - 16:30'},
-                  'state': 'booked'},
+                 {
+                     'info': {
+                         'time': '15:00 - 15:30'
+                     },
+                     'state': 'free'
+                 },
                  {'info': {'id': 1, 'time': '15:30 - 16:00', 'client': 'Craft Academy', 'booking_time': '15:30 - 16:30'},
                   'state': 'booked'},
                  {
