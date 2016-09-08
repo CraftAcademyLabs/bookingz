@@ -72,7 +72,8 @@ Feature: As an admin
   Scenario: Rejects a booking on unavailable slot
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    And I click on "11:00 - 11:30" for "Galaxy"
+    And I click on "10:30 - 11:00" for "Galaxy"
+    Then show me an image of the page
     And I fill in "Client" with "Jessica"
     And I fill in "Börjar" with "10:30"
     And I fill in "Slutar" with "11:30"
