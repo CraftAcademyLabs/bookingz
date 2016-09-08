@@ -79,4 +79,8 @@ Feature: As an admin
     And I click "Create"
     Then I should see "The resource is fully booked"
 
-
+  Scenario: Rejects a booking if date is in the past
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard on "2016-01-01"
+    And I click on "15:00 - 15:30" for "Galaxy"
+    Then I should see an error message

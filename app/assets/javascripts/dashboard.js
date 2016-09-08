@@ -61,11 +61,13 @@ function updateCurrentBookings(response) {
             $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
     });
-
 }
 
 function getBackgroundColor(obj) {
+    // if date is in past then color == 'grey'
+    // else
     var color = (obj.state == 'booked') ? 'red' : 'green';
+
     return color;
 }
 
