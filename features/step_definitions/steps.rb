@@ -114,3 +114,7 @@ end
 Then(/^the locale is set to "([^"]*)"$/) do |locale|
   I18n.locale = locale
 end
+
+Then(/^I should see :"([^"]*)"$/) do |text|
+  page.has_content? I18n.t(text)
+end
