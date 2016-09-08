@@ -35,64 +35,128 @@ Feature: As a system user
     And I should see "Sign up" link
     And I should see "Sign in" link
 
-    Scenario: Visiting the sign up page as an en visitor
-      Given I navigate to the "sign up" page
-      Then I should see "Sign up"
-      And I should see "Email"
-      And I should see "Password"
-      And I should see "Password confirmation"
-      And I should see "Sign up" button
-      And I should see "Sign in" link
-      And I should see "Forgot your password" link
+  Scenario: Visiting the sign up page as an en visitor
+    Given I navigate to the "sign up" page
+    Then I should see "Sign up"
+    And I should see "Email"
+    And I should see "Password"
+    And I should see "Password confirmation"
+    And I should see "Sign up" button
+    And I should see "Sign in" link
+    And I should see "Forgot your password" link
 
-    Scenario: Visiting the dashboard landing page as an en system user
-      Given I am logged in as "admin@email.com"
-      Then I navigate to the "landing" page
-      And I should see "Click on the rooms you want to book or make a change."
-      And I click on "10:30 - 11:00" for "Galaxy"
-      And I should see "Add to reservation"
-      And I should see "Client"
-      And I should see "Start"
-      And I should see "Finish"
-      And I should see "Create" button
+  Scenario: Visiting the dashboard landing page as an en system user
+    Given I am logged in as "admin@email.com"
+    Then I navigate to the "landing" page
+    And I should see "Click on the rooms you want to book or make a change."
+    And I click on "10:30 - 11:00" for "Galaxy"
+    And I should see "Add to reservation"
+    And I should see "Client"
+    And I should see "Start"
+    And I should see "Finish"
+    And I should see "Create" button
 
-    Scenario: Log in with wrong email as a en system user
-      Given I navigate to the "landing" page
-      Then I fill in "user[email]" with "wrong@mail.com"
-      And I fill in "user[password]" with "password"
-      And I click "Sign in" button
-      Then I should see "Invalid Email or password."
+  Scenario: Log in with wrong email as an en system user
+    Given I navigate to the "landing" page
+    Then I fill in "user[email]" with "wrong@mail.com"
+    And I fill in "user[password]" with "password"
+    And I click "Sign in" button
+    Then I should see "Invalid Email or password."
 
-    Scenario: Log in with wrong password as a en system user
-      Given I navigate to the "landing" page
-      Then I fill in "user[email]" with "admin@email.com"
-      And I fill in "user[password]" with "password_wrong"
-      And I click "Sign in" button
-      Then I should see "Invalid Email or password."
+  Scenario: Log in with wrong password as an en system user
+    Given I navigate to the "landing" page
+    Then I fill in "user[email]" with "admin@email.com"
+    And I fill in "user[password]" with "password_wrong"
+    And I click "Sign in" button
+    Then I should see "Invalid Email or password."
 
-    Scenario: Sign up with blank fields as a en visitor
-      Given I navigate to the "sign up" page
-      Then I fill in "user[email]" with " "
-      And I fill in "user[password]" with " "
-      And I fill in "user[password_confirmation]" with " "
-      And I click "Sign up" button
-      Then I should see "Email can't be blank"
-      And I should see "Password can't be blank"
+  Scenario: Sign up with blank fields as an en visitor
+    Given I navigate to the "sign up" page
+    Then I fill in "user[email]" with " "
+    And I fill in "user[password]" with " "
+    And I fill in "user[password_confirmation]" with " "
+    And I click "Sign up" button
+    Then I should see "Email can't be blank"
+    And I should see "Password can't be blank"
 
-    Scenario: Fill in forgot password with blank field as an en system user
-      Given I navigate to the "Forgot your password" page
-      Then I fill in "user[email]" with " "
-      And I click "Reset password" button
-      Then I should see "Email can't be blank"
+  Scenario: Fill in forgot password with blank field as an en system user
+    Given I navigate to the "Forgot your password" page
+    Then I fill in "user[email]" with " "
+    And I click "Reset password" button
+    Then I should see "Email can't be blank"
 
-    Scenario: Visiting the landing page as an se visitor
-      Given the locale is set to "se"
-      Then I navigate to the "landing" page
-      And I should be on the "login" page
-      And I should see :"Epost"
-      And I should see :"Lösenord"
-      And I should see :"Kom ihåg mig"
-      And I should see :"Logga in"
-      And I should see :"Registrera dig"
-      And I should see :"Glömt ditt lösenord"
-      And I should see :"Hem"
+  Scenario: Visiting the landing page as a se visitor
+    Given the locale is set to "se"
+    Then I navigate to the "landing" page
+    And I should be on the "login" page
+    And I should see :"Epost"
+    And I should see :"Lösenord"
+    And I should see :"Kom ihåg mig"
+    And I should see :"Logga in"
+    And I should see :"Registrera dig"
+    And I should see :"Glömt ditt lösenord"
+    And I should see :"Hem"
+
+  Scenario: Visiting the Forgot your password page as a se system user
+    Given the locale is set to "se"
+    Then I navigate to the "Forgot your password" page
+    And I should see :"Glömt ditt lösenord?"
+    And I should see :"Epost"
+    And I should see :"Återställ lösenord"
+    And I should see :"Registrera dig"
+    And I should see :"Logga in"
+
+  Scenario: Visiting the sign up page as a se visitor
+    Given the locale is set to "se"
+    Then I navigate to the "sign up" page
+    And I should see :"Registrera dig"
+    And I should see :"Epost"
+    And I should see :"Lösenord"
+    And I should see :"Lösenordsbekräftelse"
+    And I should see :"Registrera dig"
+    And I should see :"Logga in"
+    And I should see :"Glömt ditt lösenord"
+
+  Scenario: Visiting the dashboard landing page as a se system user
+    Given the locale is set to "se"
+    Given I am logged in as "admin@email.com"
+    Then I navigate to the "landing" page
+    And I should see :"Klicka på rummen ni vill boka eller göra en ändring."
+    And I click on "10:30 - 11:00" for "Galaxy"
+    And I should see :"Lägg till bokning"
+    And I should see :"Klient"
+    And I should see :"Börjar"
+    And I should see :"Slutar"
+    And I should see :"Skapa"
+
+  Scenario: Log in with wrong email as a se system user
+    Given the locale is set to "se"
+    Then I navigate to the "landing" page
+    And I fill in "user[email]" with "wrong@mail.com"
+    And I fill in "user[password]" with "password"
+    And I click :"Logga in" button
+    Then I should see :"Ogiltig epost eller lösenord."
+  # 
+  # Scenario: Log in with wrong password as a se system user
+  #   Given the locale is set to "se"
+  #   Then I navigate to the "landing" page
+  #   And I fill in "user[email]" with "admin@email.com"
+  #   And I fill in "user[password]" with "password_wrong"
+  #   And I click :"Logga in" button
+  #   Then I should see :"Ogiltig epost eller lösenord."
+  #
+  # Scenario: Sign up with blank fields as a se visitor
+  #   Given the locale is set to "se"
+  #   Then I navigate to the "sign up" page
+  #   And I fill in "user[email]" with " "
+  #   And I fill in "user[password]" with " "
+  #   And I fill in "user[password_confirmation]" with " "
+  #   And I click :"Logga in" button
+  #   Then I should see :"Email kan inte vara tom"
+  #   And I should see :"Password kan inte vara tom"
+  #
+  # Scenario: Fill in forgot password with blank field as an en system user
+  #   Given I navigate to the "Forgot your password" page
+  #   Then I fill in "user[email]" with " "
+  #   And I click :"Återställ lösenord" button
+  #   Then I should see :"Email kan inte vara tom"
