@@ -86,75 +86,76 @@ Feature: As a system user
     Then I should see "Email can't be blank"
 
   Scenario: Visiting the landing page as a se visitor
-    Given the locale is set to "se"
+    Given the application is set to "se"
+    Then I navigate to the "login" page
+    And the locale is set to "Swedish"
     Then I navigate to the "landing" page
     And I should be on the "login" page
-    And I should see :"Epost"
-    And I should see :"Lösenord"
-    And I should see :"Kom ihåg mig"
-    And I should see :"Logga in"
-    And I should see :"Registrera dig"
-    And I should see :"Glömt ditt lösenord"
-    And I should see :"Hem"
+    And I should see "Epost"
+    And I should see "Lösenord"
+    And I should see "Kom ihåg mig"
+    And I should see "Logga in"
+    And I should see "Registrera dig"
+    And I should see "Glömt ditt lösenord"
+    And I should see "Hem"
 
   Scenario: Visiting the Forgot your password page as a se system user
-    Given the locale is set to "se"
-    Then I navigate to the "Forgot your password" page
-    And I should see :"Glömt ditt lösenord?"
-    And I should see :"Epost"
-    And I should see :"Återställ lösenord"
-    And I should see :"Registrera dig"
-    And I should see :"Logga in"
+    Then I navigate to the "landing" page
+    And the locale is set to "Swedish"
+    And I navigate to the "Forgot your password" page
+    And I should see "Glömt ditt lösenord?"
+    And I should see "Epost"
+    And I should see button "Återställ lösenord"
+    And I should see "Registrera dig"
+    And I should see "Logga in"
 
   Scenario: Visiting the sign up page as a se visitor
-    Given the locale is set to "se"
-    Then I navigate to the "sign up" page
-    And I should see :"Registrera dig"
-    And I should see :"Epost"
-    And I should see :"Lösenord"
-    And I should see :"Lösenordsbekräftelse"
-    And I should see :"Registrera dig"
-    And I should see :"Logga in"
-    And I should see :"Glömt ditt lösenord"
+    Given I navigate to the "landing" page
+    And the locale is set to "Swedish"
+    And I navigate to the "sign up" page
+    And I should see "Registrera dig"
+    And I should see "Epost"
+    And I should see "Lösenord"
+    And I should see "Lösenordsbekräftelse"
+    And I should see "Registrera dig"
+    And I should see "Logga in"
+    And I should see "Glömt ditt lösenord"
 
   Scenario: Visiting the dashboard landing page as a se system user
-    Given the locale is set to "se"
     Given I am logged in as "admin@email.com"
     Then I navigate to the "landing" page
-    And I should see :"Klicka på rummen ni vill boka eller göra en ändring."
+    And the locale is set to "Swedish"
+    And I should see "Klicka på rummen ni vill boka eller göra en ändring."
     And I click on "10:30 - 11:00" for "Galaxy"
-    And I should see :"Lägg till bokning"
-    And I should see :"Klient"
-    And I should see :"Börjar"
-    And I should see :"Slutar"
-    And I should see :"Skapa"
+    And I should see "Lägg till bokning"
+    And I should see "Klient"
+    And I should see "Börjar"
+    And I should see "Slutar"
+    And I should see button "Skapa"
 
   Scenario: Log in with wrong email as a se system user
     Given I navigate to the "landing" page
     And the locale is set to "Swedish"
-    Then show me an image of the page
     And I fill in "Epost" with "wrong@mail.com"
     And I fill in "Lösenord" with "password"
     And I click "Logga in" button
-    Then I should see "Ogiltig epost eller lösenord."
+    Then I should see "Ogiltig Email eller lösenord."
 
    Scenario: Log in with wrong password as a se system user
-     Given the locale is set to "se"
-     Then I navigate to the "landing" page
+     Given I navigate to the "landing" page
+     And the locale is set to "Swedish"
      And I fill in "Epost" with "admin@email.com"
      And I fill in "Lösenord" with "password_wrong"
      And I click "Logga in" button
-     Then I should see "Ogiltig epost eller lösenord."
+     Then I should see "Ogiltig Email eller lösenord."
 
-  # Scenario: Sign up with blank fields as a se visitor
-  #   Given the locale is set to "se"
-  #   Then I navigate to the "sign up" page
-  #   And I fill in "user[email]" with " "
-  #   And I fill in "user[password]" with " "
-  #   And I fill in "user[password_confirmation]" with " "
-  #   And I click :"Logga in" button
-  #   Then I should see :"Email kan inte vara tom"
-  #   And I should see :"Password kan inte vara tom"
+   Scenario: Sign up with blank fields as a se visitor
+     Given I navigate to the "landing" page
+     And the locale is set to "Swedish"
+     Given I navigate to the "sign up" page
+     And I click "Logga in" button
+     Then I should see "Email kan inte vara tom"
+     And I should see "Password kan inte vara tom"
   #
   # Scenario: Fill in forgot password with blank field as an en system user
   #   Given I navigate to the "Forgot your password" page

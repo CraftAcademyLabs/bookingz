@@ -2,17 +2,17 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .field
-    = label_tag(t(:email))
+    = f.label :email, t('devise.helpers.label.email')
     %br/
     = f.email_field :email, autofocus: true
   .field
-    = label_tag(t(:password))
+    = f.label :password, t('devise.helpers.label.password')
     %br/
-    = f.password_field :password, autocomplete: "off"
+    = f.password_field :password, autocomplete: 'off'
   .field
-    = label_tag(t(:password_confirmation))
+    = f.label :password_confirmation, t('devise.helpers.label.password_confirmation')
     %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation, autocomplete: 'off'
   .actions
-    = f.submit t('.sign_up')
-= render "devise/shared/links"
+    = f.submit t('.sign_up') , class: 'button'
+= render 'devise/shared/links'

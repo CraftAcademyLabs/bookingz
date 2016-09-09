@@ -1,7 +1,7 @@
 se:
   email: Epost
   password: Lösenord
-  remember_me: Kom ihåg mig
+  remember_me: 'Kom ihåg mig'
   password_confirmation: Lösenordsbekräftelse
   activerecord:
     attributes:
@@ -27,18 +27,25 @@ se:
         two: "2 fel hindrade denna %{resource} från att sparas:"
         three: "3 fel hindrade denna %{resource} från att sparas:"
         other: "%{count} fel hindrade denna %{resource} från att sparas:"
-
   devise:
+    helpers:
+      label:
+        email: Epost
+        password: Lösenord
+        remember_me: 'Kom ihåg mig'
+        password_confirmation: Lösenordsbekräftelse
     failure:
-      already_authenticated: 'Du har redan loggat in.'
-      unauthenticated: 'Du måste logga in eller skapa ett konto innan du kan fortsätta.'
-      unconfirmed: 'Du måste bekräfta ditt konto innan du kan fortsätta.'
-      locked: 'Ditt konto är låst.'
-      invalid: 'Ogiltig epost eller lösenord.'
-      invalid_token: 'Ogiltig token för autentisering.'
-      timeout: 'Din session är inte längre giltig, vänligen logga in igen för att fortsätta.'
-      inactive: 'Ditt konto har inte aktiverats ännu.'
-      unauthenticated: "Du måste logga in eller registrera dig innan du fortsätter."
+      user:
+        not_found_in_database: "Ogiltig %{authentication_keys} eller lösenord."
+        already_authenticated: 'Du har redan loggat in.'
+        unauthenticated: 'Du måste logga in eller skapa ett konto innan du kan fortsätta.'
+        unconfirmed: 'Du måste bekräfta ditt konto innan du kan fortsätta.'
+        locked: 'Ditt konto är låst.'
+        invalid: 'Ogiltig epost eller lösenord.'
+        invalid_token: 'Ogiltig token för autentisering.'
+        timeout: 'Din session är inte längre giltig, vänligen logga in igen för att fortsätta.'
+        inactive: 'Ditt konto har inte aktiverats ännu.'
+        unauthenticated: "Du måste logga in eller registrera dig innan du fortsätter."
       new:
         reset_password: Återställ lösenord
     sessions:

@@ -12,7 +12,6 @@ end
 
 
 Given(/^the following resources exist$/) do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
   table.hashes.each do |resource|
     FactoryGirl.create(:resource, resource)
   end
@@ -20,30 +19,34 @@ end
 
 
 And(/^I navigate to the "([^"]*)" page$/) do |page|
+  locale = I18n.locale
   case page
     when 'landing' then
-      visit root_path
+      visit root_path(locale: locale)
     when 'Instructions' then
-      visit page_path('instructions')
+      visit page_path('instructions', locale: locale )
     when 'sign up' then
-      visit new_user_registration_path
+      visit new_user_registration_path(locale: locale)
     when 'Forgot your password'
-      visit new_user_password_path
+      visit new_user_password_path(locale: locale)
+    when 'login'
+      visit new_user_session_path(locale: locale)
   end
 end
 
 Then(/^I should be on the "([^"]*)" page$/) do |path|
+  locale = I18n.locale
   case path.downcase
     when 'login' then
-      expected_path = new_user_session_path
+      expected_path = new_user_session_path(locale: locale)
     when 'instructions' then
-      expected_path = page_path(:instructions)
+      expected_path = page_path(:instructions, locale: locale)
     when 'ca labs' then
-      expected_path = page_path(:ca_labs)
+      expected_path = page_path(:ca_labs, locale: locale)
     when 'sign up' then
-      expected_path = new_user_registration_path
+      expected_path = new_user_registration_path(locale: locale)
     when 'Forgot your password'
-      expected_path = new_user_password_path
+      expected_path = new_user_password_path(locale: locale)
   end
 
   expect(page.current_path).to eq expected_path
@@ -55,7 +58,6 @@ end
 
 Then(/^I should not see "([^"]*)"$/) do |content|
   expect(page).not_to have_content content
-
 end
 
 Then(/^show me the page$/) do
@@ -117,3 +119,7 @@ Then(/^the locale is set to "([^"]*)"$/) do |locale|
         }
 end
 
+
+And(/^I should see button "([^"]*)"$/) do |text|
+  expect(page).to have_button text
+end

@@ -13,3 +13,7 @@ end
 After do
   Timecop.return
 end
+
+Given(/^the application is set to "([^"]*)"$/) do |arg|
+  binding.pry
+end
