@@ -38,12 +38,12 @@ Feature: As an admin
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
     Then I should see the following content in resource box
-      | content                                | resource |
-      | Grupp: Thomas Start: 10:30 Slut: 11:30 | Galaxy   |
-      | Grupp: Raoul Start: 13:30 Slut: 14:30  | Galaxy   |
-      | Grupp: Raoul Start: 14:00 Slut: 14:30  | Atlantis |
-      | Grupp: Volvo Start: 08:00 Slut: 09:30  | Atlantis |
-      | Grupp: Thomas Start: 17:00 Slut: 18:30 | Atlantis |
+      | content                                  | resource |
+      | Group: Thomas Start: 10:30 Finish: 11:30 | Galaxy   |
+      | Group: Raoul Start: 13:30 Finish: 14:30  | Galaxy   |
+      | Group: Raoul Start: 14:00 Finish: 14:30  | Atlantis |
+      | Group: Volvo Start: 08:00 Finish: 09:30  | Atlantis |
+      | Group: Thomas Start: 17:00 Finish: 18:30 | Atlantis |
 
   Scenario: Display slot details
     Given time is frozen at 2016-01-02
@@ -59,13 +59,13 @@ Feature: As an admin
     And I scroll down in the "Galaxy" box
     And I click on "16:30 - 17:00" for "Galaxy"
     And I fill in "Client" with "Craft Academy Labs"
-    And I fill in "Börjar" with "16:00"
-    And I fill in "Slutar" with "16:30"
+    And I fill in "Start" with "16:00"
+    And I fill in "Finish" with "16:30"
     And I click "Create"
     And I scroll down in the "Galaxy" box
     Then I should see the following content in resource box
-      | content                                            | resource |
-      | Grupp: Craft Academy Labs Start: 16:00 Slut: 16:30 | Galaxy   |
+      | content                                              | resource |
+      | Group: Craft Academy Labs Start: 16:00 Finish: 16:30 | Galaxy   |
     And I should see "2016-01-03"
 
 
@@ -74,9 +74,7 @@ Feature: As an admin
     And I am using the dashboard on "2016-01-02"
     And I click on "10:30 - 11:00" for "Galaxy"
     And I fill in "Client" with "Jessica"
-    And I fill in "Börjar" with "10:30"
-    And I fill in "Slutar" with "11:30"
+    And I fill in "Start" with "10:30"
+    And I fill in "Finish" with "11:30"
     And I click "Create"
-    Then I should see "The resource is fully booked"
-
-
+    Then I should see "The room is already booked"

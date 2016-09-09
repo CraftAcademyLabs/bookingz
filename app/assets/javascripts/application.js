@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -16,8 +17,6 @@
 //= require foundation-datetimepicker
 //= require turbolinks
 //= require_tree .
-
-
 
 $(document).ready(function () {
     dateOnPageLoad();

@@ -24,7 +24,7 @@ Feature: As an Administrator
   Scenario: Visit landing page as admin
     Given I am logged in as "admin@random.com"
     And I navigate to the "landing" page
-    Then I should see "Klicka på rummen ni vill boka eller göra en ändring"
+    Then I should see "Click on the rooms you want to book or make a change."
     And I should see "GALAXY"
     And I should see "ATLANTIS"
 
