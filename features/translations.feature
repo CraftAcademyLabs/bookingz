@@ -132,31 +132,9 @@ Feature: As a system user
   Scenario: Log in with wrong email as a se system user
     Given the locale is set to "se"
     Then I navigate to the "landing" page
+    And show me the page
     And I fill in "user[email]" with "wrong@mail.com"
     And I fill in "user[password]" with "password"
     And I click :"Logga in" button
     Then I should see :"Ogiltig epost eller lösenord."
-  # 
-  # Scenario: Log in with wrong password as a se system user
-  #   Given the locale is set to "se"
-  #   Then I navigate to the "landing" page
-  #   And I fill in "user[email]" with "admin@email.com"
-  #   And I fill in "user[password]" with "password_wrong"
-  #   And I click :"Logga in" button
-  #   Then I should see :"Ogiltig epost eller lösenord."
-  #
-  # Scenario: Sign up with blank fields as a se visitor
-  #   Given the locale is set to "se"
-  #   Then I navigate to the "sign up" page
-  #   And I fill in "user[email]" with " "
-  #   And I fill in "user[password]" with " "
-  #   And I fill in "user[password_confirmation]" with " "
-  #   And I click :"Logga in" button
-  #   Then I should see :"Email kan inte vara tom"
-  #   And I should see :"Password kan inte vara tom"
-  #
-  # Scenario: Fill in forgot password with blank field as an en system user
-  #   Given I navigate to the "Forgot your password" page
-  #   Then I fill in "user[email]" with " "
-  #   And I click :"Återställ lösenord" button
-  #   Then I should see :"Email kan inte vara tom"
+  

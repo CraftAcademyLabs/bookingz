@@ -116,9 +116,9 @@ Then(/^the locale is set to "([^"]*)"$/) do |locale|
 end
 
 Then(/^I should see :"([^"]*)"$/) do |text|
-  page.has_content? I18n.t(text)
+  page.has_content I18n.t(text)
 end
 
 Then(/^I click :"([^"]*)" button$/) do |button|
-  click_button?(I18n.t(button))
+  click_button(I18n.t(button))
 end

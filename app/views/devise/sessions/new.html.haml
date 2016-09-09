@@ -1,17 +1,17 @@
 %h2= t('.sign_in')
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field
-    = label_tag(t(:email))
+    = f.label (t(:email))
     %br/
     = f.email_field :email, autofocus: true
   .field
-    = label_tag(t(:password))
+    = f.label (t(:password))
     %br/
     = f.password_field :password, autocomplete: "off"
   - if devise_mapping.rememberable?
     .field
       = f.check_box :remember_me
-      = label_tag(t(:remember_me))
+      = f.label(t(:remember_me))
   .actions
     = f.submit t('.sign_in')
 = render "devise/shared/links"
