@@ -113,12 +113,6 @@ Then(/^I click "([^"]*)" button$/) do |button|
   click_link_or_button button
 end
 
-Then(/^the locale is set to "([^"]*)"$/) do |locale|
-  steps %Q{
-  Given I click "#{locale}" button
-        }
-end
-
 
 And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text

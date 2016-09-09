@@ -15,5 +15,5 @@ After do
 end
 
 Given(/^the application is set to "([^"]*)"$/) do |arg|
-  binding.pry
+  I18n.locale = :sv
 end

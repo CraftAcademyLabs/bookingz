@@ -42,3 +42,7 @@ Feature: As an Administrator
     When I click on "Atlantis"
     Then I should not see "The Atlantis room"
     And I should not see "The Galaxy room"
+
+
+
+
