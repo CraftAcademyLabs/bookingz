@@ -14,6 +14,6 @@ After do
   Timecop.return
 end
 
-Given(/^the application is set to "([^"]*)"$/) do |arg|
-  I18n.locale = :sv
+Given(/^the application is set to "([^"]*)"$/) do |locale|
+  I18n.locale = locale.to_sym
 end
