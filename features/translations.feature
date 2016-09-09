@@ -130,21 +130,22 @@ Feature: As a system user
     And I should see :"Skapa"
 
   Scenario: Log in with wrong email as a se system user
-    Given the locale is set to "se"
-    Then I navigate to the "landing" page
-    And I fill in "user[email]" with "wrong@mail.com"
-    And I fill in "user[password]" with "password"
-    And I click :"Logga in" button
-    Then I should see :"Ogiltig epost eller lösenord."
-  # 
-  # Scenario: Log in with wrong password as a se system user
-  #   Given the locale is set to "se"
-  #   Then I navigate to the "landing" page
-  #   And I fill in "user[email]" with "admin@email.com"
-  #   And I fill in "user[password]" with "password_wrong"
-  #   And I click :"Logga in" button
-  #   Then I should see :"Ogiltig epost eller lösenord."
-  #
+    Given I navigate to the "landing" page
+    And the locale is set to "Swedish"
+    Then show me an image of the page
+    And I fill in "Epost" with "wrong@mail.com"
+    And I fill in "Lösenord" with "password"
+    And I click "Logga in" button
+    Then I should see "Ogiltig epost eller lösenord."
+
+   Scenario: Log in with wrong password as a se system user
+     Given the locale is set to "se"
+     Then I navigate to the "landing" page
+     And I fill in "Epost" with "admin@email.com"
+     And I fill in "Lösenord" with "password_wrong"
+     And I click "Logga in" button
+     Then I should see "Ogiltig epost eller lösenord."
+
   # Scenario: Sign up with blank fields as a se visitor
   #   Given the locale is set to "se"
   #   Then I navigate to the "sign up" page

@@ -112,13 +112,8 @@ Then(/^I click "([^"]*)" button$/) do |button|
 end
 
 Then(/^the locale is set to "([^"]*)"$/) do |locale|
-  I18n.locale = locale
+  steps %Q{
+  Given I click "#{locale}" button
+        }
 end
 
-Then(/^I should see :"([^"]*)"$/) do |text|
-  page.has_content? I18n.t(text)
-end
-
-Then(/^I click :"([^"]*)" button$/) do |button|
-  click_button?(I18n.t(button))
-end
