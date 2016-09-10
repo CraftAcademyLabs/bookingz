@@ -3,4 +3,8 @@
     = application_name
   %h2
     %small
-      = link_to 'by CA Labs', page_path('ca_labs')
+      = link_to 'by CA Labs', page_path(id: 'ca_labs')
+  %p
+    %small
+      = link_to 'Swedish', locale: 'sv' |
+      = link_to 'English', locale: 'en'

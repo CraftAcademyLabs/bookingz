@@ -1,5 +1,7 @@
 ## Bookingz
 
+Final project for Craft Academy June-16 cohort
+
 #### Build
 [![Build Status](https://semaphoreci.com/api/v1/craftacademy/bookingz/branches/develop/badge.svg)](https://semaphoreci.com/craftacademy/bookingz)
 
@@ -8,7 +10,8 @@ Develop [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/booki
 
 Master [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=develop)](https://coveralls.io/github/CraftAcademy/bookingz?branch=master)
 
-Admin interface  and API for Conferance Booking System
+Admin interface  and API for Conference Booking System
+
 
 ## Copyright and license
 

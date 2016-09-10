@@ -31,6 +31,7 @@ gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develo
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
@@ -46,6 +47,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'timecop'
+  gem 'pry-byebug'
 end
 
 group :development do

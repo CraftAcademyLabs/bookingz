@@ -114,12 +114,8 @@ describe Api::ApiController, type: :request do
                              },
                              {'info': {'id': 1, 'time': '15:30 - 16:00', 'client': 'Craft Academy', 'booking_time': '15:30 - 16:30'},
                               'state': 'booked'},
-                             {
-                                 'info': {
-                                     'time': '16:00 - 16:30'
-                                 },
-                                 'state': 'free'
-                             },
+                             {'info': {'id': 1, 'time': '16:00 - 16:30', 'client': 'Craft Academy', 'booking_time': '15:30 - 16:30'},
+                              'state': 'booked'},
                              {
                                  'info': {
                                      'time': '16:30 - 17:00'

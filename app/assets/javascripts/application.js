@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -14,10 +15,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require foundation-datetimepicker
-//= require turbolinks
+// require turbolinks
 //= require_tree .
-
-
 
 $(document).ready(function () {
     dateOnPageLoad();

@@ -35,9 +35,9 @@ RSpec.describe Resource, type: :model do
       end
 
       it 'rejects identical booking with ActsAsBookable::AvailabilityError' do
-        expect{
+        expect {
           subject.be_booked! user, time_start: @from, time_end: @to, amount: 4
-        }.to raise_error(ActsAsBookable::AvailabilityError, 'the Resource is fully booked')
+        }.to raise_error(ActsAsBookable::AvailabilityError, 'The room is already booked')
       end
 
       it 'is of ActsAsBookable::Booking class' do

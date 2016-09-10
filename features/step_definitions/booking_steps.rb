@@ -47,7 +47,7 @@ end
 
 And(/^I click on "([^"]*)" for "([^"]*)"$/) do |slot, resource|
   @resource = Resource.find_by(designation: resource)
-  script = "var element = $( '#card-#{@resource.id} .content .with-scroll .action' ).filter(function () { return this.innerHTML == '#{slot}';}); element.click();"
+  script = "var e = $('#card-#{@resource.id} .content .with-scroll .action').filter('.action:contains(\"#{slot}\")')[0].click();"
   page.execute_script(script)
   sleep(0.1) until page.evaluate_script('$.active') == 0
 end
