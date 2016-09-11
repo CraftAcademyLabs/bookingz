@@ -4,10 +4,12 @@ class Resource < ApplicationRecord
 
  def start_date_cannot_be_in_the_past
    if self.bookings.present? && expiration_date < Date.today
-     errors.add(:expiration_date, "can't be in the past")
+     errors.add(:expiration_date, "Can't book a room in the past")
    end
  end
-  def current_day_bookings(date)
-    self.bookings.select {|booking| booking.time_start.to_date == Date.parse(date)}
-  end
+
+ def current_day_bookings(date)
+   self.bookings.select {|booking| booking.time_start.to_date == Date.parse(date)}
+ end
+
 end

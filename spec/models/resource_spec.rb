@@ -40,6 +40,14 @@ RSpec.describe Resource, type: :model do
         }.to raise_error(ActsAsBookable::AvailabilityError, 'The room is already booked')
       end
 
+      it 'rejects past dates bookings' do
+        @from = Date.today - 9.hours
+        @to = @from + 2.hours
+        expect {
+          subject.be_booked! user, time_start: @from, time_end: @to, amount: 4
+        }.to raise_error('Can\'t book a room in the past')
+      end
+
       it 'is of ActsAsBookable::Booking class' do
         expect(subject.bookings.last.class).to eq ActsAsBookable::Booking
       end
