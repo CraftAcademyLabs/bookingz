@@ -8,7 +8,7 @@ Final project for Craft Academy June-16 cohort
 #### Coverage
 Develop [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=develop)](https://coveralls.io/github/CraftAcademy/bookingz?branch=develop)
 
-Master [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=develop)](https://coveralls.io/github/CraftAcademy/bookingz?branch=master)
+Master [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=master)](https://coveralls.io/github/CraftAcademy/bookingz?branch=master)
 
 Admin interface  and API for Conference Booking System
 
