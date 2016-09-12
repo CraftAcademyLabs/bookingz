@@ -45,7 +45,7 @@ function loadCurrentBookings(response) {
     var res = response;
     res.items.forEach(function (item) {
         var card = ['#card', item.id].join('-');
-        $(card + " .content").append('<div class="with-scroll"></div>')
+        $(card + " .content").append('<div class="with-scroll"></div>');
         item.slots.forEach(function (slot) {
             $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
@@ -61,21 +61,30 @@ function updateCurrentBookings(response) {
             $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
     });
-
 }
 
 function getBackgroundColor(obj) {
-    var color = (obj.state == 'booked') ? 'red' : 'green';
-    return color;
+  var currentDate = new Date(getDispalyedDate() + " 00:00");
+  var color = (obj.state == 'booked') ? 'red' : 'green';
+
+  if (currentDate < today()) {
+    color = 'grey';
+  }
+
+  return color;
+}
+
+function today() {
+  return new Date(new Date().toJSON().slice(0,10) + " 00:00");
 }
 
 function getInfo(obj) {
-    var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
-    return message;
+  var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
+  return message;
 }
 
 function setSlotMessage(obj) {
-    var booking_times = obj.info.booking_time.split(' - ')
+    var booking_times = obj.info.booking_time.split(' - ');
     var message;
     if (window.location.href.match('en') == 'en') {
       message = [obj.info.time, 'Group: ' + obj.info.client, 'Start: ' + booking_times[0], 'Finish: ' + booking_times[1]].join(' ');
@@ -100,22 +109,28 @@ function getDispalyedDate() {
 }
 
 function populateAndShowModal(object) {
-    var obj, resource, slot, card, date, id, modal, booking_times;
+    var obj, resource, slot, card, date, newDate, id, modal, booking_times;
     obj = object;
     card = $(obj).parent().parent().parent();
     resource = card.find('.accordion-title').text();
     slot = $(obj).text();
     date = getDispalyedDate();
+    newDate = new Date(date + " 00:00");
     id = card[0].id.split("-").pop();
     $('#booking_resource_id').val(id);
     card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
     modal = new Foundation.Reveal($('#slot-modal'));
+    errorModal = new Foundation.Reveal($('#error-modal'));
     booking_times = object.textContent.split(' - ');
     $('#model-content #slot').html([resource, date, slot].join(' - '));
     $('#booking_booking_date').val(date);
     $('#booking_time_start').val(booking_times[0]);
     $('#booking_time_end').val(booking_times[1]);
-    modal.open();
+    if (newDate < today()) {
+      errorModal.open();
+    } else {
+      modal.open();
+    }
 }
 
 function navigateDate(val) {
