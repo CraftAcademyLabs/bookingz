@@ -12,6 +12,7 @@ RSpec.describe Api::ApiHelper, type: :helper do
   describe '#slot_booked?' do
     let!(:resource) { FactoryGirl.create(:resource) }
     let!(:user) { FactoryGirl.create(:user) }
+    
 
     before do
       Timecop.freeze('2016-02-01')
