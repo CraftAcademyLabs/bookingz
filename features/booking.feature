@@ -80,7 +80,7 @@ Feature: As an admin
     Then I should see "The room is already booked"
 
   Scenario: Rejects a booking on past date
-    Given time is frozen at 2016-01-02
+    Given it is currently 2016-01-02
     And I am using the dashboard on "2016-01-01"
     And I click on "10:30 - 11:00" for "Galaxy"
     And I fill in "Client" with "Craft Academy"
@@ -88,3 +88,9 @@ Feature: As an admin
     And I fill in "Finish" with "11:30"
     And I click "Create"
     Then I should see "Validation failed: time start can't be in the past"
+
+  Scenario: Rejects a booking on past date
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard on "2016-01-01"
+    And I click on "10:30 - 11:00" for "Galaxy"
+    Then I should see "Unavailable"

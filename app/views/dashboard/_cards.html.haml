@@ -50,3 +50,11 @@
       .row
         .medium-5.columns
           = submit_tag t('dashboard.button'), class: 'button'
+
+.small.reveal#error-modal
+  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
+    %span{aria: {hidden: ''}}
+      &times;
+  #model-content
+    %h3 Unavailable
+    %p.lead This date has already passed.
