@@ -12,12 +12,14 @@ RSpec.describe Api::ApiHelper, type: :helper do
   describe '#slot_booked?' do
     let!(:resource) { FactoryGirl.create(:resource) }
     let!(:user) { FactoryGirl.create(:user) }
+    # let!(:client) { FactoryGirl.create(:client) }
 
     before do
       Timecop.freeze('2016-02-01')
       from = Date.today + 15.hour + 30.minutes
       to = from + 1.hour
-      @booking = resource.be_booked! user, time_start: from, time_end: to, amount: 4
+      client = :client
+      @booking = resource.be_booked! user, client: client, time_start: from, time_end: to, amount: 4
     end
 
     it 'returns nil if slot is free' do
