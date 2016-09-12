@@ -78,3 +78,13 @@ Feature: As an admin
     And I fill in "Finish" with "11:30"
     And I click "Create"
     Then I should see "The room is already booked"
+
+  Scenario: Rejects a booking without a client
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard on "2016-01-03"
+    And I click on "10:30 - 11:00" for "Galaxy"
+    And I fill in "Client" with ""
+    And I fill in "Start" with "10:30"
+    And I fill in "Finish" with "11:30"
+    And I click "Create"
+    Then I should see "Validation failed: client can't be empty"
