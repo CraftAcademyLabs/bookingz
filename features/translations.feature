@@ -4,6 +4,8 @@ Feature: As a system user
   I would like to see UI elements translated to both languages
 
   Background:
+    Given time is frozen at 2016-01-02
+    
     Given the following admin account is configured
       | email           | password |
       | admin@email.com | password |

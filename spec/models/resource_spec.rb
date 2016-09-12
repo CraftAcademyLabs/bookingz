@@ -11,6 +11,14 @@ RSpec.describe Resource, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :designation }
     it { is_expected.to have_db_column :description }
+    it { is_expected.to have_db_column :uuid }
+  end
+
+  describe 'Validations' do
+    it {is_expected.to validate_presence_of :uuid}
+    it {is_expected.to validate_presence_of :designation}
+    it {is_expected.to validate_presence_of :capacity}
+    it {is_expected.to validate_presence_of :schedule}
   end
 
   describe 'bookable methods' do
@@ -27,7 +35,7 @@ RSpec.describe Resource, type: :model do
       before do
         @from = Date.today.next_week + 9.hours
         @to = @from + 2.hours
-        subject.be_booked! user, time_start: @from, time_end: @to, amount: subject.capacity
+        subject.be_booked! user, client: 'Whoever', time_start: @from, time_end: @to, amount: subject.capacity
       end
 
       it 'adds booking' do
@@ -54,7 +62,7 @@ RSpec.describe Resource, type: :model do
       Timecop.freeze('2016-01-01')
       from = Date.today + 15.hour + 30.minutes
       to = from + 1.hour
-      @booking = subject.be_booked! user, time_start: from, time_end: to, amount: 4
+      @booking = subject.be_booked! user, client: 'Whoever', time_start: from, time_end: to, amount: 4
     end
 
     it 'returns a list of today´s bookings' do

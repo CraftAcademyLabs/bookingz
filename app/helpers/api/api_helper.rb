@@ -9,17 +9,12 @@ module Api::ApiHelper
        (Time.now.midnight + ((i + 1)*increment) + start_time).strftime('%H:%M')].join(' - ')
     end
   end
-
   # Usage: create_hour_range(start_time: 8.hours, end_time: 20.hours)
 
-
-  def slot_booking(restaurant, date, slot)
+  def slot_booking(resource, date, slot)
     slot_start, slot_end, *tmp = slot.split(' - ')
-    @booking = restaurant.current_day_bookings(date).detect do |booking|
-
-      #(DateTime.parse([date, slot_start].join(' '))..DateTime.parse([date, slot_end].join(' '))).include?(booking.time_start.to_datetime)
+    @booking = resource.current_day_bookings(date).detect do |booking|
       (DateTime.parse([date, slot_start].join(' '))..DateTime.parse([date, slot_end].join(' '))).overlaps?(booking.time_start.to_datetime + 1.minute..booking.time_end.to_datetime - 1.minute)
-      #(DateTime.parse([date, slot_start].join(' '))..DateTime.parse([date, slot_end].join(' '))).cover?(booking.time_end.to_datetime - 1.minute)
     end
   end
 end
