@@ -94,6 +94,7 @@ And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
 end
 
 And(/^I click "([^"]*)"$/) do |value|
+  binding.pry
   find_button(value).trigger('click')
 end
 
@@ -116,4 +117,8 @@ end
 
 And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text
+end
+
+Then(/^I should see a required field error$/) do
+  binding.pry
 end
