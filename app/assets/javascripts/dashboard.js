@@ -64,13 +64,17 @@ function updateCurrentBookings(response) {
 }
 
 function getBackgroundColor(obj) {
-    var date = currentDate();
+  var date = getDispalyedDate();
+  var newDate = new Date(date + " 00:00");
     var color = (obj.state == 'booked') ? 'red' : 'green';
-    if (date < Date.today) {
-      color = 'grey'
-    } else {
+    if (newDate < today()) {
+    color = 'grey'
+    }
     return color;
-  }
+}
+
+function today() {
+  return new Date(new Date().toISOString().slice(0,10) + " 00:00")
 }
 
 function getInfo(obj) {

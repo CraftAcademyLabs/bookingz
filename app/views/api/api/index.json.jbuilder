@@ -21,5 +21,3 @@ json.items @resources.each do |resource|
     end
   end
 end
-
-
