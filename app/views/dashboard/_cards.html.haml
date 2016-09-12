@@ -38,7 +38,7 @@
       .row
         .medium-12.columns
           = label_tag 'booking[client]', t('dashboard.client')
-          = text_field_tag 'booking[client]', required: true
+          = text_field_tag 'booking[client]', nil, required: true
       .row
         .medium-6.columns
           = label_tag 'booking[time_start]', t('dashboard.time_start')
