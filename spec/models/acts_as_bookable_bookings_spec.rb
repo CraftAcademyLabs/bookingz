@@ -12,4 +12,11 @@ describe ActsAsBookable::Booking, type: :model do
     expect(booking.errors.full_messages).to include 'Time start can\'t be in the past'
   end
 
+  describe 'reject booking if no client' do
+    it 'rejects bookings without a client' do
+      booking = described_class.create( client: '', time_start: Date.today)
+      expect(booking).not_to be_valid
+      expect(booking.errors.full_messages).to include 'Client can\'t be empty'
+    end
+  end
 end
