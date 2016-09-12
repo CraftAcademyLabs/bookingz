@@ -27,8 +27,7 @@ RSpec.describe Resource, type: :model do
       before do
         @from = Date.today.next_week + 9.hours
         @to = @from + 2.hours
-        client = :client
-        subject.be_booked! user, client: client, time_start: @from, time_end: @to, amount: subject.capacity
+        subject.be_booked! user, client: 'Whoever', time_start: @from, time_end: @to, amount: subject.capacity
       end
 
       it 'adds booking' do
@@ -55,8 +54,7 @@ RSpec.describe Resource, type: :model do
       Timecop.freeze('2016-01-01')
       from = Date.today + 15.hour + 30.minutes
       to = from + 1.hour
-      client = :client
-      @booking = subject.be_booked! user, client: client, time_start: from, time_end: to, amount: 4
+      @booking = subject.be_booked! user, client: 'Whoever', time_start: from, time_end: to, amount: 4
     end
 
     it 'returns a list of today´s bookings' do

@@ -25,8 +25,7 @@ RSpec.describe User, type: :model do
       before do
         from = Date.today.next_week + 9.hours
         to = from + 2.hours
-        client = :client
-        subject.book! resource, client: client, time_start: from, time_end: to, amount: 4
+        subject.book! resource, client: 'Whoever', time_start: from, time_end: to, amount: 4
       end
 
       it 'adds booking' do
