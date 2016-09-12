@@ -20,7 +20,6 @@ describe Api::ApiController, type: :request do
   it 'reject object creation on invalid request' do
     post '/api/resources', {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
     expected_error_response = ['Capacity is not a number', 'Capacity can\'t be blank', 'Designation can\'t be blank'].sort
-
     expect(response_json['message']).to eq expected_error_response
   end
 
@@ -29,10 +28,8 @@ describe Api::ApiController, type: :request do
     post '/api/resources', {params: {resource: {uuid: '',
                                                 designation: 'New conference room',
                                                 capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
-
-
+    
     expected_error_response = ['Uuid can\'t be blank'].sort
-
     expect(response_json['message']).to eq expected_error_response
   end
 end
