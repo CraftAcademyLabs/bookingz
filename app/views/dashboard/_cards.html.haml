@@ -29,8 +29,8 @@
     %span{aria: {hidden: ''}}
       &times;
   #model-content
-    %h2
-    = t('dashboard.reservation')
+    %h3
+      = t('dashboard.reservation')
     #slot
     = form_tag (create_booking_path) do
       = hidden_field_tag 'booking[resource_id]'

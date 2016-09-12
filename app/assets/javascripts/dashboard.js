@@ -45,7 +45,7 @@ function loadCurrentBookings(response) {
     var res = response;
     res.items.forEach(function (item) {
         var card = ['#card', item.id].join('-');
-        $(card + " .content").append('<div class="with-scroll"></div>')
+        $(card + " .content").append('<div class="with-scroll"></div>');
         item.slots.forEach(function (slot) {
             $(card + " .content .with-scroll").append('<div class="action" id="action_' + slot.info.id + '" style="background-color: ' + getBackgroundColor(slot) + '">' + getInfo(slot) + '</div>');
         });
@@ -64,34 +64,27 @@ function updateCurrentBookings(response) {
 }
 
 function getBackgroundColor(obj) {
-  var date = getDispalyedDate();
-  var newDate = new Date(date + " 00:00");
+  var currentDate = new Date(getDispalyedDate() + " 00:00");
   var color = (obj.state == 'booked') ? 'red' : 'green';
-  if (newDate < today()) {
+
+  if (currentDate < today()) {
     color = 'grey';
   }
+
   return color;
 }
 
-// function hideModal() {
-//   var date = getDispalyedDate();
-//   var newDate = new Date(date + " 00:00");
-//   if (newDate < today()) {
-//     $('#slot-modal').foundation('reveal', 'close');
-//   }
-// }
-
 function today() {
-  return new Date(new Date().toISOString().slice(0,10) + " 00:00")
+  return new Date(new Date().toJSON().slice(0,10) + " 00:00");
 }
 
 function getInfo(obj) {
-    var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
-    return message;
+  var message = (obj.info.client !== null) ? setSlotMessage(obj) : obj.info.time;
+  return message;
 }
 
 function setSlotMessage(obj) {
-    var booking_times = obj.info.booking_time.split(' - ')
+    var booking_times = obj.info.booking_time.split(' - ');
     var message;
     if (window.location.href.match('en') == 'en') {
       message = [obj.info.time, 'Group: ' + obj.info.client, 'Start: ' + booking_times[0], 'Finish: ' + booking_times[1]].join(' ');
