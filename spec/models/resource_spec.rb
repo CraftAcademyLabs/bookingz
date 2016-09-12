@@ -11,6 +11,14 @@ RSpec.describe Resource, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :designation }
     it { is_expected.to have_db_column :description }
+    it { is_expected.to have_db_column :uuid }
+  end
+
+  describe 'Validations' do
+    it {is_expected.to validate_presence_of :uuid}
+    it {is_expected.to validate_presence_of :designation}
+    it {is_expected.to validate_presence_of :capacity}
+    it {is_expected.to validate_presence_of :schedule}
   end
 
   describe 'bookable methods' do
