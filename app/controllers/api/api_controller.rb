@@ -22,7 +22,7 @@ class Api::ApiController < ActionController::API
       #render json: {message: 'success', resource: @resource}
       render :create
     else
-      render json: {message: @resource.errors.full_messages}
+      render json: {message: @resource.errors.full_messages.sort}
     end
   end
 
