@@ -79,7 +79,7 @@ function today() {
 }
 
 function getInfo(obj) {
-  var message = (obj.info.client !== null) ? setSlotMessage(obj) : obj.info.time;
+  var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
   return message;
 }
 
