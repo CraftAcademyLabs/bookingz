@@ -8,11 +8,12 @@ Once you have logged in you will be redirected to the [Dashboard](http://booking
 
 Just follow these simple steps:
 
-  * Choose the date using the navigation arrows on top of your Dashboard
+  * Choose the date using the navigation arrows on top of your _Dashboard_
   * Click on the desired time slot in your room of interest
   * Fill in the name of your company
   * Select a starting and finishing time for your event
+  * Click the `Create` button
 
-![Instructions Gif](app/assets/images/bookingz.gif)
+![Instructions Gif](https://github.com/luciademoja/bookingz/blob/markdown/app/assets/images/bookingz.gif?raw=true =600x1200)
 
-And you are done! The room is now booked successfully.
+**And you are done! The room is now booked successfully.**
