@@ -1,1 +1,4 @@
-= markdown_parser('app/views/markdown/instructions.md')
+- if I18n.locale ==  :en
+  = markdown_parser('app/views/markdown/instructionsEN.md')
+- else
+  = markdown_parser('app/views/markdown/instructionsSV.md')
