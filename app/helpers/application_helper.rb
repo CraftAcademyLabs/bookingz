@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   def markdown_parser(file)
-    @file = File.open('app/views/markdown/instructions.md')
+    file_to_open = File.open(file)
 
     options = {
       filter_html:     true,
@@ -41,7 +41,7 @@ module ApplicationHelper
      renderer = Redcarpet::Render::HTML.new(options)
      markdown = Redcarpet::Markdown.new(renderer, extensions = {})
 
-    markdown.render(@file.read).html_safe
+    markdown.render(file_to_open.read).html_safe
   end
 
 end
