@@ -14,6 +14,7 @@ gem 'redis', '~> 3.0'
 gem 'config'
 gem 'high_voltage'
 gem 'rack-cors', require: 'rack/cors'
+gem 'redcarpet'
 
 # UI
 gem 'haml-rails'
