@@ -28,7 +28,6 @@ Feature: As a system user
     And I should see "Sign in" button
     And I should see "Sign up" link
     And I should see "Forgot your password" link
-    And I should see "Home"
 
   Scenario: Visiting the Forgot your password page as an en system user
     Given I navigate to the "Forgot your password" page
@@ -98,7 +97,6 @@ Feature: As a system user
     And I should see "Logga in"
     And I should see "Registrera dig"
     And I should see "Glömt ditt lösenord"
-    And I should see "Hem"
 
   Scenario: Visiting the Forgot your password page as a se system user
     Given the application is set to "sv"
