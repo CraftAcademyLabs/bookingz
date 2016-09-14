@@ -118,7 +118,6 @@ function populateAndShowModal(object) {
     newDate = new Date(date + " 00:00");
     id = card[0].id.split("-").pop();
     $('#booking_resource_id').val(id);
-    card.find('#' + obj.id).css({'color': 'red', 'background-color': 'orange'});
     modal = new Foundation.Reveal($('#slot-modal'));
     errorModal = new Foundation.Reveal($('#error-modal'));
     booking_times = object.textContent.split(' - ');
