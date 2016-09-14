@@ -2,11 +2,8 @@
   .row
     .small-12.columns
       %p.slogan
-        = application_name
+        = link_to application_name, root_path
       %p.links
-        = link_to t('footer.home'), '#'
-        - if current_user
-          = link_to t('footer.instructions'), page_path(id: 'instructions')
-          = link_to 'CA Labs', page_path(id: 'ca_labs')
+        = link_to 'CA Labs', page_path(id: 'ca_labs')
       %p.copywrite
         = copyright_message

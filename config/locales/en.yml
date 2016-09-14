@@ -37,3 +37,6 @@ en:
   footer:
     home: Home
     instructions: Instructions
+  header:
+    swedish: Swedish
+    english: English
