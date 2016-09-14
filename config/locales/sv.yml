@@ -37,3 +37,7 @@ sv:
   footer:
     home: Hem
     instructions: Instruktioner
+  header:
+    swedish: Svenska
+    english: Engelska
+

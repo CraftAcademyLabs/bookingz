@@ -1,10 +1,20 @@
-%header.header
-  %h1.headline
-    = application_name
-  %h2
-    %small
-      = link_to 'by CA Labs', page_path(id: 'ca_labs')
-  %p
-    %small
-      = link_to 'Swedish', locale: 'sv' |
-      = link_to 'English', locale: 'en'
+.top-bar
+  .top-bar-title
+    %span{data: {hide: {for: 'medium'}, responsive: {toggle:  'responsive-menu'}}}
+      %button.menu-icon.dark{data: {toggle: ''}, type: 'button'}
+      %strong
+        = application_name
+  #responsive-menu
+    .top-bar-left
+      %ul.menu
+        %li
+          = image_tag 'ca_logo_graphic_color.png', style: 'height: 40px; width: auto;'
+        - if current_user
+          %li
+            = link_to t('footer.instructions'), page_path(id: 'instructions')
+    .top-bar-right
+      %ul.menu
+        %li
+          = link_to t('header.swedish'), locale: 'sv'
+        %li
+          = link_to t('header.english'), locale: 'en'
