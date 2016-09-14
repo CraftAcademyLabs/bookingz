@@ -14,7 +14,7 @@ Feature: As a system owner
     And I navigate to the "landing" page
     And I click on "Instructions"
     Then I should be on the "Instructions" page
-    Then I should see "Getting Started"
+    Then I should see "Getting started"
 
   Scenario: Visit Ca Labs page as admin
     Given I am logged in as "admin@random.com"
