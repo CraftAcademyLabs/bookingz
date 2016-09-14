@@ -9,12 +9,12 @@ Feature: As a system owner
       | email            | password       |
       | admin@random.com | admin_password |
 
-  Scenario: Visit instructions page as admin
+  Scenario: Instructions page renders the markdown file
     Given I am logged in as "admin@random.com"
     And I navigate to the "landing" page
     And I click on "Instructions"
     Then I should be on the "Instructions" page
-    Then I should see "LOREM IPSUM BACON"
+    Then I should see "Getting Started"
 
   Scenario: Visit Ca Labs page as admin
     Given I am logged in as "admin@random.com"
@@ -27,4 +27,4 @@ Feature: As a system owner
     Given I navigate to the "landing" page
     Then I should be on the "login" page
     And I should see "You need to sign in or sign up before continuing."
-    And I should not see "Instructions"
+    And I should not see "Getting started"
