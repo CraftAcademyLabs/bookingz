@@ -42,9 +42,9 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
       visit page_path('instructions', locale: locale )
     when 'sign up' then
       visit new_user_registration_path(locale: locale)
-    when 'Forgot your password'
+    when 'Forgot your password' then
       visit new_user_password_path(locale: locale)
-    when 'login'
+    when 'login' then
       visit new_user_session_path(locale: locale)
   end
 end
@@ -60,8 +60,10 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = page_path(:ca_labs, locale: locale)
     when 'sign up' then
       expected_path = new_user_registration_path(locale: locale)
-    when 'Forgot your password'
+    when 'Forgot your password' then
       expected_path = new_user_password_path(locale: locale)
+    # when 'Users' then
+    #   expected_path = (locale: locale)
   end
 
   expect(page.current_path).to eq expected_path

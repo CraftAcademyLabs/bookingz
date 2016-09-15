@@ -7,3 +7,10 @@ Feature: As a system adminidtrator
     And I register a new user
     And I attempt to login
     Then I should see "Your account has not been approved by your administrator yet."
+
+  Scenario: Display user approval page
+    Given I am logged in as "admin@random.com"
+    And I navigate to the "dashboard" page
+    And I click on "Users"
+    Then I should be on the "Users" page
+    And I should see "Pending approvals"
