@@ -16,18 +16,6 @@ RSpec.describe User, type: :model do
 
   describe 'approved methods' do
     it { is_expected.to respond_to :approved }
-
-    # context 'respond with message' do
-    #   it 'after signup' do
-    #     signup = described_class.create(signed_up_but_not_approved: true)
-    #     expect(signup.inactive_message).to include 'You have signed up successfully but your account has not been approved by your administrator yet'
-    #   end
-    #
-    #   it 'pending approval' do
-    #     signup = described_class.create(not_approved: true)
-    #     expect(signup.inactive_message).to include 'Your account has not been approved by your administrator yet.'
-    #   end
-    # end
   end
 
   describe 'bookable methods' do

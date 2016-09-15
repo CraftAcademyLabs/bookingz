@@ -27,7 +27,7 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
       user:
-        not_approved: 'Your account has not been approved by your administrator yet.'        
+        not_approved: 'Your account has not been approved by your administrator yet.'
         not_found_in_database: "Invalid %{authentication_keys} or password."
         already_authenticated: "You are already signed in."
         inactive: "Your account is not activated yet."
@@ -59,7 +59,6 @@ en:
         reset_password: 'Reset password'
     registrations:
       user:
-        signed_up_but_not_approved: 'You have signed up successfully but your account has not been approved by your administrator yet'
         destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
         signed_up: "Welcome! You have signed up successfully."
         signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
