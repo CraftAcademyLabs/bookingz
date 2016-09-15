@@ -62,8 +62,8 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = new_user_registration_path(locale: locale)
     when 'Forgot your password' then
       expected_path = new_user_password_path(locale: locale)
-    # when 'Users' then
-    #   expected_path = (locale: locale)
+    when 'users' then
+      expected_path = approvals_users_path(locale: locale)
   end
 
   expect(page.current_path).to eq expected_path
