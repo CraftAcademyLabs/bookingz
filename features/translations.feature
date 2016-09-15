@@ -5,7 +5,7 @@ Feature: As a system user
 
   Background:
     Given time is frozen at 2016-01-02
-    
+
     Given the following admin account is configured
       | email           | password |
       | admin@email.com | password |
@@ -28,7 +28,6 @@ Feature: As a system user
     And I should see "Sign in" button
     And I should see "Sign up" link
     And I should see "Forgot your password" link
-    And I should see "Home"
 
   Scenario: Visiting the Forgot your password page as an en system user
     Given I navigate to the "Forgot your password" page
@@ -98,7 +97,6 @@ Feature: As a system user
     And I should see "Logga in"
     And I should see "Registrera dig"
     And I should see "Glömt ditt lösenord"
-    And I should see "Hem"
 
   Scenario: Visiting the Forgot your password page as a se system user
     Given the application is set to "sv"
@@ -149,6 +147,7 @@ Feature: As a system user
     And I fill in "Lösenord" with "password_wrong"
     And I click "Logga in" button
     Then I should see "Ogiltig epost eller lösenord."
+
   Scenario: Sign up with blank fields as a se visitor
     Given the application is set to "sv"
     And I navigate to the "sign up" page
@@ -163,3 +162,15 @@ Feature: As a system user
     Then I fill in "Epost" with " "
     And I click "Återställ lösenord" button
     Then I should see "Email kan inte vara tom"
+
+  Scenario: Visiting the instructions page as an en visitor
+    Given the application is set to "en"
+    And I am logged in as "admin@email.com"
+    And I navigate to the "Instructions" page
+    Then I should see "Getting started"
+
+  Scenario: Visiting the instructions page as a sv visitor
+    Given the application is set to "sv"
+    And I am logged in as "admin@email.com"
+    And I navigate to the "Instructions" page
+    Then I should see "Kom igång"

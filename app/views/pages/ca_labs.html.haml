@@ -1,8 +1,4 @@
-%h2.headline
-  = t('pages.title')
-%p
-  = t('pages.info')
-  = link_to 'Craft Academy', '//craftacademy.se'
-%p
-  = t('pages.read_more')
-  = link_to 'Introducing Craft Academy Labs', '//blog.craftacademy.se/introducing-craft-academy-labs/'
+- if I18n.locale ==  :en
+  = markdown_parser('app/views/markdown/ca_labs_en.md')
+- else
+  = markdown_parser('app/views/markdown/ca_labs_sv.md')
