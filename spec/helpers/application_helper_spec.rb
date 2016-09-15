@@ -28,5 +28,11 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#parsing' do
+    it 'returns a HTML description from markdown text' do
+      expect(helper.markdown_parser('app/views/markdown/test.md').gsub("\n","")).to eq '<p>Test for the Markdown parsing</p>'
+    end
+  end
+
 
 end
