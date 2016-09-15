@@ -9,7 +9,22 @@ Given(/^I am logged in as "([^"]*)"$/) do |value|
   login_as(user, scope: :user)
 end
 
+Given(/^I register a new user$/) do
+  steps %q{
+    Then I fill in "user[email]" with "test@test.com"
+    And I fill in "user[password]" with "password"
+    And I fill in "user[password_confirmation]" with "password"
+    And I click "Sign up" button
+  }
+end
 
+Given(/^I attempt to login$/) do
+  steps %q{
+    Then I fill in "user[email]" with "test@test.com"
+    And I fill in "user[password]" with "password"
+    And I click "Sign in" button
+  }
+end
 
 Given(/^the following resources exist$/) do |table|
   table.hashes.each do |resource|
