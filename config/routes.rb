@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     post 'create_booking', controller: :dashboard, action: :create_booking
     root controller: :dashboard, action: :index
     get '/pages/*id', controller: :pages, action: :show, as: :page, format: false
-    get '/approvals/users', controller: :approvals, action: :show
+    get '/approvals/users', controller: :approvals, action: :index
   end
 
   namespace :api do

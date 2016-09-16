@@ -20,3 +20,4 @@ Feature: As a system adminidtrator
     And I click on "Users"
     Then I should be on the "users" page
     And I should see "Pending approvals"
+    Then show me an image of the page

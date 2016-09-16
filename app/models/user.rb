@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :set_admin
+
   def active_for_authentication?
     super && approved?
   end
@@ -14,6 +16,16 @@ class User < ApplicationRecord
       :not_approved
     else
       super # Use whatever other message
+    end
+  end
+
+  private
+
+  def set_admin
+    if  User.count == 1
+      User.first.update_attribute(:approved, true)
+    else
+      return true
     end
   end
 end
