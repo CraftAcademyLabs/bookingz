@@ -15,15 +15,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'approved methods' do
-    subject { FactoryGirl.create(:user) }
     it { is_expected.to respond_to :approved }
-
-    context 'admin sign up' do
-      it 'allows sign up without admin approval for the first user' do
-
-      # expect(subject.set_admin.first.approved).to eq true
-      end
-    end
   end
 
   describe 'bookable methods' do
