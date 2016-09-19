@@ -24,37 +24,4 @@
                     = t('dashboard.capacity')
                   = resource.capacity
 
-.small.reveal#slot-modal
-  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
-    %span{aria: {hidden: ''}}
-      &times;
-  #model-content
-    %h3
-      = t('dashboard.reservation')
-    #slot
-    = form_tag (create_booking_path) do
-      = hidden_field_tag 'booking[resource_id]'
-      = hidden_field_tag 'booking[booking_date]'
-      .row
-        .medium-12.columns
-          = label_tag 'booking[client]', t('dashboard.client')
-          = text_field_tag 'booking[client]', nil, required: true
-      .row
-        .medium-6.columns
-          = label_tag 'booking[time_start]', t('dashboard.time_start')
-          = text_field_tag 'booking[time_start]', nil, class: 'picker'
-        .medium-6.columns
-          = label_tag 'booking[time_end]', t('dashboard.time_end')
-          = text_field_tag 'booking[time_end]', nil, class: 'picker'
 
-      .row
-        .medium-5.columns
-          = submit_tag t('dashboard.button'), class: 'button'
-
-.small.reveal#error-modal
-  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
-    %span{aria: {hidden: ''}}
-      &times;
-  #model-content
-    %h3 Unavailable
-    %p.lead This date has already passed.
