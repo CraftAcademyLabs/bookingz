@@ -144,6 +144,7 @@ function populateModal(object) {
   if (object.dataset.state == 'booked') {
     booking_times = object.dataset.booking_time.split(' - ');
     $('#model-content #headline').html('<%= t('dashboard.edit_reservation') %>');
+    $('#model-content #slot').html([resource + '<br>', date + '<br>' + slot].join(' '));
     $('#booking_client').val(object.dataset.client);
     $('#booking_booking_date').val(date);
     $('#booking_time_start').val(booking_times[0]);
@@ -154,7 +155,8 @@ function populateModal(object) {
     return;
     console.log(object);
   } else {
-    $('#model-content #slot').html([resource, date, slot].join(' - '));
+    $('#model-content #slot').html([resource + '<br>', date + '<br>' + slot].join(' '));
+    $('#booking_client').val('');
     $('#booking_booking_date').val(date);
     $('#booking_time_start').val(booking_times[0]);
     $('#booking_time_end').val(booking_times[1]);
