@@ -68,6 +68,20 @@ Feature: As an admin
       | Group: Craft Academy Labs Start: 16:00 Finish: 16:30 | Galaxy   |
     And I should see "2016-01-03"
 
+  Scenario: Change a booking
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard on "2016-01-02"
+    And I scroll down in the "Galaxy" box
+    And I click on "10:30 - 11:00" for "Galaxy"
+    And I fill in "Client" with "Thomas Ochman"
+    And I fill in "Start" with "12:00"
+    And I fill in "Finish" with "13:30"
+    And I click "Update"
+    And I scroll down in the "Galaxy" box
+    Then I should see the following content in resource box
+      | content                                         | resource |
+      | Group: Thomas Ochman Start: 12:00 Finish: 13:30 | Galaxy   |
+
 
 #  Scenario: Rejects a booking on unavailable slot
 #    Given time is frozen at 2016-01-02
@@ -114,4 +128,3 @@ Feature: As an admin
     Then I should see a details modal for "17:00 - 17:30" for "Atlantis"
     And I should see "Thomas"
     And I should see "Edit reservation"
-    Then show me an image of the page

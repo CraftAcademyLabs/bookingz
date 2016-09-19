@@ -13,7 +13,8 @@ en:
           booker_must_be_booker: "A %{model} can not book a room"
   dashboard:
     title: Click on the rooms you want to book or make a change.
-    reservation: Add to reservation
+    reservation: Add reservation
+    edit_reservation: Edit reservation
     client: Client
     time_start: Starting
     time_end: Finish

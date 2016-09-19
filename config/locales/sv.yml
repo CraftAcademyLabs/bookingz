@@ -14,6 +14,7 @@ sv:
   dashboard:
     title: Klicka på rummen ni vill boka eller göra en ändring.
     reservation: Lägg till bokning
+    edit_reservation: Ändra bokning
     client: Klient
     time_start: Börjar
     time_end: Slutar

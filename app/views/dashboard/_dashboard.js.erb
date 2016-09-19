@@ -143,7 +143,7 @@ function populateModal(object) {
   booking_times = object.textContent.split(' - ');
   if (object.dataset.state == 'booked') {
     booking_times = object.dataset.booking_time.split(' - ');
-    $('#model-content #headline').html('Edit reservation');
+    $('#model-content #headline').html('<%= t('dashboard.edit_reservation') %>');
     $('#booking_client').val(object.dataset.client);
     $('#booking_booking_date').val(date);
     $('#booking_time_start').val(booking_times[0]);
