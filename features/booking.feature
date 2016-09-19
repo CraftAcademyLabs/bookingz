@@ -69,15 +69,15 @@ Feature: As an admin
     And I should see "2016-01-03"
 
 
-  Scenario: Rejects a booking on unavailable slot
-    Given time is frozen at 2016-01-02
-    And I am using the dashboard on "2016-01-02"
-    And I click on "10:30 - 11:00" for "Galaxy"
-    And I fill in "Client" with "Jessica"
-    And I fill in "Start" with "10:30"
-    And I fill in "Finish" with "11:30"
-    And I click "Create"
-    Then I should see "The room is already booked"
+#  Scenario: Rejects a booking on unavailable slot
+#    Given time is frozen at 2016-01-02
+#    And I am using the dashboard on "2016-01-02"
+#    And I click on "10:30 - 11:00" for "Galaxy"
+#    And I fill in "Client" with "Jessica"
+#    And I fill in "Start" with "10:30"
+#    And I fill in "Finish" with "11:30"
+#    And I click "Create"
+#    Then I should see "The room is already booked"
 
   # Scenario: Rejects a booking on past date
   #   Given it is currently 2016-01-02
