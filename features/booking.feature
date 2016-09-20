@@ -38,12 +38,12 @@ Feature: As an admin
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
     Then I should see the following content in resource box
-      | content                                  | resource |
-      | Group: Thomas Start: 10:30 Finish: 11:30 | Galaxy   |
-      | Group: Raoul Start: 13:30 Finish: 14:30  | Galaxy   |
-      | Group: Raoul Start: 14:00 Finish: 14:30  | Atlantis |
-      | Group: Volvo Start: 08:00 Finish: 09:30  | Atlantis |
-      | Group: Thomas Start: 17:00 Finish: 18:30 | Atlantis |
+      | content                                     | resource |
+      | Group: Thomas Starts: 10:30 Finishes: 11:30 | Galaxy   |
+      | Group: Raoul Starts: 13:30 Finishes: 14:30  | Galaxy   |
+      | Group: Raoul Starts: 14:00 Finishes: 14:30  | Atlantis |
+      | Group: Volvo Starts: 08:00 Finishes: 09:30  | Atlantis |
+      | Group: Thomas Starts: 17:00 Finishes: 18:30 | Atlantis |
 
   @javascript
   Scenario: Display slot details
@@ -66,8 +66,8 @@ Feature: As an admin
     And I click "Create"
     And I scroll down in the "Galaxy" box
     Then I should see the following content in resource box
-      | content                                              | resource |
-      | Group: Craft Academy Labs Start: 16:00 Finish: 16:30 | Galaxy   |
+      | content                                               | resource |
+      | Group: Craft Academy Labs Starts: 16:00 Finishes: 16:30 | Galaxy   |
     And I should see "2016-01-03"
 
   @javascript
@@ -82,8 +82,8 @@ Feature: As an admin
     And I click "Update"
     And I scroll down in the "Galaxy" box
     Then I should see the following content in resource box
-      | content                                         | resource |
-      | Group: Thomas Ochman Start: 12:00 Finish: 13:30 | Galaxy   |
+      | content                                          | resource |
+      | Group: Thomas Ochman Starts: 12:00 Finishes: 13:30 | Galaxy   |
 
 
   @javascript
