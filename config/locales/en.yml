@@ -16,9 +16,9 @@ en:
     reservation: Add reservation
     edit_reservation: Edit reservation
     client: Client
-    time_start: Starting
-    time_end: Finish
-    group: Group
+    time_start: 'Starts: '
+    time_end: 'Finishes: '
+    group: 'Group: '
     button: Create
     capacity: 'Capacity:'
     details: 'Details:'

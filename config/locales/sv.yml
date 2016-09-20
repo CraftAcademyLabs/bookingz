@@ -16,9 +16,9 @@ sv:
     reservation: Lägg till bokning
     edit_reservation: Ändra bokning
     client: Klient
-    time_start: Börjar
-    time_end: Slutar
-    group: Grupp
+    time_start: 'Börjar: '
+    time_end: 'Slutar: '
+    group: 'Grupp: '
     button: Skapa
     capacity: 'Kapacitet:'
     details: 'Detaljer:'
