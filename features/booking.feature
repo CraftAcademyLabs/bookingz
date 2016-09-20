@@ -1,4 +1,3 @@
-@javascript
 Feature: As an admin
   In order be able to book a resource
   I would like to see current bookings on the dashboard
@@ -25,7 +24,7 @@ Feature: As an admin
       | Atlantis | Volvo  | 2016-01-02 | 08:00      | 09:30    |
       | Atlantis | Thomas | 2016-01-02 | 17:00      | 18:30    |
 
-
+  @javascript
   Scenario: Displaying bookings
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
@@ -34,6 +33,7 @@ Feature: As an admin
     Then there should be "3" current bookings for "Atlantis"
     And I should see bookings for "Atlantis"
 
+  @javascript
   Scenario: Displaying booking details
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
@@ -45,6 +45,7 @@ Feature: As an admin
       | Group: Volvo Start: 08:00 Finish: 09:30  | Atlantis |
       | Group: Thomas Start: 17:00 Finish: 18:30 | Atlantis |
 
+  @javascript
   Scenario: Display slot details
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
@@ -52,6 +53,7 @@ Feature: As an admin
     Then I should see a details modal for "11:00 - 11:30" for "Atlantis"
 
 
+  @javascript
   Scenario: Create a booking on slot
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
@@ -68,8 +70,9 @@ Feature: As an admin
       | Group: Craft Academy Labs Start: 16:00 Finish: 16:30 | Galaxy   |
     And I should see "2016-01-03"
 
+  @javascript
   Scenario: Change a booking
-    Given time is frozen at 2016-01-02
+
     And I am using the dashboard on "2016-01-02"
     And I scroll down in the "Galaxy" box
     And I click on "10:30 - 11:00" for "Galaxy"
@@ -83,44 +86,31 @@ Feature: As an admin
       | Group: Thomas Ochman Start: 12:00 Finish: 13:30 | Galaxy   |
 
 
-#  Scenario: Rejects a booking on unavailable slot
-#    Given time is frozen at 2016-01-02
-#    And I am using the dashboard on "2016-01-02"
-#    And I click on "10:30 - 11:00" for "Galaxy"
-#    And I fill in "Client" with "Jessica"
-#    And I fill in "Start" with "10:30"
-#    And I fill in "Finish" with "11:30"
-#    And I click "Create"
-#    Then I should see "The room is already booked"
+  @javascript
+  Scenario: Rejects a booking on unavailable slot
+    Given I want to make a booking with following settings
+      | resource | date       | slot          | start | end   | client  |
+      | Galaxy   | 2016-01-02 | 10:30 - 11:00 | 10:30 | 11:00 | Jessica |
+    Then I should get "The room is already booked" message
 
-  # Scenario: Rejects a booking on past date
-  #   Given it is currently 2016-01-02
-  #   And I am using the dashboard on "2016-01-01"
-  #   And I click on "10:30 - 11:00" for "Galaxy"
-  #   And I fill in "Client" with "Craft Academy"
-  #   And I fill in "Start" with "10:30"
-  #   And I fill in "Finish" with "11:30"
-  #   And I click "Create"
-  #   Then I should see "Validation failed: time start can't be in the past"
+  @javascript
+  Scenario: Rejects a booking on past date
+    Given time is frozen at 2016-01-02
+    Given I want to make a booking with following settings
+      | resource | date       | slot          | start | end   | client  |
+      | Galaxy   | 2016-01-01 | 10:30 - 11:00 | 10:30 | 11:00 | Jessica |
+    Then I should get "Validation failed: time start can't be in the past" message
 
-  # Scenario: Rejects a booking on past date
-  #   Given time is frozen at 2016-01-02
-  #   And I am using the dashboard on "2016-01-01"
-  #   And I click on "10:30 - 11:00" for "Galaxy"
-  #   Then I should see "Unavailable"
 
-  # Scenario: Rejects a booking without a client
-  #   Given time is frozen at 2016-01-02
-  #   And I am using the dashboard on "2016-01-03"
-  #   And I click on "10:30 - 11:00" for "Galaxy"
-  #   And I fill in "Client" with ""
-  #   And I fill in "Start" with "10:30"
-  #   And I fill in "Finish" with "11:30"
-  #   And I click "Create"
-  #   Then I should see a required field error
-  #   # Then I should see "Please fill out this field."
-  #   # Then I should see "Validation failed: client can't be empty"
+  @javascript
+  Scenario: Rejects a booking without a client
+    Given I want to make a booking with following settings
+      | resource | date       | slot          | start | end   | client |
+      | Galaxy   | 2016-01-01 | 19:30 - 20:00 | 19:30 | 20:00 |        |
+    Then I should get "Validation failed: client can't be empty" message
 
+
+  @javascript
   Scenario: Edit a reservation
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"

@@ -62,3 +62,24 @@ And(/^I scroll down in the "([^"]*)" box$/) do |resource|
   page.execute_script("$('#card-#{resource.id} .content .with-scroll').scrollTop(1000);")
   sleep(0.1) until page.evaluate_script('$.active') == 0
 end
+
+Given(/^I want to make a booking with following settings$/) do |table|
+  settings = table.hashes.first
+  resource = Resource.find_by(designation: settings[:resource])
+
+  @session = ActionDispatch::Integration::Session.new(Rails.application)
+  booking = {resource_id: resource.id,
+             booking_date: settings[:date],
+             client: settings[:client],
+             time_start: settings[:start],
+             time_end: settings[:end]}
+
+  @session.post(user_session_path, params: {user: {email: 'admin@random.com', password: 'admin_password', remember_me: '0'}})
+  @session.post(create_booking_path(locale: :en), params: {booking: booking})
+  @session.follow_redirect!
+
+end
+
+Then(/^I should get "([^"]*)" message$/) do |message|
+  expect(@session.response.body).to include message
+end

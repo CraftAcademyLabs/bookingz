@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
   def create_booking
     id = params[:booking][:resource_id]
     @resource = Resource.find(id)
-    @resource.schedule.add_recurrence_rule IceCube::Rule.minutely(30)
+    @resource.schedule.add_recurrence_rule IceCube::Rule.daily
     # @resource.schedule.add_exception_time(Time.now - 1.day)
 
     start_seconds = Time.parse([booking_params[:booking_date],
