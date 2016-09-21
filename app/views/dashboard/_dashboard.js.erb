@@ -120,6 +120,7 @@ function populateAndShowModal(object) {
   errorModal = new Foundation.Reveal($('#error-modal'));
   date = getDispalyedDate();
   newDate = new Date(date + " 00:00");
+  setupDateTimePicker();
   if (newDate < today()) {
     errorModal.open();
   } else {

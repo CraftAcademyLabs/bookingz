@@ -38,24 +38,29 @@ $(document).ready(function () {
 
     //setupDateTimePicker();
 
+
+
+
+});
+
+
+function setupDateTimePicker() {
+
     var now = new Date();
-    //var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-    //var checkout = $('#booking_time_end').fdatetimepicker({
-    //    onRender: function (date) {
-    //        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-    //    }
-    //}).on('changeDate', function (ev) {
-    //    checkout.hide();
-    //}).data('datepicker');
+
     var checkout = $('#booking_time_end').fdatetimepicker({
+        initalDate: this.valueOf(),
         startDate: now,
         pickTime: 0,
         startView: 0,
         format: 'hh:ii',
         maxView: 0,
         onRender: function(time){
-            return time.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
+            debugger;
+            return time.valueOf() < this.valueOf() ? 'disabled' : '';
         }
+    }).on('show', function(){
+        console.log('showing');
     }).on('changeDate', function () {
         checkout.hide();
     }).data('datetimepicker');
@@ -68,20 +73,12 @@ $(document).ready(function () {
             return time.valueOf() < now.valueOf() ? 'disabled' : '';
         }
     }).on('changeDate', function (ev) {
-        //if (ev.date.valueOf() > checkout.date.valueOf()) {
-        //    var newDate = new Date(ev.date);
-        //    newDate.setDate(newDate.getDate() + 1);
-        //    checkout.update(newDate);
-        //}
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.timeStamp);
+            newDate.setMinutes(newDate.getMinutes() + 30);
+            checkout.update(newDate);
+        }
         checkin.hide();
         $('#booking_time_end').focus();
     }).data('datetimepicker');
-
-
-});
-
-
-function setupDateTimePicker() {
-
-
 }
