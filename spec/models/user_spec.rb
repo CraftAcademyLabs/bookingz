@@ -11,6 +11,11 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :email }
     it { is_expected.to have_db_column :encrypted_password }
+    it { is_expected.to have_db_column :approved}
+  end
+
+  describe 'approved methods' do
+    it { is_expected.to respond_to :approved }
   end
 
   describe 'bookable methods' do

@@ -36,6 +36,7 @@ sv:
         password_confirmation: Lösenordsbekräftelse
     failure:
       user:
+        not_approved: 'Ditt konto har inte godkänts av en administratör ännu.'
         not_found_in_database: "Ogiltig %{authentication_keys} eller lösenord."
         already_authenticated: 'Du har redan loggat in.'
         unauthenticated: 'Du måste logga in eller skapa ett konto innan du kan fortsätta.'
@@ -72,10 +73,12 @@ sv:
       send_paranoid_instructions: 'Om din email är i vår databas, kommer du att få ett mail med instruktioner om hur du ska aktivera ditt konto inom några minuter.'
       confirmed: 'Ditt konto har bekräftats. Du är nu inloggad.'
     registrations:
-      signed_up: 'Ett nytt konto har skapats. En bekräftelse har skickats till din epost.'
-      inactive_signed_up: 'Ett nytt konto har skapats. Du kunde inte logga in, för ditt konto är %{reason}.'
-      updated: 'Ditt konto har uppdaterats.'
-      destroyed: 'Hej då! Ditt konto har avregistrerats. Vi hoppas få se dig snart igen.'
+      user:
+        signed_up_but_not_approved: 'Du har registrerats men ditt konto har inte blivit godkänt av en administratör.'
+        signed_up: 'Ett nytt konto har skapats. En bekräftelse har skickats till din epost.'
+        inactive_signed_up: 'Ett nytt konto har skapats. Du kunde inte logga in, för ditt konto är %{reason}.'
+        updated: 'Ditt konto har uppdaterats.'
+        destroyed: 'Hej då! Ditt konto har avregistrerats. Vi hoppas få se dig snart igen.'
       new:
         sign_up: 'Registrera dig'
       reasons:
