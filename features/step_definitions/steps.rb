@@ -46,6 +46,8 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
       visit new_user_password_path(locale: locale)
     when 'login' then
       visit new_user_session_path(locale: locale)
+    when 'users' then
+      visit approvals_users_path(locale: locale)
   end
 end
 
@@ -133,4 +135,10 @@ end
 
 And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text
+end
+
+Given(/^the following user is pending approval$/) do |table|
+  table.hashes.each do |user|
+    FactoryGirl.create(:user, email: "user1@user.com", approved: false)
+  end
 end

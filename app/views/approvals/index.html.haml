@@ -9,4 +9,4 @@
         %tr
             %td= user.email
             %td= user.approved
-            -# %td= link_to "Edit", edit_user_path(user)
+            %td.button= "Accept", action: "approve_user"
