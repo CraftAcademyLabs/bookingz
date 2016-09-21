@@ -51,8 +51,8 @@ Feature: As a system user
     Given I am logged in as "admin@email.com"
     Then I navigate to the "landing" page
     And I should see "Click on the rooms you want to book or make a change."
-    And I click on "10:30 - 11:00" for "Galaxy"
-    And I should see "Add to reservation"
+    And I click on "11:30 - 12:00" for "Galaxy"
+    And I should see "Add reservation"
     And I should see "Client"
     And I should see "Start"
     And I should see "Finish"
