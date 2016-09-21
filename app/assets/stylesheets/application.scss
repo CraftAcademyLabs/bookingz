@@ -24,3 +24,8 @@
 .noselect {
   -webkit-user-select: none;
 }
+
+
+.datetimepicker td span.disabled, .datetimepicker th span.disabled {
+  color: lightgrey;
+}
