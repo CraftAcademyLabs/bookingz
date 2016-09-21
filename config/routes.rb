@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     post 'edit_booking', controller: :dashboard, action: :edit_booking
     root controller: :dashboard, action: :index
     get '/pages/*id', controller: :pages, action: :show, as: :page, format: false
+    get '/approvals/users', controller: :approvals, action: :index
+    post '/approvals/users', controller: :approvals, action: :approve_user
   end
-  
+
   namespace :api do
     get 'ping', controller: :api, action: :ping
     resources :resources, controller: :api, only: [:index, :create] do
