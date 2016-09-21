@@ -4,4 +4,8 @@
   %span.fi-previous#previous{style: 'display: inline'}
   %span#date
   %span.fi-next#next
-= render 'dashboard/cards'
+= render partial: 'dashboard/cards'
+= render partial: 'dashboard/modal'
+
+%script
+  = render partial: 'dashboard/dashboard.js.erb'

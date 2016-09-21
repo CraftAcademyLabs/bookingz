@@ -33,6 +33,19 @@ class DashboardController < ApplicationController
     redirect_to root_path(date: booking_params[:booking_date])
   end
 
+  def edit_booking
+    id = params[:booking][:resource_id]
+    @resource = Resource.find(id)
+    date = DateTime.parse([booking_params[:booking_date], booking_params[:original_time_start]].join(' '))
+    booking = @resource.bookings.find_by(time_start: date)
+    booking.time_start = DateTime.parse([booking_params[:booking_date], booking_params[:time_start]].join(' '))
+    booking.time_end = DateTime.parse([booking_params[:booking_date], booking_params[:time_end]].join(' '))
+    booking.client = booking_params[:client]
+    booking.save
+
+    redirect_to root_path(date: booking_params[:booking_date])
+  end
+
   private
   def booking_params
     params.require(:booking).permit(:resource_id,
@@ -40,6 +53,7 @@ class DashboardController < ApplicationController
                                     :client,
                                     :time_start,
                                     :time_end,
-                                    :expiration_date)
+                                    :expiration_date,
+                                    :original_time_start)
   end
 end
