@@ -1,8 +1,8 @@
 class ApprovalsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
-    if params[:approved] == "false"
+    if params[:approved] == 'false'
       @users = User.where(approved: false)
     else
       @users = User.all
@@ -10,12 +10,11 @@ class ApprovalsController < ApplicationController
   end
 
   def approve_user
-    if params[:approved] == "false"
-      @user = User.where(approved: false)
-      if @user.approved == false
-        @user.approved = true
-      end
+    @user = User.find(params[:id])
+    unless @user.approved
+      @user.update_attribute(:approved, true)
     end
-    @user.save
+    redirect_back(fallback_location: approvals_users_path)
   end
+
 end

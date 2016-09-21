@@ -1,12 +1,17 @@
-%h1 Users
+%h3 User Management
 
-= link_to "All Users", :action => "index"
-|
-= link_to "Pending approvals", :action => "index", :approved => "false"
-
-%table
+= link_to 'All Users', {action: 'index'}, class: 'button'
+= link_to 'Pending approvals', {action: 'index', approved: 'false'}, class: 'button'
+-if @users.try(:empty?) || @users.nil?
+  %h5 There are no pending registration requests
+-else
+  %table
     - @users.each do |user|
-        %tr
-            %td= user.email
-            %td= user.approved
-            %td.button= "Accept", action: "approve_user"
+      %tr{id: "row-#{user.id}"}
+        %td= user.email
+        %td
+          = user.approved ? 'Approved' : 'Pending approval'
+        - if user.approved
+          %td= ''
+        - else
+          %td= link_to 'Accept', approvals_users_path(locale: locale, id: user.id), method: :post, class: 'button tiny'

@@ -1,6 +1,6 @@
 Given(/^the following admin account is configured$/) do |table|
   table.hashes.each do |user|
-    FactoryGirl.create(:user, user)
+    FactoryGirl.create(:user, user.merge!(approved: true))
     end
 end
 
@@ -104,7 +104,7 @@ end
 
 Given(/^I click on "([^"]*)"$/) do |element|
   click_link_or_button element
-  sleep(0.1) until page.evaluate_script('$.active') == 0
+  #sleep(0.1) until page.evaluate_script('$.active') == 0
 
 end
 
@@ -137,8 +137,3 @@ And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text
 end
 
-Given(/^the following user is pending approval$/) do |table|
-  table.hashes.each do |user|
-    FactoryGirl.create(:user, email: "user1@user.com", approved: false)
-  end
-end
