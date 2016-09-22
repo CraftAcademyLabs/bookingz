@@ -24,6 +24,8 @@
       .row
         .medium-5.columns
           = submit_tag t('dashboard.button'), class: 'button'
+          = link_to(t('dashboard.delete'), @resource, method: :delete, id: 'delete', class: 'button',
+                                         data: { confirm: t('dashboard.sure')})
 
 .small.reveal#error-modal
   %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }

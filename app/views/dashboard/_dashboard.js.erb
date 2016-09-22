@@ -149,6 +149,7 @@ function populateModal(object) {
     $('#booking-form').attr('action', '<%= edit_booking_path %>').attr('method', 'post');
     $('#booking-form').append('<input type="hidden" name="booking[original_time_start]" value="' + booking_times[0] + '" />');
     $('#booking-form').find(':submit').val('Update');
+    $('#delete').show();
     return;
     console.log(object);
   } else {
@@ -158,6 +159,7 @@ function populateModal(object) {
     $('#booking_booking_date').val(date);
     $('#booking_time_start').val(booking_times[0]);
     $('#booking_time_end').val(booking_times[1]);
+    $('#delete').hide();
     return;
   }
 

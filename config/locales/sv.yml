@@ -24,6 +24,8 @@ sv:
     details: 'Detaljer:'
     unavailable: Inte tillgänglig
     error: Detta datum har redan passerat.
+    delete: Radera
+    sure: Är du säker?
   footer:
     home: Hem
     instructions: Instruktioner
