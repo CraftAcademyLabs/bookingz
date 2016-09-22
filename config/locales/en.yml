@@ -22,6 +22,8 @@ en:
     button: Create
     capacity: 'Capacity:'
     details: 'Details:'
+    unavailable: Unavailable
+    error: This date has already passed.
   footer:
     home: Home
     instructions: Instructions

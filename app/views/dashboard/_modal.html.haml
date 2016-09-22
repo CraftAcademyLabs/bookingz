@@ -30,5 +30,7 @@
     %span{aria: {hidden: ''}}
       &times;
   #model-content
-    %h3 Unavailable
-    %p.lead This date has already passed.
+    %h3
+      = t('dashboard.unavailable')
+    %p
+      = t('dashboard.error')
