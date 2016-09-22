@@ -148,7 +148,8 @@ function populateModal(object) {
     $('#booking_time_end').val(booking_times[1]);
     $('#booking-form').attr('action', '<%= edit_booking_path %>').attr('method', 'post');
     $('#booking-form').append('<input type="hidden" name="booking[original_time_start]" value="' + booking_times[0] + '" />');
-    $('#booking-form').find(':submit').val('Update');
+    $('#booking-form').find('#update').val('Update');
+    $('#delete').attr('action', '<%= delete_booking_path %>').attr('rel', 'nofollow').attr('data-method', 'delete');
     $('#delete').show();
     return;
     console.log(object);

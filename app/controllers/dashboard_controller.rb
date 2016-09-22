@@ -46,6 +46,11 @@ class DashboardController < ApplicationController
     redirect_to root_path(date: booking_params[:booking_date])
   end
 
+  def delete_booking
+    @resource.destroy
+    redirect_to root_path(date: booking_params[:booking_date])
+  end
+
   private
   def booking_params
     params.require(:booking).permit(:resource_id,

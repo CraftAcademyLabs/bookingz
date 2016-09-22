@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     devise_for :users
     post 'create_booking', controller: :dashboard, action: :create_booking
     post 'edit_booking', controller: :dashboard, action: :edit_booking
+    post 'delete_booking', controller: :dashboard, action: :delete_booking
     root controller: :dashboard, action: :index
     get '/pages/*id', controller: :pages, action: :show, as: :page, format: false
     get '/approvals/users', controller: :approvals, action: :index
