@@ -7,7 +7,7 @@ json.items @resources.each do |resource|
     json.array! slots do |slot|
       if slot_booking(resource, @date, slot)
         json.info {
-          json.id (resource.current_day_bookings(@date).to_a.index(@booking) + 1)
+          json.id slots.index(slot) + 1
           json.time slot
           json.client @booking.client
           json.booking_time [@booking.time_start.to_time.to_formatted_s(:time), @booking.time_end.to_time.to_formatted_s(:time)].join(' - ')
