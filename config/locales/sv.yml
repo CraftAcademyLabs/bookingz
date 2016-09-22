@@ -22,6 +22,8 @@ sv:
     button: Skapa
     capacity: 'Kapacitet:'
     details: 'Detaljer:'
+    unavailable: Inte tillgänglig
+    error: Detta datum har redan passerat.
   footer:
     home: Hem
     instructions: Instruktioner
