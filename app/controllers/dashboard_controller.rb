@@ -16,6 +16,7 @@ class DashboardController < ApplicationController
 
     end_seconds = Time.parse([booking_params[:booking_date],
                               booking_params[:time_end]].join(' ')).seconds_since_midnight
+    start_seconds += 1.second
 
     start = Date.parse(booking_params[:booking_date]) + start_seconds.seconds
     to = Date.parse(booking_params[:booking_date]) + end_seconds.seconds
