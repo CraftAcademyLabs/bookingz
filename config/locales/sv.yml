@@ -32,6 +32,8 @@ sv:
     approved: Godkänd
     accept: Acceptera
     no_pending: Det finns inga pågående registreringsansökningar
+    delete: Radera
+    sure: Är du säker?
   footer:
     home: Hem
     instructions: Instruktioner

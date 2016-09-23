@@ -118,3 +118,13 @@ Feature: As an admin
     Then I should see a details modal for "17:00 - 17:30" for "Atlantis"
     And I should see "Thomas"
     And I should see "Edit reservation"
+
+  @javascript
+  Scenario: Delete a reservation
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard on "2016-01-02"
+    And I click on "17:00 - 17:30" for "Atlantis"
+    And I should see "Edit reservation"
+    Then I click on "Delete"
+    And I click on "17:00 - 17:30" for "Atlantis"
+    Then I should see "Add reservation"
