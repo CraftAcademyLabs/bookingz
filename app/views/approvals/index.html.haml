@@ -1,17 +1,19 @@
-%h3 User Management
+%h3
+  = t('approvals.user_management')
 
-= link_to 'All Users', {action: 'index'}, class: 'button'
-= link_to 'Pending approvals', {action: 'index', approved: 'false'}, class: 'button'
+= link_to t('approvals.all_users'), {action: 'index'}, class: 'button'
+= link_to t('approvals.pending_approvals'), {action: 'index', approved: 'false'}, class: 'button'
 -if @users.try(:empty?) || @users.nil?
-  %h5 There are no pending registration requests
+  %h5
+    = t('approvals.no_pending')
 -else
   %table
     - @users.each do |user|
       %tr{id: "row-#{user.id}"}
         %td= user.email
         %td
-          = user.approved ? 'Approved' : 'Pending approval'
+          = user.approved ? t('approvals.approved') : t('approvals.pending_approval')
         - if user.approved
           %td= ''
         - else
-          %td= link_to 'Accept', approvals_users_path(locale: locale, id: user.id), method: :post, class: 'button tiny'
+          %td= link_to t('approvals.accept'), approvals_users_path(locale: locale, id: user.id), method: :post, class: 'button tiny'
