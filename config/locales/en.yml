@@ -32,6 +32,8 @@ en:
     approved: Approved
     accept: Accept
     no_pending: There are no pending registration requests
+    delete: Delete
+    sure: Are you sure?
   footer:
     home: Home
     instructions: Instructions
