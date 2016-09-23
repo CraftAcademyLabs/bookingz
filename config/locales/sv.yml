@@ -24,6 +24,13 @@ sv:
     details: 'Detaljer:'
     unavailable: Inte tillgänglig
     error: Detta datum har redan passerat.
+  approvals:
+    user_management: Användarhantering
+    all_users: Alla användare
+    pending_approvals: Väntande godkännanden
+    pending_approval: Väntar på godkännande
+    approved: Godkänd
+    accept: Acceptera
   footer:
     home: Hem
     instructions: Instruktioner

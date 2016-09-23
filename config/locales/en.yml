@@ -24,6 +24,13 @@ en:
     details: 'Details:'
     unavailable: Unavailable
     error: This date has already passed.
+  approvals:
+    user_management: User Management
+    all_users: All users
+    pending_approvals: Pending approvals
+    pending_approval: Pending approval
+    approved: Approved
+    accept: Accept
   footer:
     home: Home
     instructions: Instructions
