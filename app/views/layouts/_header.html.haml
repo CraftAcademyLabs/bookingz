@@ -11,6 +11,8 @@
           = image_tag 'ca_logo_graphic_color.png', style: 'height: 40px; width: auto;'
         - if current_user
           %li
+            = link_to t('header.home'), root_path
+          %li
             = link_to t('footer.instructions'), page_path(id: 'instructions')
           %li
             = link_to t('header.users'), approvals_users_path
