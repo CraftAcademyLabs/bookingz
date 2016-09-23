@@ -4,7 +4,8 @@
 = link_to t('approvals.all_users'), {action: 'index'}, class: 'button'
 = link_to t('approvals.pending_approvals'), {action: 'index', approved: 'false'}, class: 'button'
 -if @users.try(:empty?) || @users.nil?
-  %h5 There are no pending registration requests
+  %h5
+    = t('approvals.no_pending')
 -else
   %table
     - @users.each do |user|

@@ -31,6 +31,7 @@ sv:
     pending_approval: Väntar på godkännande
     approved: Godkänd
     accept: Acceptera
+    no_pending: Det finns inga pågående registreringsansökningar
   footer:
     home: Hem
     instructions: Instruktioner
