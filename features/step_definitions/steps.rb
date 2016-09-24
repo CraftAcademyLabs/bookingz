@@ -118,6 +118,7 @@ end
 
 And(/^I click arrow "([^"]*)"$/) do |id|
   find("##{id}").trigger('click')
+  sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 
 Then(/^I should see "([^"]*)" button$/) do |button|

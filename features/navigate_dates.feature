@@ -36,3 +36,10 @@ Feature: As a dashboard user
     And I am using the dashboard on "2016-01-02"
     And I click arrow "next"
     Then I should see "2016-01-03"
+
+
+  Scenario: Navigating to previous date
+    Given time is frozen at 2016-01-02
+    And I am using the dashboard on "2016-01-02"
+    And I click arrow "previous"
+    Then I should see "2016-01-01"
