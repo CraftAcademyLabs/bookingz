@@ -52,7 +52,7 @@ class DashboardController < ApplicationController
     date = get_date(delete_booking_params)
     booking = @resource.bookings.find_by(time_start: date + 1.second) || @resource.bookings.find_by(time_start: date)
     booking.destroy
-
+    flash[:notice] = 'Booking successfully deleted'
     redirect_to root_path(date: delete_booking_params[:booking_date])
   end
 
