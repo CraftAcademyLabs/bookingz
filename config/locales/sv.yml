@@ -26,7 +26,7 @@ sv:
     error: Detta datum har redan passerat.
     delete: Radera
     update: Uppdatera
-    submit: Skicka
+    submit: Skapa
   approvals:
     user_management: Användarhantering
     all_users: Alla användare

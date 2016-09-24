@@ -26,7 +26,7 @@ en:
     error: This date has already passed.
     delete: Delete
     update: Update
-    submit: Submit
+    submit: Create
   approvals:
     user_management: User Management
     all_users: All users
