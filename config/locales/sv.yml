@@ -27,6 +27,7 @@ sv:
     delete: Radera
     update: Uppdatera
     submit: Skapa
+    confirm: Var god bekräfta
   approvals:
     user_management: Användarhantering
     all_users: Alla användare

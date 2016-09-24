@@ -27,6 +27,7 @@ en:
     delete: Delete
     update: Update
     submit: Create
+    confirm: Please confirm
   approvals:
     user_management: User Management
     all_users: All users
