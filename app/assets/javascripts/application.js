@@ -15,6 +15,7 @@
 //= require foundation
 //= require foundation-datetimepicker
 // require turbolinks
+//= require mockdate
 //= require_tree .
 
 $(document).ready(function () {
