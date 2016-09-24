@@ -25,7 +25,8 @@ sv:
     unavailable: Inte tillgänglig
     error: Detta datum har redan passerat.
     delete: Radera
-    update: Uppdatering
+    update: Uppdatera
+    submit: Skicka
   approvals:
     user_management: Användarhantering
     all_users: Alla användare

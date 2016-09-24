@@ -23,8 +23,8 @@
 
       .row
         .medium-5.columns
-          = submit_tag t('dashboard.update'), class: 'button', id: 'update'
-          = submit_tag t('dashboard.delete'), class: 'button', id: 'delete'
+          = submit_tag t('dashboard.submit'), class: 'button', id: 'update'
+          = link_to t('dashboard.delete'), delete_booking_path(booking:{resource_id: ''}), method: :delete, class: 'button', id: 'delete'
 
 .small.reveal#error-modal
   %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
