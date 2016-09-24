@@ -14,7 +14,7 @@
   margin-right: auto;
 }
 
-.with-scroll  {
+.with-scroll {
   height: 400px;
   max-height: 400px;
   overflow-y: scroll;
@@ -23,4 +23,13 @@
 
 .noselect {
   -webkit-user-select: none;
+}
+
+.datetimepicker td span.disabled, .datetimepicker th span.disabled{
+  color: lightgrey;
+}
+
+.datetimepicker th.switch {
+  //This is a hack to make the date in picker disappear
+  color: white;
 }
