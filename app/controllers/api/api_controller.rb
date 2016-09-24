@@ -19,7 +19,6 @@ class Api::ApiController < ActionController::API
     @resource.schedule = IceCube::Schedule.new(Date.today - 1.year, duration: 1.year)
     @resource.schedule.add_recurrence_rule IceCube::Rule.daily
     if @resource.save
-      #render json: {message: 'success', resource: @resource}
       render :create
     else
       render json: {message: @resource.errors.full_messages.sort}
@@ -34,6 +33,9 @@ class Api::ApiController < ActionController::API
   end
 
   def resource_params
-    params.require(:resource).permit(:uuid, :designation, :capacity)
+    params.require(:resource).permit(:uuid,
+                                     :designation,
+                                     :description,
+                                     :capacity)
   end
 end
