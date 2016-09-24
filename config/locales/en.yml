@@ -24,6 +24,8 @@ en:
     details: 'Details:'
     unavailable: Unavailable
     error: This date has already passed.
+    delete: Delete
+    update: Update
   approvals:
     user_management: User Management
     all_users: All users

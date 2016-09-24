@@ -126,5 +126,5 @@ Feature: As an admin
     And I click on "17:00 - 17:30" for "Atlantis"
     And I should see "Edit reservation"
     Then I click on "Delete"
-    And I click on "17:00 - 17:30" for "Atlantis"
-    Then I should see "Add reservation"
+    Then I should be on the "landing" page
+    And I should see "Booking successfully deleted"
