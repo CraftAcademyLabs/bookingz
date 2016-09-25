@@ -34,16 +34,26 @@ class DashboardController < ApplicationController
   end
 
   def edit_booking
-    id = params[:booking][:resource_id]
+    id = booking_params[:resource_id]
     @resource = Resource.find(id)
-    date = DateTime.parse([booking_params[:booking_date], booking_params[:original_time_start]].join(' '))
-    booking = @resource.bookings.find_by(time_start: date)
+    date = get_date(booking_params)
+    booking = @resource.bookings.find_by(time_start: date + 1.second) || @resource.bookings.find_by(time_start: date)
     booking.time_start = DateTime.parse([booking_params[:booking_date], booking_params[:time_start]].join(' '))
     booking.time_end = DateTime.parse([booking_params[:booking_date], booking_params[:time_end]].join(' '))
     booking.client = booking_params[:client]
     booking.save
 
     redirect_to root_path(date: booking_params[:booking_date])
+  end
+
+  def delete_booking
+    id = delete_booking_params[:resource_id]
+    @resource = Resource.find(id)
+    date = get_date(delete_booking_params)
+    booking = @resource.bookings.find_by(time_start: date + 1.second) || @resource.bookings.find_by(time_start: date)
+    booking.destroy
+    flash[:notice] = 'Booking successfully deleted'
+    redirect_to root_path(date: delete_booking_params[:booking_date])
   end
 
   private
@@ -55,5 +65,15 @@ class DashboardController < ApplicationController
                                     :time_end,
                                     :expiration_date,
                                     :original_time_start)
+  end
+
+  def delete_booking_params
+    params.require(:booking).permit(:resource_id,
+                                    :booking_date,
+                                    :original_time_start)
+  end
+
+  def get_date(params)
+    DateTime.parse([params[:booking_date], params[:original_time_start]].join(' '))
   end
 end
