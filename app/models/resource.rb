@@ -4,6 +4,7 @@ class Resource < ApplicationRecord
                    bookable_across_occurrences: true
 
   validates_presence_of :designation, :uuid
+  validates_uniqueness_of :uuid
 
   def current_day_bookings(date)
     self.bookings.select {|booking| booking.time_start.to_date == Date.parse(date)}
