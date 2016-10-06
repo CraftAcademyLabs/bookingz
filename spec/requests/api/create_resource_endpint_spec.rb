@@ -32,4 +32,20 @@ describe Api::ApiController, type: :request do
     expected_error_response = ['Uuid can\'t be blank'].sort
     expect(response_json['message']).to eq expected_error_response
   end
+
+  it 'updates object' do
+
+    object = FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
+
+    put "/api/resources/#{object.id}", {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
+                                                  designation: 'Conference room',
+                                                  capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+
+    object = Resource.find_by(uuid: '123e4567-e89b-12d3-a456-426655440000')
+    expected_response = {id: object.id,
+                         uuid: '123e4567-e89b-12d3-a456-426655440000',
+                         designation: 'Conference room'}
+    expect(response_json).to eq expected_response.as_json
+
+  end
 end

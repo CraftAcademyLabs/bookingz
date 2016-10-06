@@ -25,6 +25,17 @@ class Api::ApiController < ActionController::API
     end
   end
 
+  def update
+    @resource = Resource.find(params[:id])
+    if @resource.update_attributes(resource_params)
+      render json: {id: @resource.id,
+                    uuid: @resource.uuid,
+                    designation: @resource.designation}
+    else
+      render json: {message: @resource.errors.full_messages.sort}
+    end
+  end
+
 
   private
 
