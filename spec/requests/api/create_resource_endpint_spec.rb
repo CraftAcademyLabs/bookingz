@@ -37,7 +37,7 @@ describe Api::ApiController, type: :request do
 
     object = FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
 
-    put "/api/resources/#{object.id}", {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
+    put "/api/resources/#{object.uuid}", {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
                                                   designation: 'Conference room',
                                                   capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 

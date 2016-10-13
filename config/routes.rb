@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'ping', controller: :api, action: :ping
-    resources :resources, controller: :api, only: [:index, :create, :update] do
+    resources :resources, controller: :api, only: [:index, :create] do
       collection do
         get '/:uuid', action: :show, as: :show
+        put '/:uuid', action: :update, as: :update
       end
     end
   end
