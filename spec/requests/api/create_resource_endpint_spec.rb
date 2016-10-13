@@ -36,7 +36,7 @@ describe Api::ApiController, type: :request do
   it 'updates object' do
 
     object = FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
-    put '/api/resources/', {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
+    put '/api/resources/', {params: {uuid: object.uuid, resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
                                                   designation: 'Conference room',
                                                   capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
     object = Resource.find_by(uuid: '123e4567-e89b-12d3-a456-426655440000')

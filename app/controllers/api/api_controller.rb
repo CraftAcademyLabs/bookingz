@@ -26,7 +26,7 @@ class Api::ApiController < ActionController::API
   end
 
   def update
-    @resource = Resource.find_by(uuid: resource_params[:uuid])
+    @resource = Resource.find_by(uuid: params[:uuid])
     if @resource.update_attributes(resource_params)
       render json: {id: @resource.id,
                     uuid: @resource.uuid,
