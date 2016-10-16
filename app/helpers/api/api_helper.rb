@@ -11,6 +11,13 @@ module Api::ApiHelper
   end
   # Usage: create_hour_range(start_time: 8.hours, end_time: 20.hours)
 
+
+  def create_day_range(parameters)
+    end_date = parameters[:end_date] ? Date.parse(parameters[:end_date]) : Date.today.end_of_week
+    start_date = parameters[:end_date] ? end_date.beginning_of_week : Date.today.beginning_of_week
+    (start_date..end_date).to_a
+  end
+
   def slot_booking(resource, date, slot)
     slot_start, slot_end, *tmp = slot.split(' - ')
     @booking = resource.current_day_bookings(date).detect do |booking|

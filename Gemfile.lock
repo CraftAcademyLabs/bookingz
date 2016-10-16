@@ -96,6 +96,8 @@ GEM
       railties (>= 3, < 5.1)
     cucumber-wire (0.0.1)
     database_cleaner (1.5.3)
+    datejs-rails (2.0.1)
+      railties (>= 3.1)
     debug_inspector (0.0.2)
     deep_merge (1.1.1)
     devise (4.2.0)
@@ -352,6 +354,7 @@ DEPENDENCIES
   coveralls
   cucumber-rails
   database_cleaner
+  datejs-rails
   devise
   devise-i18n
   factory_girl_rails
@@ -392,4 +395,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.0
+   1.13.1

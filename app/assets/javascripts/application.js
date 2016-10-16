@@ -16,6 +16,8 @@
 //= require foundation-datetimepicker
 // require turbolinks
 //= require mockdate
+//= require date
+//= require date/sv-SE
 //= require_tree .
 
 

@@ -7,6 +7,11 @@ class Api::ApiController < ActionController::API
   def index
     @date = set_date
     @resources = Resource.all
+    if in_weekly_mode?
+      render :index_weekly
+    else
+      render :index
+    end
   end
 
   def show
@@ -48,5 +53,9 @@ class Api::ApiController < ActionController::API
                                      :designation,
                                      :description,
                                      :capacity)
+  end
+
+  def in_weekly_mode?
+    Settings.mode == :weekly_view
   end
 end

@@ -29,6 +29,9 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develop'
 
+# Date navigation
+gem 'datejs-rails'
+
 
 group :development, :test do
   gem 'pry'
