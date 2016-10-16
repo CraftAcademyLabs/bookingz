@@ -8,4 +8,7 @@
 = render partial: 'dashboard/modal'
 
 %script
-  = render partial: 'dashboard/dashboard.js.erb'
+  - if Settings.mode == :daily_view
+    = render partial: 'dashboard/dashboard_daily.js.erb'
+  - elsif Settings.mode == :weekly_view
+    = render partial: 'dashboard/dashboard_weekly.js.erb'
