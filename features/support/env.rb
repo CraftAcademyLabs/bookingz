@@ -6,7 +6,7 @@ require 'capybara-screenshot/cucumber'
 require_relative 'temporal'
 
 ActionController::Base.allow_rescue = false
-Settings.mode == :daily_view
+Settings.mode = :daily_view
 
 begin
   DatabaseCleaner.strategy = :transaction
