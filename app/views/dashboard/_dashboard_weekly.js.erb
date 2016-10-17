@@ -1,35 +1,11 @@
-function queryApi(date) {
-  $.ajax({
-    dataType: "json",
-    url: '/api/resources?date=' + date,
-    success: function (response) {
-      console.log(response);
-      loadCurrentBookings(response);
-      addEvents();
-    }
-  });
-}
-
-function updateApi(date) {
-  $.ajax({
-    dataType: "json",
-    url: '/api/resources?date=' + date,
-    success: function (response) {
-      updateCurrentBookings(response);
-      addEvents();
-    }
-  });
-}
-
 function weekOnPageLoad(passed_date) {
   if (typeof passed_date !== 'undefined') {
     MockDate.set(passed_date);
   }
+
   var date = new Date();
-
-  var message = ['Week of', date.getThisWeeksMonday().sv_format(), '-', date.getThisWeeksSunday().sv_format()].join(' ');
+  var message = weekOf(date);
   $('#date').html(message);
-
 }
 
 function getEndOfCurrentWeek() {
@@ -40,7 +16,7 @@ function getEndOfCurrentWeek() {
 function navigateDate(val) {
   var endOfCurrentWeek = Date.parse(getEndOfCurrentWeek());
   var newDate = val == -1 ? endOfCurrentWeek.previous().week() : endOfCurrentWeek.next().week();
-  var message = ['Week of', newDate.getThisWeeksMonday().sv_format(), '-', newDate.getThisWeeksSunday().sv_format()].join(' ');
+  var message = weekOf(newDate)
   return message
 }
 
@@ -54,8 +30,6 @@ function addEvents() {
     updateApi(getEndOfCurrentWeek());
   });
 }
-
-
 
 function loadCurrentBookings(response) {
   var res = response;
@@ -94,8 +68,7 @@ function setHtml(slot) {
 function getBackgroundColor(obj) {
   var currentDate = new Date.parse(getEndOfCurrentWeek());
   var color = (obj.state == 'booked') ? 'red' : 'green';
-
-  if (currentDate < Date.today()) {
+  if (currentDate < today()) {
     color = 'grey';
   }
   return color;

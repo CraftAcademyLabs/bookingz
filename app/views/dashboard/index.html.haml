@@ -8,6 +8,9 @@
 = render partial: 'dashboard/cards'
 = render partial: 'dashboard/modal'
 
+- content_for :javascript do
+  = javascript_include_tag 'dashboard'
+
 %script
   - if Settings.mode == :daily_view
     = render partial: 'dashboard/dashboard_daily.js.erb'
