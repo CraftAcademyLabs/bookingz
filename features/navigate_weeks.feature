@@ -35,13 +35,12 @@ Feature: As a dashboard user
   Scenario: Navigating to next week
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
-    Then show me an image of the page
     And I click arrow "next"
-    Then I should see "Week of 2016-01-03 - 2016-01-03"
+    Then I should see "Week of 2016-01-04 - 2016-01-10"
 
 
   Scenario: Navigating to previous week
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"
     And I click arrow "previous"
-    Then I should see "Week of 2016-01-03 - 2016-01-03"
+    Then I should see "Week of 2015-12-21 - 2015-12-27"
