@@ -92,16 +92,17 @@ end
 
 Given(/^I am using the dashboard on "([^"]*)"$/) do |time|
   steps %q{
-      Given I am logged in as "admin@random.com"
-      And I navigate to the "landing" page
-        }
-  page.execute_script("MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);")
-  steps %q{
-      And I click arrow "previous"
-      And I click arrow "next"
-        }
-  sleep(0.1) until page.evaluate_script('$.active') == 0
+    Given I am logged in as "admin@random.com"
+    And I navigate to the "landing" page
+  }
 
+  page.execute_script(mock_date_script(time))
+  steps %q{
+    And I click arrow "previous"
+    And I click arrow "next"
+  }
+
+  sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 
 Given(/^I click on "([^"]*)"$/) do |element|
@@ -140,3 +141,14 @@ And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text
 end
 
+private
+
+def mock_date_script(time)
+  if Settings.mode == :weekly_view
+    "MockDate.set('#{time}');\
+     var date = Date.parse(currentDate());\
+     $('#date').html(weekOf(date));"
+  else
+    "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
+  end
+end
