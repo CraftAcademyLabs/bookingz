@@ -13,7 +13,7 @@ module Api::ApiHelper
 
 
   def create_day_range(parameters)
-    end_date = parameters[:end_date] ? Date.parse(parameters[:end_date]) : Date.today.end_of_week
+    end_date = parameters[:end_date] ? Date.parse(parameters[:end_date]).end_of_week : Date.today.end_of_week
     start_date = parameters[:end_date] ? end_date.beginning_of_week : Date.today.beginning_of_week
     (start_date..end_date).to_a
   end

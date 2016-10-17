@@ -1,7 +1,7 @@
 @javascript
 Feature: As a dashboard user
   In order to view what rooms are available
-  I would like to navigate dates by clicking the next and previous arrows
+  I would like to navigate weeks by clicking the next and previous arrows
 
 
   Background:
@@ -18,18 +18,18 @@ Feature: As a dashboard user
       | Atlantis    | The Atlantis room   |
       | Enterprise  | The Enterprise room |
 
-    And the following bookings exist
-      | resource | client | date       |
-      | Galaxy   | Thomas | 2016-01-02 |
-      | Galaxy   | Raoul  | 2016-01-02 |
-      | Atlantis | Raoul  | 2016-01-02 |
-      | Atlantis | Volvo  | 2016-01-02 |
-      | Atlantis | Thomas | 2016-01-02 |
-      | Galaxy   | Thomas | 2016-01-03 |
-      | Galaxy   | Raoul  | 2016-01-03 |
-      | Atlantis | Raoul  | 2016-01-03 |
-      | Atlantis | Volvo  | 2016-01-03 |
-      | Atlantis | Thomas | 2016-01-03 |
+#    And the following bookings exist
+#      | resource | client | date       |
+#      | Galaxy   | Thomas | 2016-01-02 |
+#      | Galaxy   | Raoul  | 2016-01-02 |
+#      | Atlantis | Raoul  | 2016-01-02 |
+#      | Atlantis | Volvo  | 2016-01-02 |
+#      | Atlantis | Thomas | 2016-01-02 |
+#      | Galaxy   | Thomas | 2016-01-03 |
+#      | Galaxy   | Raoul  | 2016-01-03 |
+#      | Atlantis | Raoul  | 2016-01-03 |
+#      | Atlantis | Volvo  | 2016-01-03 |
+#      | Atlantis | Thomas | 2016-01-03 |
 
 
   Scenario: Navigating to next week

@@ -3,12 +3,9 @@ function queryApi(date) {
     dataType: "json",
     url: '/api/resources?date=' + date,
     success: function (response) {
-      console.log(response)
+      console.log(response);
       loadCurrentBookings(response);
       addEvents();
-    },
-    error: function( error){
-      console.log(error)
     }
   });
 }
