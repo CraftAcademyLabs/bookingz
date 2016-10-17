@@ -5,8 +5,8 @@ Feature: As a system user
 
   Background:
     Given time is frozen at 2016-01-02
-
-    Given the following admin account is configured
+    And the application is set up for "daily view"
+    And the following admin account is configured
       | email           | password |
       | admin@email.com | password |
 
