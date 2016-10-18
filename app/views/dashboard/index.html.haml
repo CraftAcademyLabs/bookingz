@@ -1,3 +1,4 @@
+%p= "This is #{Settings.mode.to_s.humanize}"
 %h3
   = t('dashboard.title')
 %div{style: 'font-size: 25px', class: 'noselect'}
@@ -7,5 +8,11 @@
 = render partial: 'dashboard/cards'
 = render partial: 'dashboard/modal'
 
+- content_for :javascript do
+  = javascript_include_tag 'dashboard'
+
 %script
-  = render partial: 'dashboard/dashboard.js.erb'
+  - if Settings.mode == :daily_view
+    = render partial: 'dashboard/dashboard_daily.js.erb'
+  - elsif Settings.mode == :weekly_view
+    = render partial: 'dashboard/dashboard_weekly.js.erb'
