@@ -47,7 +47,7 @@ end
 
 And(/^I navigate to the "([^"]*)" page$/) do |page|
   locale = I18n.locale
-  case page
+  case page.downcase
     when 'landing' then
       visit root_path(locale: locale)
     when 'Instructions' then
@@ -62,6 +62,8 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
       visit approvals_users_path(locale: locale)
     when 'new facility' then
       visit new_facility_path(locale: locale)
+    when 'facilities index' then
+      visit facilities_path(locale: locale)
   end
 end
 
@@ -84,6 +86,8 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = root_path(locale: locale)
     when 'new facility' then
       expected_path = new_facility_path(locale: locale)
+    when 'facilities index' then
+      expected_path = facilities_path(locale: locale)
   end
 
   expect(page.current_path).to eq expected_path
