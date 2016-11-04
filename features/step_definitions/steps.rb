@@ -9,6 +9,11 @@ Given(/^I am logged in as "([^"]*)"$/) do |value|
   login_as(user, scope: :user)
 end
 
+Given(/^I am logged in as superadmin "([^"]*)"$/) do |value|
+  user = FactoryGirl.create(:user, email: value, superadmin: true)
+  login_as(user, scope: :user)
+end
+
 Given(/^I register a new user$/) do
   steps %q{
     Then I fill in "user[email]" with "test@test.com"
@@ -68,6 +73,8 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = approvals_users_path(locale: locale)
     when 'landing' then
       expected_path = root_path(locale: locale)
+    when 'new facility' then
+      expected_path = new_facility_path(locale: locale)
   end
 
   expect(page.current_path).to eq expected_path

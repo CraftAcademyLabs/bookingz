@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope '(:locale)', locale: /en|sv/ do
     devise_for :users
     post 'create_booking', controller: :dashboard, action: :create_booking
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
     get '/pages/*id', controller: :pages, action: :show, as: :page, format: false
     get '/approvals/users', controller: :approvals, action: :index
     post '/approvals/users', controller: :approvals, action: :approve_user
+    resources :facilities, only: [:new]
   end
 
   namespace :api do
