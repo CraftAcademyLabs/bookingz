@@ -52,6 +52,13 @@ $ rake
 
 In this project we used [Semaphore](https://semaphoreci.com/) for continuous integration and [Heroku](https://www.heroku.com/) for hosting.
 
+## Customization
+In order to cutomize the slots you need to pass in an `:increment` param to the jbuilder view. I.e.:
+
+```
+ #slots = create_hour_range(increment: 4.hours, start_time: 8.hours, end_time: 16.hours)
+```
+
 ## Built With
 
 * Ruby on Rails - 5
