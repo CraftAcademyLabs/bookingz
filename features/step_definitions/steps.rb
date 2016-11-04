@@ -9,7 +9,10 @@ Given(/^I am logged out$/) do
 end
 
 Given(/^I am logged in as "([^"]*)"$/) do |value|
-  user = User.find_by(email: value)
+  user = User.find_by(email: value, approved: true)
+  if user.nil?
+    user = FactoryGirl.create(:user, email: value )
+  end
   login_as(user, scope: :user)
 end
 
@@ -57,6 +60,8 @@ And(/^I navigate to the "([^"]*)" page$/) do |page|
       visit new_user_session_path(locale: locale)
     when 'users' then
       visit approvals_users_path(locale: locale)
+    when 'new facility' then
+      visit new_facility_path(locale: locale)
   end
 end
 

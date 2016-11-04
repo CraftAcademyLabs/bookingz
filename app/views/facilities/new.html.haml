@@ -1,2 +1,8 @@
-%h1 Facilities#new
-%p Find me in app/views/facilities/new.html.haml
+%h1 New Facility
+= form_for @facility, class: '' do |f|
+  .row
+    .large-12.columns
+      = f.label :name
+      = f.text_field :name
+    .large-12.columns
+  = f.submit 'Create Facility', class: 'button'

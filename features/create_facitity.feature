@@ -14,6 +14,12 @@ Feature: As a system owner
     Then I should not see "New Facility"
 
 
+  Scenario: Path is restricted for regular users
+    Given I am logged out
+    And I am logged in as "admin@random.com"
+    Then I navigate to the "new facility" page
+    Then I should see "You are not authorized to view this page"
+
   Scenario: Add a facility
     When I click on "Add Facility"
     Then I should be on the "New Facility" page
