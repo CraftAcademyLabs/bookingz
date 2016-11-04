@@ -36,4 +36,9 @@ Feature: As a system owner
 
   Scenario: Assign user to facility
     Given a facility named "Craft Academy" exists
-    And
+    And the following admin accounts are configured
+      | email                |
+      | info@craftacademy.se |
+    And I am on the "Facilities index" page
+    Then show me the page
+

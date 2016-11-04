@@ -1,4 +1,4 @@
-Given(/^the following admin account is configured$/) do |table|
+Given(/^the following admin (?:account|accounts) (?:is|are) configured$/) do |table|
   table.hashes.each do |user|
     FactoryGirl.create(:user, user.merge!(approved: true))
     end
@@ -45,7 +45,7 @@ Given(/^the following resources exist$/) do |table|
 end
 
 
-And(/^I navigate to the "([^"]*)" page$/) do |page|
+And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
   locale = I18n.locale
   case page.downcase
     when 'landing' then
