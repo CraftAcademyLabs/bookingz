@@ -4,6 +4,10 @@ Given(/^the following admin account is configured$/) do |table|
     end
 end
 
+Given(/^I am logged out$/) do
+  logout
+end
+
 Given(/^I am logged in as "([^"]*)"$/) do |value|
   user = User.find_by(email: value)
   login_as(user, scope: :user)

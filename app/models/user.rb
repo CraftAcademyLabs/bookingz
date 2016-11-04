@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :facility
   after_create :set_admin
 
   def active_for_authentication?

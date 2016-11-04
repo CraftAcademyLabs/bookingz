@@ -15,6 +15,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column(:superadmin).of_type(:boolean)}
   end
 
+  describe 'Associations' do
+    it { is_expected.to belong_to :facility }
+  end
+
   describe 'approved methods' do
     it { is_expected.to respond_to :approved }
   end
