@@ -22,4 +22,7 @@ Feature: As a system owner
 
   Scenario: Add a facility
     When I click on "Add Facility"
-    Then I should be on the "New Facility" page
+    And I fill in "Name" with "Stena Center"
+    And I click on "Create Facility"
+    Then I should be on the "landing" page
+    And I should see "Facility Stena Center was saved"

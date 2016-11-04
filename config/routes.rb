@@ -21,6 +21,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  get :api_index, controller: :dashboard, action: :api_index
 end
