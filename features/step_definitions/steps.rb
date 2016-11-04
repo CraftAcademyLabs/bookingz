@@ -50,11 +50,11 @@ And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
   case page.downcase
     when 'landing' then
       visit root_path(locale: locale)
-    when 'Instructions' then
+    when 'instructions' then
       visit page_path('instructions', locale: locale )
     when 'sign up' then
       visit new_user_registration_path(locale: locale)
-    when 'Forgot your password' then
+    when 'forgot your password' then
       visit new_user_password_path(locale: locale)
     when 'login' then
       visit new_user_session_path(locale: locale)

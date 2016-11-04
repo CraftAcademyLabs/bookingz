@@ -1,3 +1,4 @@
+@javascript
 Feature: As a system owner
   In order to be able to manage multiple facilities
   I would like to assign resources and users to a facility
@@ -41,4 +42,5 @@ Feature: As a system owner
       | info@craftacademy.se |
     And I am on the "Facilities index" page
     Then show me the page
-
+    And I select "info@craftacademy.se" from "unassigned_users"
+    And I click "Add"

@@ -19,6 +19,15 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  def assign_user
+    binding.pry
+    user = User.find(params[:user])
+    facility = Facility.find(params[:facility_id])
+    user.facility = facility
+    user.save
+
+  end
+
   private
   # Temporal authorization method
   def authenticate_superuser

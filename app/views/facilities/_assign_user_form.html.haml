@@ -1,0 +1,5 @@
+= form_tag facility_user_path(facility_id: facility), remote: true do
+  .large-6.column
+    = select_tag :user, options_for_select(unassigned_users.collect {|p| [ p[:email], p[:id] ] })
+  .large-6.column
+    = submit_tag 'Add', data: { confirm: 'Are you sure?' }, onclick: 'formSubmitAction()', class: 'button'

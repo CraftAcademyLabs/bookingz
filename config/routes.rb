@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     get '/pages/*id', controller: :pages, action: :show, as: :page, format: false
     get '/approvals/users', controller: :approvals, action: :index
     post '/approvals/users', controller: :approvals, action: :approve_user
-    resources :facilities, only: [:index, :new, :create]
+    resources :facilities, only: [:index, :new, :create] do
+      post :user, action: :assign_user
+    end
   end
 
   namespace :api do
