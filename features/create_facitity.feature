@@ -42,5 +42,5 @@ Feature: As a system owner
       | info@craftacademy.se |
     And I am on the "Facilities index" page
     Then show me the page
-    And I select "info@craftacademy.se" from "unassigned_users"
+    And I select "info@craftacademy.se" from "user"
     And I click "Add"
