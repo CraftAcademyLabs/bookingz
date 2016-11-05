@@ -44,3 +44,4 @@ Feature: As a system owner
     Then show me the page
     And I select "info@craftacademy.se" from "user"
     And I click "Add"
+    Then "info@craftacademy.se" should be assigned to "Craft Academy"
