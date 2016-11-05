@@ -101,6 +101,10 @@ Then(/^I should not see "([^"]*)"$/) do |content|
   expect(page).not_to have_content content
 end
 
+And(/^I should "([^"]*)" see "([^"]*)"$/) do |count, content|
+  expect(page).not_to have_content content, count: count.to_i
+end
+
 Then(/^show me the page$/) do
   save_and_open_page
 end
@@ -172,3 +176,5 @@ def mock_date_script(time)
     "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
   end
 end
+
+

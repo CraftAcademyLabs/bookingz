@@ -12,9 +12,10 @@ class ApprovalsController < ApplicationController
 
   def approve_user
     @user = User.find(params[:id])
-    unless @user.approved
+    unless @user.approved && @user.facility
       @user.update_attribute(:approved, true)
     end
+    flash[:alert] = 'User needs to be assigned to a Facility before approval'
     redirect_back(fallback_location: approvals_users_path)
   end
 

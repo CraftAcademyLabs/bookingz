@@ -14,7 +14,6 @@ Feature: As a system adminidtrator
 
 
   Scenario: Users path is restricted for regular users
-    Given I am logged out
     And I am logged in as "admin@random.com"
     Then I navigate to the "users" page
     Then I should see "You are not authorized to view this page"
@@ -37,14 +36,21 @@ Feature: As a system adminidtrator
     And I navigate to the "landing" page
     And I click on "Users"
     Then I should be on the "users" page
-    And I should see "Pending approval"
+    And I should "2" see "Pending approval"
 
-  Scenario: Approving a pending registration request
+  Scenario: Approving a pending registration request without assignment to facility fails
     Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "users" page
     And I click on "Pending approvals"
     And I click on "Accept" for user "user1@user.com"
-    Then I should not see "user1@user.com"
-    And I should see "user2@user.com"
+    And I should see "User needs to be assigned to a Facility before approval"
+
+  Scenario: Approving a pending registration request with assignment to facility succeeds
+    Given I am logged in as superadmin "superadmin@random.com"
+    And I navigate to the "users" page
+    And I click on "Pending approvals"
+    And I assign "user1@user.com" to "Stena Center"
+    And I click on "Accept" for user "user1@user.com"
+    And I should see "User needs to be assigned to a Facility before approval"
 
 
