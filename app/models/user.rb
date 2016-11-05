@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :facility
-  after_create :set_admin
+  #after_create :set_admin
 
   def active_for_authentication?
     super && approved?
@@ -22,11 +22,11 @@ class User < ApplicationRecord
 
   private
 
-  def set_admin
-    if  User.count == 1
-      User.first.update_attribute(:approved, true)
-    else
-      return true
-    end
-  end
+  # def set_admin
+  #   if  User.count == 1
+  #     User.first.update_attribute(:approved, true)
+  #   else
+  #     return true
+  #   end
+  # end
 end

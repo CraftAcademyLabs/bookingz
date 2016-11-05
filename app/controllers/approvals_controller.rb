@@ -1,5 +1,6 @@
 class ApprovalsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_superuser
 
   def index
     if params[:approved] == 'false'

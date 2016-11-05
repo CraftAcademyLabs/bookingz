@@ -9,6 +9,16 @@ Feature: As a system adminidtrator
       | user1@user.com |
       | user2@user.com |
 
+    And a facility named "Craft Academy" exists
+    And a facility named "Stena Center" exists
+
+
+  Scenario: Users path is restricted for regular users
+    Given I am logged out
+    And I am logged in as "admin@random.com"
+    Then I navigate to the "users" page
+    Then I should see "You are not authorized to view this page"
+
   Scenario: Display pending approval message after sign up
     Given I navigate to the "sign up" page
     And I register a new user
@@ -30,7 +40,7 @@ Feature: As a system adminidtrator
     And I should see "Pending approval"
 
   Scenario: Approving a pending registration request
-    Given I am logged in as "admin@random.com"
+    Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "users" page
     And I click on "Pending approvals"
     And I click on "Accept" for user "user1@user.com"
