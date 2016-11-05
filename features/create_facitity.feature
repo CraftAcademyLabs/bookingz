@@ -3,11 +3,9 @@ Feature: As a system owner
   In order to be able to manage multiple facilities
   I would like to assign resources and users to a facility
 
-
   Background:
     Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "landing" page
-
 
   Scenario: Link not visible to regular users
     Given I am logged out
@@ -38,10 +36,10 @@ Feature: As a system owner
   Scenario: Assign user to facility
     Given a facility named "Craft Academy" exists
     And the following admin accounts are configured
-      | email                |
-      | info@craftacademy.se |
+      | email                   |
+      | info@craftacademy.se    |
+      | admin@otherfacility.com |
     And I am on the "Facilities index" page
-    Then show me the page
     And I select "info@craftacademy.se" from "user"
     And I click "Add"
     Then "info@craftacademy.se" should be assigned to "Craft Academy"

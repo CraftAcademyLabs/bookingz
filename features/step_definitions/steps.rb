@@ -1,7 +1,7 @@
 Given(/^the following admin (?:account|accounts) (?:is|are) configured$/) do |table|
   table.hashes.each do |user|
     FactoryGirl.create(:user, user.merge!(approved: true))
-    end
+  end
 end
 
 Given(/^I am logged out$/) do
@@ -11,7 +11,7 @@ end
 Given(/^I am logged in as "([^"]*)"$/) do |value|
   user = User.find_by(email: value, approved: true)
   if user.nil?
-    user = FactoryGirl.create(:user, email: value )
+    user = FactoryGirl.create(:user, email: value)
   end
   login_as(user, scope: :user)
 end
@@ -51,7 +51,7 @@ And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
     when 'landing' then
       visit root_path(locale: locale)
     when 'instructions' then
-      visit page_path('instructions', locale: locale )
+      visit page_path('instructions', locale: locale)
     when 'sign up' then
       visit new_user_registration_path(locale: locale)
     when 'forgot your password' then
