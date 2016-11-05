@@ -13,7 +13,7 @@
         .medium-12.columns
           = label_tag 'booking[client]', t('dashboard.client')
           = text_field_tag 'booking[client]', nil, required: true
-      .row
+      .row#time-settings
         .medium-6.columns
           = label_tag 'booking[time_start]', t('dashboard.time_start')
           = text_field_tag 'booking[time_start]', nil, class: 'picker'
