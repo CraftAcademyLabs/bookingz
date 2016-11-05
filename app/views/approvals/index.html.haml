@@ -15,7 +15,7 @@
           %td= user.facility.name
         -else
           %td
-            = form_tag url_for(controller: :facilities, action: :assign_user), remote: true do
+            = form_tag url_for(controller: :facilities, action: :assign_user) do
               = hidden_field_tag :user, user.id
               .large-6.column
                 = select_tag :facility_id, options_for_select(Facility.all.collect {|f| [ f[:name], f[:id] ] })
@@ -26,4 +26,4 @@
         - if user.approved
           %td= ''
         - else
-          %td= link_to t('approvals.accept'), approvals_users_path(locale: locale, id: user.id), method: :post, class: 'button tiny'
+          %td= link_to t('approvals.accept'), approvals_users_path(locale: locale, id: user.id), method: :post, class: "button #{user.facility ? '' : 'disabled'}"

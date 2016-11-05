@@ -4,10 +4,6 @@ Feature: As a system adminidtrator
   I would like to restrict access to registrations
 
   Background:
-    Given the following admin account is configured
-      | email            | password       |
-      | admin@random.com | admin_password |
-
     Given the following user is pending approval
       | email          |
       | user1@user.com |
@@ -21,13 +17,13 @@ Feature: As a system adminidtrator
 
   Scenario: Display no pending approval message
     Given there are no pending approval requests
-    And I am logged in as "admin@random.com"
+    Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "users" page
     And I click on "Pending approvals"
     Then I should see "There are no pending registration requests"
 
   Scenario: Display user approval page
-    Given I am logged in as "admin@random.com"
+    Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "landing" page
     And I click on "Users"
     Then I should be on the "users" page

@@ -3,9 +3,9 @@ class ApprovalsController < ApplicationController
 
   def index
     if params[:approved] == 'false'
-      @users = User.where(approved: false)
+      @users = User.where(approved: false, superadmin: false)
     else
-      @users = User.all
+      @users = User.where(superadmin: false)
     end
   end
 

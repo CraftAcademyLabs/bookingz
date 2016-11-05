@@ -1,13 +1,13 @@
-%h2 Facilities
+%h3 Facilities
 .row
   - @facilities.each do |facility|
     .large-12.column
       %div{id: "facility_#{facility.id}"}
         %h4
           = facility.name
-        = render partial: 'assign_user_form', locals: {facility: facility}
+        - if facility.users
+          - facility.users.each do |user|
+            = user.email
+        - if unassigned_users.any?
+          = render partial: 'assign_user_form', locals: {facility: facility}
 
-:javascript
-  function formSubmitAction() {
-    //hide the form being submitted an append a new form
-  }
