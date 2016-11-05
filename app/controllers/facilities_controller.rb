@@ -24,6 +24,8 @@ class FacilitiesController < ApplicationController
     facility = Facility.find(params[:facility_id])
     user.facility = facility
     user.save
+
+    redirect_back(fallback_location: root_path)
   end
 
   private
