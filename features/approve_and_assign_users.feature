@@ -50,7 +50,8 @@ Feature: As a system adminidtrator
     And I navigate to the "users" page
     And I click on "Pending approvals"
     And I assign "user1@user.com" to "Stena Center"
+    Then "user1@user.com" should be assigned to "Stena Center"
     And I click on "Accept" for user "user1@user.com"
-    And I should see "User needs to be assigned to a Facility before approval"
+    And I should not see "User needs to be assigned to a Facility before approval"
 
 
