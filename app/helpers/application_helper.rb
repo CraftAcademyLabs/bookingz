@@ -44,4 +44,8 @@ module ApplicationHelper
     markdown.render(file_to_open.read).html_safe
   end
 
+  def facilities_select_options
+    Facility.all.collect {|f| [ f[:name], f[:id] ] }
+  end
+
 end
