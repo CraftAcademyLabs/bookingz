@@ -1,10 +1,6 @@
 module FacilitiesHelper
 
-  def unassigned_users
-    users = []
-    User.where(superadmin: false).where(facility: nil).each do |user|
-      users.push({id: user.id, email: user.email})
-    end
-    users
+  def unassigned_users_select_options
+    User.where(superadmin: false).where(facility: nil).collect {|p| [ p[:email], p[:id] ] }
   end
 end
