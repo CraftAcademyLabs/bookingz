@@ -20,7 +20,7 @@
               .large-6.column
                 = select_tag :facility_id, options_for_select(facilities_select_options)
               .large-6.column
-                = submit_tag 'Add', data: { confirm: 'Are you sure?' }, onclick: 'formSubmitAction()', class: 'button'
+                = submit_tag 'Add', data: { confirm: 'Are you sure?' }, class: 'button'
         %td
           = user.approved ? t('approvals.approved') : t('approvals.pending_approval')
         - if user.approved

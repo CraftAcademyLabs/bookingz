@@ -1,4 +1,4 @@
-= form_tag facility_user_path(facility_id: facility), remote: true do
+= form_tag facility_user_path(facility_id: facility) do
   .large-6.column
     = select_tag :user, options_for_select(unassigned_users_select_options)
   .large-6.column

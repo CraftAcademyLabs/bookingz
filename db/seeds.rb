@@ -26,3 +26,5 @@ Resource.create(designation: 'Lilla kongresshallen', description: description, c
 Resource.all.each do |resource|
   resource.schedule.add_recurrence_rule IceCube::Rule.daily
 end
+
+User.create(email: 'admin@admin.com', password: 'password', superadmin: true, approved: true)
