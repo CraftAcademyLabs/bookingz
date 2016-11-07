@@ -1,11 +1,20 @@
 GIT
-  remote: git://github.com/CraftAcademy/acts_as_bookable.git
+  remote: https://github.com/CraftAcademy/acts_as_bookable
   revision: fc210d58e843bdaf9ff154d6f17bc59ff91fdd39
   branch: develop
   specs:
     acts_as_bookable (0.1.2)
       activerecord (= 5.0.0)
       ice_cube_chosko (~> 0.2.0)
+
+GIT
+  remote: https://github.com/colszowka/simplecov
+  revision: 6e5ec2342cc1cfea16ca6c3bb1034062267defbf
+  specs:
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
 
 GEM
   remote: https://rubygems.org/
@@ -295,10 +304,6 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
-    simplecov (0.12.0)
-      docile (~> 1.1.0)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.7.2)
@@ -384,6 +389,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
+  simplecov!
   spring
   spring-watcher-listen (~> 2.0.0)
   timecop
@@ -395,4 +401,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.1
+   1.13.5
