@@ -41,7 +41,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'coveralls', require: false
   gem 'launchy'
   gem 'guard-rspec'
   gem 'guard-cucumber'
@@ -52,6 +51,7 @@ group :development, :test do
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'timecop'
   gem 'simplecov', git: 'https://github.com/colszowka/simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
 end
 
 group :development do
