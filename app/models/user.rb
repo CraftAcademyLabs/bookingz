@@ -19,14 +19,5 @@ class User < ApplicationRecord
       super # Use whatever other message
     end
   end
-
-  private
-
-  # def set_admin
-  #   if  User.count == 1
-  #     User.first.update_attribute(:approved, true)
-  #   else
-  #     return true
-  #   end
-  # end
+  
 end
