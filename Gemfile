@@ -24,10 +24,10 @@ gem 'foundation-icons-sass-rails'
 gem 'rails-i18n', '~> 5.0.0'
 
 # Functionality libraries
-
 gem 'devise'
 gem 'devise-i18n'
-gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develop'
+gem 'acts_as_bookable', git: 'https://github.com/CraftAcademy/acts_as_bookable',
+                        branch: 'develop'
 
 # Date navigation
 gem 'datejs-rails'
@@ -41,7 +41,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'coveralls', require: false
   gem 'launchy'
   gem 'guard-rspec'
   gem 'guard-cucumber'
@@ -51,6 +50,8 @@ group :development, :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'timecop'
+  gem 'simplecov', git: 'https://github.com/colszowka/simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'railroady'
 end
 

@@ -1,5 +1,4 @@
-require 'coveralls'
-Coveralls.wear!
+require 'simplecov'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
