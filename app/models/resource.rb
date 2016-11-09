@@ -6,6 +6,9 @@ class Resource < ApplicationRecord
   validates_presence_of :designation, :uuid
   validates_uniqueness_of :uuid
 
+  belongs_to :facility
+
+
   def current_day_bookings(date)
     self.bookings.select {|booking| booking.time_start.to_date == Date.parse(date)}
   end

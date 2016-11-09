@@ -15,5 +15,6 @@ RSpec.describe Facility, type: :model do
 
   describe 'Associations' do
     it { is_expected.to have_many :users }
+    it { is_expected.to have_many :resources }
   end
 end

@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :facility
-  #after_create :set_admin
 
   def active_for_authentication?
     super && approved?
@@ -19,5 +18,5 @@ class User < ApplicationRecord
       super # Use whatever other message
     end
   end
-  
+
 end

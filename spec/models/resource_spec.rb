@@ -23,6 +23,10 @@ RSpec.describe Resource, type: :model do
     it {is_expected.to validate_uniqueness_of :uuid}
   end
 
+  describe 'Associations' do
+    it { is_expected.to belong_to :facility }
+  end
+
   describe 'bookable methods' do
     subject { FactoryGirl.create(:resource) }
     let(:user) { FactoryGirl.create(:user) }

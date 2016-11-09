@@ -1,6 +1,11 @@
 Given(/^the following (?:account|accounts) (?:is|are) configured$/) do |table|
-  table.hashes.each do |user|
-    FactoryGirl.create(:user, user.merge!(approved: true))
+  table.hashes.each do |hash|
+    facility = Facility.find_by(name: hash[:facility])
+    FactoryGirl.create(:user,
+                       email: hash[:email],
+                       password: hash[:password] || 'password',
+                       approved: true,
+                       facility: facility || nil)
   end
 end
 
@@ -9,8 +14,8 @@ Given(/^I am logged out$/) do
 end
 
 Given(/^I am logged in as "([^"]*)"$/) do |value|
-  user = User.find_by(email: value, approved: true)
-  if user.nil?
+  user = User.find_by(email: value.strip, approved: true)
+  unless user
     user = FactoryGirl.create(:user, email: value, superadmin: false)
   end
   login_as(user, scope: :user)
@@ -39,8 +44,12 @@ Given(/^I attempt to login$/) do
 end
 
 Given(/^the following resources exist$/) do |table|
-  table.hashes.each do |resource|
-    FactoryGirl.create(:resource, resource)
+  table.hashes.each do |hash|
+    facility = Facility.find_by(name: hash[:facility])
+    FactoryGirl.create(:resource,
+                       designation: hash[:designation],
+                       description: hash[:description],
+                       facility: facility)
   end
 end
 

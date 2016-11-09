@@ -18,20 +18,6 @@ Feature: As a dashboard user
       | Atlantis    | The Atlantis room   |
       | Enterprise  | The Enterprise room |
 
-#    And the following bookings exist
-#      | resource | client | date       |
-#      | Galaxy   | Thomas | 2016-01-02 |
-#      | Galaxy   | Raoul  | 2016-01-02 |
-#      | Atlantis | Raoul  | 2016-01-02 |
-#      | Atlantis | Volvo  | 2016-01-02 |
-#      | Atlantis | Thomas | 2016-01-02 |
-#      | Galaxy   | Thomas | 2016-01-03 |
-#      | Galaxy   | Raoul  | 2016-01-03 |
-#      | Atlantis | Raoul  | 2016-01-03 |
-#      | Atlantis | Volvo  | 2016-01-03 |
-#      | Atlantis | Thomas | 2016-01-03 |
-
-
   Scenario: Navigating to next week
     Given time is frozen at 2016-01-02
     And I am using the dashboard on "2016-01-02"

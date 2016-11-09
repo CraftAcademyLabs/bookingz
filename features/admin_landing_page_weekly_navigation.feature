@@ -4,11 +4,17 @@ Feature: As a system administrator
   I would like to be able to choose between daily and weekly navigation
 
   Background:
-    Given the following account is configured
-      | email            | password       |
-      | admin@random.com | admin_password |
+    Given the following facilities exists
+      | name          |
+      | Stena Center  |
+      | Craft Academy |
 
-    And I am logged in as "admin@random.com"
+    And the following accounts are configured
+      | email                   | password       | facility      |
+      | admin@stena-center.com  | admin_password | Stena Center  |
+      | admin@craft-academy.com | admin_password | Craft Academy |
+
+    And I am logged in as "admin@craft-academy.com "
 
   Scenario: Weekly view
     Given the application is set up for "weekly view"
