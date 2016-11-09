@@ -123,9 +123,9 @@ Then(/^show me an image of the page$/) do
   Capybara::Screenshot.screenshot_and_open_image
 end
 
-Given(/^I am using the dashboard on "([^"]*)"$/) do |time|
-  steps %q{
-    Given I am logged in as "admin@random.com"
+Given(/^I am using the dashboard on "([^"]*)" as "([^"]*)"$/) do |time, email|
+  steps %Q{
+    Given I am logged in as "#{email}"
     And I navigate to the "landing" page
   }
 

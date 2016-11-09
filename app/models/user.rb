@@ -19,4 +19,8 @@ class User < ApplicationRecord
     end
   end
 
+  def user?
+    !self.superadmin
+  end
+
 end

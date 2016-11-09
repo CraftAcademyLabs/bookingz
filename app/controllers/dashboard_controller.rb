@@ -2,7 +2,11 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @resources = Resource.all
+    if current_user.superadmin?
+      @resources = Resource.all
+    else
+      @resources = current_user.try(:facility).try(:resources) || Resource.all
+    end
   end
 
   def create_booking

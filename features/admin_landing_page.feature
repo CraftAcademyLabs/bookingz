@@ -34,9 +34,12 @@ Feature: As an Administrator
     Then I should see "Click on the rooms you want to book or make a change."
     And I should see "GALAXY"
     And I should see "ATLANTIS"
+    And I should see "ENTERPRISE"
+    And I should not see "NCC ENTERPRISE"
+    And I should not see "COHORT ROOM"
 
   Scenario: Toggle details visibility
-    Given I am using the dashboard on "2016-01-01"
+    Given I am using the dashboard on "2016-01-01" as "admin@stena-center.com"
     And I click on "Galaxy"
     Then I should see "The Galaxy room"
     And I should not see "The Atlantis room"

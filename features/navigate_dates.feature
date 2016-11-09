@@ -7,15 +7,20 @@ Feature: As a dashboard user
   Background:
     Given time is frozen at 2016-01-01
 
-    And the following account is configured
-      | email            | password       |
-      | admin@random.com | admin_password |
+    Given the following facilities exists
+      | name          |
+      | Stena Center  |
+      | Craft Academy |
+
+    And the following accounts are configured
+      | email                   | password       | facility      |
+      | admin@stena-center.com  | admin_password | Stena Center  |
 
     And the following resources exist
-      | designation | description         |
-      | Galaxy      | The Galaxy room     |
-      | Atlantis    | The Atlantis room   |
-      | Enterprise  | The Enterprise room |
+      | designation    | description             | facility      |
+      | Galaxy         | The Galaxy room         | Stena Center  |
+      | Atlantis       | The Atlantis room       | Stena Center  |
+      | Enterprise     | The Enterprise room     | Stena Center  |
 
     And the following bookings exist
       | resource | client | date       | start_time | end_time |
@@ -33,13 +38,13 @@ Feature: As a dashboard user
 
   Scenario: Navigating to next date
     Given time is frozen at 2016-01-02
-    And I am using the dashboard on "2016-01-02"
+    And I am using the dashboard on "2016-01-02" as "admin@stena-center.com"
     And I click arrow "next"
     Then I should see "2016-01-03"
 
 
   Scenario: Navigating to previous date
     Given time is frozen at 2016-01-02
-    And I am using the dashboard on "2016-01-02"
+    And I am using the dashboard on "2016-01-02" as "admin@stena-center.com"
     And I click arrow "previous"
     Then I should see "2016-01-01"

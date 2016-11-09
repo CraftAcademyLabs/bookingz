@@ -74,7 +74,7 @@ Given(/^I want to make a booking with following settings$/) do |table|
              time_start: settings[:start],
              time_end: settings[:end]}
 
-  @session.post(user_session_path, params: {user: {email: 'admin@random.com', password: 'admin_password', remember_me: '0'}})
+  @session.post(user_session_path, params: {user: {email: settings[:user], password: 'admin_password', remember_me: '0'}})
   @session.post(create_booking_path(locale: :en), params: {booking: booking})
   @session.follow_redirect!
 
