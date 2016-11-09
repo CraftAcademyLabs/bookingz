@@ -11,7 +11,12 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :email }
     it { is_expected.to have_db_column :encrypted_password }
-    it { is_expected.to have_db_column :approved}
+    it { is_expected.to have_db_column :approved }
+    it { is_expected.to have_db_column(:superadmin).of_type(:boolean) }
+  end
+
+  describe 'Associations' do
+    it { is_expected.to belong_to :facility }
   end
 
   describe 'approved methods' do

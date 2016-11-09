@@ -1,11 +1,23 @@
-Given(/^the following admin account is configured$/) do |table|
+Given(/^the following (?:account|accounts) (?:is|are) configured$/) do |table|
   table.hashes.each do |user|
     FactoryGirl.create(:user, user.merge!(approved: true))
-    end
+  end
+end
+
+Given(/^I am logged out$/) do
+  logout
 end
 
 Given(/^I am logged in as "([^"]*)"$/) do |value|
-  user = User.find_by(email: value)
+  user = User.find_by(email: value, approved: true)
+  if user.nil?
+    user = FactoryGirl.create(:user, email: value, superadmin: false)
+  end
+  login_as(user, scope: :user)
+end
+
+Given(/^I am logged in as superadmin "([^"]*)"$/) do |value|
+  user = FactoryGirl.create(:user, email: value, superadmin: true)
   login_as(user, scope: :user)
 end
 
@@ -33,21 +45,25 @@ Given(/^the following resources exist$/) do |table|
 end
 
 
-And(/^I navigate to the "([^"]*)" page$/) do |page|
+And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
   locale = I18n.locale
-  case page
+  case page.downcase
     when 'landing' then
       visit root_path(locale: locale)
-    when 'Instructions' then
-      visit page_path('instructions', locale: locale )
+    when 'instructions' then
+      visit page_path('instructions', locale: locale)
     when 'sign up' then
       visit new_user_registration_path(locale: locale)
-    when 'Forgot your password' then
+    when 'forgot your password' then
       visit new_user_password_path(locale: locale)
     when 'login' then
       visit new_user_session_path(locale: locale)
     when 'users' then
       visit approvals_users_path(locale: locale)
+    when 'new facility' then
+      visit new_facility_path(locale: locale)
+    when 'facilities index' then
+      visit facilities_path(locale: locale)
   end
 end
 
@@ -68,6 +84,10 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
       expected_path = approvals_users_path(locale: locale)
     when 'landing' then
       expected_path = root_path(locale: locale)
+    when 'new facility' then
+      expected_path = new_facility_path(locale: locale)
+    when 'facilities index' then
+      expected_path = facilities_path(locale: locale)
   end
 
   expect(page.current_path).to eq expected_path
@@ -79,6 +99,10 @@ end
 
 Then(/^I should not see "([^"]*)"$/) do |content|
   expect(page).not_to have_content content
+end
+
+And(/^I should "([^"]*)" see "([^"]*)"$/) do |count, content|
+  expect(page).not_to have_content content, count: count.to_i
 end
 
 Then(/^show me the page$/) do
@@ -152,3 +176,5 @@ def mock_date_script(time)
     "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
   end
 end
+
+

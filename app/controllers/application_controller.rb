@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     Rails.application.routes.default_url_options[:locale]= I18n.locale
   end
 
+  # Temporal authorization method
+  def authenticate_superuser
+    redirect_to root_path, alert: 'You are not authorized to view this page' unless current_user.superadmin
+  end
+
 end

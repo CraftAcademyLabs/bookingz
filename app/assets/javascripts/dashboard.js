@@ -49,3 +49,18 @@ function getInfo(obj) {
   var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
   return message;
 }
+
+function populateAndShowModal(object) {
+    var modal, errorModal, date, newDate;
+    modal = new Foundation.Reveal($('#slot-modal'));
+    errorModal = new Foundation.Reveal($('#error-modal'));
+    date = getDisplayedDate();
+    newDate = new Date(date + " 00:00");
+    if (newDate < today()) {
+        errorModal.open();
+    } else {
+        populateModal(object);
+        modal.open();
+    }
+}
+

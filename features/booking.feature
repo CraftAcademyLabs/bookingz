@@ -6,7 +6,7 @@ Feature: As an admin
   Background:
     Given time is frozen at 2016-01-01
 
-    And the following admin account is configured
+    And the following account is configured
       | email            | password       |
       | admin@random.com | admin_password |
 

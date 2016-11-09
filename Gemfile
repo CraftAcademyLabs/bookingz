@@ -52,6 +52,7 @@ group :development, :test do
   gem 'timecop'
   gem 'simplecov', git: 'https://github.com/colszowka/simplecov'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'railroady'
 end
 
 group :development do

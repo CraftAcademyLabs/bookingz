@@ -34,5 +34,16 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#facilities_select_options' do
+    let!(:facility_1) { create(:facility, name: 'Craft Academy') }
+    let!(:facility_2) { create(:facility, name: 'Stena Center') }
+
+
+    it 'returns select options of facilities' do
+      expected_collection = [['Craft Academy', facility_1.id], ['Stena Center', facility_2.id]]
+      expect(helper.facilities_select_options).to match expected_collection
+    end
+  end
+
 
 end

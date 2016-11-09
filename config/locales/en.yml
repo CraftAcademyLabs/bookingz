@@ -42,7 +42,10 @@ en:
     home: Home
     instructions: Instructions
   header:
+    languages: Languages
     swedish: Swedish
     english: English
     users: Users
     home: Home
+    facilities: Facilities
+    add_facility: Add Facility
