@@ -1,4 +1,4 @@
-Given(/^the following admin (?:account|accounts) (?:is|are) configured$/) do |table|
+Given(/^the following (?:account|accounts) (?:is|are) configured$/) do |table|
   table.hashes.each do |user|
     FactoryGirl.create(:user, user.merge!(approved: true))
   end
@@ -11,7 +11,7 @@ end
 Given(/^I am logged in as "([^"]*)"$/) do |value|
   user = User.find_by(email: value, approved: true)
   if user.nil?
-    user = FactoryGirl.create(:user, email: value)
+    user = FactoryGirl.create(:user, email: value, superadmin: false)
   end
   login_as(user, scope: :user)
 end

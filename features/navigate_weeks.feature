@@ -8,7 +8,7 @@ Feature: As a dashboard user
     Given time is frozen at 2016-01-01
     And the application is set up for "weekly view"
 
-    And the following admin account is configured
+    And the following account is configured
       | email            | password       |
       | admin@random.com | admin_password |
 

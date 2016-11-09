@@ -10,7 +10,8 @@ Feature: As a system owner
   Scenario: Link not visible to regular users
     Given I am logged out
     And I am logged in as "admin@random.com"
-    Then I should not see "New Facility"
+    And I navigate to the "landing" page
+    Then I should not see "Admin"
 
 
   Scenario: New facility path is restricted for regular users
@@ -26,7 +27,8 @@ Feature: As a system owner
     Then I should see "You are not authorized to view this page"
 
   Scenario: Add a facility
-    When I click on "Add Facility"
+    When I click on "Admin"
+    And I click on "Add Facility"
     And I fill in "Name" with "Stena Center"
     And I click on "Create Facility"
     Then I should be on the "Facilities index" page
@@ -35,7 +37,7 @@ Feature: As a system owner
 
   Scenario: Assign user to facility
     Given a facility named "Craft Academy" exists
-    And the following admin accounts are configured
+    And the following accounts are configured
       | email                   |
       | info@craftacademy.se    |
       | admin@otherfacility.com |

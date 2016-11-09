@@ -42,8 +42,10 @@ sv:
     home: Hem
     instructions: Instruktioner
   header:
+    languages: Språk
     swedish: Svenska
     english: Engelska
     users: Användare
     home: Hem
+    facilities: Anläggningar
     add_facility: Lägg till anläggning

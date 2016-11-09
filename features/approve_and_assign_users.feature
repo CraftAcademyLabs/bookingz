@@ -34,6 +34,7 @@ Feature: As a system adminidtrator
   Scenario: Display user approval page
     Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "landing" page
+    And I click on "Admin"
     And I click on "Users"
     Then I should be on the "users" page
     And I should "2" see "Pending approval"

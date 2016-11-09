@@ -5,7 +5,7 @@ Feature: As a system owner
   detailed information about the usage of the system
 
   Background:
-    Given the following admin account is configured
+    Given the following account is configured
       | email            | password       |
       | admin@random.com | admin_password |
 

@@ -4,7 +4,7 @@ Feature: As a system administrator
   I would like to be able to choose between daily and weekly navigation
 
   Background:
-    Given the following admin account is configured
+    Given the following account is configured
       | email            | password       |
       | admin@random.com | admin_password |
 
