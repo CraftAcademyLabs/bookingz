@@ -1,5 +1,5 @@
-require 'simplecov'
-SimpleCov.command_name 'RSpec'
+require 'coveralls'
+Coveralls.wear_merged!('rails')
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
