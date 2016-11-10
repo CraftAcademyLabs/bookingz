@@ -15,5 +15,4 @@ class Facility < ApplicationRecord
     end
   end
 
-
 end
