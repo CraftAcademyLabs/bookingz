@@ -8,7 +8,7 @@ This was also the final project for the June-16 cohort of [Craft Academy](https:
 
 #### Build
 [![Build Status](https://semaphoreci.com/api/v1/craftacademy/bookingz/branches/develop/badge.svg)](https://semaphoreci.com/craftacademy/bookingz)
-
+[![Code Climate](https://codeclimate.com/github/CraftAcademy/bookingz/badges/gpa.svg)](https://codeclimate.com/github/CraftAcademy/bookingz)
 #### Coverage
 Develop [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/bookingz/badge.svg?branch=develop)](https://coveralls.io/github/CraftAcademy/bookingz?branch=develop)
 
