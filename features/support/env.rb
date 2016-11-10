@@ -1,5 +1,5 @@
-require 'simplecov'
-SimpleCov.command_name 'Cucumber Features'
+require 'coveralls'
+Coveralls.wear_merged!('rails')
 
 require 'cucumber/rails'
 require 'capybara-screenshot/cucumber'

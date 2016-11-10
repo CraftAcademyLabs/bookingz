@@ -51,7 +51,7 @@ group :development, :test do
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'timecop'
   gem 'simplecov', git: 'https://github.com/colszowka/simplecov'
-  gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'coveralls', require: false
   gem 'railroady'
 end
 
