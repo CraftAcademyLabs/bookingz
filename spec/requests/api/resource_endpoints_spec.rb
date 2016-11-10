@@ -4,8 +4,10 @@ require 'rails_helper'
 
 describe Api::ApiController, type: :request do
   describe 'create resource endpoint' do
+    let!(:facility) { create(:facility, code: 'qwer')}
     it 'creates an object with valid request' do
       post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
+                                                    f_code: facility.code,
                                                     designation: 'New conference room',
                                                     capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 
