@@ -4,6 +4,7 @@ FactoryGirl.define do
     description 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.'
     uuid { SecureRandom.uuid }
+    association :facility
     capacity 4
     schedule {
       schedule = IceCube::Schedule.new(Date.today - 1.year, duration: 1.year)
