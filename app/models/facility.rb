@@ -11,7 +11,7 @@ class Facility < ApplicationRecord
 
   def generate_random_code
     if self.code.nil?
-      self.code = [*('a'..'z'),*('0'..'9')].shuffle[0,4].join
+      self.code = [*('a'..'z'),*('0'..'9')].sample(4).join
     end
   end
 
