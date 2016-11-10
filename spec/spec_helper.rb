@@ -1,4 +1,5 @@
 require 'simplecov'
+SimpleCov.command_name 'RSpec'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
