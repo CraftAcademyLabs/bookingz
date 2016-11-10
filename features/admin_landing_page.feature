@@ -3,6 +3,12 @@ Feature: As an Administrator
   In order to get an overview of current resource bookings
   I would like to see a dashboard with today's bookings on the landing page
 
+  Additional User Story:
+  As a system user
+  In order to take bookings on my resources
+  I only want to see my own resources on the dashboard
+
+
   Background:
     Given the following facilities exists
       | name          |
