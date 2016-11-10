@@ -1,4 +1,5 @@
 require 'simplecov'
+SimpleCov.command_name 'Cucumber Features'
 
 require 'cucumber/rails'
 require 'capybara-screenshot/cucumber'
