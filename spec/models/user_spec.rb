@@ -23,6 +23,28 @@ RSpec.describe User, type: :model do
     it { is_expected.to respond_to :approved }
   end
 
+  describe 'Roles' do
+    let(:user_1) { create(:user, superadmin: true) }
+    let(:user_2) { create(:user, superadmin: false) }
+
+    it 'user? should respond true if not superadmin' do
+      expect(user_2.user?).to be_truthy
+    end
+
+    it 'user? should respond false if superadmin' do
+      expect(user_1.user?).to be_falsey
+    end
+
+    it 'superadmin? should respond true if superadmin' do
+      expect(user_1.superadmin?).to be_truthy
+    end
+
+    it 'superadmin? should respond true if user' do
+      expect(user_2.superadmin?).to be_falsey
+    end
+
+  end
+
   describe 'bookable methods' do
     subject { FactoryGirl.create(:user) }
     let(:resource) { FactoryGirl.create(:resource) }

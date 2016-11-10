@@ -15,8 +15,8 @@ RSpec.describe FacilitiesHelper, type: :helper do
     end
 
     it 'returns select options of users without a facility' do
-      expected_collection = [['user_2@facility.com', user_2.id], ['user_3@facility.com', user_3.id]]
-      expect(helper.unassigned_users_select_options).to match expected_collection
+      expected_collection = [['user_2@facility.com', user_2.id], ['user_3@facility.com', user_3.id]].sort
+      expect(helper.unassigned_users_select_options.sort).to match expected_collection
     end
   end
 

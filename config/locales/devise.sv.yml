@@ -50,8 +50,8 @@ sv:
       new:
         reset_password: Återställ lösenord
     sessions:
-      signed_in: 'Logga in.'
-      signed_out: 'Logga ut.'
+      signed_in: 'Du är nu inloggad i systemet'
+      signed_out: 'Du är nu utloggad ur systemet'
       new:
         sign_in: 'Logga in'
     shared:

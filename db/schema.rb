@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104140105) do
+ActiveRecord::Schema.define(version: 20161109184153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20161104140105) do
     t.integer  "capacity"
     t.text     "schedule"
     t.string   "uuid"
+    t.integer  "facility_id"
+    t.index ["facility_id"], name: "index_resources_on_facility_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,5 +71,6 @@ ActiveRecord::Schema.define(version: 20161104140105) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "resources", "facilities"
   add_foreign_key "users", "facilities"
 end

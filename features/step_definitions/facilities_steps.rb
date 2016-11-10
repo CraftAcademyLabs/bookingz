@@ -2,6 +2,12 @@ Given(/^a facility named "([^"]*)" exists$/) do |name|
   FactoryGirl.create(:facility, name: name)
 end
 
+And(/^the following facilities exists$/) do |table|
+  table.hashes.each do |facility|
+    FactoryGirl.create(:facility, name: facility[:name])
+  end
+end
+
 And(/^I select "([^"]*)" from "([^"]*)"$/) do |value, field|
   select value, from: field
 end
@@ -19,3 +25,4 @@ And(/^I assign "([^"]*)" to "([^"]*)"$/) do |user, facility_name|
     click_button 'Add'
   end
 end
+

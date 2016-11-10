@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   # Temporal authorization method
   def authenticate_superuser
-    redirect_to root_path, alert: 'You are not authorized to view this page' unless current_user.superadmin
+    redirect_to root_path, alert: 'You are not authorized to view this page' unless current_user.superadmin?
   end
 
 end
