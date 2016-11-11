@@ -19,6 +19,7 @@ RSpec.describe Resource, type: :model do
     it {is_expected.to validate_presence_of :designation}
     it {is_expected.to validate_presence_of :capacity}
     it {is_expected.to validate_presence_of :schedule}
+    it {is_expected.to validate_presence_of :facility}
 
     it {is_expected.to validate_uniqueness_of :uuid}
   end

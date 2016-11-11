@@ -4,8 +4,10 @@ require 'rails_helper'
 
 describe Api::ApiController, type: :request do
   describe 'create resource endpoint' do
+    let!(:facility) { create(:facility, code: 'qwer')}
     it 'creates an object with valid request' do
       post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
+                                                    f_code: facility.code,
                                                     designation: 'New conference room',
                                                     capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 
@@ -17,15 +19,26 @@ describe Api::ApiController, type: :request do
       expect(response_json).to eq expected_response.as_json
     end
 
+    it 'reject object creation without facility' do
+      post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
+                                                    f_code: '',
+                                                    designation: 'New conference room',
+                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+
+      expected_error_response = ['Facility can\'t be blank'].sort
+      expect(response_json['message']).to eq expected_error_response
+    end
+
     it 'reject object creation on invalid request' do
       post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
-      expected_error_response = ['Capacity is not a number', 'Capacity can\'t be blank', 'Designation can\'t be blank'].sort
+      expected_error_response = ['Capacity is not a number', 'Capacity can\'t be blank', 'Designation can\'t be blank', 'Facility can\'t be blank'].sort
       expect(response_json['message']).to eq expected_error_response
     end
 
 
     it 'reject object creation without uuid' do
       post api_resources_path, {params: {resource: {uuid: '',
+                                                    f_code: facility.code,
                                                     designation: 'New conference room',
                                                     capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 

@@ -6,13 +6,17 @@ Feature: As a system user
   Background:
     Given time is frozen at 2016-01-02
     And the application is set up for "daily view"
-    And the following account is configured
-      | email           | password |
-      | admin@email.com | password |
+    Given the following facilities exists
+      | name         |
+      | Stena Center |
+
+    And the following accounts are configured
+      | email           | password       | facility     |
+      | admin@email.com | admin_password | Stena Center |
 
     And the following resources exist
-      | designation | description     |
-      | Galaxy      | The Galaxy room |
+      | designation | description     | facility     |
+      | Galaxy      | The Galaxy room | Stena Center |
 
     And the following bookings exist
       | resource | client | date       | start_time | end_time |

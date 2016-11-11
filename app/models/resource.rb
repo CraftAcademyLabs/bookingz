@@ -3,7 +3,7 @@ class Resource < ApplicationRecord
                    capacity_type: :closed,
                    bookable_across_occurrences: true
 
-  validates_presence_of :designation, :uuid
+  validates_presence_of :designation, :uuid, :facility
   validates_uniqueness_of :uuid
 
   belongs_to :facility

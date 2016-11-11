@@ -20,7 +20,8 @@ class Api::ApiController < ActionController::API
   end
 
   def create
-    @resource = Resource.new(resource_params)
+    facility = Facility.find_by(code: params[:resource][:f_code])
+    @resource = Resource.new(resource_params.merge(facility: facility))
     @resource.schedule = IceCube::Schedule.new(Date.today - 1.year, duration: 1.year)
     @resource.schedule.add_recurrence_rule IceCube::Rule.daily
     if @resource.save
