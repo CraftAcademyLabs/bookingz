@@ -26,3 +26,8 @@ And(/^I assign "([^"]*)" to "([^"]*)"$/) do |user, facility_name|
   end
 end
 
+
+Then(/^I should be on the show page for "([^"]*)"$/) do |name|
+  facility = Facility.find_by(name: name)
+  expect(page.current_path).to eq facility_path(facility, locale: I18n.locale)
+end

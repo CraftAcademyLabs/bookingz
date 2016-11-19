@@ -1,8 +1,13 @@
 class FacilitiesController < ApplicationController
-  before_action :authenticate_superuser
+  before_action :authenticate_user!
+  before_action :authenticate_superuser, except: :show
 
   def index
     @facilities = Facility.all
+  end
+
+  def show
+    @facility = Facility.find(params[:id])
   end
 
   def new
