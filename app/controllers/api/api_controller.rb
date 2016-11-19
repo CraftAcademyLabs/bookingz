@@ -53,7 +53,8 @@ class Api::ApiController < ActionController::API
     params.require(:resource).permit(:uuid,
                                      :designation,
                                      :description,
-                                     :capacity)
+                                     :capacity,
+                                     :facility_id)
   end
 
   def in_weekly_mode?
