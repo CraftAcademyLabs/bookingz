@@ -4,10 +4,28 @@
     .large-12.column
       %div{id: "facility_#{facility.id}"}
         %h4
+          Facility:
           = facility.name
+        %p
+          %small
+            Code:
+            = facility.code
         - if facility.users
+          %h5
+            Users
+            %span.secondary.badge= facility.users.count
+
           - facility.users.each do |user|
-            = user.email
+            %p= user.email
+        - if facility.resources
+          %h5
+            Resources
+            %span.secondary.badge= facility.resources.count
+
+
+          - facility.resources.each do |resource|
+            - binding.pry
+            %p= resource.designation
         - if unassigned_users_select_options.any?
           = render partial: 'assign_user_form', locals: {facility: facility}
 
