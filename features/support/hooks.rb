@@ -4,3 +4,8 @@ After '@javascript' do
     session.driver.restart
   end
 end
+
+Before do
+  Settings.slot_configuration.increment = 30
+  Settings.slot_configuration.end_time = 20
+end
