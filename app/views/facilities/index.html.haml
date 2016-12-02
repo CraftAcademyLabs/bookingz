@@ -24,7 +24,6 @@
 
 
           - facility.resources.each do |resource|
-            - binding.pry
             %p= resource.designation
         - if unassigned_users_select_options.any?
           = render partial: 'assign_user_form', locals: {facility: facility}
