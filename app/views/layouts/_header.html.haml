@@ -24,6 +24,9 @@
                 = link_to t('header.facilities'), facilities_path
               %li
                 = link_to t('header.add_facility'), new_facility_path
+        - elsif current_user.try(:facility)
+          %li
+            = link_to current_user.facility.name, facility_path(current_user.facility, locale: locale)
     .top-bar-right
       %ul.dropdown.menu{data:{dropdown:{menu: ''}}}
         %li.is-dropdown-submenu-parent

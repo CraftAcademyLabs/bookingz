@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/approvals/users', controller: :approvals, action: :index
     post '/approvals/users', controller: :approvals, action: :approve_user
     post :facility_user, controller: :facilities, action: :assign_user
-    resources :facilities, only: [:index, :new, :create]
+    resources :facilities, only: [:index, :new, :create, :show]
     root controller: :dashboard, action: :index
 
   end

@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 describe Api::ApiController, type: :request do
+  Settings.slot_configuration.increment = 30
+  Settings.slot_configuration.end_time = 20
+
   describe 'create resource endpoint' do
     let!(:facility) { create(:facility, code: 'qwer')}
     it 'creates an object with valid request' do

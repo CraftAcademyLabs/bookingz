@@ -19,6 +19,9 @@
                   %strong
                     = t('dashboard.details')
                   = resource.description
+                  - if current_user.superadmin?
+                    %br/
+                    %strong= resource.facility
                   %br/
                   %strong
                     = t('dashboard.capacity')
