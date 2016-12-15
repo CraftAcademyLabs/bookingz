@@ -17,11 +17,10 @@
       %td
         - if facility.resources
           - facility.resources.each do |resource|
-            = resource.designation
+            = [resource.designation, '<br>'].join('').html_safe
           - if unassigned_users_select_options.any?
             = render partial: 'assign_user_form', locals: {facility: facility}
       %td
         - if facility.users
           - facility.users.each do |user|
-            = user.email
-            %br
+            = [user.email, '<br>'].join('').html_safe
