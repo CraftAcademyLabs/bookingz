@@ -26,14 +26,16 @@ Feature: As a Superadmin
     And I navigate to the "landing" page
 
 
-
   Scenario: Viewing aggregated info on Facilities index page
-    #Then show me an image of the page
     When I click on "Admin"
     And I click on "Facilities"
-    #Then show me the page
     Then I should see "Galaxy" in a section for "Stena Center"
     And I should see "Atlantis" in a section for "Stena Center"
     And I should see "Enterprise" in a section for "Stena Center"
     And I should not see "Cohort Room" in a section for "Stena Center"
     And I should not see "NCC Enterprise" in a section for "Stena Center"
+    And I should see "admin@stena-center.com" in a section for "Stena Center"
+    And I should not see "admin@craft-academy.com" in a section for "Stena Center"
+    And I should see "Cohort Room" in a section for "Craft Academy"
+    And I should see "NCC Enterprise" in a section for "Craft Academy"
+    And I should see "admin@craft-academy.com" in a section for "Craft Academy"
