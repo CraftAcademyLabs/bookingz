@@ -14,9 +14,10 @@ Feature: As a Facility Manager
       | admin@stena-center.com  | admin_password | Stena Center  |
       | admin@craft-academy.com | admin_password | Craft Academy |
 
-    Scenario: Access Facility view as an logged in user
-      Given I am logged in as "admin@stena-center.com"
-      And I navigate to the "landing" page
-      And I click on "Stena Center"
-      Then I should be on the show page for "Stena Center"
-      And I should see "Stena Center"
+    And I am logged in as "admin@stena-center.com"
+    And I navigate to the "landing" page
+
+  Scenario: Access Facility view as an logged in user
+    When I click on "Stena Center"
+    Then I should be on the show page for "Stena Center"
+    And I should see "Stena Center"
