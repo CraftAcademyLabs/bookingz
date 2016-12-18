@@ -21,7 +21,8 @@
                   = resource.description
                   - if current_user.superadmin?
                     %br/
-                    %strong= resource.facility
+                    %strong= resource.facility.name
+                    %span= "(Code: #{resource.facility.code})"
                   %br/
                   %strong
                     = t('dashboard.capacity')
