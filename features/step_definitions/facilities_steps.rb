@@ -31,3 +31,15 @@ Then(/^I should be on the show page for "([^"]*)"$/) do |name|
   facility = Facility.find_by(name: name)
   expect(page.current_path).to eq facility_path(facility, locale: I18n.locale)
 end
+
+Then(/^I (should|should not) see "([^"]*)" in a section for "([^"]*)"$/) do |negation, content, facility|
+  facility = Facility.find_by(name: facility)
+  within "#facility_#{facility.id}" do
+    case negation
+      when 'should'
+        expect(page).to have_content content
+      when 'should not'
+        expect(page).not_to have_content content
+    end
+  end
+end
