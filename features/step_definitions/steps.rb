@@ -187,3 +187,6 @@ def mock_date_script(time)
 end
 
 
+And(/^I wait for the page to load$/) do
+  sleep(1)
+end

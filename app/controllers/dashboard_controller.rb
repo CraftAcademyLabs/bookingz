@@ -61,7 +61,7 @@ class DashboardController < ApplicationController
   end
 
   def send_note
-    content = params[:note]
+    content = {note: params[:note], time: Time.now.strftime("%I:%H, %m/%d/%Y") }
     BroadcastNoteJob.perform_now(content)
   end
 

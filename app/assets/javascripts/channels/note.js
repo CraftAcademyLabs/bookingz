@@ -17,7 +17,8 @@ App.notes = App.cable.subscriptions.create({channel: 'NoteChannel'}, {
     received: function (data) {
         // Called when there's incoming data on the websocket for this channel
         // return this.printMessage(data)
-        console.log('received');
+        $('.note_flash').html('Your message "' + data.note + '" was sent at ' + data.time);
+        console.log(data);
     },
 
     // printMessage: function (data) {
