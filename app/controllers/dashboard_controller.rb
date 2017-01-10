@@ -60,6 +60,11 @@ class DashboardController < ApplicationController
     redirect_to root_path(date: delete_booking_params[:booking_date])
   end
 
+  def send_note
+    content = params[:note]
+    BroadcastNoteJob.perform_now(content)
+  end
+
   private
   def booking_params
     params.require(:booking).permit(:resource_id,

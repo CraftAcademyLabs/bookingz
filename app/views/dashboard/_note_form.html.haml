@@ -1,7 +1,7 @@
 .send_note
   Send a note to all rooms in this facility.
   // The above text obviously needs to go into the translation data yamls
-  = form_tag note_path, id: 'send_note', remote: true do
+  = form_tag note_path, id: 'send_note', method: :post, remote: true do
     = hidden_field_tag 'note', true
-    = text_field_tag 'note', nil, placeholder: 'Your message here', class: 'form-control code'
+    = text_field_tag 'note', nil, placeholder: 'Your message here'
     = submit_tag 'Send', id: 'start_button', class: 'btn btn-primary btn-lg btn-block'
