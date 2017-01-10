@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     root controller: :dashboard, action: :index
 
     mount ActionCable.server => '/cable'
+    get '/create_note', controller: :dashboard, action: :send_note, as: :note
 
   end
 

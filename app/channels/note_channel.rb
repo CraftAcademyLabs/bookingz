@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class NoteChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
+    stream_from 'notes'
   end
 
   def unsubscribed
@@ -9,5 +9,6 @@ class NoteChannel < ApplicationCable::Channel
   end
 
   def notify
+    ActionCable.server.broadcast('notes', message: data['message'])
   end
 end
