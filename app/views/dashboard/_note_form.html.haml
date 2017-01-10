@@ -5,3 +5,9 @@
     = hidden_field_tag 'note', true
     = text_field_tag 'note', nil, placeholder: 'Your message here'
     = submit_tag 'Send', id: 'start_button', class: 'btn btn-primary btn-lg btn-block'
+  .note_flash
+
+:javascript
+  $(document).ready(function () {
+    // Need to put some stuff in here such that when a cable is received, it updates the $('.note_flash').html(note)
+  });
