@@ -173,6 +173,15 @@ And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text
 end
 
+And(/^I switch to a new window$/) do
+  window = open_new_window
+  switch_to_window(window)
+end
+
+When(/^I switch to window "([^"]*)"$/) do |index|
+  switch_to_window(windows[index.to_i - 1])
+end
+
 private
 
 def mock_date_script(time)
@@ -184,5 +193,4 @@ def mock_date_script(time)
     "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
   end
 end
-
 

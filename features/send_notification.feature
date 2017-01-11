@@ -21,3 +21,16 @@ Feature: As an administrator of a facility
     When I fill in "note" with "Lunch is now served"
     And I click "Send"
     Then I should see "Your message 'Lunch is now served' was sent at "
+
+  Scenario: Viewing only my own facility's message
+    Given I am logged in as "admin@stena-center.com"
+    And I navigate to the "landing" page
+    And I switch to a new window
+    And I am logged in as "admin@craft-academy.com"
+    And I navigate to the "landing" page
+    When I switch to window "1"
+    And I fill in "note" with "Note to Stena Center"
+    And I click "Send"
+    Then I should see "Note to Stena Center"
+    When I switch to window "2"
+    Then I should not see "Note to Stena Center"
