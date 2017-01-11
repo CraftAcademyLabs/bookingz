@@ -8,7 +8,4 @@ class NoteChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def notify
-    ActionCable.server.broadcast('notes', message: data['message'])
-  end
 end

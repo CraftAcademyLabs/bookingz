@@ -3,10 +3,5 @@
   // The above text obviously needs to go into the translation data yamls
   = form_tag note_path, id: 'send_note', method: :post, remote: true do
     = text_field_tag 'note', nil, placeholder: 'Your message here'
-    = submit_tag 'Send', id: 'start_button', class: 'btn btn-primary btn-lg btn-block'
+    = submit_tag 'Send', id: 'start_button', class: 'button'
   .note_flash
-
-:javascript
-  $(document).ready(function () {
-    // Need to put some stuff in here such that when a cable is received, it updates the $('.note_flash').html(note)
-  });

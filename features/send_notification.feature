@@ -20,5 +20,4 @@ Feature: As an administrator of a facility
     Then I should see "Send a note to all rooms in this facility."
     When I fill in "note" with "Lunch is now served"
     And I click "Send"
-    And I wait for the page to load
     Then I should see "Your message 'Lunch is now served' was sent at "

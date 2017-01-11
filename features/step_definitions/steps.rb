@@ -169,7 +169,6 @@ Then(/^I click "([^"]*)" button$/) do |button|
   click_link_or_button button
 end
 
-
 And(/^I should see button "([^"]*)"$/) do |text|
   expect(page).to have_button text
 end
@@ -187,6 +186,3 @@ def mock_date_script(time)
 end
 
 
-And(/^I wait for the page to load$/) do
-  sleep(1)
-end
