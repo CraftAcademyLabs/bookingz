@@ -72,7 +72,6 @@ function cableSubscribe() {
         },
 
         connected: function (data) {
-            console.log(this);
             // Called when the subscription is ready for use on the server
 
         },
