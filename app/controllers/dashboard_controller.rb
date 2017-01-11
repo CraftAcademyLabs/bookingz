@@ -7,10 +7,6 @@ class DashboardController < ApplicationController
     else
       @resources = current_user.try(:facility).try(:resources) || Resource.all
     end
-    unless current_user.facility.nil?
-      # params[:facility_id] = current_user.facility.id
-      # cookies['facility_id'] = current_user.facility.id
-    end
   end
 
   def create_booking

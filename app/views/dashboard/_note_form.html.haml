@@ -7,32 +7,3 @@
       = text_field_tag 'note', nil, placeholder: 'Your message here'
       = submit_tag 'Send', id: 'start_button', class: 'button'
     .note_flash
-
-:javascript
-  (function() {
-   this.App || (this.App = {});
-   var facility_id = document.querySelector('.facility_id').id;
-   console.log(facility_id);
-   // App.cable = ActionCable.createConsumer();
-   App.cable.subscriptions.create({channel: 'NoteChannel', facility_id: parseInt(facility_id)}, {
-    collection: function () {
-        // return $("#message");
-    },
-
-    connected: function (data) {
-        console.log(this);
-        // Called when the subscription is ready for use on the server
-
-    },
-
-    disconnected: function () {
-        // Called when the subscription has been terminated by the server
-    },
-
-    received: function (data) {
-        // Called when there's incoming data on the websocket for this channel
-        $('.note_flash').html("Your message '" + data.note + "' was sent at " + data.time);
-    }
-  });
-
-  }).call(this);

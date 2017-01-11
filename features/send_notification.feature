@@ -31,5 +31,4 @@ Feature: As an administrator of a facility
     And I click "Send"
     Then I should see "Note to Craft Academy"
     When I switch to window "1"
-    Then show me an image of the page
     Then I should not see "Note to Craft Academy"

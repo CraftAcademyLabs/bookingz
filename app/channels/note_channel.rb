@@ -6,7 +6,6 @@ class NoteChannel < ApplicationCable::Channel
     else
       id = self.connection.connection_identifier
     end
-    # binding.pry
     stream_from "notes_#{id}"
   end
 
