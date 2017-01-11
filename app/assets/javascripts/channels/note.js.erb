@@ -1,4 +1,4 @@
-App.notes = App.cable.subscriptions.create({channel: 'NoteChannel'}, {
+App.notes = App.cable.subscriptions.create({channel: 'NoteChannel', facility_id: 1}, {
     collection: function () {
         // return $("#message");
     },
