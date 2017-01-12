@@ -1,8 +1,8 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class NoteChannel < ApplicationCable::Channel
   def subscribed
-    unless self.params[:facility_id].nil?
-      id = self.params[:facility_id]
+    unless self.params[:data][:facility_id].nil?
+      id = self.params[:data][:facility_id]
     else
       id = self.connection.connection_identifier
     end
