@@ -29,7 +29,7 @@ RSpec.describe Resource, type: :model do
   describe 'directions' do
     it 'should have a list of default directions' do
       expected_directions = %w{left right up down}
-      actual_directions = Resource.DIRECTIONS
+      actual_directions = Resource::DIRECTIONS
 
       expect(actual_directions).to eq expected_directions
     end

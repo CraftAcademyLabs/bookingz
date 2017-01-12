@@ -7,6 +7,7 @@ class Resource < ApplicationRecord
   validates_uniqueness_of :uuid
 
   belongs_to :facility
+  DIRECTIONS = %w{left right up down}
 
 
   def current_day_bookings(date)
