@@ -11,5 +11,6 @@ FactoryGirl.define do
       schedule.add_recurrence_rule IceCube::Rule.daily
       schedule
     }
+    direction 'left'
   end
 end

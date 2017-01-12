@@ -12,7 +12,8 @@ describe Api::ApiController, type: :request do
       post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
                                                     f_code: facility.code,
                                                     designation: 'New conference room',
-                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+                                                    capacity: 20,
+                                                    direction: 'left'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 
 
       new_object = Resource.last
@@ -26,7 +27,8 @@ describe Api::ApiController, type: :request do
       post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
                                                     f_code: '',
                                                     designation: 'New conference room',
-                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+                                                    capacity: 20,
+                                                    direction: 'left'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 
       expected_error_response = ['Facility can\'t be blank'].sort
       expect(response_json['message']).to eq expected_error_response
@@ -43,7 +45,8 @@ describe Api::ApiController, type: :request do
       post api_resources_path, {params: {resource: {uuid: '',
                                                     f_code: facility.code,
                                                     designation: 'New conference room',
-                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+                                                    capacity: 20,
+                                                    direction: 'left'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
 
       expected_error_response = ['Uuid can\'t be blank'].sort
       expect(response_json['message']).to eq expected_error_response
@@ -54,7 +57,8 @@ describe Api::ApiController, type: :request do
       object = FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
       put '/api/resources/', {params: {uuid: object.uuid, resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
                                                                      designation: 'Conference room',
-                                                                     capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+                                                                     capacity: 20,
+                                                                     direction: 'left'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
       object = Resource.find_by(uuid: '123e4567-e89b-12d3-a456-426655440000')
       expected_response = {id: object.id,
                            uuid: '123e4567-e89b-12d3-a456-426655440000',
