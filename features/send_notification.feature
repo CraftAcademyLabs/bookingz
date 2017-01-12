@@ -32,3 +32,13 @@ Feature: As an administrator of a facility
     Then I should see "Note to Craft Academy"
     When I switch to window "1"
     Then I should not see "Note to Craft Academy"
+
+  # We need to return to these tests later - why are these windows not behaving as intended?
+
+#    When I navigate to the "landing" page
+#    And I fill in "note" with "Note to Stena Center"
+#    And I click "Send"
+#    Then I should see "Note to Stena Center"
+#    When I switch to window "2"
+#    And I navigate to the "landing" page
+#    Then I should not see "Note to Stena Center"
