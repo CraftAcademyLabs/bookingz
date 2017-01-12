@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :facilities, only: [:index, :new, :create, :show]
     root controller: :dashboard, action: :index
 
+    mount ActionCable.server => '/cable'
+    post '/create_note', controller: :dashboard, action: :send_note, as: :note
+
   end
 
   namespace :api do

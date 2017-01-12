@@ -29,7 +29,7 @@ Feature: As a Superadmin
   Scenario: Viewing aggregated info on Facilities index page
     When I click on "Admin"
     And I click on "Facilities"
-    Then show me an image of the page
+#    Then show me an image of the page
     Then I should see "Galaxy" in a section for "Stena Center"
     And I should see "Atlantis" in a section for "Stena Center"
     And I should see "Enterprise" in a section for "Stena Center"

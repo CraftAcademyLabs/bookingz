@@ -53,6 +53,7 @@ group :development, :test do
   gem 'simplecov', git: 'https://github.com/colszowka/simplecov'
   gem 'coveralls', require: false
   gem 'railroady'
+  gem 'redis_test'
 end
 
 group :development do
