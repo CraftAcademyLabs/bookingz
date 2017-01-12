@@ -13,6 +13,8 @@
           %li
             = link_to t('header.home'), root_path
           %li
+            = link_to 'Logout', destroy_user_session_path, method: :delete
+          %li
             = link_to t('footer.instructions'), page_path(id: 'instructions')
         - if current_user.try(:superadmin)
           %li.is-dropdown-submenu-parent
