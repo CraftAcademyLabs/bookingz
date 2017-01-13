@@ -1,7 +1,7 @@
 .send_note
   - unless current_user.nil? || current_user.facility.nil? || current_user.superadmin?
     .facility_id{id: "#{current_user.facility.id}"}
-    Send a note to all rooms in this facility.
+    = t('dashboard.note')
     // The above text obviously needs to go into the translation data yamls
     = form_tag note_path, id: 'send_note', method: :post, remote: true do
       = text_field_tag 'note', nil, placeholder: 'Your message here'

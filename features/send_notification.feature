@@ -17,6 +17,7 @@ Feature: As an administrator of a facility
   Scenario: Filling out the 'Send a Note' Form
     Given I am logged in as "admin@stena-center.com"
     And I navigate to the "landing" page
+    Then I should see "Send a note to all rooms in this facility."
     When I fill in "note" with "Lunch is now served"
     And I click "Send"
     Then I should see "Your message 'Lunch is now served' was sent at "

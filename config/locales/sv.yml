@@ -28,6 +28,7 @@ sv:
     update: Uppdatera
     submit: Skapa
     confirm: Var god bekräfta
+    note: Skicka ett meddelande till alla rum i din anläggning
   approvals:
     user_management: Användarhantering
     all_users: Alla användare
