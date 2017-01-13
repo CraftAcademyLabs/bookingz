@@ -4,6 +4,6 @@
     = t('dashboard.note')
     // The above text obviously needs to go into the translation data yamls
     = form_tag note_path, id: 'send_note', method: :post, remote: true do
-      = text_field_tag 'note', nil, placeholder: 'Your message here'
+      = text_field_tag 'note', nil, placeholder: 'Your message here', maxlength: 160
       = submit_tag 'Send', id: 'start_button', class: 'button'
     .note_flash
