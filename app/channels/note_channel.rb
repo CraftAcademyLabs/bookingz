@@ -1,12 +1,13 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class NoteChannel < ApplicationCable::Channel
   def subscribed
-    unless self.params[:data][:facility_id].nil?
-      id = self.params[:data][:facility_id]
+    unless self.params[:data][:facility_code].nil?
+      code = self.params[:data][:facility_code]
     else
-      id = self.connection.connection_identifier
+      code = self.connection.connection_identifier
     end
-    stream_from "notes_#{id}"
+
+    stream_from "notes_#{code}"
   end
 
   def unsubscribed
