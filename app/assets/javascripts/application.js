@@ -18,7 +18,4 @@
 //= require mockdate
 //= require date
 //= require date/sv-SE
-//= require_tree .
-
-
-
+//= require header_footer

@@ -1,3 +1,7 @@
+//= require cable
+//= require date_extensions
+
+
 function queryApi(date) {
   $.ajax({
     dataType: "json",
@@ -89,4 +93,3 @@ function cableSubscribe() {
 }
 
 $(document).ready(cableSubscribe);
-
