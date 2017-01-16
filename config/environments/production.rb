@@ -85,5 +85,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Action Cable settings
-  config.action_cable.disable_request_forgety_protection = true
+  config.action_cable.disable_request_forgery_protection = true
 end
