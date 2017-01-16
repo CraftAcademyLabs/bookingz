@@ -53,4 +53,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_view.raise_on_missing_translations = true
 
+  # Action Cable settings
+  config.action_cable.disable_request_forgery_protection = true
+
 end
