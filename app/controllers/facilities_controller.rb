@@ -26,7 +26,7 @@ class FacilitiesController < ApplicationController
 
   def assign_user
     user = User.find(params[:user])
-    facility = Facility.find(params[:facility_id])
+    facility = Facility.find(params[:facility_code])
     user.update_attribute(:facility, facility)
     redirect_back(fallback_location: root_path)
   end
