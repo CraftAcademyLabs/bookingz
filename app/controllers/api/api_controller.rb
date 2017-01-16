@@ -54,7 +54,7 @@ class Api::ApiController < ActionController::API
                                      :designation,
                                      :description,
                                      :capacity,
-                                     :facility_code)
+                                     :facility_id)
   end
 
   def in_weekly_mode?
