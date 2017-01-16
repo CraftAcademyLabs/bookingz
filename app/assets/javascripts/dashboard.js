@@ -69,8 +69,8 @@ function populateAndShowModal(object) {
 }
 
 function cableSubscribe() {
-    var facility_id = document.querySelector('.facility_id').id;
-    App.cable.subscriptions.create({channel: 'NoteChannel', data: { facility_id: parseInt(facility_id, 10) } }, {
+    var facility_code = document.querySelector('.facility_code').id;
+    App.cable.subscriptions.create({channel: 'NoteChannel', data: { facility_code: facility_code } }, {
         collection: function () {
             // return $("#message");
         },
