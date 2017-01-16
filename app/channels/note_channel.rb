@@ -6,6 +6,7 @@ class NoteChannel < ApplicationCable::Channel
     else
       code = self.connection.connection_identifier
     end
+
     stream_from "notes_#{code}"
   end
 
