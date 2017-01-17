@@ -63,8 +63,8 @@ describe Api::ApiController, type: :request do
         "Capacity is not a number",
         "Capacity can't be blank",
         "Designation can't be blank",
-        "Facility can't be blank",
-        "Direction can't be blank"
+        "Facility can't be blank"
+        # "Direction can't be blank"
       ].sort
 
       expect(response_json['message']).to eq expected_error_response
