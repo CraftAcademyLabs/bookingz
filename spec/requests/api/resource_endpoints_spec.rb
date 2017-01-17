@@ -9,64 +9,119 @@ describe Api::ApiController, type: :request do
   describe 'create resource endpoint' do
     let!(:facility) { create(:facility, code: 'qwer')}
     it 'creates an object with valid request' do
-      post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
-                                                    f_code: facility.code,
-                                                    designation: 'New conference room',
-                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+      payload = {
+        params: {
+          resource: {
+            uuid: '123e4567-e89b-12d3-a456-426655440000',
+            f_code: facility.code,
+            designation: 'New conference room',
+            capacity: 20,
+            direction: 'left'
+          }
+        }, headers: { 'HTTP_ACCEPT': 'application/json' }
+      }
 
+      post api_resources_path, payload
 
       new_object = Resource.last
-      expected_response = {id: new_object.id,
-                           uuid: '123e4567-e89b-12d3-a456-426655440000',
-                           designation: 'New conference room'}
+      expected_response = {
+        id: new_object.id,
+        uuid: '123e4567-e89b-12d3-a456-426655440000',
+        designation: 'New conference room'
+      }
       expect(response_json).to eq expected_response.as_json
     end
 
     it 'reject object creation without facility' do
-      post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
-                                                    f_code: '',
-                                                    designation: 'New conference room',
-                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+      payload = {
+        params: {
+          resource: {
+            uuid: '123e4567-e89b-12d3-a456-426655440000',
+            f_code: '',
+            designation: 'New conference room',
+            capacity: 20,
+            direction: 'left'
+          }
+        }, headers: { 'HTTP_ACCEPT': 'application/json' }
+      }
+
+      post api_resources_path, payload
 
       expected_error_response = ['Facility can\'t be blank'].sort
       expect(response_json['message']).to eq expected_error_response
     end
 
     it 'reject object creation on invalid request' do
-      post api_resources_path, {params: {resource: {uuid: '123e4567-e89b-12d3-a456-426655440000'}}, headers: {'HTTP_ACCEPT': 'application/json'}}
-      expected_error_response = ['Capacity is not a number', 'Capacity can\'t be blank', 'Designation can\'t be blank', 'Facility can\'t be blank'].sort
+      payload = {
+        params:  { resource: { uuid: '123e4567-e89b-12d3-a456-426655440000' } },
+        headers: { 'HTTP_ACCEPT': 'application/json' }
+      }
+
+      post api_resources_path, payload
+
+      expected_error_response = [
+        "Capacity is not a number",
+        "Capacity can't be blank",
+        "Designation can't be blank",
+        "Facility can't be blank"
+        # "Direction can't be blank"
+      ].sort
+
       expect(response_json['message']).to eq expected_error_response
     end
 
 
     it 'reject object creation without uuid' do
-      post api_resources_path, {params: {resource: {uuid: '',
-                                                    f_code: facility.code,
-                                                    designation: 'New conference room',
-                                                    capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
+      payload = {
+        params: {
+          resource: {
+            uuid: '',
+            f_code: facility.code,
+            designation: 'New conference room',
+            capacity: 20,
+            direction: 'left'
+          }
+        }, headers: { 'HTTP_ACCEPT': 'application/json' }
+      }
+
+      post api_resources_path, payload
 
       expected_error_response = ['Uuid can\'t be blank'].sort
       expect(response_json['message']).to eq expected_error_response
     end
 
     it 'updates object' do
-
       object = FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
-      put '/api/resources/', {params: {uuid: object.uuid, resource: {uuid: '123e4567-e89b-12d3-a456-426655440000',
-                                                                     designation: 'Conference room',
-                                                                     capacity: 20}}, headers: {'HTTP_ACCEPT': 'application/json'}}
-      object = Resource.find_by(uuid: '123e4567-e89b-12d3-a456-426655440000')
-      expected_response = {id: object.id,
-                           uuid: '123e4567-e89b-12d3-a456-426655440000',
-                           designation: 'Conference room'}
-      expect(response_json).to eq expected_response.as_json
 
+      payload = {
+        params: {
+          uuid: object.uuid,
+          resource: {
+            uuid: '123e4567-e89b-12d3-a456-426655440000',
+            designation: 'Conference room',
+            capacity: 20,
+            direction: 'left'
+          }
+        }, headers: { 'HTTP_ACCEPT': 'application/json' }
+      }
+
+      put '/api/resources/', payload
+
+      object = Resource.find_by(uuid: '123e4567-e89b-12d3-a456-426655440000')
+      expected_response = {
+        id: object.id,
+        uuid: '123e4567-e89b-12d3-a456-426655440000',
+        designation: 'Conference room'
+      }
+
+      expect(response_json).to eq expected_response.as_json
     end
   end
 
   describe 'resource show' do
-    let!(:resource_1) { FactoryGirl.create(:resource,
-                                           uuid: '123e4567-e89b-12d3-a456-426655440000') }
+    let!(:resource_1) do
+      FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
+    end
 
     let(:user) { FactoryGirl.create(:user) }
 
@@ -614,7 +669,7 @@ describe Api::ApiController, type: :request do
               }
           ]
       }
-      get api_resources_path, headers: {'HTTP_ACCEPT': 'application/json'}
+      get api_resources_path, headers: { 'HTTP_ACCEPT': 'application/json' }
       expect(response_json['items'][0]).to eq expected_response[:items][0].as_json
       expect(response_json['items'][1]['designation']).to eq resource_2.designation
     end
