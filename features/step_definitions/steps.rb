@@ -182,6 +182,10 @@ When(/^I switch to window "([^"]*)"$/) do |index|
   switch_to_window(windows[index.to_i - 1])
 end
 
+Then(/^I wait for (\d+) seconds$/) do |seconds|
+  sleep seconds.to_i.seconds
+end
+
 private
 
 def mock_date_script(time)
