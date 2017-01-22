@@ -28,6 +28,7 @@ en:
     update: Update
     submit: Create
     confirm: Please confirm
+    note: Send a note to all rooms in this facility.
   approvals:
     user_management: User Management
     all_users: All users

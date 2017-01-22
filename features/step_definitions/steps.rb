@@ -197,4 +197,3 @@ def mock_date_script(time)
     "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
   end
 end
-

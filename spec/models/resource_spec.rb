@@ -12,6 +12,7 @@ RSpec.describe Resource, type: :model do
     it { is_expected.to have_db_column :designation }
     it { is_expected.to have_db_column :description }
     it { is_expected.to have_db_column :uuid }
+    it { is_expected.to have_db_column :direction }
   end
 
   describe 'Validations' do
@@ -20,8 +21,18 @@ RSpec.describe Resource, type: :model do
     it {is_expected.to validate_presence_of :capacity}
     it {is_expected.to validate_presence_of :schedule}
     it {is_expected.to validate_presence_of :facility}
+    # it {is_expected.to validate_presence_of :direction}
 
     it {is_expected.to validate_uniqueness_of :uuid}
+  end
+
+  describe 'directions' do
+    it 'should have a list of default directions' do
+      expected_directions = %w{left right up down}
+      actual_directions = Resource::DIRECTIONS
+
+      expect(actual_directions).to eq expected_directions
+    end
   end
 
   describe 'Associations' do
