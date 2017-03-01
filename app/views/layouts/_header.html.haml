@@ -13,8 +13,6 @@
           %li
             = link_to t('header.home'), root_path
           %li
-            = link_to 'Logout', destroy_user_session_path, method: :delete
-          %li
             = link_to t('footer.instructions'), page_path(id: 'instructions')
         - if current_user.try(:superadmin)
           %li.is-dropdown-submenu-parent
@@ -31,6 +29,12 @@
             = link_to current_user.facility.name, facility_path(current_user.facility, locale: locale)
     .top-bar-right
       %ul.dropdown.menu{data:{dropdown:{menu: ''}}}
+        - if current_user
+          %li.is-dropdown-submenu-parent
+            = link_to current_user.email, '#'
+            %ul.menu
+              %li
+                = link_to 'Logout', destroy_user_session_path, method: :delete
         %li.is-dropdown-submenu-parent
           = link_to t('header.languages'), '#'
           %ul.menu
@@ -38,3 +42,4 @@
               = link_to t('header.swedish'), locale: 'sv'
             %li
               = link_to t('header.english'), locale: 'en'
+
