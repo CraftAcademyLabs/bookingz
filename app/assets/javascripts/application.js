@@ -19,3 +19,4 @@
 //= require date
 //= require date/sv-SE
 //= require header_footer
+//= require flash_messages

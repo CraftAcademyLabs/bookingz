@@ -57,8 +57,14 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console'
+  gem 'capistrano', '~> 3.6.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-env-config'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano3-puma'
   gem 'listen', '~> 3.0.5'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'web-console'
 end
