@@ -1,0 +1,215 @@
+(function ($) {
+  $.fn.longClick = function (callback, timeout) {
+    var timer;
+    timeout = timeout || 500;
+    $(this).mousedown(function () {
+      timer = setTimeout(function () {
+        callback();
+      }, timeout);
+      return false;
+    });
+    $(document).mouseup(function () {
+      clearTimeout(timer);
+      return false;
+    });
+  };
+
+})(jQuery);
+
+function loadCurrentBookings(response) {
+  var res = response;
+  res.items.forEach(function (item) {
+    var card = ['#card', item.id].join('-');
+    $(card + " .content").append('<div class="with-scroll"></div>');
+    item.slots.forEach(function (slot) {
+      $(card + " .content .with-scroll").append(setHtml(slot));
+    });
+  });
+}
+
+function updateCurrentBookings(response) {
+  var res = response;
+  res.items.forEach(function (item) {
+    var card = ['#card', item.id].join('-');
+    $(card + " .content .with-scroll").empty();
+    item.slots.forEach(function (slot) {
+      $(card + " .content .with-scroll").append(setHtml(slot));
+    });
+  });
+}
+
+function setHtml(slot) {
+  return '<div class="action" ' +
+      'data-state="' + slot.state + '" ' +
+      'data-client="' + slot.info.client + '" ' +
+      'data-booking_time="' + slot.info.booking_time + '" ' +
+      'id="action_' + slot.info.id + '" ' +
+      'style="background-color: ' +
+      getBackgroundColor(slot) + '">' +
+      getInfo(slot) +
+      '</div>'
+}
+
+function getBackgroundColor(obj) {
+  var currentDate = new Date(getDisplayedDate() + " 00:00");
+  var color = (obj.state == 'booked') ? 'red' : 'green';
+
+  if (currentDate < today()) {
+    color = 'grey';
+  }
+  return color;
+}
+
+function setSlotMessage(obj) {
+  var booking_times = obj.info.booking_time.split(' - ');
+  var message;
+  message = [obj.info.time, '<%= t('dashboard.group')  %> ' + obj.info.client, '<br>', '<%= t('dashboard.time_start')  %> ' + booking_times[0], '<%= t('dashboard.time_end')  %>' + booking_times[1]].join(' ');
+  return message;
+}
+
+function getDisplayedDate() {
+  var date = $('#date').text();
+  return date;
+}
+
+
+
+function populateModal(object) {
+  var obj, resource, slot, card, date, id, booking_times;
+  obj = object;
+  card = $(obj).parent().parent().parent();
+  resource = card.find('.accordion-title').text();
+  slot = $(obj).text();
+  date = getDisplayedDate();
+  id = card[0].id.split("-").pop();
+  $('#booking_resource_id').val(id);
+  booking_times = object.textContent.split(' - ');
+  if (object.dataset.state == 'booked') {
+    booking_times = object.dataset.booking_time.split(' - ');
+    $('#model-content #headline').html('<%= t('dashboard.edit_reservation') %>');
+    $('#model-content #slot').html([resource + '<br>', date + '<br>' + slot].join(' '));
+    $('#booking_client').val(object.dataset.client);
+    $('#booking_booking_date').val(date);
+    $('#booking_time_start').val(booking_times[0]);
+    $('#booking_time_end').val(booking_times[1]);
+    $('#booking-form').attr('action', '<%= edit_booking_path %>').attr('method', 'post');
+    $('#booking-form').append('<input type="hidden" name="booking[original_time_start]" value="' + booking_times[0] + '" />');
+    $('#booking-form').find('#update').val('<%= t('dashboard.update') %>');
+    $('#delete').attr('href', function (i, value) {
+      return value
+          + $('#booking_resource_id').val()
+          + '&booking[original_time_start]=' + $("input[name*='booking[original_time_start]']").val()
+          + '&booking[booking_date]=' + $("input[name*='booking[booking_date]']").val();
+    });
+    $('#delete').show();
+    setupDateTimePicker(date, ' ' + booking_times[0]);
+    return;
+    // console.log(object);
+  } else {
+    $("input[name*='booking[original_time_start]']").remove();
+    $('#model-content #headline').html('<%= t('dashboard.reservation') %>');
+    $('#model-content #slot').html([resource + '<br>', date + '<br>' + slot].join(' '));
+    $('#booking_client').val('');
+    $('#booking_booking_date').val(date);
+    $('#booking_time_start').val(booking_times[0]);
+    $('#booking_time_end').val(booking_times[1]);
+    $('#booking-form').find('#update').val('<%= t('dashboard.submit') %>');
+    $('#delete').hide();
+    setupDateTimePicker(date, ' ' + booking_times[0]);
+    return;
+  }
+
+}
+
+function navigateDate(val) {
+  var displayedDate = getDisplayedDate();
+  var newDate = new Date(displayedDate);
+  newDate.setDate(newDate.getDate() + val);
+  return newDate.toJSON().slice(0, 10);
+
+}
+
+function dateOnPageLoad(passed_date) {
+  if (typeof passed_date !== 'undefined') {
+    MockDate.set(passed_date);
+  }
+  var date = currentDate();
+  $('#date').html(date);
+
+}
+
+function addEvents() {
+  $('#previous').off("click").click(function () {
+    $('#date').html(navigateDate(-1));
+    updateApi(getDisplayedDate());
+  });
+  $('#next').off("click").click(function () {
+    $('#date').html(navigateDate(1));
+    updateApi(getDisplayedDate());
+  });
+
+  $('#previous').off("longClick").longClick(function () {
+    //place date time picker code here
+    console.log('Looong press!');
+  });
+
+  $('[id^=action]').off("click").click(function () {
+    populateAndShowModal(this);
+  });
+
+}
+
+
+function setupDateTimePicker(date, time) {
+
+  var now = new Date(date + time);
+  // console.log(now);
+
+  var checkout = $('#booking_time_end').fdatetimepicker({
+    initialDate: now,
+    minuteStep: 15,
+    pickTime: 0,
+    startView: 0,
+    format: 'hh:ii',
+    maxView: 0,
+    onRender: function (time) {
+      return time.valueOf() < checkout.valueOf() ? 'disabled' : '';
+    }
+  }).on('changeDate', function () {
+    checkout.hide();
+  }).data('datetimepicker');
+
+
+  var checkin = $('#booking_time_start').fdatetimepicker({
+    minuteStep: 15,
+    startDate: now,
+    startView: 0,
+    format: 'hh:ii',
+    maxView: 0,
+    onRender: function (time) {
+      return time.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+  }).on('changeDate', function (ev) {
+    var newDate = new Date(ev.date);
+    var offset = new Date().getTimezoneOffset();
+    newDate.setMinutes(newDate.getMinutes() + (30 + offset));
+    checkout.update(newDate);
+    checkin.hide();
+    $('#booking_time_end').focus();
+  }).data('datetimepicker');
+}
+
+
+
+$(document).ready(function () {
+  dateOnPageLoad();
+  var date;
+  if (location.search.substr(1).length > 0) {
+    date = location.search.substr(1).split("=")[1];
+    $('#date').html(date);
+  } else {
+    date = currentDate();
+  }
+  queryApi(date);
+
+});

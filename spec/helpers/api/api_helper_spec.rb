@@ -17,7 +17,7 @@ RSpec.describe Api::ApiHelper, type: :helper do
       Timecop.freeze('2016-02-01')
       from = Date.today + 15.hour + 30.minutes
       to = from + 1.hour
-      @booking = resource.be_booked! user, time_start: from, time_end: to, amount: 4
+      @booking = resource.be_booked! user, client: 'Whoever', time_start: from, time_end: to, amount: 4
     end
 
     it 'returns nil if slot is free' do
@@ -26,7 +26,7 @@ RSpec.describe Api::ApiHelper, type: :helper do
     end
 
     it 'returns object if slot is booked' do
-      slot = '15:00 - 15:30'
+      slot = '15:30 - 16:00'
       expect(helper.slot_booking(resource, Date.today.to_s, slot)).to eq @booking
     end
 

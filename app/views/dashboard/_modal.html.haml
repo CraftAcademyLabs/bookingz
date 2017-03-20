@@ -1,0 +1,41 @@
+.small.reveal#slot-modal
+  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
+    %span{aria: {hidden: ''}}
+      &times;
+  #model-content
+    %h3#headline
+      = t('dashboard.reservation')
+    #slot
+    = form_tag (create_booking_path), id: 'booking-form' do
+      = hidden_field_tag 'booking[resource_id]'
+      = hidden_field_tag 'booking[booking_date]'
+      .row
+        .medium-12.columns
+          = label_tag 'booking[client]', t('dashboard.client')
+          = text_field_tag 'booking[client]', nil, required: true
+      .row#time-settings
+        .medium-6.columns
+          = label_tag 'booking[time_start]', t('dashboard.time_start')
+          = text_field_tag 'booking[time_start]', nil, class: 'picker'
+        .medium-6.columns
+          = label_tag 'booking[time_end]', t('dashboard.time_end')
+          = text_field_tag 'booking[time_end]', nil, class: 'picker'
+
+      .row
+        .medium-5.columns
+          = submit_tag t('dashboard.submit'), class: 'button', id: 'update'
+          = link_to t('dashboard.delete'), delete_booking_path(booking:{resource_id: ''}),
+          method: :delete,
+           class: 'button alert',
+           id: 'delete',
+           data: {confirm: t('dashboard.confirm')}
+
+.small.reveal#error-modal
+  %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
+    %span{aria: {hidden: ''}}
+      &times;
+  #model-content
+    %h3
+      = t('dashboard.unavailable')
+    %p
+      = t('dashboard.error')

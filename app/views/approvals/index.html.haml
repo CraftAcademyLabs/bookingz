@@ -1,0 +1,29 @@
+%h3
+  = t('approvals.user_management')
+
+= link_to t('approvals.all_users'), {action: 'index'}, class: 'button'
+= link_to t('approvals.pending_approvals'), {action: 'index', approved: 'false'}, class: 'button'
+-if @users.try(:empty?) || @users.nil?
+  %h5
+    = t('approvals.no_pending')
+-else
+  %table
+    - @users.each do |user|
+      %tr{id: "row-#{user.id}"}
+        %td= user.email
+        -if user.facility
+          %td= user.facility.name
+        -else
+          %td
+            = form_tag url_for(controller: :facilities, action: :assign_user) do
+              = hidden_field_tag :user, user.id
+              .large-6.column
+                = select_tag :facility_id, options_for_select(facilities_select_options)
+              .large-6.column
+                = submit_tag 'Add', data: { confirm: 'Are you sure?' }, class: 'button'
+        %td
+          = user.approved ? t('approvals.approved') : t('approvals.pending_approval')
+        - if user.approved
+          %td= ''
+        - else
+          %td= link_to t('approvals.accept'), approvals_users_path(locale: locale, id: user.id), method: :post, class: "button #{user.facility ? '' : 'disabled'}"

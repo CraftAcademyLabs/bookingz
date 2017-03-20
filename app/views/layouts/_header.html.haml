@@ -1,6 +1,45 @@
-%header.header
-  %h1.headline
-    = application_name
-  %h2
-    %small
-      = link_to 'by CA Labs', page_path('ca_labs')
+.top-bar
+  .top-bar-title
+    %span{data: {hide: {for: 'medium'}, responsive: {toggle:  'responsive-menu'}}}
+      %button.menu-icon.dark{data: {toggle: ''}, type: 'button'}
+      %strong
+        = application_name
+  #responsive-menu
+    .top-bar-left
+      %ul.dropdown.menu{data:{dropdown:{menu: ''}}}
+        %li
+          = image_tag 'komboxrum_small.png', style: 'height: 40px; width: auto;'
+        - if current_user
+          %li
+            = link_to t('header.home'), root_path
+          %li
+            = link_to t('footer.instructions'), page_path(id: 'instructions')
+        - if current_user.try(:superadmin)
+          %li.is-dropdown-submenu-parent
+            = link_to 'Admin', '#'
+            %ul.menu
+              %li
+                = link_to t('header.users'), approvals_users_path
+              %li
+                = link_to t('header.facilities'), facilities_path
+              %li
+                = link_to t('header.add_facility'), new_facility_path
+        - elsif current_user.try(:facility)
+          %li
+            = link_to current_user.facility.name, facility_path(current_user.facility, locale: locale)
+    .top-bar-right
+      %ul.dropdown.menu{data:{dropdown:{menu: ''}}}
+        - if current_user
+          %li.is-dropdown-submenu-parent
+            = link_to current_user.email, '#'
+            %ul.menu
+              %li
+                = link_to 'Logout', destroy_user_session_path, method: :delete
+        %li.is-dropdown-submenu-parent
+          = link_to t('header.languages'), '#'
+          %ul.menu
+            %li
+              = link_to t('header.swedish'), locale: 'sv'
+            %li
+              = link_to t('header.english'), locale: 'en'
+

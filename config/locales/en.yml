@@ -1,23 +1,52 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  acts_as_bookable:
+    errors:
+      messages:
+        availability:
+          # already_booked: "the %{model} is fully booked"
+          already_booked: The room is already booked
+          amount_gt_capacity: Number can not be greater than the maximum capacity
+          unavailable_interval: "The room is not available from %{time_start} till %{time_end}"
+          unavailable_time:
+        booking:
+          bookable_must_be_bookable: "%{model} is unavailable"
+          booker_must_be_booker: "A %{model} can not book a room"
+  dashboard:
+    title: Click on the rooms you want to book or make a change.
+    reservation: Add reservation
+    edit_reservation: Edit reservation
+    client: Client
+    time_start: 'Starts: '
+    time_end: 'Finishes: '
+    group: 'Group: '
+    button: Create
+    capacity: 'Capacity:'
+    details: 'Details:'
+    unavailable: Unavailable
+    error: This date has already passed.
+    delete: Delete
+    update: Update
+    submit: Create
+    confirm: Please confirm
+    note: Send a note to all rooms in this facility.
+  approvals:
+    user_management: User Management
+    all_users: All users
+    pending_approvals: Pending approvals
+    pending_approval: Pending approval
+    approved: Approved
+    accept: Accept
+    no_pending: There are no pending registration requests
+    delete: Delete
+    sure: Are you sure?
+  footer:
+    home: Home
+    instructions: Instructions
+  header:
+    languages: Languages
+    swedish: Swedish
+    english: English
+    users: Users
+    home: Home
+    facilities: Facilities
+    add_facility: Add Facility

@@ -2,9 +2,9 @@
 = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
   = devise_error_messages!
   .field
-    = f.label :email
+    = f.label :email, t('devise.helpers.label.email')
     %br/
     = f.email_field :email, autofocus: true
   .actions
     = f.submit t('.resend_unlock_instructions')
-= render "devise/shared/links"
+= render 'devise/shared/links'

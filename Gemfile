@@ -14,6 +14,7 @@ gem 'redis', '~> 3.0'
 gem 'config'
 gem 'high_voltage'
 gem 'rack-cors', require: 'rack/cors'
+gem 'redcarpet'
 
 # UI
 gem 'haml-rails'
@@ -23,20 +24,23 @@ gem 'foundation-icons-sass-rails'
 gem 'rails-i18n', '~> 5.0.0'
 
 # Functionality libraries
-
 gem 'devise'
 gem 'devise-i18n'
-gem 'acts_as_bookable', github: 'CraftAcademy/acts_as_bookable', branch: 'develop'
+gem 'acts_as_bookable', git: 'https://github.com/CraftAcademy/acts_as_bookable',
+                        branch: 'develop'
+
+# Date navigation
+gem 'datejs-rails'
 
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'coveralls', require: false
   gem 'launchy'
   gem 'guard-rspec'
   gem 'guard-cucumber'
@@ -46,11 +50,21 @@ group :development, :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'timecop'
+  gem 'simplecov', git: 'https://github.com/colszowka/simplecov'
+  gem 'coveralls', require: false
+  gem 'railroady'
+  gem 'redis_test'
 end
 
 group :development do
-  gem 'web-console'
+  gem 'capistrano', '~> 3.6.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-env-config'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano3-puma'
   gem 'listen', '~> 3.0.5'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'web-console'
 end

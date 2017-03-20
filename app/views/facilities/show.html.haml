@@ -1,0 +1,12 @@
+%h3= @facility.name
+%p
+  Facility code
+  %strong
+    = @facility.code
+- if @facility.resources
+  - @facility.resources.each do |resource|
+    %h5= resource.designation
+    %p= resource.description
+    %p
+      capacity:
+      = resource.capacity

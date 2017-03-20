@@ -11,6 +11,32 @@ RSpec.describe Resource, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :designation }
     it { is_expected.to have_db_column :description }
+    it { is_expected.to have_db_column :uuid }
+    it { is_expected.to have_db_column :direction }
+  end
+
+  describe 'Validations' do
+    it {is_expected.to validate_presence_of :uuid}
+    it {is_expected.to validate_presence_of :designation}
+    it {is_expected.to validate_presence_of :capacity}
+    it {is_expected.to validate_presence_of :schedule}
+    it {is_expected.to validate_presence_of :facility}
+    # it {is_expected.to validate_presence_of :direction}
+
+    it {is_expected.to validate_uniqueness_of :uuid}
+  end
+
+  describe 'directions' do
+    it 'should have a list of default directions' do
+      expected_directions = %w{left right up down}
+      actual_directions = Resource::DIRECTIONS
+
+      expect(actual_directions).to eq expected_directions
+    end
+  end
+
+  describe 'Associations' do
+    it { is_expected.to belong_to :facility }
   end
 
   describe 'bookable methods' do
@@ -27,7 +53,7 @@ RSpec.describe Resource, type: :model do
       before do
         @from = Date.today.next_week + 9.hours
         @to = @from + 2.hours
-        subject.be_booked! user, time_start: @from, time_end: @to, amount: subject.capacity
+        subject.be_booked! user, client: 'Whoever', time_start: @from, time_end: @to, amount: subject.capacity
       end
 
       it 'adds booking' do
@@ -35,9 +61,9 @@ RSpec.describe Resource, type: :model do
       end
 
       it 'rejects identical booking with ActsAsBookable::AvailabilityError' do
-        expect{
+        expect {
           subject.be_booked! user, time_start: @from, time_end: @to, amount: 4
-        }.to raise_error(ActsAsBookable::AvailabilityError, 'the Resource is fully booked')
+        }.to raise_error(ActsAsBookable::AvailabilityError, 'The room is already booked')
       end
 
       it 'is of ActsAsBookable::Booking class' do
@@ -54,7 +80,7 @@ RSpec.describe Resource, type: :model do
       Timecop.freeze('2016-01-01')
       from = Date.today + 15.hour + 30.minutes
       to = from + 1.hour
-      @booking = subject.be_booked! user, time_start: from, time_end: to, amount: 4
+      @booking = subject.be_booked! user, client: 'Whoever', time_start: from, time_end: to, amount: 4
     end
 
     it 'returns a list of today´s bookings' do

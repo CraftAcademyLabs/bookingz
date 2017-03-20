@@ -11,3 +11,42 @@ sv:
         booking:
           bookable_must_be_bookable: "%{model} går inte att boka"
           booker_must_be_booker: "En %{model} kan inte boka ett rum"
+  dashboard:
+    title: Klicka på rummen ni vill boka eller göra en ändring.
+    reservation: Lägg till bokning
+    edit_reservation: Ändra bokning
+    client: Klient
+    time_start: 'Börjar: '
+    time_end: 'Slutar: '
+    group: 'Grupp: '
+    button: Skapa
+    capacity: 'Kapacitet:'
+    details: 'Detaljer:'
+    unavailable: Inte tillgänglig
+    error: Detta datum har redan passerat.
+    delete: Radera
+    update: Uppdatera
+    submit: Skapa
+    confirm: Var god bekräfta
+    note: Skicka ett meddelande till alla rum i din anläggning
+  approvals:
+    user_management: Användarhantering
+    all_users: Alla användare
+    pending_approvals: Väntande godkännanden
+    pending_approval: Väntar på godkännande
+    approved: Godkänd
+    accept: Acceptera
+    no_pending: Det finns inga pågående registreringsansökningar
+    delete: Radera
+    sure: Är du säker?
+  footer:
+    home: Hem
+    instructions: Instruktioner
+  header:
+    languages: Språk
+    swedish: Svenska
+    english: Engelska
+    users: Användare
+    home: Hem
+    facilities: Anläggningar
+    add_facility: Lägg till anläggning

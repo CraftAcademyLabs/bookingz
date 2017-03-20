@@ -1,6 +1,19 @@
-%h3 Klicka på rummen ni vill boka eller göra en ändring.
+%p= "This is #{Settings.mode.to_s.humanize}"
+%h3
+  = t('dashboard.title')
 %div{style: 'font-size: 25px', class: 'noselect'}
   %span.fi-previous#previous{style: 'display: inline'}
   %span#date
   %span.fi-next#next
-= render 'dashboard/cards'
+= render partial: 'dashboard/cards'
+= render partial: 'dashboard/modal'
+= render partial: 'dashboard/note_form'
+
+- content_for :javascript do
+  = javascript_include_tag 'dashboard'
+
+%script
+  - if Settings.mode == :daily_view
+    = render partial: 'dashboard/dashboard_daily.js.erb'
+  - elsif Settings.mode == :weekly_view
+    = render partial: 'dashboard/dashboard_weekly.js.erb'

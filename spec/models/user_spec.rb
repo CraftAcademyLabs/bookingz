@@ -11,6 +11,38 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :email }
     it { is_expected.to have_db_column :encrypted_password }
+    it { is_expected.to have_db_column :approved }
+    it { is_expected.to have_db_column(:superadmin).of_type(:boolean) }
+  end
+
+  describe 'Associations' do
+    it { is_expected.to belong_to :facility }
+  end
+
+  describe 'approved methods' do
+    it { is_expected.to respond_to :approved }
+  end
+
+  describe 'Roles' do
+    let(:user_1) { create(:user, superadmin: true) }
+    let(:user_2) { create(:user, superadmin: false) }
+
+    it 'user? should respond true if not superadmin' do
+      expect(user_2.user?).to be_truthy
+    end
+
+    it 'user? should respond false if superadmin' do
+      expect(user_1.user?).to be_falsey
+    end
+
+    it 'superadmin? should respond true if superadmin' do
+      expect(user_1.superadmin?).to be_truthy
+    end
+
+    it 'superadmin? should respond true if user' do
+      expect(user_2.superadmin?).to be_falsey
+    end
+
   end
 
   describe 'bookable methods' do
@@ -25,7 +57,7 @@ RSpec.describe User, type: :model do
       before do
         from = Date.today.next_week + 9.hours
         to = from + 2.hours
-        subject.book! resource, time_start: from, time_end: to, amount: 4
+        subject.book! resource, client: 'Whoever', time_start: from, time_end: to, amount: 4
       end
 
       it 'adds booking' do
