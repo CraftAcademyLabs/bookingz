@@ -6,7 +6,6 @@ require 'capistrano/deploy'
 
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
-require 'capistrano/passenger'
 require 'capistrano/puma'
 require 'capistrano/env-config'
 
