@@ -92,4 +92,14 @@ function cableSubscribe() {
     });
 }
 
+function countChar(val, allowedLength, displayElement) {
+    var len = val.value.length;
+    if (len > allowedLength) {
+        val.value = val.value.substring(0, allowedLength);
+    } else {
+        $(displayElement).text(allowedLength - len + ' characters left');
+    }
+}
+// Usage: onkeyup="countChar(this, 160, '#char-display')"
+
 $(document).ready(cableSubscribe);

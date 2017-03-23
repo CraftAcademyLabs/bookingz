@@ -3,7 +3,10 @@
     .facility_code{id: "#{current_user.facility.code}"}
     = t('dashboard.note')
     // The above text obviously needs to go into the translation data yamls
+    %p
+      Maximum length: 160 characters
+      %span#char-display
     = form_tag note_path, id: 'send_note', method: :post, remote: true do
-      = text_field_tag 'note', nil, placeholder: 'Your message here', maxlength: 160
+      = text_field_tag 'note', nil, placeholder: 'Your message here', maxlength: 160, onkeyup: 'countChar(this, 160,  "#char-display")'
       = submit_tag 'Send', id: 'start_button', class: 'button'
     .note_flash
