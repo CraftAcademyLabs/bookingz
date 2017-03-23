@@ -3,55 +3,55 @@
 
 
 function queryApi(date) {
-  $.ajax({
-    dataType: "json",
-    url: '/api/resources?date=' + date,
-    success: function (response) {
-      loadCurrentBookings(response);
-      addEvents();
-    }
-  });
+    $.ajax({
+        dataType: "json",
+        url: '/api/resources?date=' + date,
+        success: function (response) {
+            loadCurrentBookings(response);
+            addEvents();
+        }
+    });
 }
 
 function updateApi(date) {
-  $.ajax({
-    dataType: "json",
-    url: '/api/resources?date=' + date,
-    success: function (response) {
-      updateCurrentBookings(response);
-      addEvents();
-    }
-  });
+    $.ajax({
+        dataType: "json",
+        url: '/api/resources?date=' + date,
+        success: function (response) {
+            updateCurrentBookings(response);
+            addEvents();
+        }
+    });
 }
 
 function currentDate() {
-  var date = setDate().toJSON().slice(0, 10);
-  return date;
+    var date = setDate().toJSON().slice(0, 10);
+    return date;
 }
 
 function setDate() {
-  return new Date();
+    return new Date();
 }
 
 function getDisplayedDate() {
-  var date = $('#date').text();
-  return date;
+    var date = $('#date').text();
+    return date;
 }
 
 function weekOf(date) {
-  return ['Week of',
-    date.getThisWeeksMonday().sv_format(), '-',
-    date.getThisWeeksSunday().sv_format()
-  ].join(' ');
+    return ['Week of',
+        date.getThisWeeksMonday().sv_format(), '-',
+        date.getThisWeeksSunday().sv_format()
+    ].join(' ');
 }
 
 function today() {
-  return new Date(new Date().toJSON().slice(0, 10) + " 00:00");
+    return new Date(new Date().toJSON().slice(0, 10) + " 00:00");
 }
 
 function getInfo(obj) {
-  var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
-  return message;
+    var message = (obj.info.client != null) ? setSlotMessage(obj) : obj.info.time;
+    return message;
 }
 
 function populateAndShowModal(object) {
@@ -70,7 +70,7 @@ function populateAndShowModal(object) {
 
 function cableSubscribe() {
     var facility_code = document.querySelector('.facility_code').id;
-    App.cable.subscriptions.create({channel: 'NoteChannel', data: { facility_code: facility_code } }, {
+    App.cable.subscriptions.create({channel: 'NoteChannel', data: {facility_code: facility_code}}, {
         collection: function () {
             // return $("#message");
         },
@@ -91,5 +91,15 @@ function cableSubscribe() {
         }
     });
 }
+
+function countChar(val, allowedLength, displayElement) {
+    var len = val.value.length;
+    if (len > allowedLength) {
+        val.value = val.value.substring(0, allowedLength);
+    } else {
+        $(displayElement).text(allowedLength - len + ' characters left');
+    }
+}
+// Usage: onkeyup="countChar(this, 160, '#char-display')"
 
 $(document).ready(cableSubscribe);

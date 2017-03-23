@@ -11,8 +11,12 @@
       = hidden_field_tag 'booking[booking_date]'
       .row
         .medium-12.columns
-          = label_tag 'booking[client]', t('dashboard.client')
-          = text_field_tag 'booking[client]', nil, required: true
+          = label_tag 'booking[client]' do
+            %span= t('dashboard.client')
+            %span (
+            %span#row-display 40 characters maximum
+            %span )
+          = text_field_tag 'booking[client]', nil, required: true, maxlength: 40, onkeyup: 'countChar(this, 40, "#row-display")'
       .row#time-settings
         .medium-6.columns
           = label_tag 'booking[time_start]', t('dashboard.time_start')
