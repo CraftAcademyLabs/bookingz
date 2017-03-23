@@ -7,7 +7,8 @@ describe Api::ApiController, type: :request do
   Settings.slot_configuration.end_time = 20
 
   describe 'create resource endpoint' do
-    let!(:facility) { create(:facility, code: 'qwer')}
+    let!(:facility) { create(:facility, code: 'qwer') }
+
     it 'creates an object with valid request' do
       payload = {
         params: {
@@ -91,7 +92,7 @@ describe Api::ApiController, type: :request do
     end
 
     it 'updates object' do
-      object = FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
+      object = create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
 
       payload = {
         params: {
@@ -119,11 +120,10 @@ describe Api::ApiController, type: :request do
   end
 
   describe 'resource show' do
-    let!(:resource_1) do
-      FactoryGirl.create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000')
-    end
 
-    let(:user) { FactoryGirl.create(:user) }
+    let!(:resource_1) { create(:resource, uuid: '123e4567-e89b-12d3-a456-426655440000') }
+
+    let(:user) { create(:user) }
 
     before do
       Timecop.freeze('2016-01-01')
@@ -287,15 +287,18 @@ describe Api::ApiController, type: :request do
 
   end
   describe 'resources index endpoint' do
-    let!(:resource_1) { FactoryGirl.create(:resource) }
-    let!(:resource_2) { FactoryGirl.create(:resource) }
-    let(:user) { FactoryGirl.create(:user) }
+    let!(:resource_1) { create(:resource) }
+    let!(:resource_2) { create(:resource) }
+    let(:user) { create(:user) }
 
     before do
       Timecop.freeze('2016-01-01')
       from = Date.today + 15.hour + 30.minutes
       to = from + 1.hour
-      @booking = resource_1.be_booked! user, time_start: from, time_end: to, amount: 4, client: 'Craft Academy'
+      @booking = resource_1.be_booked! user,
+                                       time_start: from,
+                                       time_end: to, amount: 4,
+                                       client: 'Craft Academy'
     end
 
     it 'lists bookings for resource' do
