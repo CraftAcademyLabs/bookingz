@@ -1,9 +1,17 @@
-%footer.footer
-  .row
-    .small-12.columns
-      %p.slogan
-        = link_to application_name, root_path
-      %p.links
-        = link_to 'CA Labs', page_path(id: 'ca_labs')
-      %p.copywrite
-        = copyright_message
+%footer.page-footer
+  .container
+    .row
+      .col.l6.s12
+        %h5.white-text
+          = application_name
+        %p.grey-text.text-lighten-4 Facility Management Made With Love..
+      .col.l4.offset-l2.s12
+        %h5.white-text Links
+        %ul
+          %li
+            = link_to 'CA Labs', page_path(id: 'ca_labs'), class: 'grey-text text-lighten-3'
+  .footer-copyright
+    .container
+      = copyright_message
+      %a.grey-text.text-lighten-4.right{href: 'https://craftacademy.se/english'} Craft Academy
+

@@ -1,4 +1,4 @@
-.small.reveal#slot-modal
+.small.reveal
   %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }
     %span{aria: {hidden: ''}}
       &times;
@@ -33,6 +33,45 @@
            class: 'button alert',
            id: 'delete',
            data: {confirm: t('dashboard.confirm')}
+
+
+/ Modal Structure
+#slot-modal.modal.modal-fixed-footer
+  .modal-content
+    #model-content.row
+      .col.s12
+        %h4#headline
+          = t('dashboard.reservation')
+    #slot
+    = form_tag (create_booking_path), id: 'booking-form' do
+      = hidden_field_tag 'booking[resource_id]'
+      = hidden_field_tag 'booking[booking_date]'
+    .row
+      .col.s12
+        = label_tag 'booking[client]' do
+          %span= t('dashboard.client')
+          %span (
+          %span#row-display 40 characters maximum
+          %span )
+        = text_field_tag 'booking[client]', nil, required: true, maxlength: 40, onkeyup: 'countChar(this, 40, "#row-display")'
+    .row#time-settings
+      .col.s5
+        = label_tag 'booking[time_start]' do
+          %span= t('dashboard.time_start')
+        = text_field_tag 'booking[time_start]', nil, class: 'picker'
+      .col.s5.offset-s1
+        = label_tag 'booking[time_end]', t('dashboard.time_end')
+        = text_field_tag 'booking[time_end]', nil, class: 'picker'
+
+
+  .modal-footer
+    = submit_tag t('dashboard.submit'), class: 'modal-action modal-close waves-effect waves-green btn-flat', id: 'update'
+    = link_to t('dashboard.delete'), delete_booking_path(booking:{resource_id: ''}),
+     method: :delete,
+     class: 'modal-action modal-close waves-effect waves-green btn-flat',
+     id: 'delete',
+     data: {confirm: t('dashboard.confirm')}
+
 
 .small.reveal#error-modal
   %button{class: 'close-button', data: {close: ''}, aria: {label: 'Stäng'}, type: 'button' }

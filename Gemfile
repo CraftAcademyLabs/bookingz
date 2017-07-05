@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.0'
 
-gem 'rails', '~> 5.0.0'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'rails', '~> 5.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -18,16 +23,18 @@ gem 'redcarpet'
 
 # UI
 gem 'haml-rails'
-gem 'foundation-rails'
-gem 'foundation-datetimepicker-rails'
-gem 'foundation-icons-sass-rails'
+#gem 'foundation-rails'
+#gem 'foundation-datetimepicker-rails'
+#gem 'foundation-icons-sass-rails'
+gem 'materialize-sass'
+gem 'material_icons'
 gem 'rails-i18n', '~> 5.0.0'
 
 # Functionality libraries
-gem 'devise'
+gem 'devise', '~> 4.3'
 gem 'devise-i18n'
 gem 'acts_as_bookable', git: 'https://github.com/CraftAcademy/acts_as_bookable',
-                        branch: 'develop'
+                        branch: 'master'
 
 # Date navigation
 gem 'datejs-rails'
@@ -57,14 +64,14 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.6.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano', '~> 3.8', '>= 3.8.2'
+  gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-env-config'
-  gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.1'
+  gem 'capistrano3-puma', '~> 3.1', '>= 3.1.1'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring'
-  gem 'web-console'
+  #gem 'web-console'
 end

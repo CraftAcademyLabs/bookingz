@@ -102,7 +102,7 @@ function populateModal(object) {
           + '&booking[booking_date]=' + $("input[name*='booking[booking_date]']").val();
     });
     $('#delete').show();
-    setupDateTimePicker(date, ' ' + booking_times[0]);
+   // setupDateTimePicker(date, ' ' + booking_times[0]);
     return;
     // console.log(object);
   } else {
@@ -115,7 +115,7 @@ function populateModal(object) {
     $('#booking_time_end').val(booking_times[1]);
     $('#booking-form').find('#update').val('<%= t('dashboard.submit') %>');
     $('#delete').hide();
-    setupDateTimePicker(date, ' ' + booking_times[0]);
+   // setupDateTimePicker(date, ' ' + booking_times[0]);
     return;
   }
 

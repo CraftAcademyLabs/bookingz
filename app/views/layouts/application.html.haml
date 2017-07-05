@@ -9,13 +9,8 @@
     = javascript_include_tag 'application'
   %body
     :javascript
-      $(window).resize(function() {
-        fixedFooter(); //at page resize
-      });
 
       $(document).ready(function() {
-        $(document).foundation();
-        fixedFooter(); //at page load
 
       });
     = render 'layouts/header'
