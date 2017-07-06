@@ -6,9 +6,16 @@
 //@import "footer";
 @import "card";
 
-.row {
-  margin-bottom: 20px !important;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+
+main {
+  flex: 1 0 auto;
+}
+
 
 .content-wrapper {
   max-width: 75rem;

@@ -14,9 +14,9 @@
 
       });
     = render 'layouts/header'
-    .content-wrapper
-      .row
+    %main
+      .content-wrapper
         = render 'layouts/flash_messages'
-      = yield
+        = yield
       = yield :javascript
     = render 'layouts/footer'
