@@ -26,7 +26,8 @@
     = render 'layouts/header'
     %main
       .container
-        = render 'layouts/flash_messages'
-        = yield
+        .section
+          = render 'layouts/flash_messages'
+          = yield
       = yield :javascript
     = render 'layouts/footer'

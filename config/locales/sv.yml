@@ -29,6 +29,8 @@ sv:
     submit: Skapa
     confirm: Var god bekräfta
     note: Skicka ett meddelande till alla rum i din anläggning
+    max_length: 'Max antal tecken: 160'
+    your_message: Ditt meddelande
   approvals:
     user_management: Användarhantering
     all_users: Alla användare
@@ -50,3 +52,7 @@ sv:
     home: Hem
     facilities: Anläggningar
     add_facility: Lägg till anläggning
+  buttons:
+    ok: Välj
+    send: Skicka
+    cancel: Avbryt

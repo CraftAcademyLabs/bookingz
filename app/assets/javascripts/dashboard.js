@@ -83,7 +83,7 @@ function populateAndShowModal(object) {
 function cableSubscribe() {
     var facility = document.querySelector('.facility_code');
     if (typeof(facility) != 'undefined' && facility != null) {
-        var facilityCode = facilitSetting.id;
+        var facilityCode = facility.id;
         App.cable.subscriptions.create({channel: 'NoteChannel', data: {facility_code: facilityCode}}, {
             collection: function () {
                 // return $("#message");
