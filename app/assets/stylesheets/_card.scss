@@ -23,7 +23,7 @@
   .action {
     position: relative;
     transform: perspective(1px);
-    background-color: green;
+    background-color: #00bfa5;
     min-height: 57px;
     color: white;
     font-size: small;
@@ -31,7 +31,7 @@
     padding: 10px 10px 10px 10px;
     border-style: solid;
     border-width: 1px;
-    border-color: green green grey green;
+    border-color: #00bfa5 #00bfa5 grey #00bfa5;
   }
   a {
     color: #ffab40;
@@ -57,5 +57,6 @@
 
 .accordion-title {
   width: 100%;
-  color: green !important;
+  font-weight: bold;
+  color: #00bfa5 !important;
 }

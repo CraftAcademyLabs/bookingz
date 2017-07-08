@@ -61,7 +61,7 @@ function populateAndShowModal(object) {
     date = getDisplayedDate();
     newDate = new Date(date + " 00:00");
     if (newDate < today()) {
-        errorModal.open();
+        errorModal.modal('open');
 
     } else {
         populateModal(object);
@@ -69,6 +69,7 @@ function populateAndShowModal(object) {
             ready: function (modal, trigger) {
                 // Callback for Modal open. Modal and trigger parameters available.
                 console.log(trigger);
+                // TODO This is NOT working
                 Materialize.updateTextFields();
             },
             complete: function () {

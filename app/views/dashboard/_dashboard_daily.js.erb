@@ -52,10 +52,10 @@ function setHtml(slot) {
 
 function getBackgroundColor(obj) {
   var currentDate = new Date(getDisplayedDate() + " 00:00");
-  var color = (obj.state == 'booked') ? 'red' : 'green';
+  var color = (obj.state == 'booked') ? '#ee6e73' : '#00bfa5';
 
   if (currentDate < today()) {
-    color = 'grey';
+    color = '#9e9e9e';
   }
   return color;
 }
