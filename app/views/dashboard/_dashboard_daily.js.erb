@@ -88,9 +88,9 @@ function populateModal(object) {
     booking_times = object.dataset.booking_time.split(' - ');
     $('#model-content #headline').html('<%= t('dashboard.edit_reservation') %>');
     $('#model-content #slot').html([resource + '<br>', date + '<br>' + slot].join(' '));
-    $('#booking_client').val(object.dataset.client);
+    $('#booking_client').val(object.dataset.client).addClass( "active" );
     $('#booking_booking_date').val(date);
-    $('#booking_time_start').val(booking_times[0]);
+    $('#booking_time_start').val(booking_times[0]).addClass( "active" );
     $('#booking_time_end').val(booking_times[1]);
     $('#booking-form').attr('action', '<%= edit_booking_path %>').attr('method', 'post');
     $('#booking-form').append('<input type="hidden" name="booking[original_time_start]" value="' + booking_times[0] + '" />');
@@ -102,7 +102,6 @@ function populateModal(object) {
           + '&booking[booking_date]=' + $("input[name*='booking[booking_date]']").val();
     });
     $('#delete').show();
-   // setupDateTimePicker(date, ' ' + booking_times[0]);
     return;
     // console.log(object);
   } else {
@@ -115,7 +114,6 @@ function populateModal(object) {
     $('#booking_time_end').val(booking_times[1]);
     $('#booking-form').find('#update').val('<%= t('dashboard.submit') %>');
     $('#delete').hide();
-   // setupDateTimePicker(date, ' ' + booking_times[0]);
     return;
   }
 
@@ -157,46 +155,6 @@ function addEvents() {
     populateAndShowModal(this);
   });
 
-}
-
-
-function setupDateTimePicker(date, time) {
-
-  var now = new Date(date + time);
-  // console.log(now);
-
-  var checkout = $('#booking_time_end').fdatetimepicker({
-    initialDate: now,
-    minuteStep: 15,
-    pickTime: 0,
-    startView: 0,
-    format: 'hh:ii',
-    maxView: 0,
-    onRender: function (time) {
-      return time.valueOf() < checkout.valueOf() ? 'disabled' : '';
-    }
-  }).on('changeDate', function () {
-    checkout.hide();
-  }).data('datetimepicker');
-
-
-  var checkin = $('#booking_time_start').fdatetimepicker({
-    minuteStep: 15,
-    startDate: now,
-    startView: 0,
-    format: 'hh:ii',
-    maxView: 0,
-    onRender: function (time) {
-      return time.valueOf() < now.valueOf() ? 'disabled' : '';
-    }
-  }).on('changeDate', function (ev) {
-    var newDate = new Date(ev.date);
-    var offset = new Date().getTimezoneOffset();
-    newDate.setMinutes(newDate.getMinutes() + (30 + offset));
-    checkout.update(newDate);
-    checkin.hide();
-    $('#booking_time_end').focus();
-  }).data('datetimepicker');
 }
 
 

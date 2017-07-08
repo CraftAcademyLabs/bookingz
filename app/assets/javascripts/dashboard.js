@@ -58,40 +58,53 @@ function populateAndShowModal(object) {
     var modal, errorModal, date, newDate;
     modal = $('#slot-modal').modal();
     errorModal = $('#error-modal').modal();
-   // modal = new Foundation.Reveal($('#slot-modal'));
-   // errorModal = new Foundation.Reveal($('#error-modal'));
     date = getDisplayedDate();
     newDate = new Date(date + " 00:00");
     if (newDate < today()) {
         errorModal.open();
+
     } else {
         populateModal(object);
-        modal.modal('open');
+        modal.modal('open', {
+            ready: function (modal, trigger) {
+                // Callback for Modal open. Modal and trigger parameters available.
+                console.log(trigger);
+                Materialize.updateTextFields();
+            },
+            complete: function () {
+                // Callback for Modal close,
+                console.log('Closed');
+            }
+        });
     }
 }
 
 function cableSubscribe() {
-    var facility_code = document.querySelector('.facility_code').id;
-    App.cable.subscriptions.create({channel: 'NoteChannel', data: {facility_code: facility_code}}, {
-        collection: function () {
-            // return $("#message");
-        },
+    var facility = document.querySelector('.facility_code');
+    if (typeof(facility) != 'undefined' && facility != null) {
+        var facilityCode = facilitSetting.id;
+        App.cable.subscriptions.create({channel: 'NoteChannel', data: {facility_code: facilityCode}}, {
+            collection: function () {
+                // return $("#message");
+            },
 
-        connected: function (data) {
-            // Called when the subscription is ready for use on the server
-            console.log(data);
+            connected: function (data) {
+                // Called when the subscription is ready for use on the server
+                console.log(data);
 
-        },
+            },
 
-        disconnected: function () {
-            // Called when the subscription has been terminated by the server
-        },
+            disconnected: function () {
+                // Called when the subscription has been terminated by the server
+            },
 
-        received: function (data) {
-            // Called when there's incoming data on the websocket for this channel
-            $('.note_flash').html("Your message '" + data.note + "' was sent at " + data.time);
-        }
-    });
+            received: function (data) {
+                // Called when there's incoming data on the websocket for this channel
+                $('.note_flash').html("Your message '" + data.note + "' was sent at " + data.time);
+            }
+        });
+    }
+
 }
 
 function countChar(val, allowedLength, displayElement) {

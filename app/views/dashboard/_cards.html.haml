@@ -1,7 +1,7 @@
 - @resources.each_slice(3) do |collection|
   .row
     - collection.each do |resource|
-      .medium-4.columns#cards
+      .col.s4#cards
         .card{id: "card-#{resource.id}"}
           .content
             %ul.accordion{data: {accordion: '', allow: {all:{closed: 'true'}}}, role: 'tablist'}
