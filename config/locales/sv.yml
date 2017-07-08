@@ -31,6 +31,10 @@ sv:
     note: Skicka ett meddelande till alla rum i din anläggning
     max_length: 'Max antal tecken: 160'
     your_message: Ditt meddelande
+    create_success: Sådär, skapade bookning!
+    create_error: Hmm... Det där funkade inte...
+    edit_success: Cool. Uppdaterate bokning!
+    delete_success: Cool, bokning borttagen
   approvals:
     user_management: Användarhantering
     all_users: Alla användare

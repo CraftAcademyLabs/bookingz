@@ -1,6 +1,2 @@
-- flash.each do |key, value|
-  %div{class: "callout #{callout(key)}", id: 'flash-message', data: { closable: true }}
-    = value
-    %button{class: 'close-button', data: { close: true }, type: 'button'}
-      %span{ 'aria-hidden' => true }
-        &times;
+- flash.each do |message_type, message|
+  = javascript_tag "Materialize.toast('#{message}', 8000)"

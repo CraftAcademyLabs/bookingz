@@ -11,5 +11,5 @@
     %br/
     = f.password_field :password_confirmation, autocomplete: 'off'
   .actions
-    = f.submit t('.change_my_password')
+    = f.submit t('.change_my_password'), class: 'waves-effect waves-light btn'
 = render 'devise/shared/links'

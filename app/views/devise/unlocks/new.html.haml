@@ -6,5 +6,5 @@
     %br/
     = f.email_field :email, autofocus: true
   .actions
-    = f.submit t('.resend_unlock_instructions')
+    = f.submit t('.resend_unlock_instructions'), class: 'waves-effect waves-light btn'
 = render 'devise/shared/links'
