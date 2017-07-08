@@ -3,27 +3,24 @@
     - collection.each do |resource|
       .col.s4#cards
         .card{id: "card-#{resource.id}"}
-          .content
-            %ul.accordion{data: {accordion: '', allow: {all:{closed: 'true'}}}, role: 'tablist'}
-              %li.accordion-item
-                / The tab title needs role="tab", an href, a unique ID, and aria-controls.
-                %a.accordion-title{id: "panel#{resource.id}-heading",
-                aria: {controls: "panel#{resource.id}"},
-                href: "#panel#{resource.id}",
-                role: 'tab'}= resource.designation
-                / The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby.
-                .accordion-content{id: "panel#{resource.id}",
-                aria: {labelledby: "panel#{resource.id}-heading"},
-                data: {tab: {content: ''}},
-                role: 'tabpanel'}
-                  %strong
-                    = t('dashboard.details')
-                  = resource.description
-                  - if current_user.superadmin?
-                    %br/
-                    %strong= resource.facility.name
-                    %span= "(Code: #{resource.facility.code})"
-                  %br/
-                  %strong
-                    = t('dashboard.capacity')
-                  = resource.capacity
+          .card-content
+            %span.card-title.activator.grey-text.text-darken-4
+              = resource.designation
+              %i.material-icons.right more_vert
+          .card-reveal
+            %span.card-title.grey-text.text-darken-4
+              = resource.designation
+              %i.material-icons.right close
+            %div
+              %strong
+                = t('dashboard.details')
+              = resource.description
+            - if current_user.superadmin?
+              %strong
+                Facility:
+                = resource.facility.name
+              %span= "(Code: #{resource.facility.code})"
+            %br/
+            %strong
+              = t('dashboard.capacity')
+            = resource.capacity

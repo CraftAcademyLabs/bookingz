@@ -31,7 +31,6 @@ class DashboardController < ApplicationController
                            amount: @resource.capacity,
                            client: booking_params[:client]
       flash[:notice] = t('dashboard.create_success')
-
     rescue => e
       flash[:error] = t('dashboard.') + e.message.humanize
     end

@@ -20,9 +20,9 @@ function loadCurrentBookings(response) {
   var res = response;
   res.items.forEach(function (item) {
     var card = ['#card', item.id].join('-');
-    $(card + " .content").append('<div class="with-scroll"></div>');
+    $(card + " .card-content").append('<div class="with-scroll"></div>');
     item.slots.forEach(function (slot) {
-      $(card + " .content .with-scroll").append(setHtml(slot));
+      $(card + " .card-content .with-scroll").append(setHtml(slot));
     });
   });
 }
@@ -31,9 +31,9 @@ function updateCurrentBookings(response) {
   var res = response;
   res.items.forEach(function (item) {
     var card = ['#card', item.id].join('-');
-    $(card + " .content .with-scroll").empty();
+    $(card + " .card-content .with-scroll").empty();
     item.slots.forEach(function (slot) {
-      $(card + " .content .with-scroll").append(setHtml(slot));
+      $(card + " .card-content .with-scroll").append(setHtml(slot));
     });
   });
 }
