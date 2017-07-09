@@ -1,20 +1,20 @@
 .row
   .col.s6.offset-s3
-    %h2= t('.sign_up')
+    %h4= t('.sign_up')
     .z-depth-1.y-depth-3.x-depth-3.green-text.lighten-4.row{style: ' padding: 20px 30px 20px 30px; border: 1px; solid #EEE;'}
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
         .row
           .input-field.col.s12
-            = f.label :email, t('devise.helpers.label.email')
+            = f.label :email, t('activerecord.attributes.user.email')
             = f.email_field :email, autofocus: true
         .row
           .input-field.col.s12
-            = f.label :password, t('devise.helpers.label.password')
+            = f.label :password, t('activerecord.attributes.user.password')
             = f.password_field :password, autocomplete: 'off'
         .row
           .input-field.col.s12
-            = f.label :password_confirmation, t('devise.helpers.label.password_confirmation')
+            = f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation')
             = f.password_field :password_confirmation, autocomplete: 'off'
         .row
           .col.s6

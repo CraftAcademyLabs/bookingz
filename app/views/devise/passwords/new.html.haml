@@ -1,10 +1,15 @@
-%h2= t('.forgot_your_password')
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email, t('devise.helpers.label.email')
-    %br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit t('devise.passwords.new.reset_password'), class: 'waves-effect waves-light btn'
-= render 'devise/shared/links'
+.row
+  .col.s6.offset-s3
+    %h4= t('.forgot_your_password')
+    .card
+      .card-content
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .row
+            .input-field.col.s12
+              = f.label :email, t('activerecord.attributes.user.email')
+              = f.email_field :email, autofocus: true
+          .row
+            .input-field.col.s12
+              = f.submit t('devise.passwords.new.send_me_reset_password_instructions'), class: 'waves-effect waves-light btn'
+        = render 'devise/shared/links'

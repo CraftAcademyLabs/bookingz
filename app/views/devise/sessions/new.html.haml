@@ -1,24 +1,25 @@
 .row
   .col.s6.offset-s3
     %h4= t('devise.sessions.new.sign_in')
-    .z-depth-1.y-depth-3.x-depth-3.green-text.lighten-4.row{style: ' padding: 20px 30px 20px 30px; border: 1px; solid #EEE;'}
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .row
-          .input-field.col.s12
-            = f.label :email, t('devise.helpers.label.email')
-            = f.email_field :email, autofocus: true
-        .row
-          .input-field.col.s12
-            = f.label :password, t('devise.helpers.label.password')
-            = f.password_field :password, autocomplete: 'off'
+    .card
+      .card-content
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .row
+            .input-field.col.s12
+              = f.label :email, t('activerecord.attributes.user.email')
+              = f.email_field :email, autofocus: true
+          .row
+            .input-field.col.s12
+              = f.label :password, t('activerecord.attributes.user.password')
+              = f.password_field :password, autocomplete: 'off'
 
-        .row
-          .col.s6
-            = f.submit t('devise.sessions.new.sign_in'), class: 'waves-effect waves-light btn'
-          - if devise_mapping.rememberable?
+          .row
             .col.s6
-              = f.check_box :remember_me
-              = f.label :remember_me, t('devise.helpers.label.remember_me')
-        .row
-          .col.s12
-            = render 'devise/shared/links'
+              = f.submit t('devise.sessions.new.sign_in'), class: 'waves-effect waves-light btn'
+            - if devise_mapping.rememberable?
+              .col.s6
+                = f.check_box :remember_me
+                = f.label :remember_me, t('activerecord.attributes.user.remember_me')
+          .row
+            .col.s12
+              = render 'devise/shared/links'
