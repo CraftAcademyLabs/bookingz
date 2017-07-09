@@ -37,6 +37,8 @@ en:
     failure:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
+      user:
+        not_approved: Your account has not been approved by your administrator yet.
       invalid: Invalid email or password.
       last_attempt: You have one more attempt before your account is locked.
       locked: Your account is locked.

@@ -9,8 +9,10 @@ And(/^the following facilities exists$/) do |table|
 end
 
 And(/^I select "([^"]*)" from "([^"]*)"$/) do |value, field|
-  select value, from: field
+  find('div.select-wrapper input').click
+  find('div.select-wrapper li', text: value).click
 end
+
 
 Then(/^"([^"]*)" should be assigned to "([^"]*)"$/) do |email, facility_name|
   user = User.find_by(email: email)
@@ -20,10 +22,8 @@ end
 
 And(/^I assign "([^"]*)" to "([^"]*)"$/) do |user, facility_name|
   user = User.find_by(email: user)
-  within "#row-#{user.id}" do
-    select facility_name, from: 'facility_id'
-    click_button 'Add'
-  end
+  facility = Facility.find_by(name: facility_name)
+  user.update_attribute(:facility, facility)
 end
 
 

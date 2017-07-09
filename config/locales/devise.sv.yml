@@ -37,6 +37,8 @@ sv:
     failure:
       already_authenticated: Du är redan inloggad.
       inactive: Ditt konto har inte aktiverats ännu.
+      user:
+        not_approved: Ditt konto har inte aktiverats ännu.
       invalid: Ogiltig epost eller lösenord.
       last_attempt: Du har ett försök kvar, sen låser vi ditt konto.
       locked: Ditt konto är låst.

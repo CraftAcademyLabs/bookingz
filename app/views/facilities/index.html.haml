@@ -2,10 +2,10 @@
 
 %table.hover.stack
   %thead
-    %th{width: '150'} Facility
+    %th{width: '120'} Facility
     %th{width: '50'}
     %th{width: '200'} Resources
-    %th{width: '200'} Users
+    %th{width: '230'} Users
   %tbody
   - @facilities.each do |facility|
     %tr{id: "facility_#{facility.id}"}
@@ -18,9 +18,9 @@
         - if facility.resources
           - facility.resources.each do |resource|
             = [resource.designation, '<br>'].join('').html_safe
-          - if unassigned_users_select_options.any?
-            = render partial: 'assign_user_form', locals: {facility: facility}
       %td
         - if facility.users
           - facility.users.each do |user|
             = [user.email, '<br>'].join('').html_safe
+        - if unassigned_users_select_options.any?
+          = render partial: 'assign_user_form', locals: {facility: facility}

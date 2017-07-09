@@ -110,8 +110,8 @@ Then(/^I should not see "([^"]*)"$/) do |content|
   expect(page).not_to have_content content
 end
 
-And(/^I should "([^"]*)" see "([^"]*)"$/) do |count, content|
-  expect(page).not_to have_content content, count: count.to_i
+And(/^I should see "([^"]*)" "([^"]*)"$/) do |count, content|
+  expect(page).to have_content content, count: count.to_i
 end
 
 Then(/^show me the page$/) do
@@ -119,7 +119,7 @@ Then(/^show me the page$/) do
 end
 
 Then(/^show me an image of the page$/) do
-  sleep(0.1) until page.evaluate_script('$.active') == 0
+  sleep(0.5) until page.evaluate_script('$.active') == 0
   Capybara::Screenshot.screenshot_and_open_image
 end
 
@@ -140,8 +140,11 @@ end
 
 Given(/^I click on "([^"]*)"$/) do |element|
   click_link_or_button element
-  #sleep(0.1) until page.evaluate_script('$.active') == 0
+end
 
+Given(/^I click on card for "([^"]*)"$/) do |element|
+  find('.card-title', text: element).click
+  sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 
 And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|

@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def facilities_select_options
-    Facility.all.collect {|f| [ f[:name], f[:id] ] }
+    @facilities.collect {|f| [ f[:name], f[:id] ] }
   end
 
 end

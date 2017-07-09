@@ -32,7 +32,7 @@ class DashboardController < ApplicationController
                            client: booking_params[:client]
       flash[:notice] = t('dashboard.create_success')
     rescue => e
-      flash[:error] = t('dashboard.') + e.message.humanize
+      flash[:error] = t('acts_as_bookable.errors.messages.availability.already_booked.') + e.message.humanize
     end
     redirect_to root_path(date: booking_params[:booking_date])
   end

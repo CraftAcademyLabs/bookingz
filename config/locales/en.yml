@@ -60,3 +60,7 @@ en:
     ok: Choose
     send: Send
     cancel: Cancel
+  custom_devise:
+    already_member: Already a member?
+    not_a_member: No account yet?
+    request_new_password: Request new password

@@ -3,6 +3,7 @@ class ApprovalsController < ApplicationController
   before_action :authenticate_superuser
 
   def index
+    @facilities = Facility.all
     if params[:approved] == 'false'
       @users = User.where(approved: false, superadmin: false)
     else

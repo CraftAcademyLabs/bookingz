@@ -19,12 +19,13 @@
             %span )
           = text_field_tag 'booking[client]', nil, required: true, maxlength: 40, onkeyup: 'countChar(this, 40, "#row-display")'
       .row#time-settings
-        .input-field.col.s5
-          = label_tag 'booking[time_start]' do
-            %span= t('dashboard.time_start')
+        .input-field.col.s6
+          = label_tag 'booking[time_start]', t('dashboard.time_start')
+          %br
           = text_field_tag 'booking[time_start]', nil, class: 'timepicker', type: 'time'
-        .input-field.col.s5.offset-s1
+        .input-field.col.s6
           = label_tag 'booking[time_end]', t('dashboard.time_end')
+          %br
           = text_field_tag 'booking[time_end]', nil, class: 'timepicker', type: 'time'
 
 
