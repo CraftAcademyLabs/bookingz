@@ -21,12 +21,6 @@ main {
 }
 
 
-.content-wrapper {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .with-scroll {
   //height: 400px;
   max-height: 400px;
@@ -38,11 +32,8 @@ main {
   -webkit-user-select: none;
 }
 
-.datetimepicker td span.disabled, .datetimepicker th span.disabled{
-  color: lightgrey;
-}
 
-.datetimepicker th.switch {
-  //This is a hack to make the date in picker disappear
-  color: white;
+.parallax-container {
+  margin: 0 -100%; /* old browsers fallback */
+  margin: -1vw calc(50% - 50vw);
 }
