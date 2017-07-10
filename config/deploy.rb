@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.8.2'
 
 # config/deploy.rb
 set :rbenv_type, :user # or :system, depends on your rbenv setup

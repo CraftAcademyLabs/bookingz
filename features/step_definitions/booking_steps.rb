@@ -47,19 +47,19 @@ end
 
 And(/^I click on "([^"]*)" for "([^"]*)"$/) do |slot, resource|
   @resource = Resource.find_by(designation: resource)
-  script = "var e = $('#card-#{@resource.id} .content .with-scroll .action').filter('.action:contains(\"#{slot}\")')[0].click();"
+  script = "var e = $('#card-#{@resource.id} .card-content .with-scroll .action').filter('.action:contains(\"#{slot}\")')[0].click();"
   page.execute_script(script)
   sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 
 Then(/^I should see a details modal for "([^"]*)" for "([^"]*)"$/) do |arg1, arg2|
   #TODO: This is passing no matter if visible is set to true or false :-()
-  expect(page).to have_selector '#slot-modal', visible: true
+  expect(page).to have_selector '#slot-modal', class: 'open'
 end
 
 And(/^I scroll down in the "([^"]*)" box$/) do |resource|
   resource = Resource.find_by(designation: resource)
-  page.execute_script("$('#card-#{resource.id} .content .with-scroll').scrollTop(1000);")
+  page.execute_script("$('#card-#{resource.id} .card-content .with-scroll').scrollTop(700);")
   sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 

@@ -29,6 +29,12 @@ sv:
     submit: Skapa
     confirm: Var god bekräfta
     note: Skicka ett meddelande till alla rum i din anläggning
+    max_length: 'Max antal tecken: 160'
+    your_message: Ditt meddelande
+    create_success: Sådär, skapade bookning!
+    create_error: Hmm... Det där funkade inte...
+    edit_success: Cool. Uppdaterate bokning!
+    delete_success: Cool, bokning borttagen
   approvals:
     user_management: Användarhantering
     all_users: Alla användare
@@ -50,3 +56,11 @@ sv:
     home: Hem
     facilities: Anläggningar
     add_facility: Lägg till anläggning
+  buttons:
+    ok: Välj
+    send: Skicka
+    cancel: Avbryt
+  custom_devise:
+    already_member: Redan medlem?
+    not_a_member: Inget konto?
+    request_new_password: Begär nytt lösenord

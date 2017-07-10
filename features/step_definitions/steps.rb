@@ -28,17 +28,18 @@ end
 
 Given(/^I register a new user$/) do
   steps %q{
-    Then I fill in "user[email]" with "test@test.com"
-    And I fill in "user[password]" with "password"
-    And I fill in "user[password_confirmation]" with "password"
+    Then I fill in "Email" with "test@test.com"
+    And I fill in "Password" with "password"
+    And I fill in "Password confirmation" with "password"
     And I click "Sign up" button
   }
 end
 
 Given(/^I attempt to login$/) do
   steps %q{
-    Then I fill in "user[email]" with "test@test.com"
-    And I fill in "user[password]" with "password"
+    Given I navigate to the "login" page
+    Then I fill in "Email" with "test@test.com"
+    And I fill in "Password" with "password"
     And I click "Sign in" button
   }
 end
@@ -58,7 +59,7 @@ And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
   locale = I18n.locale
   case page.downcase
     when 'landing' then
-      visit root_path(locale: locale)
+      visit dashboard_path(locale: locale)
     when 'instructions' then
       visit page_path('instructions', locale: locale)
     when 'sign up' then
@@ -92,7 +93,7 @@ Then(/^I should be on the "([^"]*)" page$/) do |path|
     when 'users' then
       expected_path = approvals_users_path(locale: locale)
     when 'landing' then
-      expected_path = root_path(locale: locale)
+      expected_path = dashboard_path(locale: locale)
     when 'new facility' then
       expected_path = new_facility_path(locale: locale)
     when 'facilities index' then
@@ -110,8 +111,8 @@ Then(/^I should not see "([^"]*)"$/) do |content|
   expect(page).not_to have_content content
 end
 
-And(/^I should "([^"]*)" see "([^"]*)"$/) do |count, content|
-  expect(page).not_to have_content content, count: count.to_i
+And(/^I should see "([^"]*)" "([^"]*)"$/) do |count, content|
+  expect(page).to have_content content, count: count.to_i
 end
 
 Then(/^show me the page$/) do
@@ -119,7 +120,7 @@ Then(/^show me the page$/) do
 end
 
 Then(/^show me an image of the page$/) do
-  sleep(0.1) until page.evaluate_script('$.active') == 0
+  sleep(0.5) until page.evaluate_script('$.active') == 0
   Capybara::Screenshot.screenshot_and_open_image
 end
 
@@ -140,8 +141,11 @@ end
 
 Given(/^I click on "([^"]*)"$/) do |element|
   click_link_or_button element
-  #sleep(0.1) until page.evaluate_script('$.active') == 0
+end
 
+Given(/^I click on card for "([^"]*)"$/) do |element|
+  find('.card-title', text: element).click
+  sleep(0.1) until page.evaluate_script('$.active') == 0
 end
 
 And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|

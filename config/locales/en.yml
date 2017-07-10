@@ -29,6 +29,12 @@ en:
     submit: Create
     confirm: Please confirm
     note: Send a note to all rooms in this facility.
+    max_length: 'Maximum length: 160 characters'
+    your_message: Your message here
+    create_success: Yay! Booking created
+    create_error: "Shoots! That didn't work"
+    edit_success: Alright! Updates booking.
+    delete_success: 'Booking successfully deleted'
   approvals:
     user_management: User Management
     all_users: All users
@@ -50,3 +56,11 @@ en:
     home: Home
     facilities: Facilities
     add_facility: Add Facility
+  buttons:
+    ok: Choose
+    send: Send
+    cancel: Cancel
+  custom_devise:
+    already_member: Already a member?
+    not_a_member: No account yet?
+    request_new_password: Request new password

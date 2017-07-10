@@ -30,11 +30,11 @@ class DashboardController < ApplicationController
                            time_end: to,
                            amount: @resource.capacity,
                            client: booking_params[:client]
-
+      flash[:notice] = t('dashboard.create_success')
     rescue => e
-      flash[:error] = e.message.humanize
+      flash[:error] = t('acts_as_bookable.errors.messages.availability.already_booked.') + e.message.humanize
     end
-    redirect_to root_path(date: booking_params[:booking_date])
+    redirect_to dashboard_path(date: booking_params[:booking_date])
   end
 
   def edit_booking
@@ -47,7 +47,7 @@ class DashboardController < ApplicationController
     booking.client = booking_params[:client]
     booking.save
 
-    redirect_to root_path(date: booking_params[:booking_date])
+    redirect_to dashboard_path(date: booking_params[:booking_date])
   end
 
   def delete_booking
@@ -56,8 +56,8 @@ class DashboardController < ApplicationController
     date = get_date(delete_booking_params)
     booking = @resource.bookings.find_by(time_start: date + 1.second) || @resource.bookings.find_by(time_start: date)
     booking.destroy
-    flash[:notice] = 'Booking successfully deleted'
-    redirect_to root_path(date: delete_booking_params[:booking_date])
+    flash[:notice] = t('dashboard.delete_success')
+    redirect_to dashboard_path(date: delete_booking_params[:booking_date])
   end
 
   def send_note

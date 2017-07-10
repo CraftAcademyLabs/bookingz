@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
-//= require foundation-datetimepicker
+// require foundation
+// require foundation-datetimepicker
 // require turbolinks
+//= require materialize
 //= require mockdate
 //= require date
 //= require date/sv-SE
-//= require header_footer
 //= require flash_messages

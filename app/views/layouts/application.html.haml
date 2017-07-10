@@ -9,19 +9,27 @@
     = javascript_include_tag 'application'
   %body
     :javascript
-      $(window).resize(function() {
-        fixedFooter(); //at page resize
-      });
 
       $(document).ready(function() {
-        $(document).foundation();
-        fixedFooter(); //at page load
-
+         $('.timepicker').pickatime({
+          default: 'now', // Set default time
+          fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+          twelvehour: false, // Use AM/PM or 24-hour format
+          donetext: 'OK', // text for done-button
+          cleartext: 'Clear', // text for clear-button
+          canceltext: 'Cancel', // Text for cancel-button
+          autoclose: false, // automatic close timepicker
+          ampmclickable: true, // make AM PM clickable
+          aftershow: function(){} //Function for after opening timepicker
+        });
+        $('select').material_select();
+        $('.parallax').parallax();
       });
     = render 'layouts/header'
-    .content-wrapper
-      .row
-        = render 'layouts/flash_messages'
-      = yield
+    %main
+      .container
+        .section
+          = render 'layouts/flash_messages'
+          = yield
       = yield :javascript
     = render 'layouts/footer'

@@ -42,6 +42,6 @@ Feature: As a system owner
       | info@craftacademy.se    |
       | admin@otherfacility.com |
     And I am on the "Facilities index" page
-    And I select "info@craftacademy.se" from "user"
+    And I select "info@craftacademy.se" from "User"
     And I click on "Add"
     Then "info@craftacademy.se" should be assigned to "Craft Academy"

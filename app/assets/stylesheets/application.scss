@@ -1,18 +1,25 @@
-@import "foundation_and_overrides";
-@import "settings";
-@import "header";
-@import "footer";
+//@import "foundation_and_overrides";
+//@import "settings";
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+//@import "header";
+//@import "footer";
 @import "card";
 
-.row {
-  margin-bottom: 20px !important;
+html {
+  color: hsla(0, 0%, 27%, 0.8);
 }
 
-.content-wrapper {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+
+main {
+  flex: 1 0 auto;
+}
+
 
 .with-scroll {
   //height: 400px;
@@ -25,11 +32,8 @@
   -webkit-user-select: none;
 }
 
-.datetimepicker td span.disabled, .datetimepicker th span.disabled{
-  color: lightgrey;
-}
 
-.datetimepicker th.switch {
-  //This is a hack to make the date in picker disappear
-  color: white;
+.parallax-container {
+  margin: 0 -100%; /* old browsers fallback */
+  margin: -1vw calc(50% - 50vw);
 }

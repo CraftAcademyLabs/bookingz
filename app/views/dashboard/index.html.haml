@@ -1,10 +1,12 @@
-%h3
+%h4
   = t('dashboard.title')
-%div{style: 'font-size: 25px', class: 'noselect'}
-  %span.fi-previous#previous{style: 'display: inline'}
+%div{style: 'font-size: 22px', class: 'noselect'}
+  %span#previous &#10094;
   %span#date
-  %span.fi-next#next
-= render partial: 'dashboard/cards'
+  %apan#next &#10095;
+.row
+  .col.s12
+    = render partial: 'dashboard/cards'
 = render partial: 'dashboard/modal'
 = render partial: 'dashboard/note_form'
 

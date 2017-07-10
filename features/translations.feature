@@ -31,13 +31,14 @@ Feature: As a system user
     And I should see "Remember me"
     And I should see "Sign in" button
     And I should see "Sign up" link
-    And I should see "Forgot your password" link
+    And I should see "Forgot your password?"
+    And I should see "Request new password" link
 
   Scenario: Visiting the Forgot your password page as an en system user
     Given I navigate to the "Forgot your password" page
     Then I should see "Forgot your password?"
     And I should see "Email"
-    And I should see "Reset password" button
+    And I should see "Send me reset password instructions" button
     And I should see "Sign up" link
     And I should see "Sign in" link
 
@@ -49,7 +50,8 @@ Feature: As a system user
     And I should see "Password confirmation"
     And I should see "Sign up" button
     And I should see "Sign in" link
-    And I should see "Forgot your password" link
+    And I should see "Forgot your password?"
+    And I should see "Request new password" link
 
   Scenario: Visiting the dashboard landing page as an en system user
     Given I am logged in as "admin@email.com"
@@ -64,65 +66,65 @@ Feature: As a system user
 
   Scenario: Log in with wrong email as an en system user
     Given I navigate to the "landing" page
-    Then I fill in "user[email]" with "wrong@mail.com"
-    And I fill in "user[password]" with "password"
+    Then I fill in "Email" with "wrong@mail.com"
+    And I fill in "Password" with "password"
     And I click "Sign in" button
-    Then I should see "Invalid Email or password."
+    Then I should see "Invalid email address or password."
 
   Scenario: Log in with wrong password as an en system user
     Given I navigate to the "landing" page
-    Then I fill in "user[email]" with "admin@email.com"
-    And I fill in "user[password]" with "password_wrong"
+    Then I fill in "Email" with "admin@email.com"
+    And I fill in "Password" with "password_wrong"
     And I click "Sign in" button
-    Then I should see "Invalid Email or password."
+    Then I should see "Invalid email or password."
 
   Scenario: Sign up with blank fields as an en visitor
     Given I navigate to the "sign up" page
-    Then I fill in "user[email]" with " "
-    And I fill in "user[password]" with " "
-    And I fill in "user[password_confirmation]" with " "
+    Then I fill in "Email" with " "
+    And I fill in "Password" with " "
+    And I fill in "Password confirmation" with " "
     And I click "Sign up" button
     Then I should see "Email can't be blank"
     And I should see "Password can't be blank"
 
   Scenario: Fill in forgot password with blank field as an en system user
     Given I navigate to the "Forgot your password" page
-    Then I fill in "user[email]" with " "
-    And I click "Reset password" button
+    Then I fill in "Email" with " "
+    And I click "Send me reset password instructions" button
     Then I should see "Email can't be blank"
 
   Scenario: Visiting the landing page as a se visitor
     Given the application is set to "sv"
     And I navigate to the "landing" page
     Then I should be on the "login" page
-    And I should see "Epost"
+    And I should see "Email"
     And I should see "Lösenord"
     And I should see "Kom ihåg mig"
     And I should see "Logga in"
-    And I should see "Registrera dig"
-    And I should see "Glömt ditt lösenord"
+    And I should see "Registrera dig" link
+    And I should see "Glömt ditt lösenord?"
+    And I should see "Begär nytt lösenord" link
 
   Scenario: Visiting the Forgot your password page as a se system user
     Given the application is set to "sv"
     And I navigate to the "landing" page
     And I navigate to the "Forgot your password" page
     And I should see "Glömt ditt lösenord?"
-    And I should see "Epost"
-    And I should see button "Återställ lösenord"
-    And I should see "Registrera dig"
-    And I should see "Logga in"
+    And I should see "Email"
+    And I should see button "Skicka instruktion för återställning av lösenord"
 
   Scenario: Visiting the sign up page as a se visitor
     Given the application is set to "sv"
     Given I navigate to the "landing" page
     And I navigate to the "sign up" page
     And I should see "Registrera dig"
-    And I should see "Epost"
+    And I should see "Email"
     And I should see "Lösenord"
-    And I should see "Lösenordsbekräftelse"
-    And I should see "Registrera dig"
-    And I should see "Logga in"
-    And I should see "Glömt ditt lösenord"
+    And I should see "Bekräfta lösenord"
+    And I should see "Registrera dig" button
+    And I should see "Logga in" link
+    And I should see "Glömt ditt lösenord?"
+    And I should see "Begär nytt lösenord" link
 
   Scenario: Visiting the dashboard landing page as a se system user
     Given the application is set to "sv"
@@ -139,15 +141,15 @@ Feature: As a system user
   Scenario: Log in with wrong email as a se system user
     Given the application is set to "sv"
     Given I navigate to the "landing" page
-    And I fill in "Epost" with "wrong@mail.com"
+    And I fill in "Email" with "wrong@mail.com"
     And I fill in "Lösenord" with "password"
     And I click "Logga in" button
-    Then I should see "Ogiltig Email eller lösenord."
+    Then I should see "Ogiltig epost eller lösenord."
 
   Scenario: Log in with wrong password as a se system user
     Given the application is set to "sv"
     Given I navigate to the "landing" page
-    And I fill in "Epost" with "admin@email.com"
+    And I fill in "Email" with "admin@email.com"
     And I fill in "Lösenord" with "password_wrong"
     And I click "Logga in" button
     Then I should see "Ogiltig epost eller lösenord."
@@ -155,17 +157,17 @@ Feature: As a system user
   Scenario: Sign up with blank fields as a se visitor
     Given the application is set to "sv"
     And I navigate to the "sign up" page
-    Then I fill in "Epost" with " "
+    Then I fill in "Email" with " "
     And I click "Registrera dig" button
-    Then I should see "Email kan inte vara tom"
-    And I should see "Lösenord kan inte vara tom"
+    Then I should see "Email måste anges"
+    And I should see "Lösenord måste anges"
 
   Scenario: Fill in forgot password with blank field as an en system user
     Given the application is set to "sv"
     Given I navigate to the "Forgot your password" page
-    Then I fill in "Epost" with " "
-    And I click "Återställ lösenord" button
-    Then I should see "Email kan inte vara tom"
+    Then I fill in "Email" with " "
+    And I click "Skicka instruktion för återställning av lösenord" button
+    Then I should see "Email måste anges"
 
   Scenario: Visiting the instructions page as an en visitor
     Given the application is set to "en"

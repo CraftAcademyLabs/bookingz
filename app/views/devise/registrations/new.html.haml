@@ -1,18 +1,25 @@
-%h2= t('.sign_up')
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email, t('devise.helpers.label.email')
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password, t('devise.helpers.label.password')
-    %br/
-    = f.password_field :password, autocomplete: 'off'
-  .field
-    = f.label :password_confirmation, t('devise.helpers.label.password_confirmation')
-    %br/
-    = f.password_field :password_confirmation, autocomplete: 'off'
-  .actions
-    = f.submit t('.sign_up') , class: 'button'
-= render 'devise/shared/links'
+.row
+  .col.s6.offset-s3
+    %h4= t('.sign_up')
+    .card
+      .card-content
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .row
+            .input-field.col.s12
+              = f.label :email, t('activerecord.attributes.user.email')
+              = f.email_field :email, autofocus: true
+          .row
+            .input-field.col.s12
+              = f.label :password, t('activerecord.attributes.user.password')
+              = f.password_field :password, autocomplete: 'off'
+          .row
+            .input-field.col.s12
+              = f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation')
+              = f.password_field :password_confirmation, autocomplete: 'off'
+          .row
+            .col.s6
+              = f.submit t('.sign_up') , class: 'waves-effect waves-light btn'
+          .row
+            .col.s12
+              = render 'devise/shared/links'

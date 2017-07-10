@@ -1,5 +1,6 @@
-= form_tag facility_user_path(facility_id: facility) do
-  .large-6.column
-    = select_tag :user, options_for_select(unassigned_users_select_options)
-  .large-6.column
-    = submit_tag 'Add', data: { confirm: 'Are you sure?' }, class: 'button'
+= form_with url: facility_user_path(facility_id: facility), local: true do |f|
+  .col.s6.input-field
+    = f.select :user, options_for_select(unassigned_users_select_options)
+    = f.label :user
+  .col.s6
+    = f.submit 'Add', data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn'
