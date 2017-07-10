@@ -28,17 +28,18 @@ end
 
 Given(/^I register a new user$/) do
   steps %q{
-    Then I fill in "user[email]" with "test@test.com"
-    And I fill in "user[password]" with "password"
-    And I fill in "user[password_confirmation]" with "password"
+    Then I fill in "Email" with "test@test.com"
+    And I fill in "Password" with "password"
+    And I fill in "Password confirmation" with "password"
     And I click "Sign up" button
   }
 end
 
 Given(/^I attempt to login$/) do
   steps %q{
-    Then I fill in "user[email]" with "test@test.com"
-    And I fill in "user[password]" with "password"
+    Given I navigate to the "login" page
+    Then I fill in "Email" with "test@test.com"
+    And I fill in "Password" with "password"
     And I click "Sign in" button
   }
 end
