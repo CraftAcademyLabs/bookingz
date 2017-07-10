@@ -58,7 +58,7 @@ And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
   locale = I18n.locale
   case page.downcase
     when 'landing' then
-      visit root_path(locale: locale)
+      visit dashboard_path(locale: locale)
     when 'instructions' then
       visit page_path('instructions', locale: locale)
     when 'sign up' then
