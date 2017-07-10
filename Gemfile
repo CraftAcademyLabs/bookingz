@@ -23,9 +23,6 @@ gem 'redcarpet'
 
 # UI
 gem 'haml-rails'
-#gem 'foundation-rails'
-#gem 'foundation-datetimepicker-rails'
-#gem 'foundation-icons-sass-rails'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'rails-i18n', '~> 5.0.0'
@@ -73,5 +70,5 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring'
-  #gem 'web-console'
+  # gem 'web-console'
 end
