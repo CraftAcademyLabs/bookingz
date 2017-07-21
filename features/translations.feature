@@ -23,7 +23,7 @@ Feature: As a system user
       | Galaxy   | Thomas | 2016-01-02 | 10:30      | 11:30    |
 
   Scenario: Visiting the landing page as an en visitor
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     Then I should be on the "login" page
     And I should see "You need to sign in or sign up before continuing."
     And I should see "Email"
@@ -55,7 +55,7 @@ Feature: As a system user
 
   Scenario: Visiting the dashboard landing page as an en system user
     Given I am logged in as "admin@email.com"
-    Then I navigate to the "landing" page
+    Then I navigate to the "dashboard" page
     And I should see "Click on the rooms you want to book or make a change."
     And I click on "11:30 - 12:00" for "Galaxy"
     And I should see "Add reservation"
@@ -65,14 +65,14 @@ Feature: As a system user
     And I should see "Create" button
 
   Scenario: Log in with wrong email as an en system user
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     Then I fill in "Email" with "wrong@mail.com"
     And I fill in "Password" with "password"
     And I click "Sign in" button
     Then I should see "Invalid email address or password."
 
   Scenario: Log in with wrong password as an en system user
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     Then I fill in "Email" with "admin@email.com"
     And I fill in "Password" with "password_wrong"
     And I click "Sign in" button
@@ -95,7 +95,7 @@ Feature: As a system user
 
   Scenario: Visiting the landing page as a se visitor
     Given the application is set to "sv"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     Then I should be on the "login" page
     And I should see "Email"
     And I should see "Lösenord"
@@ -107,7 +107,7 @@ Feature: As a system user
 
   Scenario: Visiting the Forgot your password page as a se system user
     Given the application is set to "sv"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     And I navigate to the "Forgot your password" page
     And I should see "Glömt ditt lösenord?"
     And I should see "Email"
@@ -115,7 +115,7 @@ Feature: As a system user
 
   Scenario: Visiting the sign up page as a se visitor
     Given the application is set to "sv"
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     And I navigate to the "sign up" page
     And I should see "Registrera dig"
     And I should see "Email"
@@ -129,7 +129,7 @@ Feature: As a system user
   Scenario: Visiting the dashboard landing page as a se system user
     Given the application is set to "sv"
     Given I am logged in as "admin@email.com"
-    Then I navigate to the "landing" page
+    Then I navigate to the "dashboard" page
     And I should see "Klicka på rummen ni vill boka eller göra en ändring."
     And I click on "10:30 - 11:00" for "Galaxy"
     And I should see "Lägg till bokning"
@@ -140,7 +140,7 @@ Feature: As a system user
 
   Scenario: Log in with wrong email as a se system user
     Given the application is set to "sv"
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     And I fill in "Email" with "wrong@mail.com"
     And I fill in "Lösenord" with "password"
     And I click "Logga in" button
@@ -148,7 +148,7 @@ Feature: As a system user
 
   Scenario: Log in with wrong password as a se system user
     Given the application is set to "sv"
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     And I fill in "Email" with "admin@email.com"
     And I fill in "Lösenord" with "password_wrong"
     And I click "Logga in" button

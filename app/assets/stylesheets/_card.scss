@@ -2,16 +2,7 @@
   margin-bottom: 30px;
 }
 .card {
-  font-family: 'Roboto', sans-serif;
-  overflow: hidden;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  color: #272727;
-  border-radius: 2px;
-  .title {
-    line-height: 3rem;
-    font-size: 1.5rem;
-    font-weight: 300;
-  }
+
   .content {
     padding: 1.3rem;
     font-weight: 300;
@@ -21,8 +12,6 @@
     margin: 0;
   }
   .action {
-    position: relative;
-    transform: perspective(1px);
     background-color: #00bfa5;
     min-height: 57px;
     color: white;
@@ -31,7 +20,7 @@
     padding: 10px 10px 10px 10px;
     border-style: solid;
     border-width: 1px;
-    border-color: #00bfa5 #00bfa5 grey #00bfa5;
+    //border-color: #00bfa5 #00bfa5 grey #00bfa5;
   }
   a {
     color: #ffab40;
@@ -55,8 +44,3 @@
   }
 }
 
-.accordion-title {
-  width: 100%;
-  font-weight: bold;
-  color: #00bfa5 !important;
-}

@@ -1,26 +1,25 @@
-- @resources.each_slice(3) do |collection|
-  .row
-    - collection.each do |resource|
-      .col.s4#cards
-        .card{id: "card-#{resource.id}"}
-          .card-content
-            %span.card-title.activator.grey-text.text-darken-4
-              = resource.designation
-              %i.material-icons.right more_vert
-          .card-reveal
-            %span.card-title.grey-text.text-darken-4
-              = resource.designation
-              %i.material-icons.right close
-            %div
-              %strong
-                = t('dashboard.details')
-              = resource.description
-            - if current_user.superadmin?
-              %strong
-                Facility:
-                = resource.facility.name
-              %span= "(Code: #{resource.facility.code})"
-            %br/
+.row
+  - @resources.each do |resource|
+    .col.s12.m6.l4#cards
+      .card{id: "card-#{resource.id}"}
+        .card-content
+          %span.card-title.activator.grey-text.text-darken-4
+            = resource.designation
+            %i.material-icons.right more_vert
+        .card-reveal
+          %span.card-title.grey-text.text-darken-4
+            = resource.designation
+            %i.material-icons.right close
+          %div
             %strong
-              = t('dashboard.capacity')
-            = resource.capacity
+              = t('dashboard.details')
+            = resource.description
+          - if current_user.superadmin?
+            %strong
+              Facility:
+              = resource.facility.name
+            %span= "(Code: #{resource.facility.code})"
+          %br/
+          %strong
+            = t('dashboard.capacity')
+          = resource.capacity

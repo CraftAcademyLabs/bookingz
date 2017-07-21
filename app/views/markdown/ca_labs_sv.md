@@ -1,4 +1,4 @@
-# Denna applikation skapades av CA Labs
+### Denna applikation skapades av Craft Academy Labs
 
 För mer information besök [Craft Academy](https://craftacademy.se/)
 

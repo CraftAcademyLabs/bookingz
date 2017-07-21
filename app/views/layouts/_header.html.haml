@@ -1,6 +1,5 @@
-
 / Admin Dropdown Structure
-%ul#admin-dropdown.dropdown-content
+%ul#admin-dropdown-mobile.dropdown-content
   %li
     = link_to t('header.users'), approvals_users_path
   %li
@@ -8,26 +7,78 @@
   %li
     = link_to t('header.add_facility'), new_facility_path
 
-/Language Dropdown
-%ul#language-dropdown.dropdown-content
+/ Language Dropdown
+%ul#language-dropdown-mobile.dropdown-content
   %li
     = link_to t('header.swedish'), locale: 'sv'
   %li
     = link_to t('header.english'), locale: 'en'
 
-/User Dropdown
-%ul#user-dropdown.dropdown-content
+/ User Dropdown
+%ul#user-dropdown-mobile.dropdown-content
   %li
     = link_to 'My Profile', edit_user_registration_path
   %li
     = link_to 'Logout', destroy_user_session_path, method: :delete
 
 %nav
+  / Admin Dropdown Structure
+  %ul#admin-dropdown.dropdown-content
+    %li
+      = link_to t('header.users'), approvals_users_path
+    %li
+      = link_to t('header.facilities'), facilities_path
+    %li
+      = link_to t('header.add_facility'), new_facility_path
+
+  / Language Dropdown
+  %ul#language-dropdown.dropdown-content
+    %li
+      = link_to t('header.swedish'), locale: 'sv'
+    %li
+      = link_to t('header.english'), locale: 'en'
+
+  / User Dropdown
+  %ul#user-dropdown.dropdown-content
+    %li
+      = link_to 'My Profile', edit_user_registration_path
+    %li
+      = link_to 'Logout', destroy_user_session_path, method: :delete
+
+  / Mobile Navigation
+  %ul#mobile.side-nav
+    / User Dropdown Trigger
+    - if current_user
+      %li
+        %a.dropdown-button{{data:{activates: 'user-dropdown-mobile'}}, href: '#!'}
+          = current_user.email
+          %i.material-icons.left arrow_drop_down
+      %li
+        = link_to t('header.home'), root_path
+      %li
+        = link_to t('footer.instructions'), page_path(id: 'instructions')
+    - if current_user.try(:facility)
+      %li
+        = link_to current_user.facility.name, facility_path(current_user.facility, locale: locale)
+    / Admin Dropdown Trigger
+    - if current_user.try(:superadmin)
+      %li
+        %a.dropdown-button{{data:{activates: 'admin-dropdown-mobile'}}, href: '#!'}
+          Admin
+          %i.material-icons.right arrow_drop_down
+    %li
+      %a.dropdown-button{{data:{activates: 'language-dropdown-mobile'}}, href: '#!'}
+        = t('header.languages')
+        %i.material-icons.left arrow_drop_down
+
+
   .nav-wrapper
     %a.brand-logo.center{:href => '#', style: 'max-height: 67px!important; padding: 5px 0!important;'}
       =# application_name
       = image_tag 'bookingz_logo.png', style: 'max-width: 67px;'
-    %ul#nav-mobile.left.hide-on-med-and-down
+    %a.button-collapse{{data: {activates: 'mobile', href: '#!'}}}
+      %i.material-icons menu
+    %ul.left.hide-on-med-and-down
       - if current_user
         %li
           = link_to t('header.home'), root_path
@@ -43,7 +94,7 @@
             Admin
             %i.material-icons.right arrow_drop_down
 
-    %ul#nav-mobile.right.hide-on-med-and-down
+    %ul.right.hide-on-med-and-down
 
       / User Dropdown Trigger
       - if current_user
@@ -55,6 +106,3 @@
         %a.dropdown-button{{data:{activates: 'language-dropdown'}}, href: '#!'}
           = t('header.languages')
           %i.material-icons.left arrow_drop_down
-
-
-

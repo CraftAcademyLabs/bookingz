@@ -1,22 +1,3 @@
-
-$menu-background: #cfcfcf;
-.title-bar {
-  background: #333;
-  padding: 0.9rem;
-}
-
-.top-bar {
-  background: $menu-background;
-
-  ul {
-    background: $menu-background;
-
-    li {
-      background: $menu-background;
-
-      a {
-        color: #fff;
-      }
-    }
-  }
+#admin-dropdown {
+  min-width: 250px;
 }

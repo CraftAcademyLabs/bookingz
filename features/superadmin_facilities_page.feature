@@ -23,12 +23,12 @@ Feature: As a Superadmin
       | NCC Enterprise | The NCC Enterprise room | Craft Academy |
 
     Given I am logged in as superadmin "superadmin@random.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
 
 
   Scenario: Viewing aggregated info on Facilities index page
-    When I click on "Admin"
-    And I click on "Facilities"
+    When I click on dropdown menu "Admin"
+    And I select menu item "Facilities"
     Then I should see "Galaxy" in a section for "Stena Center"
     And I should see "Atlantis" in a section for "Stena Center"
     And I should see "Enterprise" in a section for "Stena Center"

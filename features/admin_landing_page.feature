@@ -30,13 +30,13 @@ Feature: As an Administrator
 
 
   Scenario: Visit landing page without logging in
-    Given I navigate to the "landing" page
+    Given I navigate to the "dashboard" page
     Then I should be on the "login" page
     And I should see "You need to sign in or sign up before continuing."
 
   Scenario: Visit landing page as admin
     Given I am logged in as "admin@stena-center.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     Then I should see "Click on the rooms you want to book or make a change."
     And I should see "Galaxy"
     And I should see "Atlantis"

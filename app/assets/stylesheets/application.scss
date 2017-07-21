@@ -1,9 +1,6 @@
-//@import "foundation_and_overrides";
-//@import "settings";
 @import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-//@import "header";
-//@import "footer";
+@import "header";
 @import "card";
 
 html {
@@ -20,7 +17,6 @@ main {
   flex: 1 0 auto;
 }
 
-
 .with-scroll {
   //height: 400px;
   max-height: 400px;
@@ -32,8 +28,46 @@ main {
   -webkit-user-select: none;
 }
 
-
 .parallax-container {
   margin: 0 -100%; /* old browsers fallback */
   margin: -1vw calc(50% - 50vw);
+}
+
+#fade {
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+@keyframes fadein {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity: 1;
+  }
 }
