@@ -196,18 +196,6 @@ Then(/^I wait for (\d+) seconds$/) do |seconds|
   sleep seconds.to_i.seconds
 end
 
-private
-
-def mock_date_script(time)
-  if Settings.mode == :weekly_view
-    "MockDate.set('#{time}');\
-     var date = Date.parse(currentDate());\
-     $('#date').html(weekOf(date));"
-  else
-    "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
-  end
-end
-
 And(/^I click on dropdown menu "([^"]*)"$/) do |button|
   within 'nav' do
     find('a', class: 'dropdown-button', text: button, match: :first).trigger('click')
@@ -234,4 +222,14 @@ And(/^I click on footer link "([^"]*)"$/) do |link|
     find('a', text: link, match: :first).trigger('click')
   end
   sleep 1
+end
+
+def mock_date_script(time)
+  if Settings.mode == :weekly_view
+    "MockDate.set('#{time}');\
+     var date = Date.parse(currentDate());\
+     $('#date').html(weekOf(date));"
+  else
+    "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
+  end
 end
