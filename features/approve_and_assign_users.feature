@@ -34,8 +34,8 @@ Feature: As a system adminidtrator
   Scenario: Display user approval page
     Given I am logged in as superadmin "superadmin@random.com"
     And I navigate to the "landing" page
-    And I click on "Admin"
-    And I click on "Users"
+    And I click on dropdown menu "Admin"
+    And I select menu item "Users"
     Then I should be on the "users" page
     And I should see "2" "Pending approval"
 
@@ -54,5 +54,3 @@ Feature: As a system adminidtrator
     And I click on "Accept" for user "user1@user.com"
     Then "user1@user.com" should be assigned to "Stena Center"
     And I should not see "User needs to be assigned to a Facility before approval"
-
-

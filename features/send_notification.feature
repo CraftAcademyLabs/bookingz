@@ -16,7 +16,7 @@ Feature: As an administrator of a facility
 
   Scenario: Filling out the 'Send a Note' Form
     Given I am logged in as "admin@stena-center.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     Then I should see "Send a note to all rooms in this facility."
     When I fill in "note" with "Lunch is now served"
     And I click "Send"
@@ -24,7 +24,7 @@ Feature: As an administrator of a facility
 
   Scenario: Trying to send a message that is too long
     Given I am logged in as "admin@stena-center.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     When I fill in "note" with "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturien. Extra text that won't get sent"
     And I click "Send"
     Then I should see "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturien."
@@ -32,10 +32,10 @@ Feature: As an administrator of a facility
 
   Scenario: Viewing only my own facility's message
     Given I am logged in as "admin@stena-center.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     And I switch to a new window
     And I am logged in as "admin@craft-academy.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     When I fill in "note" with "Note to Craft Academy"
     And I click "Send"
     Then I should see "Note to Craft Academy"

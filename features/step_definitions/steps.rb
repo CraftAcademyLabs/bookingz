@@ -59,6 +59,8 @@ And(/^I (?:am on|navigate to) the "([^"]*)" page$/) do |page|
   locale = I18n.locale
   case page.downcase
     when 'landing' then
+      visit root_path(locale: locale)
+    when 'dashboard' then
       visit dashboard_path(locale: locale)
     when 'instructions' then
       visit page_path('instructions', locale: locale)
@@ -80,11 +82,13 @@ end
 Then(/^I should be on the "([^"]*)" page$/) do |path|
   locale = I18n.locale
   case path.downcase
+    when 'dashboard' then
+      expected_path = dashboard_path(locale: locale)
     when 'login' then
       expected_path = new_user_session_path(locale: locale)
     when 'instructions' then
       expected_path = page_path(:instructions, locale: locale)
-    when 'ca labs' then
+    when 'craft academy labs' then
       expected_path = page_path(:ca_labs, locale: locale)
     when 'sign up' then
       expected_path = new_user_registration_path(locale: locale)
@@ -127,7 +131,7 @@ end
 Given(/^I am using the dashboard on "([^"]*)" as "([^"]*)"$/) do |time, email|
   steps %Q{
     Given I am logged in as "#{email}"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
   }
 
   page.execute_script(mock_date_script(time))
@@ -140,7 +144,9 @@ Given(/^I am using the dashboard on "([^"]*)" as "([^"]*)"$/) do |time, email|
 end
 
 Given(/^I click on "([^"]*)"$/) do |element|
-  click_link_or_button element
+  within 'main' do
+    click_link_or_button element
+  end
 end
 
 Given(/^I click on card for "([^"]*)"$/) do |element|
@@ -200,4 +206,32 @@ def mock_date_script(time)
   else
     "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
   end
+end
+
+And(/^I click on dropdown menu "([^"]*)"$/) do |button|
+  within 'nav' do
+    find('a', class: 'dropdown-button', text: button, match: :first).trigger('click')
+  end
+  sleep 1
+end
+
+And(/^I select menu item "([^"]*)"$/) do |item|
+  within 'nav' do
+    find('a', text: item, match: :first).trigger('click')
+  end
+  sleep 1
+end
+
+When(/^I click on menu item "([^"]*)"$/) do |item|
+  within 'nav' do
+    find('a', text: item, match: :first).trigger('click')
+  end
+  sleep 1
+end
+
+And(/^I click on footer link "([^"]*)"$/) do |link|
+  within 'footer' do
+    find('a', text: link, match: :first).trigger('click')
+  end
+  sleep 1
 end

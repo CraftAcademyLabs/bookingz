@@ -5,12 +5,12 @@ Feature: As a system owner
 
   Background:
     Given I am logged in as superadmin "superadmin@random.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
 
   Scenario: Link not visible to regular users
     Given I am logged out
     And I am logged in as "admin@random.com"
-    And I navigate to the "landing" page
+    And I navigate to the "dashboard" page
     Then I should not see "Admin"
 
 
@@ -27,8 +27,8 @@ Feature: As a system owner
     Then I should see "You are not authorized to view this page"
 
   Scenario: Add a facility
-    When I click on "Admin"
-    And I click on "Add Facility"
+    When I click on menu item "Admin"
+    And I select menu item "Add Facility"
     And I fill in "Name" with "Stena Center"
     And I click on "Create Facility"
     Then I should be on the "Facilities index" page
