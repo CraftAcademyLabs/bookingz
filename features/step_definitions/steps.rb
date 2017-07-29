@@ -124,7 +124,6 @@ Then(/^show me the page$/) do
 end
 
 Then(/^show me an image of the page$/) do
-  #sleep(0.5) until page.evaluate_script('$.active') == 0
   sleep 1
   Capybara::Screenshot.screenshot_and_open_image
 end
