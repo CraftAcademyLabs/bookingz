@@ -19,6 +19,8 @@
   %li
     = link_to 'My Profile', edit_user_registration_path
   %li
+    = link_to 'Dashboard', dashboard_path
+  %li
     = link_to 'Logout', destroy_user_session_path, method: :delete
 
 %nav
@@ -42,6 +44,8 @@
   %ul#user-dropdown.dropdown-content
     %li
       = link_to 'My Profile', edit_user_registration_path
+    %li
+      = link_to 'Dashboard', dashboard_path
     %li
       = link_to 'Logout', destroy_user_session_path, method: :delete
 
@@ -102,6 +106,9 @@
           %a.dropdown-button{{data:{activates: 'user-dropdown'}}, href: '#!'}
             = current_user.email
             %i.material-icons.left arrow_drop_down
+      - else
+        %li
+          = link_to t('devise.shared.links.sign_in'), new_user_session_path
       %li
         %a.dropdown-button{{data:{activates: 'language-dropdown'}}, href: '#!'}
           = t('header.languages')
