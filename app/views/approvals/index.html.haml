@@ -13,19 +13,21 @@
         %td= user.email
         -if user.facility
           %td= user.facility.name
-        -else
+        -elsif !user.approved
           %td
             = form_with url: facility_user_path do |f|
+              = f.hidden_field :user, value: user.id
               .col.s6.input-field
                 = f.select :facility_id, options_for_select(facilities_select_options)
                 = f.label :facility_id, 'Facility'
               .col.s6
                 = f.submit 'Add', data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn'
-              = hidden_field :user, user.id
-
+        -else
+          %td= ''
         %td
-          = user.approved ? t('approvals.approved') : t('approvals.pending_approval')
+          %strong
+            = user.approved ? t('approvals.approved') : t('approvals.pending_approval')
         - if user.approved
           %td= ''
         - else
-          %td= link_to t('approvals.accept'), approvals_users_path(locale: locale, id: user.id), method: :post, class: "button #{user.facility ? '' : 'disabled'}"
+          %td= link_to t('approvals.accept'), approvals_users_path(locale: locale, id: user.id), method: :post, class: "waves-effect waves-light btn #{user.facility ? '' : 'disabled'}"
