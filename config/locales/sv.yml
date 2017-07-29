@@ -64,3 +64,15 @@ sv:
     already_member: Redan medlem?
     not_a_member: Inget konto?
     request_new_password: Begär nytt lösenord
+  landing:
+    main_pintch: 'En molnbaserad helhetslösning för administration av bokningar. Vi erbjuder stöd för administrtion och hantering för din kanferansanläggning'
+    secondary_pitch_1: Det enklaste bokningssystemet för kanferansanläggningar
+    secondary_pitch_2: Som en modern SaaS applikation fungerar Bookingz i alla webbläsare
+    get_started: Kom igång
+    pricing: Priser
+    header_1: Enkel att komma igång
+    header_2: Enkel att använda
+    header_3: På alla enheter
+    pitch_1: 'Bookingz is an out of the box solution for managing meeting rooms. We offer extensive support on configuration to make sure Bookingz is tailored to your space´s requirements. Switching from your current calendar system is smooth and easy as we provide full two-way Google Calendar integration and .ics file export support.'
+    pitch_2: 'Bookingz is cloud-based so its accessible from anywhere, anytime. Its so easy to use it doesnt require any training for the end user whatsoever. Either go to your Bookingz site and make a booking in few click or book the room through your Google Resource Calendar. Try it yourself today!'
+    pitch_3: 'Conference room booking made easy! Bookingz works in any web browser, so your users can access it from all their devices. Whether on the go or setting at their desk, availability is quickly accessible at-a-glance.'
