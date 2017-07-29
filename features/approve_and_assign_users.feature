@@ -1,6 +1,6 @@
 @javascript
 Feature: User administration
-  As a system adminidtrator
+  As a system administrator
   In order to retain control on who is using the system
   I would like to restrict access to registrations
 
