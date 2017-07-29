@@ -233,3 +233,31 @@ def mock_date_script(time)
     "MockDate.set('#{time}'); var date = currentDate(); $('#date').html(date);"
   end
 end
+
+And(/^I click on dropdown menu "([^"]*)"$/) do |button|
+  within 'nav' do
+    find('a', class: 'dropdown-button', text: button, match: :first).trigger('click')
+  end
+  sleep 1
+end
+
+And(/^I select menu item "([^"]*)"$/) do |item|
+  within 'nav' do
+    find('a', text: item, match: :first).trigger('click')
+  end
+  sleep 1
+end
+
+When(/^I click on menu item "([^"]*)"$/) do |item|
+  within 'nav' do
+    find('a', text: item, match: :first).trigger('click')
+  end
+  sleep 1
+end
+
+And(/^I click on footer link "([^"]*)"$/) do |link|
+  within 'footer' do
+    find('a', text: link, match: :first).trigger('click')
+  end
+  sleep 1
+end
