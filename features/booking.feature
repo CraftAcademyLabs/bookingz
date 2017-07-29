@@ -1,5 +1,6 @@
 @javascript
-Feature: As an admin
+Feature: Creating Bookings
+  As an admin
   In order be able to book a resource
   I would like to see current bookings on the dashboard
 
