@@ -77,9 +77,8 @@
 
 
   .nav-wrapper
-    %a.brand-logo.center{:href => '#', style: 'max-height: 67px!important; padding: 5px 0!important;'}
-      =# application_name
-      = image_tag 'bookingz_logo.png', style: 'max-width: 67px;'
+    %a.brand-logo.center{href: "#{root_path}", style: 'max-height: 67px!important; padding: 5px 0!important;'}
+      = image_tag 'bookingz_logo_symbol.png', style: 'max-width: 52px;'
     %a.button-collapse{{data: {activates: 'mobile', href: '#!'}}}
       %i.material-icons menu
     %ul.left.hide-on-med-and-down
