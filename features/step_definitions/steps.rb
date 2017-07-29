@@ -124,7 +124,7 @@ Then(/^show me the page$/) do
 end
 
 Then(/^show me an image of the page$/) do
-  sleep(0.5) until page.evaluate_script('$.active') == 0
+  sleep 1
   Capybara::Screenshot.screenshot_and_open_image
 end
 
@@ -147,6 +147,8 @@ Given(/^I click on "([^"]*)"$/) do |element|
   within 'main' do
     click_link_or_button element
   end
+  sleep(0.1) until page.evaluate_script('$.active') == 0
+
 end
 
 Given(/^I click on card for "([^"]*)"$/) do |element|
@@ -159,7 +161,9 @@ And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
 end
 
 And(/^I click "([^"]*)"$/) do |value|
-  find_button(value).trigger('click')
+  within 'main' do
+    find_button(value).trigger('click')
+  end
 end
 
 And(/^I click arrow "([^"]*)"$/) do |id|
@@ -176,7 +180,9 @@ Then(/^I should see "([^"]*)" link$/) do |link|
 end
 
 Then(/^I click "([^"]*)" button$/) do |button|
-  click_link_or_button button
+  within 'main' do
+    click_link_or_button button
+  end
 end
 
 And(/^I should see button "([^"]*)"$/) do |text|

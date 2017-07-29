@@ -2,6 +2,7 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "header";
 @import "card";
+@import "pricing";
 
 html {
   color: hsla(0, 0%, 27%, 0.8);
@@ -31,7 +32,40 @@ main {
 .parallax-container {
   margin: 0 -100%; /* old browsers fallback */
   margin: -1vw calc(50% - 50vw);
+
+  .paralax {
+    video {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
 }
+
+.tint {
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.5;
+    background: rgba(255, 152, 0, 0.5);
+    -moz-transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+  }
+}
+
+.boxed {
+  margin-top: 50px;
+  background: rgba(255, 152, 0, 0.9);
+  padding: 20px 20px 20px 20px
+}
+
 
 #fade {
   animation: fadein 1s;
@@ -39,33 +73,37 @@ main {
   -webkit-animation: fadein 1s; /* Safari and Chrome */
   -o-animation: fadein 1s; /* Opera */
 }
+
 @keyframes fadein {
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
+
 @-moz-keyframes fadein { /* Firefox */
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
+
 @-webkit-keyframes fadein { /* Safari and Chrome */
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
+
 @-o-keyframes fadein { /* Opera */
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
     opacity: 1;

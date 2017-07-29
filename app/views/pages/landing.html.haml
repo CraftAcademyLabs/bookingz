@@ -1,11 +1,11 @@
 .parallax-container
-  .parallax
-    = image_tag 'https://opengameart.org/sites/default/files/2_21.png'
+  .parallax.tint
+    = video_tag('empty_office.mp4', id: 'my-video', autoplay: '', loop: '')
   .section
-    .container
-      %h1.header.center.teal-text.text-lighten-2 Bookingz
+    .container.boxed
+      %h1.header.center.white-text.text-lighten-2 Bookingz
       .row.center
-        %h5.header.col.s12.teal-text.text-lighten-2 An out of the box solution for managing meeting rooms. We offer extensive support on configuration to meet your space's requirements.
+        %h5.header.col.s12.white-text.text-lighten-2 An out of the box solution for managing meeting rooms. We offer extensive support on configuration to meet your space's requirements.
       .row.center
         = link_to 'Get Started', dashboard_path, class: 'btn-large waves-effect waves-light teal lighten-1'
 .container
@@ -16,39 +16,50 @@
         .icon-block
           %h2.center.brown-text
             %i.material-icons flash_on
-          %h5.center Speeds up development
-          %p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+          %h5.center Easy to setup
+          %p.light
+            Bookingz is an out of the box solution for managing meeting rooms. We offer extensive support on configuration to make sure Bookingz is tailored to your space's requirements.
+            Switching from your current calendar system is smooth and easy as we provide full two-way Google Calendar integration and .ics file export support.
       .col.s12.m4
         .icon-block
           %h2.center.brown-text
             %i.material-icons group
-          %h5.center User Experience Focused
-          %p.light By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.
+          %h5.center Easy to use
+          %p.light
+            Bookingz is cloud-based so it's accessible from anywhere, anytime. It's so easy to use it doesn't require any training for the end user whatsoever. Either go to your Bookingz site and make a booking in few click or book the room through your Google Resource Calendar.
+            Try it yourself today,
       .col.s12.m4
         .icon-block
           %h2.center.brown-text
             %i.material-icons settings
-          %h5.center Easy to work with
-          %p.light We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.
+          %h5.center On any device
+          %p.light
+            Booking made easy! Bookingz works in any web browser, so your users can access it from all their devices.
+            Whether on the go or setting at their desk, availability is quickly accessible at-a-glance.
 .parallax-container.valign-wrapper
   .section.no-pad-bot
     .container
-      .row.center
-        %h5.header.col.s12.light A modern responsive front-end framework based on Material Design
+      .row.center.boxed
+        %h5.header.col.s12.white-text The easiest room reservation system
   .parallax
-    = image_tag 'https://opengameart.org/sites/default/files/1_37.png'
+    = image_tag 'agenda.jpg'
 .container
   .section
     .row
       .col.s12.center
         %h3
           %i.mdi-content-send.brown-text
-        %h4 Contact Us
-        %p.left-align.light Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+        %h4 Pricing
+        = render 'layouts/pricing'
 .parallax-container.valign-wrapper
   .section.no-pad-bot
     .container
-      .row.center
-        %h5.header.col.s12.light A modern responsive front-end framework based on Material Design
+      .row.center.boxed
+        %h5.header.col.s12.white-text As a modern SaaS application - Bookingz works in any web browser
   .parallax
-    = image_tag 'https://opengameart.org/sites/default/files/2_21.png'
+    = image_tag 'architecture.jpg'
+
+:javascript
+  var video = document.getElementById("my-video")
+  video.width=document.body.offsetWidth;
+  video.playbackRate = 0.7;

@@ -1,5 +1,6 @@
 @javascript
-Feature: As an Administrator
+Feature: Access application as admin
+  As an Administrator
   In order to get an overview of current resource bookings
   I would like to see a dashboard with today's bookings on the landing page
 

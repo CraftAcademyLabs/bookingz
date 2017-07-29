@@ -28,6 +28,7 @@ class FacilitiesController < ApplicationController
     user = User.find(params[:user])
     facility = Facility.find(params[:facility_id])
     user.update_attribute(:facility, facility)
+    flash.now[:notice] = 'Thank you for contacting us! We\'ll be in touch shortly'
     redirect_back(fallback_location: root_path)
   end
 
