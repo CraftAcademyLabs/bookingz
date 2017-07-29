@@ -61,6 +61,9 @@
         = link_to t('header.home'), root_path
       %li
         = link_to t('footer.instructions'), page_path(id: 'instructions')
+    - else
+      %li
+        = link_to t('devise.shared.links.sign_in'), new_user_session_path
     - if current_user.try(:facility)
       %li
         = link_to current_user.facility.name, facility_path(current_user.facility, locale: locale)
