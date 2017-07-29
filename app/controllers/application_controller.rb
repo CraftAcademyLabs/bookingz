@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || locale_from_header
     Rails.application.routes.default_url_options[:locale]= I18n.locale
   end
 
@@ -13,4 +13,15 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: 'You are not authorized to view this page' unless current_user.superadmin?
   end
 
+
+  def locale_from_header
+    case request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+      when 'sv'
+        'sv'
+      when 'en'
+        'en'
+      else
+        I18n.default_locale
+    end
+  end
 end
