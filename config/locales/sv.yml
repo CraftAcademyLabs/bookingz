@@ -73,9 +73,9 @@ sv:
     header_1: Enkel att komma igång
     header_2: Enkel att använda
     header_3: På alla enheter
-    pitch_1: 'Bookingz is an out of the box solution for managing meeting rooms. We offer extensive support on configuration to make sure Bookingz is tailored to your space´s requirements. Switching from your current calendar system is smooth and easy as we provide full two-way Google Calendar integration and .ics file export support.'
+    pitch_1: 'Bookingz är ett nyckelfärdigt system för administration och hantering av olika resursbookningar som konferansrum, tvättstugor, mm. Vi erbjuder omfattande support och stöd för att tillmötesgå din anläggnings villkor och behov. Att byta från din nuvarande kalendersystem blir smidig med vår integration till Google Kalender eller Exchange.'
     pitch_2: 'Bookingz är en molnbaserad applikation och tillgänglig var som helst, när som helst. Den är lätt att använda det kräver ingen utbildning av slutanvändare. Gör en bokning med några få klick direkt från din adminpanel, eller boka rummet via din Google Kalender. Testa själv redan idag!'
-    pitch_3: 'Conference room booking made easy! Bookingz works in any web browser, so your users can access it from all their devices. Whether on the go or setting at their desk, availability is quickly accessible at-a-glance.'
+    pitch_3: 'Enkel hantering av bookningar som fungerar i alla webbläsare som kan nås från stationära datorer såväl som smartphones.'
     currency: 'SEK '
     starter_price: 440
     yearly_starter_price: 390

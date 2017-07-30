@@ -73,9 +73,9 @@ en:
     header_1: Easy to setup
     header_2: Easy to use
     header_3: On any device
-    pitch_1: 'Bookingz is an out of the box solution for managing meeting rooms. We offer extensive support on configuration to make sure Bookingz is tailored to your space´s requirements. Switching from your current calendar system is smooth and easy as we provide full two-way Google Calendar integration and .ics file export support.'
+    pitch_1: 'Bookingz is an out of the box solution for managing meeting rooms and other bookable facilities. We offer extensive support on configuration to make sure Bookingz is tailored to your space´s requirements. Switching from your current calendar system is smooth and easy as we provide full two-way Google Calendar or Exchange integration and .ics file export support.'
     pitch_2: 'Bookingz is cloud-based so its accessible from anywhere, anytime. Its so easy to use it doesnt require any training for the end user whatsoever. Either go to your Bookingz site and make a booking in few click or book the room through your Google Resource Calendar. Try it yourself today!'
-    pitch_3: 'Conference room booking made easy! Bookingz works in any web browser, so your users can access it from all their devices. Whether on the go or setting at their desk, availability is quickly accessible at-a-glance.'
+    pitch_3: 'Conference room or facilities booking made easy! Bookingz works in any web browser, so your users can access it from all their devices. Whether on the go or setting at their desk, availability is quickly accessible at-a-glance.'
     currency: $
     starter_price: 55
     yearly_starter_price: 49
