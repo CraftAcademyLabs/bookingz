@@ -16,12 +16,12 @@ class ApplicationController < ActionController::Base
 
   def locale_from_header
     case request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-      when 'sv'
-        'sv'
-      when 'en'
-        'en'
-      else
-        I18n.default_locale
+    when 'sv'
+      'sv'
+    when 'en'
+      'en'
+    else
+      I18n.default_locale
     end
   end
 end
