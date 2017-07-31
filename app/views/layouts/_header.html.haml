@@ -51,6 +51,11 @@
 
   / Mobile Navigation
   %ul#mobile.side-nav
+    .user-view
+      %li
+        .background
+          = image_tag 'agenda.jpg'
+        = image_tag 'bookingz_logo_symbol.png', class: 'circle', style: 'padding-bottom: 10px; width: auto;'
     / User Dropdown Trigger
     - if current_user
       %li
