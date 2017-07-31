@@ -51,6 +51,11 @@
 
   / Mobile Navigation
   %ul#mobile.side-nav
+    .user-view
+      %li
+        .background
+          = image_tag 'agenda.jpg'
+        = image_tag 'bookingz_logo_symbol.png', class: 'circle', style: 'padding-bottom: 10px; width: auto;'
     / User Dropdown Trigger
     - if current_user
       %li
@@ -61,6 +66,9 @@
         = link_to t('header.home'), root_path
       %li
         = link_to t('footer.instructions'), page_path(id: 'instructions')
+    - else
+      %li
+        = link_to t('devise.shared.links.sign_in'), new_user_session_path
     - if current_user.try(:facility)
       %li
         = link_to current_user.facility.name, facility_path(current_user.facility, locale: locale)
