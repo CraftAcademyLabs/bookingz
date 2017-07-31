@@ -5,11 +5,15 @@
       / START PRICE INFO DIV.
       .price.waves-effect.waves-block.waves-light.orange
         %h4
-          %span.currency $
-          %span.amount 55
-          %span.period /mo
+          %span.currency
+            = t('landing.currency')
+          %span.amount
+            = t('landing.starter_price')
+          %span.period
+            = t('landing.month_abbrevation')
         %h5
-          %span.period or $49/mo if billed yearly
+          %span.period
+            = t('landing.starter_if_yearly_text', price: t('landing.yearly_starter_price'), currency: t('landing.currency'), month_abbr: t('landing.month_abbrevation'))
       / END PRICE INFO DIV.
       .card-content
         / START FEATURE LIST
@@ -40,11 +44,15 @@
       / CHANGE COLOR BY CHANGING LAST 2 CLASSES (teal lighten-1) AVAILABLE COLOR CLASSES LISTED HERE http://materializecss.com/color.html
       .price.waves-effect.waves-block.waves-light.teal.lighten-1
         %h4.dark-grey-text
-          %span.currency $
-          %span.amount 120
-          %span.period /mo
+          %span.currency
+            = t('landing.currency')
+          %span.amount
+            = t('landing.enterprice_price')
+          %span.period
+            = t('landing.month_abbrevation')
         %h5
-          %span.period or $99/mo if billed yearly
+          %span.period
+            = t('landing.starter_if_yearly_text', price: t('landing.yearly_enterprice_price'), currency: t('landing.currency'), month_abbr: t('landing.month_abbrevation'))
       / END PRICE INFO DIV.
       .card-content
         / START FEATURE LIST
