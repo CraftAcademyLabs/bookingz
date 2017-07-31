@@ -4,11 +4,11 @@ threads threads_count, threads_count
 port ENV.fetch('PORT') { 3000 }
 environment ENV.fetch('RAILS_ENV') { 'production' }
 
-if Rails.env.production?
+#if Rails.env.production?
   bind 'unix:/var/www/bookingz/current/tmp/bookingz-puma.sock'
   daemonize true
   pidfile '/var/www/bookingz/current/tmp/pids/bookingz-puma.pid'
-end
+#end
 
 
 plugin :tmp_restart
