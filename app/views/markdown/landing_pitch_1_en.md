@@ -1,0 +1,1 @@
+**Bookingz** is an out of the box solution for managing meeting rooms and other bookable facilities. We offer extensive support on configuration to make sure Bookingz is tailored to your space´s requirements. Switching from your current calendar system is smooth and easy as we provide full two-way Google Calendar or Exchange integration and `.ics` file export support.

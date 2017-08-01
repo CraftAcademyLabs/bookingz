@@ -35,6 +35,8 @@ sv:
     create_error: Hmm... Det där funkade inte...
     edit_success: Cool. Uppdaterate bokning!
     delete_success: Cool, bokning borttagen
+    facility_create_successs: Anläggningn %{facility_name} skapades.
+
   approvals:
     user_management: Användarhantering
     all_users: Alla användare
@@ -65,17 +67,15 @@ sv:
     not_a_member: Inget konto?
     request_new_password: Begär nytt lösenord
   landing:
+    overview: Översikt
     main_pintch: 'En molnbaserad helhetslösning för administration av bokningar. Vi erbjuder stöd för administrtion och hantering för din kanferansanläggning'
     secondary_pitch_1: Det enklaste bokningssystemet för kanferansanläggningar
     secondary_pitch_2: Som en modern SaaS applikation fungerar Bookingz i alla webbläsare
     get_started: Kom igång
     pricing: Priser
-    header_1: Enkel att komma igång
+    header_1: Enkel setup
     header_2: Enkel att använda
     header_3: På alla enheter
-    pitch_1: 'Bookingz är ett nyckelfärdigt system för administration och hantering av olika resursbookningar som konferansrum, tvättstugor, mm. Vi erbjuder omfattande support och stöd för att tillmötesgå din anläggnings villkor och behov. Att byta från din nuvarande kalendersystem blir smidig med vår integration till Google Kalender eller Exchange.'
-    pitch_2: 'Bookingz är en molnbaserad applikation och tillgänglig var som helst, när som helst. Den är lätt att använda det kräver ingen utbildning av slutanvändare. Gör en bokning med några få klick direkt från din adminpanel, eller boka rummet via din Google Kalender. Testa själv redan idag!'
-    pitch_3: 'Enkel hantering av bookningar som fungerar i alla webbläsare som kan nås från stationära datorer såväl som smartphones.'
     currency: 'SEK '
     starter_price: 440
     yearly_starter_price: 390

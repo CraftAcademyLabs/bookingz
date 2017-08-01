@@ -15,11 +15,17 @@
 // require foundation
 // require foundation-datetimepicker
 // require turbolinks
+//= require imagesloaded.pkgd.min
+//= require masonry.pkgd.min
 //= require materialize
+//= require color-thief.min
+//= require galleryExpand
+//= require init
 //= require mockdate
 //= require date
 //= require date/sv-SE
 //= require flash_messages
+
 
 $(document).ready(function() {
     $('.timepicker').pickatime({
