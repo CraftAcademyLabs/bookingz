@@ -35,6 +35,7 @@ en:
     create_error: "Shoots! That didn't work"
     edit_success: Alright! Updates booking.
     delete_success: 'Booking successfully deleted'
+    facility_create_successs: Facility %{facility_name} was successfully created.
   approvals:
     user_management: User Management
     all_users: All users

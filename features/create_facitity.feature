@@ -32,7 +32,7 @@ Feature: As a system owner
     And I fill in "Name" with "Stena Center"
     And I click on "Create Facility"
     Then I should be on the "Facilities index" page
-    And I should see "Facility Stena Center was saved"
+    And I should see "Facility Stena Center was successfully created."
     And I should see "Stena Center"
 
   Scenario: Assign user to facility

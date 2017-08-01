@@ -17,7 +17,8 @@ class FacilitiesController < ApplicationController
   def create
     @facility = Facility.new(facility_params)
     if @facility.save
-      flash[:notice] = "Facility #{@facility.name} was saved"
+      message = t('dashboard.facility_create_successs', facility_name: @facility.name)
+      flash[:notice] = message
       redirect_to facilities_path
     else
       render :new

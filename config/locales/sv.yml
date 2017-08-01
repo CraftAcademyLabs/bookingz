@@ -35,6 +35,8 @@ sv:
     create_error: Hmm... Det där funkade inte...
     edit_success: Cool. Uppdaterate bokning!
     delete_success: Cool, bokning borttagen
+    facility_create_successs: Anläggningn %{facility_name} skapades.
+
   approvals:
     user_management: Användarhantering
     all_users: Alla användare
