@@ -137,6 +137,10 @@ $gallery-gutter: 15%;
     p {
       color: #777;
     }
+
+    h4 {
+      font-size: 22px;
+    }
   }
 
   .gallery-body {
@@ -163,9 +167,17 @@ $gallery-gutter: 15%;
     }
 
     .description {
-      font-size: 22px;
-      font-weight: 300;
+      p, li{
+        font-size: 20px;
+        font-weight: 300;
+      }
+
+      li {
+        list-style: disc;
+        margin-left: 20px;
+      }
     }
+
   }
 
   .gallery-action {
