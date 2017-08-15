@@ -36,6 +36,9 @@ gem 'acts_as_bookable', git: 'https://github.com/CraftAcademy/acts_as_bookable',
 # Date navigation
 gem 'datejs-rails'
 
+# Geolocation
+gem 'geocoder'
+
 
 group :development, :test do
   gem 'pry'
