@@ -29,11 +29,11 @@ RSpec.describe Facility, type: :model do
 
   end
 
-  describe '#full_address' do
+  describe '#full_address returns sanitized address from Google' do
     let(:facility) { create(:facility, address: 'Holtermansgatan 1', post_code: '411 10', city: 'Gothenburg')}
 
     it 'returns full address' do
-      expect(facility.full_address).to eq 'Holtermansgatan 1, 411 10, Gothenburg'
+      expect(facility.full_address).to eq 'Holtermansgatan 1, 411 29 Göteborg, Sweden'
     end
   end
 end
