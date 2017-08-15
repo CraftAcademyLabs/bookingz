@@ -6,9 +6,9 @@ Feature: As a Facility Manager
 
   Background:
     Given the following facilities exists
-      | name          |
-      | Stena Center  |
-      | Craft Academy |
+      | name          | address           | post_code | city       |
+      | Stena Center  | Holtermansgatan 1 | 411 29    | Gothenburg |
+      | Craft Academy |                   |           |            |
 
     And the following accounts are configured
       | email                   | password       | facility      |
@@ -22,3 +22,4 @@ Feature: As a Facility Manager
     When I click on menu item "Stena Center"
     Then I should be on the show page for "Stena Center"
     And I should see "Stena Center"
+    Then show me an image of the page
