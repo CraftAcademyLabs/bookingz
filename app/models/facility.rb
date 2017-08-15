@@ -13,7 +13,7 @@ class Facility < ApplicationRecord
   def full_address
     [self.address, self.post_code, self.city].join(', ')
   end
-  
+
   private
 
   def generate_random_code
