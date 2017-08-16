@@ -12,7 +12,7 @@
         %p
           capacity:
           = resource.capacity
-    = image_tag @facility.attachment.url
+    = image_tag @facility.attachment.url(:medium)
   .col.m6.l6.s12
     %h5= @facility.full_address
     #map{style: 'height: 350px; width: 100%'}
