@@ -1,11 +1,11 @@
-%h3 Facilities
+%h3= t('header.facilities')
 
 %table.hover.stack
   %thead
-    %th{width: '120'} Facility
+    %th{width: '120'}= t('header.facility')
     %th{width: '50'}
-    %th{width: '200'} Resources
-    %th{width: '230'} Users
+    %th{width: '200'}= t('header.resources')
+    %th{width: '230'}= t('header.users')
   %tbody
   - @facilities.each do |facility|
     %tr{id: "facility_#{facility.id}"}
@@ -13,8 +13,8 @@
         %strong
           = link_to facility.name, facility_path(facility, locale: locale)
       %td
-        Code:
-        = facility.code
+        = t('header.code') + ':'
+        %span= facility.code
       %td
         - if facility.resources
           - facility.resources.each do |resource|
