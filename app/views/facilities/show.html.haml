@@ -3,10 +3,33 @@
   Facility code
   %strong
     = @facility.code
-- if @facility.resources
-  - @facility.resources.each do |resource|
-    %h5= resource.designation
-    %p= resource.description
-    %p
-      capacity:
-      = resource.capacity
+.row
+  .col.m6.l6.s12
+    - if @facility.resources
+      - @facility.resources.each do |resource|
+        %h5= resource.designation
+        %p= resource.description
+        %p
+          capacity:
+          = resource.capacity
+  .col.m6.l6.s12
+    %h5= @facility.full_address
+    #map{style: 'height: 350px; width: 100%'}
+%script{src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBPpYLyqAKFmeBtAJvRUhcukDr0qZ8lyUc'}
+%script{src: 'https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js'}
+:javascript
+  var map = new GMaps({
+    div: '#map',
+    lat: #{@facility.latitude},
+    lng: #{@facility.longitude},
+    zoom: 18
+  });
+  map.addMarker({
+    lat: map.getCenter().lat(),
+    lng: map.getCenter().lng(),
+    title: '#{@facility.name}',
+    infoWindow: {
+      content: '<h4<#{@facility.name}</h4><p>#{@facility.full_address}</p>'
+    }
+
+  });

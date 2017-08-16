@@ -30,6 +30,9 @@ Feature: As a system owner
     When I click on menu item "Admin"
     And I select menu item "Add Facility"
     And I fill in "Name" with "Stena Center"
+    And I fill in "Address" with "Holtermansgatan 1"
+    And I fill in "Post code" with "411 29"
+    And I fill in "City" with "Gothenburg"
     And I click on "Create Facility"
     Then I should be on the "Facilities index" page
     And I should see "Facility Stena Center was successfully created."

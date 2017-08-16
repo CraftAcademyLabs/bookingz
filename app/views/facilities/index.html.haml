@@ -10,7 +10,8 @@
   - @facilities.each do |facility|
     %tr{id: "facility_#{facility.id}"}
       %td
-        %strong= facility.name
+        %strong
+          = link_to facility.name, facility_path(facility, locale: locale)
       %td
         Code:
         = facility.code
