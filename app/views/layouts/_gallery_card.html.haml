@@ -1,0 +1,18 @@
+.col.l4.m6.s12.gallery-item.gallery-expand.gallery-filter.overhead
+  .gallery-curve-wrapper
+    .gallery-header.center
+      %h4
+        = locals[:header]
+    %a.gallery-cover.gray{style: 'height: 280px;'}
+      = image_tag locals[:image]
+
+    .gallery-body
+      .title-wrapper
+        %h3
+          = locals[:header]
+      .description
+        %p
+          = locals[:pitch]
+    .gallery-action
+      %a.btn-floating.btn-large.waves-effect.waves-light
+        %i.medium.material-icons= locals[:icon]

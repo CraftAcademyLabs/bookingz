@@ -1,0 +1,1 @@
+**Bookingz** is cloud-based so its accessible from anywhere, anytime. Its so easy to use it doesnt require any training for the end user whatsoever. Either go to your Bookingz site and make a booking in few click or book the room through your Google Resource Calendar. Try it yourself today!

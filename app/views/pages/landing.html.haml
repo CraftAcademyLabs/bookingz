@@ -10,34 +10,18 @@
           = t('landing.main_pintch')
       .row.center
         = link_to t('landing.get_started'), dashboard_path, class: 'btn-large waves-effect waves-light teal lighten-1'
-.container
-  .section
-    / Icon Section
-    .row
-      .col.s12.m4
-        .icon-block
-          %h2.center.brown-text
-            %i.material-icons flash_on
-          %h5.center
-            = t('landing.header_1')
-          %p.light
-            = t('landing.pitch_1')
-      .col.s12.m4
-        .icon-block
-          %h2.center.brown-text
-            %i.material-icons group
-          %h5.center
-            = t('landing.header_2')
-          %p.light
-            = t('landing.pitch_2')
-      .col.s12.m4
-        .icon-block
-          %h2.center.brown-text
-            %i.material-icons settings
-          %h5.center
-            = t('landing.header_3')
-          %p.light
-            = t('landing.pitch_3')
+#portfolio.section.gray
+  .container
+    .section
+      .row
+        .col.s12.center
+          %h4
+            = t('landing.overview')
+      .gallery.row
+        = render 'layouts/gallery_card', locals: {image: 'pitch_1.png', header: t('landing.header_2'), pitch: get_markdown('landing_pitch_1'), icon: 'settings'}
+        = render 'layouts/gallery_card', locals: {image: 'pitch_2.png', header: t('landing.header_1'), pitch: get_markdown('landing_pitch_2'), icon: 'group'}
+        = render 'layouts/gallery_card', locals: {image: 'pitch_3.png', header: t('landing.header_3'), pitch: get_markdown('landing_pitch_3'), icon: 'phonelink'}
+
 .parallax-container.valign-wrapper
   .section.no-pad-bot
     .container
@@ -50,8 +34,6 @@
   .section
     .row
       .col.s12.center
-        %h3
-          %i.mdi-content-send.brown-text
         %h4
           = t('landing.pricing')
         = render 'layouts/pricing'

@@ -10,7 +10,7 @@ Bookingz består av två delar:
 ### Konfiguration
 
 #### Anläggningar
-Kan enbart skapas av systemets huvudadministratör. Beskrivs med ett namn och blir tilldelad en unik auktorisationskod
+Kan skapas av systemets huvudadministratör. Beskrivs med ett namn och blir tilldelad en unik auktorisationskod
 som används för att skapa tillhörande resurser.
 
 #### Resurser
@@ -22,7 +22,7 @@ Bookingz-klienten som installeras på den tablet som ska tjäna som display i an
 
 
 ### Användning
-När du loggar in blir du omdirigerad till [Dashboarden](/), där du får en överblick över rummen och deras tillgänglighet.
+När du loggar in blir du omdirigerad till [Dashboarden](/dashboard), där du får en överblick över rummen och deras tillgänglighet.
 
 ### Boka resurs
 
