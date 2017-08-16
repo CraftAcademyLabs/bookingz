@@ -22,6 +22,10 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include ResponseJSON, type: :request
   config.include Paperclip::Shoulda::Matchers
+
+  config.before(:each) do
+    Aws.config[:s3] = {stub_responses: true}
+  end
 end
 
 Shoulda::Matchers.configure do |config|

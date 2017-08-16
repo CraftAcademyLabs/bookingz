@@ -28,6 +28,10 @@ Capybara.register_server :puma do |app, port, host|
   end.run.join
 end
 
+Before do
+  Aws.config[:s3] = {stub_responses: true}
+end
+
 Capybara.server = :puma
 
 Capybara.javascript_driver = :poltergeist
