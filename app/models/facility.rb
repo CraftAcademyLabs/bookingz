@@ -1,5 +1,9 @@
 class Facility < ApplicationRecord
   geocoded_by :full_address
+  has_attached_file :attachment
+  validates_attachment :attachment,
+                       content_type:
+                           {content_type: %w(image/jpg image/jpeg image/png image/gif)}
   after_validation :geocode, if: ->(obj) do
     obj.address.present? and obj.address_changed? || obj.post_code_changed? || obj.city_changed?
   end

@@ -38,6 +38,7 @@ Feature: As a system owner
     Then I should be on the "Facilities index" page
     And I should see "Facility Stena Center was successfully created."
     And I should see "Stena Center"
+    And "Stena Center" should have an file attached to it
 
   Scenario: Assign user to facility
     Given a facility named "Craft Academy" exists

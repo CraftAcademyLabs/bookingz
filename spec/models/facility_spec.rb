@@ -18,6 +18,15 @@ RSpec.describe Facility, type: :model do
     it { is_expected.to have_db_column :country }
   end
 
+  describe 'Attachment' do
+    it { is_expected.to have_attached_file :attachment}
+
+    it { is_expected.to have_db_column :attachment_file_name}
+    it { is_expected.to have_db_column :attachment_content_type}
+    it { is_expected.to have_db_column :attachment_file_size}
+    it { is_expected.to have_db_column :attachment_updated_at}
+  end
+
   describe 'Associations' do
     it { is_expected.to have_many :users }
     it { is_expected.to have_many :resources }
