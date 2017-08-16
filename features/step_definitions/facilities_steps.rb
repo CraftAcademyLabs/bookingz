@@ -43,3 +43,7 @@ Then(/^I (should|should not) see "([^"]*)" in a section for "([^"]*)"$/) do |neg
     end
   end
 end
+
+And(/^I attach file "([^"]*)"$/) do |file_name|
+  attach_file('file_upload', Rails.root + "spec/fixtures/#{file_name}")
+end
