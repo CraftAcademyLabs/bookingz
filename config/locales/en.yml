@@ -57,6 +57,10 @@ en:
     home: Home
     facilities: Facilities
     add_facility: Add Facility
+    facility: Facility
+    users: Users
+    code: Code
+    resources: Resources
   buttons:
     ok: Choose
     send: Send

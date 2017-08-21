@@ -39,6 +39,10 @@ gem 'datejs-rails'
 # Geolocation
 gem 'geocoder'
 
+# Attachments
+gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk'
+
 
 group :development, :test do
   gem 'pry'
@@ -61,6 +65,7 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'railroady'
   gem 'redis_test'
+  gem 'dotenv-rails'
 end
 
 group :development do

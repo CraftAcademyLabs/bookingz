@@ -22,4 +22,3 @@ Feature: As a Facility Manager
     When I click on menu item "Stena Center"
     Then I should be on the show page for "Stena Center"
     And I should see "Stena Center"
-    Then show me an image of the page

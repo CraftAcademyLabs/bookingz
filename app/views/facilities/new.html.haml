@@ -1,17 +1,46 @@
 %h3 New Facility
 = form_for @facility, class: '' do |f|
   .row
-    .large-12.columns
+    .col.m6.l6.s12.input-field
       = f.label :name
       = f.text_field :name
-    .large-12.columns
+  .row
+    .col.m6.l6.s12.input-field
       = f.label :address
       = f.text_field :address
-    .large-12.columns
+  .row
+    .col.m6.l6.s12.input-field
       = f.label :post_code
       = f.text_field :post_code
-    .large-12.columns
+  .row
+    .col.m6.l6.s12.input-field
       = f.label :city
       = f.text_field :city
-    .large-12.columns
-  = f.submit 'Create Facility', class: 'button'
+  .row
+    .col.m6.l6.s12
+      .file-field.input-field.gallery_picture
+        .btn
+          %span Select image
+          = f.file_field :attachment, id: 'attachment'
+    .col.m6.l6.s12
+      #target
+  .row
+    .col.m6.l6.s12.input-field
+      = f.submit 'Create Facility', class: 'waves-effect waves-light btn'
+
+:javascript
+  $(function() {
+    $('#attachment').on('change', function(event) {
+      var files = event.target.files;
+      var image = files[0]
+      var reader = new FileReader();
+      reader.onload = function(file) {
+        var img = new Image();
+        //console.log(file);
+        img.src = file.target.result;
+        $('#target').html(img);
+      }
+      reader.readAsDataURL(image);
+      // console.log(files);
+    });
+  });

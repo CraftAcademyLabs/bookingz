@@ -43,3 +43,13 @@ Then(/^I (should|should not) see "([^"]*)" in a section for "([^"]*)"$/) do |neg
     end
   end
 end
+
+And(/^I attach file "([^"]*)"$/) do |file_name|
+  page.execute_script('$("#attachment").css("opacity", 1);')
+  page.attach_file('facility[attachment]', Rails.root + "spec/fixtures/#{file_name}")
+end
+
+And(/^"([^"]*)" should have an file attached to it$/) do |name|
+  facility = Facility.find_by(name: name)
+  expect(facility.attachment).not_to eq nil
+end

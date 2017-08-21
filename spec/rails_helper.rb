@@ -5,6 +5,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'timecop'
+require 'paperclip/matchers'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -20,6 +21,11 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveRecord, type: :model
   config.include FactoryGirl::Syntax::Methods
   config.include ResponseJSON, type: :request
+  config.include Paperclip::Shoulda::Matchers
+
+  config.before(:each) do
+    Aws.config[:s3] = {stub_responses: true}
+  end
 end
 
 Shoulda::Matchers.configure do |config|

@@ -58,6 +58,10 @@ sv:
     home: Hem
     facilities: Anläggningar
     add_facility: Lägg till anläggning
+    facility: Anläggning
+    users: Användare
+    code: Kod
+    resources: Resurser
   buttons:
     ok: Välj
     send: Skicka
