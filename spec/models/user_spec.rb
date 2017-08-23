@@ -45,8 +45,8 @@ RSpec.describe User, type: :model do
 
     describe 'scope #is_supeadmin' do
       it 'returns collection of superadmins' do
-        expect(User.is_superadmin).to include user_1
-        expect(User.is_superadmin).not_to include user_2
+        expect(User.superadmins).to include user_1
+        expect(User.superadmins).not_to include user_2
       end
     end
 

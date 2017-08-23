@@ -50,11 +50,10 @@ class Api::ApiController < ActionController::API
     end_seconds = Time.parse(params[:time_end]).seconds_since_midnight
 
     start_seconds += 1.second
-    binding.pry
 
     start = Date.parse(params[:time_start]) + start_seconds.seconds
     to = Date.parse(params[:time_end]) + end_seconds.seconds
-    user = User.is_superadmin.first
+    user = User.superadmins.first
     @resource.be_booked! user,
                          time_start: start,
                          time_end: to,
