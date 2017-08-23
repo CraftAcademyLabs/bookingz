@@ -21,6 +21,7 @@ describe Api::ApiController, type: :request do
                  headers: {'HTTP_ACCEPT': 'application/json'}}
       expected_response = eval(file_fixture('resource_ad_hoc_booking_response.txt').read)
       post "/api/resources/#{resource.uuid}/create_booking", payload
+      binding.pry
       expect(response_json).to eq expected_response.as_json
     end
 

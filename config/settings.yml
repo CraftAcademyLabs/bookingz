@@ -6,7 +6,8 @@ default_locale: en
 mode: :daily_view
 #mode: :weekly_view
 slot_configuration:
-  increment: 270 # In minutes
-  #increment: 60 # In minutes
+  #increment: 270 # In minutes
+  increment: 60 # In minutes
   start_time: 8 # In hours from midnight
-  end_time: 16 # In hours from midnight
+  #end_time: 16 # In hours from midnight
+  end_time: 23 # In hours from midnight
