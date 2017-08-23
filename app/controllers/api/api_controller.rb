@@ -42,6 +42,26 @@ class Api::ApiController < ActionController::API
     end
   end
 
+  def create_booking
+    @resource = Resource.find_by(uuid: params[:uuid])
+    @date = set_date
+    start_seconds = Time.parse(params[:time_start]).seconds_since_midnight
+
+    end_seconds = Time.parse(params[:time_end]).seconds_since_midnight
+
+    start_seconds += 1.second
+
+    start = Date.parse(params[:time_start]) + start_seconds.seconds
+    to = Date.parse(params[:time_end]) + end_seconds.seconds
+    user = User.superadmins.first
+    @resource.be_booked! user,
+                         time_start: start,
+                         time_end: to,
+                         amount: @resource.capacity,
+                         client: params[:client]
+    render :show
+  end
+
 
   private
 
@@ -61,4 +81,5 @@ class Api::ApiController < ActionController::API
   def in_weekly_mode?
     Settings.mode == :weekly_view
   end
+
 end

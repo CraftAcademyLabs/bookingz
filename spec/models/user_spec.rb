@@ -24,8 +24,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Roles' do
-    let(:user_1) { create(:user, superadmin: true) }
-    let(:user_2) { create(:user, superadmin: false) }
+    let!(:user_1) { create(:user, superadmin: true) }
+    let!(:user_2) { create(:user, superadmin: false) }
 
     it 'user? should respond true if not superadmin' do
       expect(user_2.user?).to be_truthy
@@ -39,8 +39,15 @@ RSpec.describe User, type: :model do
       expect(user_1.superadmin?).to be_truthy
     end
 
-    it 'superadmin? should respond true if user' do
+    it 'superadmin? should respond false if user' do
       expect(user_2.superadmin?).to be_falsey
+    end
+
+    describe 'scope #is_supeadmin' do
+      it 'returns collection of superadmins' do
+        expect(User.superadmins).to include user_1
+        expect(User.superadmins).not_to include user_2
+      end
     end
 
   end

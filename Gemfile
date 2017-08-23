@@ -66,6 +66,7 @@ group :development, :test do
   gem 'railroady'
   gem 'redis_test'
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do

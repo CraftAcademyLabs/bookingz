@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   belongs_to :facility
 
+  scope :superadmins, -> { where(superadmin: true) }
+
   def active_for_authentication?
     super && approved?
   end

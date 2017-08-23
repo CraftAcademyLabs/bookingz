@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       collection do
         get '/:uuid', action: :show, as: :show
         put '/', action: :update, as: :update
+        post '/:uuid/create_booking', action: :create_booking
       end
     end
   end
