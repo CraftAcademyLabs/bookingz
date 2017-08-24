@@ -98,18 +98,15 @@
         'id': 1,
         'time': '15:30 - 16:00',
         'client': 'Craft Academy',
-        'booking_time': '15:30 - 16:30'
+        'booking_time': '15:30 - 15:59'
       },
       'state': 'booked'
     },
     {
       'info': {
-        'id': 1,
-        'time': '16:00 - 16:30',
-        'client': 'Craft Academy',
-        'booking_time': '15:30 - 16:30'
+        'time': '16:00 - 16:30'
       },
-      'state': 'booked'
+      'state': 'free'
     },
     {
       'info': {
