@@ -23,7 +23,5 @@ describe Api::ApiController, type: :request do
       post "/api/resources/#{resource.uuid}/create_booking", payload
       expect(response_json).to eq expected_response.as_json
     end
-
   end
-
 end
