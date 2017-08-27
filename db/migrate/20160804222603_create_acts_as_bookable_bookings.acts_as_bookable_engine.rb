@@ -1,5 +1,5 @@
 # This migration comes from acts_as_bookable_engine (originally 20160217085200)
-class CreateActsAsBookableBookings < ActiveRecord::Migration
+class CreateActsAsBookableBookings < ActiveRecord::Migration[4.2]
   def change
     create_table :acts_as_bookable_bookings, force: true do |t|
       t.references :bookable, polymorphic: true, index: {name: "index_acts_as_bookable_bookings_bookable"}
