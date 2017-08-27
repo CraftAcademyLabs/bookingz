@@ -6,22 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+facility = Facility.create(name: 'Craft Academy', address: 'Holtermansgatan 1D, Göteborg')
+
 description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.'
 
 Resource.all.each { |r| r.destroy }
-Resource.create(designation: 'Lilla konferanssalen 1', description: description, capacity: 8, uuid: SecureRandom.uuid,
+Resource.create(designation: 'Lilla konferanssalen 1', description: description, facility: facility, capacity: 8, uuid: SecureRandom.uuid,
                 schedule: IceCube::Schedule.new(Date.today - 1.week, duration: 1.day))
-Resource.create(designation: 'Lilla konferanssalen 2', description: description, capacity: 8, uuid: SecureRandom.uuid,
+Resource.create(designation: 'Lilla konferanssalen 2', description: description, facility: facility, capacity: 8, uuid: SecureRandom.uuid,
                 schedule: IceCube::Schedule.new(Date.today - 1.week, duration: 1.day))
-Resource.create(designation: 'Stora konferanssalen 1', description: description, capacity: 20, uuid: SecureRandom.uuid,
+Resource.create(designation: 'Stora konferanssalen', description: description, facility: facility, capacity: 20, uuid: SecureRandom.uuid,
                 schedule: IceCube::Schedule.new(Date.today - 1.week, duration: 1.day))
-Resource.create(designation: 'Stora konferanssalen 2', description: description, capacity: 20, uuid: SecureRandom.uuid,
-                schedule: IceCube::Schedule.new(Date.today - 1.week, duration: 1.day))
-Resource.create(designation: 'Stora kongresshallen', description: description, capacity: 200, uuid: SecureRandom.uuid,
-                schedule: IceCube::Schedule.new(Date.today - 1.week, duration: 1.day))
-Resource.create(designation: 'Lilla kongresshallen', description: description, capacity: 100, uuid: SecureRandom.uuid,
-                schedule: IceCube::Schedule.new(Date.today - 1.week, duration: 1.day))
+
 
 Resource.all.each do |resource|
   resource.schedule.add_recurrence_rule IceCube::Rule.daily
