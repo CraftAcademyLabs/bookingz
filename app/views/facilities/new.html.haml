@@ -22,11 +22,11 @@
         .btn
           %span Select image
           = f.file_field :attachment, id: 'attachment'
+        .file-path-wrapper
+          %input.file-path.validate{type: 'text'}
+      = f.submit 'Create Facility', class: 'waves-effect waves-light btn-large'
     .col.m6.l6.s12
       #target
-  .row
-    .col.m6.l6.s12.input-field
-      = f.submit 'Create Facility', class: 'waves-effect waves-light btn'
 
 :javascript
   $(function() {
@@ -34,13 +34,13 @@
       var files = event.target.files;
       var image = files[0]
       var reader = new FileReader();
+      reader.readAsDataURL(image);
       reader.onload = function(file) {
         var img = new Image();
-        //console.log(file);
         img.src = file.target.result;
+        img.style.width = '100%';
         $('#target').html(img);
       }
-      reader.readAsDataURL(image);
-      // console.log(files);
+
     });
   });
