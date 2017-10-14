@@ -1,3 +1,7 @@
+Given(/^the application is set to "([^"]*)"$/) do |locale|
+  I18n.locale = locale.to_sym
+end
+
 Given(/^the following (?:account|accounts) (?:is|are) configured$/) do |table|
   table.hashes.each do |hash|
     facility = Facility.find_by(name: hash[:facility])
