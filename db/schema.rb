@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 20170816094626) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "acts_as_bookable_bookings", id: :serial, force: :cascade do |t|
+  create_table "acts_as_bookable_bookings", force: :cascade do |t|
     t.string "bookable_type"
-    t.integer "bookable_id"
+    t.bigint "bookable_id"
     t.string "booker_type"
-    t.integer "booker_id"
+    t.bigint "booker_id"
     t.integer "amount"
     t.text "schedule"
     t.datetime "time_start"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170816094626) do
     t.index ["booker_type", "booker_id"], name: "index_acts_as_bookable_bookings_booker"
   end
 
-  create_table "facilities", id: :serial, force: :cascade do |t|
+  create_table "facilities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170816094626) do
     t.datetime "attachment_updated_at"
   end
 
-  create_table "resources", id: :serial, force: :cascade do |t|
+  create_table "resources", force: :cascade do |t|
     t.string "designation"
     t.text "description"
     t.datetime "created_at", null: false
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 20170816094626) do
     t.integer "capacity"
     t.text "schedule"
     t.string "uuid"
-    t.integer "facility_id"
+    t.bigint "facility_id"
     t.string "direction"
     t.index ["facility_id"], name: "index_resources_on_facility_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170816094626) do
     t.datetime "updated_at", null: false
     t.boolean "approved", default: false, null: false
     t.boolean "superadmin", default: false
-    t.integer "facility_id"
+    t.bigint "facility_id"
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["facility_id"], name: "index_users_on_facility_id"

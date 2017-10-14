@@ -1,4 +1,4 @@
-class AddSuperadminToUser < ActiveRecord::Migration[5.0]
+class AddSuperadminToUser < ActiveRecord::Migration[5.1]
   def change
     add_column :users, :superadmin, :boolean, default: false
   end
