@@ -23,3 +23,5 @@ config/environments/*.local.yml
 .env
 
 public/system/
+
+.byebug_history

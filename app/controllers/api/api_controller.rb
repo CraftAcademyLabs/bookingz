@@ -1,4 +1,5 @@
 class Api::ApiController < ActionController::API
+  before_action :set_default_response_format
 
   def ping
     render json: {message: 'Pong'}
@@ -46,20 +47,29 @@ class Api::ApiController < ActionController::API
     @resource = Resource.find_by(uuid: params[:uuid])
     @date = set_date
     start_seconds = Time.parse(params[:time_start]).seconds_since_midnight
-
     end_seconds = Time.parse(params[:time_end]).seconds_since_midnight
-
-    start_seconds += 1.second
 
     start = Date.parse(params[:time_start]) + start_seconds.seconds
     to = Date.parse(params[:time_end]) + end_seconds.seconds
-    user = User.superadmins.first
-    @resource.be_booked! user,
-                         time_start: start,
-                         time_end: to,
-                         amount: @resource.capacity,
-                         client: params[:client]
-    render :show
+
+    if start.min < 30
+      start_time = start.beginning_of_hour + 1.second
+      end_time = start.end_of_hour - 30.minutes
+    else
+      start_time = start.beginning_of_hour + 30.minutes + 1.second
+      end_time = start.end_of_hour
+    end
+    if !@resource.check_availability(time_start: start, time_end: to, amount: 0)
+      render json: {message: 'This room is already booked'}, status: 422
+    else
+      user = User.superadmins.first
+      @resource.be_booked! user,
+                           time_start: start_time,
+                           time_end: end_time,
+                           amount: @resource.capacity,
+                           client: params[:client]
+      render :show
+    end
   end
 
 
@@ -80,6 +90,10 @@ class Api::ApiController < ActionController::API
 
   def in_weekly_mode?
     Settings.mode == :weekly_view
+  end
+
+  def set_default_response_format
+    request.format = :json
   end
 
 end
